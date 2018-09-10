@@ -57,7 +57,7 @@ namespace rlc
         private void apply_commands(Commands commands)
         {
             Vector2 translation = commands.ship_direction.normalized * move_speed * Time.deltaTime;
-            transform.Translate(translation);
+            transform.Translate(translation, Space.World);
 
             if (commands.gun_trigger.fire_north)
                 gun_north().fire();
