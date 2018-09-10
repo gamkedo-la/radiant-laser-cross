@@ -2,47 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserCrossGun : MonoBehaviour {
+namespace rlc
+{
 
-    private enum ShootingState
+    public class LaserCrossGun : MonoBehaviour
     {
-        idle
-    ,   fire
-    ,   resetting
-    };
-    private ShootingState state = ShootingState.idle;
 
-    void Start () {
-
-    }
-
-    void Update () {
-        // TEMPORARY TO CHECK THAT TRIGGERING FIRING WORKS
-        switch (state)
+        private enum ShootingState
         {
-            case ShootingState.fire:
-                state = ShootingState.resetting;
-                break;
-            case ShootingState.resetting:
-                transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                state = ShootingState.idle;
-                break;
-            default:
-                break;
-        }
-    }
+            idle
+        , fire
+        , resetting
+        };
+        private ShootingState state = ShootingState.idle;
 
-
-    public void fire()
-    {
-        //if (state == ShootingState.idle)
+        void Start()
         {
-            var fire_direction = transform.up;
 
-            transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY
-
-            state = ShootingState.fire;
         }
-    }
 
+        void Update()
+        {
+            // TEMPORARY TO CHECK THAT TRIGGERING FIRING WORKS
+            switch (state)
+            {
+                case ShootingState.fire:
+                    state = ShootingState.resetting;
+                    break;
+                case ShootingState.resetting:
+                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                    state = ShootingState.idle;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        public void fire()
+        {
+            //if (state == ShootingState.idle)
+            {
+                var fire_direction = transform.up;
+
+                transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY
+
+                state = ShootingState.fire;
+            }
+        }
+
+    }
 }

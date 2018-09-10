@@ -17,14 +17,14 @@ namespace rlc
         };
 
         public const int GUNS_COUNT = 4;
-        public const float MAX_GUNS_ORIENTATION_DEGREES = 180.0f;
+        public const float MAX_GUNS_ORIENTATION_DEGREES = 360.0f;
         public const float GUNS_DEGREES_PER_DIRECTION = MAX_GUNS_ORIENTATION_DEGREES / GUNS_COUNT;
         public const float HALF_GUNS_DEGREES_PER_DIRECTION = GUNS_DEGREES_PER_DIRECTION / 2;
 
         private LaserCrossGun[] guns = new LaserCrossGun[GUNS_COUNT];
         private float current_guns_angle = 0.0f;
         private GunsRotation current_guns_rotation = GunsRotation.none;
-        private GunFireDirection current_directions = GunFireDirection.north;
+        private GunFireDirection current_guns_directions = GunFireDirection.north;
 
         private Commands next_commands;
 
@@ -88,10 +88,28 @@ namespace rlc
             float rotation_factor = gun_rotation_factor(current_guns_rotation);
             float next_orientation = (current_guns_angle + rotation_speed * Time.deltaTime * rotation_factor);
 
+            while (next_orientation > MAX_GUNS_ORIENTATION_DEGREES)
+                next_orientation -= MAX_GUNS_ORIENTATION_DEGREES;
+            while (next_orientation < 0)
+                next_orientation += MAX_GUNS_ORIENTATION_DEGREES;
+
+            var new_rotation_direction = direction(next_orientation);
+
             // ... TODO: lock missing here
 
+            if (new_rotation_direction != current_guns_directions)
+            {
+                // We will change of gun direction.
+                rotate_guns_directions((int)rotation_factor);
+                current_guns_directions = new_rotation_direction;
+            }
             current_guns_angle = next_orientation;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, -current_guns_angle); // Because of Z being oriented this way in Unity, we need negative values to rotate clockwise.
+        }
+
+        private void rotate_guns_directions(int rotation_steps)
+        {
+           Utility.Rotate(guns, rotation_steps);
         }
 
         private bool can_change_gun_rotation_direction()
@@ -105,7 +123,7 @@ namespace rlc
             Assert.IsTrue(angle_deg <= MAX_GUNS_ORIENTATION_DEGREES);
 
             // Keep in mind north direction is between the highest and lowest values.
-            const float begin_east_angle = GUNS_DEGREES_PER_DIRECTION;
+            const float begin_east_angle = HALF_GUNS_DEGREES_PER_DIRECTION;
             const float end_east_angle = begin_east_angle + GUNS_DEGREES_PER_DIRECTION;
 
             const float begin_south_angle = end_east_angle;
@@ -115,7 +133,7 @@ namespace rlc
             const float end_west_angle = begin_west_angle + GUNS_DEGREES_PER_DIRECTION;
 
             const float left_side_north_begin_angle = end_west_angle;
-            const float right_side_north_end_angle = HALF_GUNS_DEGREES_PER_DIRECTION;
+            const float right_side_north_end_angle = begin_east_angle;
 
 
 
@@ -126,10 +144,10 @@ namespace rlc
                 return GunFireDirection.east;
 
             if (angle_deg >= begin_south_angle && angle_deg < end_south_angle)
-                return GunFireDirection.east;
+                return GunFireDirection.south;
 
             if (angle_deg >= begin_west_angle && angle_deg < end_west_angle)
-                return GunFireDirection.east;
+                return GunFireDirection.west;
 
             Assert.IsTrue(false);
             return GunFireDirection.north;
