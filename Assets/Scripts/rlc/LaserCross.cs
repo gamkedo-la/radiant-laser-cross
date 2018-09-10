@@ -117,10 +117,11 @@ namespace rlc
                 // We are passing over/through a lock position.
                 // We either stop here or change direction following commands.
                 // It all depends on what is the command from input.
+                var previous_gun_rotation = current_guns_rotation;
                 current_guns_rotation = rotation_from_commands;
-                if (current_guns_rotation == GunsRotation.none)
+                if (current_guns_rotation == GunsRotation.none || current_guns_rotation != previous_gun_rotation) // TODO: check if the second test isn't enough for both cases
                 {
-                    // We stopped: lock the position to align with axis.
+                    // We need to stop: lock the position to align with axis.
                     next_orientation = angle(current_target_axis);
                 }
             }
