@@ -5,7 +5,7 @@ using UnityEngine;
 namespace rlc
 {
 
-    public enum GunMoveAction // Only one can be used at a time.
+    public enum GunsRotation // Only one can be used at a time.
     {
         none,
         rotate_clockwise,
@@ -25,7 +25,7 @@ namespace rlc
     public struct Commands
     {
         public Vector2 ship_direction;               // Normalized direction to where the ship needs to go.
-        public GunMoveAction gun_move;               // Gun rotation to engage.
+        public GunsRotation gun_move;               // Gun rotation to engage.
         public GunTriggerAction gun_trigger;         // Guns to trigger for shooting.
     }
 
