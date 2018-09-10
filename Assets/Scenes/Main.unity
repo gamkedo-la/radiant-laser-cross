@@ -298,7 +298,7 @@ Prefab:
     - target: {fileID: 114491839098139386, guid: f9d698e1e0a8d3a41800494b3b52bcae,
         type: 2}
       propertyPath: rotation_speed
-      value: 90
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4595222058351098, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
       propertyPath: m_LocalScale.z
