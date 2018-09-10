@@ -38,14 +38,24 @@ namespace rlc
             //commands.ship_direction.y = vertical_move;
             //commands.ship_direction.x = horizontal_move;
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
                 commands.ship_direction.x -= 1;
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
                 commands.ship_direction.x += 1;
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
                 commands.ship_direction.y += 1;
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
                 commands.ship_direction.y -= 1;
+
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.J))
+                commands.gun_trigger.fire_west = true;
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.L))
+                commands.gun_trigger.fire_east = true;
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.I))
+                commands.gun_trigger.fire_north = true;
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.K))
+                commands.gun_trigger.fire_south = true;
+
 
 
             return commands;
