@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace rlc
 {
-
+    /* Behaviour of any kind of gun, as in "bullet emitter". */
     public class Gun : MonoBehaviour
     {
         public Bullet bullet_prefab;        // Prefab that will be used as bullet.
@@ -47,7 +47,8 @@ namespace rlc
             }
         }
 
-
+        // Call this to trigger bulelt firing.
+        // Bullets will only go if the firing timing is right.
         public void fire()
         {
             if (state != ShootingState.idle)
@@ -63,6 +64,7 @@ namespace rlc
             emit_bullets_in_target_direction();
         }
 
+        // Called when we begin the firing state.
         private void start_firing_state()
         {
             transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY effect
@@ -70,11 +72,13 @@ namespace rlc
             last_firing_time = Time.time;
         }
 
+        // Called when we should get back to a state ready to fire.
         private void reset_to_ready()
         {
             state = ShootingState.idle;
         }
 
+        // Implements how the bullets should be launched.
         private void emit_bullets_in_target_direction()
         {
             var fire_direction = target_point.position - emitter_point.position;
@@ -82,6 +86,8 @@ namespace rlc
             emit_bullet(fire_direction);
         }
 
+        // Emits one bullet.
+        // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 direction)
         {
             Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter_point.position, transform.rotation);

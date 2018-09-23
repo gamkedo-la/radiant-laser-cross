@@ -10,6 +10,7 @@ namespace rlc
 
         public float speed = 10.0f;
         public float lifetime_secs = 4.0f;
+
         private Vector3 direction;
 
         // Use this for initialization

@@ -16,6 +16,7 @@ namespace rlc
         Oranges,
     }
 
+    // Functions helping with color matching rules.
     static class ColorSystem
     {
         // Returns true if the colors matches in the game rules, false otherwise.

@@ -4,17 +4,14 @@ using UnityEngine;
 
 namespace rlc
 {
-
+    /* Player Controls for the Laser Cross.
+     * This is separate to avoid mixing how we get the input from
+     * how we apply the player's commands.
+     */
     public class LaserCrossControl : MonoBehaviour
     {
 
         public LaserCross laser_cross;
-
-        void Start()
-        {
-
-        }
-
 
         void Update()
         {

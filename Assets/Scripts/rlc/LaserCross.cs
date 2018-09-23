@@ -5,7 +5,8 @@ using UnityEngine.Assertions;
 
 namespace rlc
 {
-
+    /* Behavior of the Laser Cross, the player's ship.
+     */
     public class LaserCross : MonoBehaviour
     {
         private enum GunFireDirection : int
