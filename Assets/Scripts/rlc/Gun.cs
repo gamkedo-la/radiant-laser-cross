@@ -37,6 +37,7 @@ namespace rlc
                     state = ShootingState.resetting;
                     break;
                 case ShootingState.resetting:
+                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // TEMPORARY effect
                     var time_since_last_firing = Time.time - last_firing_time;
                     if (time_since_last_firing > time_between_firing)
                         reset_to_ready();
@@ -71,7 +72,6 @@ namespace rlc
 
         private void reset_to_ready()
         {
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // TEMPORARY effect
             state = ShootingState.idle;
         }
 
