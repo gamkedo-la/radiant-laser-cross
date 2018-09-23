@@ -33,7 +33,7 @@ namespace rlc
 
 
 
-        private LaserCrossGun[] guns = new LaserCrossGun[GUNS_COUNT];
+        private Gun[] guns = new Gun[GUNS_COUNT];
         private float current_guns_angle = 0.0f;
         private GunsRotation current_guns_rotation = GunsRotation.none;
         private GunFireDirection current_guns_directions = GunFireDirection.north;
@@ -43,15 +43,15 @@ namespace rlc
         public float move_speed = 10.0f;
         public float rotation_speed = 90.0f;
 
-        private LaserCrossGun gun_north()   { return guns[(int)GunFireDirection.north];  }
-        private LaserCrossGun gun_east()    { return guns[(int)GunFireDirection.east];   }
-        private LaserCrossGun gun_south()   { return guns[(int)GunFireDirection.south];  }
-        private LaserCrossGun gun_west()    { return guns[(int)GunFireDirection.west];   }
+        private Gun gun_north()   { return guns[(int)GunFireDirection.north];  }
+        private Gun gun_east()    { return guns[(int)GunFireDirection.east];   }
+        private Gun gun_south()   { return guns[(int)GunFireDirection.south];  }
+        private Gun gun_west()    { return guns[(int)GunFireDirection.west];   }
 
 
         void Start()
         {
-            guns = GetComponentsInChildren<LaserCrossGun>();
+            guns = GetComponentsInChildren<Gun>();
         }
 
         void Update()

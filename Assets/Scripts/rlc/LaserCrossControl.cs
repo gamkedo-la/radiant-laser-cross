@@ -15,10 +15,6 @@ namespace rlc
 
         }
 
-        private void FixedUpdate()
-        {
-
-        }
 
         void Update()
         {
@@ -32,6 +28,9 @@ namespace rlc
             Commands commands = new Commands();
 
             // The code commented below generate latency between input and move and I'm not sure why:
+            // OK Chris said I should use GetAxisRaw instead and it works but then I'm not sure
+            // How to setup the rotations and 4 guns firing in Unity.
+
             //float vertical_move = Input.GetAxis("Vertical");
             //float horizontal_move = Input.GetAxis("Horizontal");
 

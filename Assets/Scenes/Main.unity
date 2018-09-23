@@ -256,7 +256,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1851269449
+--- !u!1001 &1338108165
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -295,15 +295,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114491839098139386, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+    - target: {fileID: 114773769878297650, guid: f9d698e1e0a8d3a41800494b3b52bcae,
         type: 2}
-      propertyPath: move_speed
-      value: 20
+      propertyPath: time_between_firing
+      value: 0.0625
       objectReference: {fileID: 0}
-    - target: {fileID: 114491839098139386, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+    - target: {fileID: 114579853941298850, guid: f9d698e1e0a8d3a41800494b3b52bcae,
         type: 2}
-      propertyPath: rotation_speed
-      value: 200
+      propertyPath: time_between_firing
+      value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782771858090876, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+        type: 2}
+      propertyPath: time_between_firing
+      value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 114654841115393402, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+        type: 2}
+      propertyPath: time_between_firing
+      value: 0.0625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
