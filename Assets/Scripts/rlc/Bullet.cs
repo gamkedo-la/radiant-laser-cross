@@ -29,5 +29,6 @@ namespace rlc
         {
             direction = new_direction.normalized;
         }
+
     }
 }

@@ -30,7 +30,6 @@ namespace rlc
 
         void Update()
         {
-            // TEMPORARY TO CHECK THAT TRIGGERING FIRING WORKS
             switch (state)
             {
                 case ShootingState.fire:
