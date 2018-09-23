@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 33097320031428796}
   - component: {fileID: 23158854892198730}
   - component: {fileID: 135285249977144926}
+  - component: {fileID: 114529295416526498}
   m_Layer: 0
   m_Name: core
   m_TagString: Untagged
@@ -731,7 +732,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c6ac4719053184d4a9472958b822e436, type: 2}
+  - {fileID: 2100000, guid: 8f648ae24f168c040abc884543bc8dd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1168,6 +1169,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed: 20
   rotation_speed: 200
+--- !u!114 &114529295416526498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182573101217742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2cfe4f2c74a0d4db1f41b3341e59fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color_family: 1
 --- !u!114 &114579853941298850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1183,7 +1196,7 @@ MonoBehaviour:
     type: 2}
   emitter_point: {fileID: 4177259479330914}
   target_point: {fileID: 4661237241830250}
-  time_between_firing: 0.0625
+  time_between_firing: 0.125
 --- !u!114 &114654841115393402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1199,7 +1212,7 @@ MonoBehaviour:
     type: 2}
   emitter_point: {fileID: 4275646576724992}
   target_point: {fileID: 4240453599667296}
-  time_between_firing: 0.0625
+  time_between_firing: 0.125
 --- !u!114 &114773769878297650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,7 +1228,7 @@ MonoBehaviour:
     type: 2}
   emitter_point: {fileID: 4791034045979216}
   target_point: {fileID: 4775748698914014}
-  time_between_firing: 0.0625
+  time_between_firing: 0.125
 --- !u!114 &114776480890327406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1243,7 +1256,7 @@ MonoBehaviour:
     type: 2}
   emitter_point: {fileID: 4708338430538838}
   target_point: {fileID: 4088781698092100}
-  time_between_firing: 0.0625
+  time_between_firing: 0.125
 --- !u!135 &135285249977144926
 SphereCollider:
   m_ObjectHideFlags: 1

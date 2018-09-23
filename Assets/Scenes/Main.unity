@@ -179,6 +179,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &323424638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1182573101217742, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+    type: 2}
+  m_PrefabInternal: {fileID: 1338108165}
+--- !u!114 &323424639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323424638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2cfe4f2c74a0d4db1f41b3341e59fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color_family: 1
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +332,11 @@ Prefab:
       propertyPath: time_between_firing
       value: 0.125
       objectReference: {fileID: 0}
+    - target: {fileID: 23158854892198730, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8f648ae24f168c040abc884543bc8dd9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
   m_IsPrefabAsset: 0
