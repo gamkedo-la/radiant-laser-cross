@@ -9,14 +9,14 @@ namespace rlc
     */
     public class ProceduralLevelBuilder : MonoBehaviour
     {
-        public List<Wave> waves_difficulty_1_tutoring = new List<Wave>();
-        public List<Wave> waves_difficulty_2_easy = new List<Wave>();
-        public List<Wave> waves_difficulty_3_challenging = new List<Wave>();
-        public List<Wave> waves_difficulty_4_hard = new List<Wave>();
+        public List<Wave> waves_difficulty_1_tutoring           = new List<Wave>();
+        public List<Wave> waves_difficulty_2_easy               = new List<Wave>();
+        public List<Wave> waves_difficulty_3_challenging        = new List<Wave>();
+        public List<Wave> waves_difficulty_4_hard               = new List<Wave>();
 
-        public List<Wave> boss_waves_difficulty_1_easy = new List<Wave>();
-        public List<Wave> boss_waves_difficulty_2_challenging = new List<Wave>();
-        public List<Wave> boss_waves_difficulty_3_hard = new List<Wave>();
+        public List<Wave> boss_waves_difficulty_1_easy          = new List<Wave>();
+        public List<Wave> boss_waves_difficulty_2_challenging   = new List<Wave>();
+        public List<Wave> boss_waves_difficulty_3_hard          = new List<Wave>();
 
 
         // Use this for initialization

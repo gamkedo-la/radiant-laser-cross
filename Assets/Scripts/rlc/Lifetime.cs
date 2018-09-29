@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace rlc
 {
-    public class FixedLifetime : MonoBehaviour
+    public class Lifetime : MonoBehaviour
     {
 
         public float lifetime_secs = 4.0f; // How many seconds after spawning will it disappear.

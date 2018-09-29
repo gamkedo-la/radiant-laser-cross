@@ -7,9 +7,12 @@ namespace rlc
     /* Behaviour of any kind of gun, as in "bullet emitter". */
     public class Gun : MonoBehaviour
     {
-        public Movement_Forward bullet_prefab;        // Prefab that will be used as bullet.
-        public Transform emitter;           // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
+        public Bullet bullet_prefab;            // Prefab that will be used as bullet.
+        public Transform emitter;               // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
         public float time_between_firing = 1.0f / 32.0f;
+        public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
+        public bool default_firing_animation = false;
+
 
         private float last_firing_time;
 
@@ -34,12 +37,17 @@ namespace rlc
                 case ShootingState.fire:
                     state = ShootingState.resetting;
                     break;
+
                 case ShootingState.resetting:
-                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // TEMPORARY effect
+
+                    if(default_firing_animation)
+                        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // TEMPORARY effect
+
                     var time_since_last_firing = Time.time - last_firing_time;
                     if (time_since_last_firing > time_between_firing)
                         reset_to_ready();
                     break;
+
                 default:
                     break;
             }
@@ -65,7 +73,9 @@ namespace rlc
         // Called when we begin the firing state.
         private void start_firing_state()
         {
-            transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY effect
+            if(default_firing_animation)
+                transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY effect
+
             state = ShootingState.fire;
             last_firing_time = Time.time;
         }
@@ -88,8 +98,10 @@ namespace rlc
         // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 direction)
         {
-            Movement_Forward bullet = (Movement_Forward)Instantiate(bullet_prefab, emitter.position, transform.rotation);
+            Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
             bullet.transform.forward = direction;
+            if (default_bullet_speed > 0)
+                bullet.speed = default_bullet_speed;
         }
 
     }
