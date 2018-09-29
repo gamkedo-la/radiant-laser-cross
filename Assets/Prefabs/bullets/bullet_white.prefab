@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23359570193766578}
   - component: {fileID: 135477481486603190}
   - component: {fileID: 114580612996000162}
+  - component: {fileID: 114887390114536030}
   - component: {fileID: 114676719608263124}
   m_Layer: 0
   m_Name: bullet_white
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 40
-  lifetime_secs: 4
 --- !u!114 &114676719608263124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +111,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color_family: 1
+--- !u!114 &114887390114536030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582779828697760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fd1283e9ca67047aa9459f0f3f1dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime_secs: 4
 --- !u!135 &135477481486603190
 SphereCollider:
   m_ObjectHideFlags: 1
