@@ -6,20 +6,37 @@ namespace rlc
 
     /* Waves of ennemies.
      * This is the bigges brick of the level design.
-     * Waves can be defined by any class that implements this interface.
+     * Each Wave is a bunch of ennemies plus a graphic and audio theme.
      * This is designed so that wave's parametters could be changing through time.
      */
-    public interface Wave
+    public class Wave : MonoBehaviour
     {
         // Background color that will be used while this wave is running.
-        Color background_color();
+        public Color background_color;
 
         // Title that will be displayed on the screen before starting the wave.
-        string title();
+        public string title;
 
-        // Called when the wave must begin.
-        void on_entry();
+        public float timeout_secs = 120.0f;
 
+
+        // TODO: Add audio tracks
+        // TODO: Add background
+
+        void Start()
+        {
+
+        }
+
+        void Update()
+        {
+
+        }
+
+        public void launch()
+        {
+
+        }
 
     }
 
