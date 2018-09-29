@@ -8,8 +8,7 @@ namespace rlc
     public class Gun : MonoBehaviour
     {
         public Bullet bullet_prefab;        // Prefab that will be used as bullet.
-        public Transform emitter_point;     // Object used as a starting point for emitted bullets.
-        public Transform target_point;      // Object to target when firing.
+        public Transform emitter;           // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
         public float time_between_firing = 1.0f / 32.0f;
 
         private float last_firing_time;
@@ -80,7 +79,7 @@ namespace rlc
         // Implements how the bullets should be launched.
         private void emit_bullets_in_target_direction()
         {
-            var fire_direction = target_point.position - emitter_point.position;
+            var fire_direction = emitter.forward;
             // TODO BEWARE: For the moment we assume that there is only one bullet - in the future change the bullet number and pattern from here.
             emit_bullet(fire_direction);
         }
@@ -89,7 +88,7 @@ namespace rlc
         // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 direction)
         {
-            Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter_point.position, transform.rotation);
+            Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
             bullet.set_direction(direction);
         }
 
