@@ -5,18 +5,18 @@ using UnityEngine.Assertions;
 
 namespace rlc
 {
+    public enum AxesDirections : int
+    {
+        north,
+        east,
+        south,
+        west
+    };
+
     /* Behavior of the Laser Cross, the player's ship.
      */
     public class LaserCross : MonoBehaviour
     {
-        private enum GunFireDirection : int
-        {
-            north,
-            east,
-            south,
-            west
-        };
-
         public const int GUNS_COUNT = 4;
         public const float MAX_GUNS_ORIENTATION_DEGREES = 360.0f;
         public const float GUNS_DEGREES_PER_DIRECTION = MAX_GUNS_ORIENTATION_DEGREES / GUNS_COUNT;
@@ -37,17 +37,17 @@ namespace rlc
         private Gun[] guns = new Gun[GUNS_COUNT];
         private float current_guns_angle = 0.0f;
         private GunsRotation current_guns_rotation = GunsRotation.none;
-        private GunFireDirection current_guns_directions = GunFireDirection.north;
+        private AxesDirections current_guns_directions = AxesDirections.north;
 
         private Commands next_commands;
 
         public float move_speed = 10.0f;
         public float rotation_speed = 90.0f;
 
-        private Gun gun_north()   { return guns[(int)GunFireDirection.north];  }
-        private Gun gun_east()    { return guns[(int)GunFireDirection.east];   }
-        private Gun gun_south()   { return guns[(int)GunFireDirection.south];  }
-        private Gun gun_west()    { return guns[(int)GunFireDirection.west];   }
+        private Gun gun_north()   { return guns[(int)AxesDirections.north];  }
+        private Gun gun_east()    { return guns[(int)AxesDirections.east];   }
+        private Gun gun_south()   { return guns[(int)AxesDirections.south];  }
+        private Gun gun_west()    { return guns[(int)AxesDirections.west];   }
 
 
         void Start()
@@ -145,45 +145,45 @@ namespace rlc
            Utility.Rotate(guns, rotation_steps);
         }
 
-        private static GunFireDirection next_axis(float current_angle, GunsRotation rotation)
+        private static AxesDirections next_axis(float current_angle, GunsRotation rotation)
         {
             if (rotation == GunsRotation.none)
                 return direction(current_angle);
 
             if (rotation == GunsRotation.rotate_clockwise)
             {
-                if (current_angle > angle(GunFireDirection.west))
-                    return GunFireDirection.north;
-                if (current_angle > angle(GunFireDirection.south))
-                    return GunFireDirection.west;
-                if (current_angle > angle(GunFireDirection.east))
-                    return GunFireDirection.south;
-                return GunFireDirection.east;
+                if (current_angle > angle(AxesDirections.west))
+                    return AxesDirections.north;
+                if (current_angle > angle(AxesDirections.south))
+                    return AxesDirections.west;
+                if (current_angle > angle(AxesDirections.east))
+                    return AxesDirections.south;
+                return AxesDirections.east;
             }
             else
             {
-                if (current_angle < angle(GunFireDirection.east))
-                    return GunFireDirection.north;
-                if (current_angle < angle(GunFireDirection.south))
-                    return GunFireDirection.east;
-                if (current_angle < angle(GunFireDirection.west))
-                    return GunFireDirection.south;
-                return GunFireDirection.west;
+                if (current_angle < angle(AxesDirections.east))
+                    return AxesDirections.north;
+                if (current_angle < angle(AxesDirections.south))
+                    return AxesDirections.east;
+                if (current_angle < angle(AxesDirections.west))
+                    return AxesDirections.south;
+                return AxesDirections.west;
             }
         }
 
 
-        private static float angle(GunFireDirection direction)
+        private static float angle(AxesDirections direction)
         {
             switch (direction)
             {
-                case GunFireDirection.north:
+                case AxesDirections.north:
                     return 0.0f;
-                case GunFireDirection.east:
+                case AxesDirections.east:
                     return GUNS_DEGREES_PER_DIRECTION;
-                case GunFireDirection.south:
+                case AxesDirections.south:
                     return GUNS_DEGREES_PER_DIRECTION * 2;
-                case GunFireDirection.west:
+                case AxesDirections.west:
                     return GUNS_DEGREES_PER_DIRECTION * 3;
                 default:
                     Assert.IsTrue(false);
@@ -191,26 +191,26 @@ namespace rlc
             }
         }
 
-        private static GunFireDirection direction(float angle_deg)
+        private static AxesDirections direction(float angle_deg)
         {
             Assert.IsTrue(angle_deg >= 0);
             Assert.IsTrue(angle_deg <= MAX_GUNS_ORIENTATION_DEGREES);
 
 
             if (angle_deg >= left_side_north_begin_angle || angle_deg < right_side_north_end_angle)
-                return GunFireDirection.north;
+                return AxesDirections.north;
 
             if (angle_deg >= begin_east_angle && angle_deg < end_east_angle)
-                return GunFireDirection.east;
+                return AxesDirections.east;
 
             if (angle_deg >= begin_south_angle && angle_deg < end_south_angle)
-                return GunFireDirection.south;
+                return AxesDirections.south;
 
             if (angle_deg >= begin_west_angle && angle_deg < end_west_angle)
-                return GunFireDirection.west;
+                return AxesDirections.west;
 
             Assert.IsTrue(false);
-            return GunFireDirection.north;
+            return AxesDirections.north;
         }
 
         // returns 1.0 if going clockwise, -1.0 if going counter-clockwise, 0 if no rotation.

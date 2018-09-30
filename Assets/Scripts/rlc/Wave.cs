@@ -8,6 +8,9 @@ namespace rlc
      * This is the bigges brick of the level design.
      * Each Wave is a bunch of ennemies plus a graphic and audio theme.
      * This is designed so that wave's parametters could be changing through time.
+     * USAGE:
+     *  - Use this component for an object representing a wave, that can be put in the level sets;
+     *  - Inherit from this class if you want the wave to have procedural behavior (driven by some code);
      */
     public class Wave : MonoBehaviour
     {
@@ -33,10 +36,6 @@ namespace rlc
 
         }
 
-        public void launch()
-        {
-
-        }
 
     }
 
