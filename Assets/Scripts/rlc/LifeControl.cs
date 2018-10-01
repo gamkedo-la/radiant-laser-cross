@@ -26,6 +26,15 @@ namespace rlc
             {
                 Debug.LogErrorFormat("Destructible object {} have no body parts set!", this.name);
             }
+
+            foreach(var body in body_parts)
+            {
+                if (body.life_control != null)
+                {
+                    Debug.LogError("Body associated with more than one body part", this);
+                }
+                body.life_control = this;
+            }
         }
 
         // Update is called once per frame

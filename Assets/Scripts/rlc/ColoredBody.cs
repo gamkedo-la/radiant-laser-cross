@@ -8,8 +8,11 @@ namespace rlc
      **/
     public class ColoredBody : MonoBehaviour
     {
-        // Color associated with this object.
+        [Tooltip("Color associated with this object.")]
         public ColorFamily color_family = ColorFamily.Whites;
+
+        [Tooltip("Do not fill: Will be automatically filled by LifeControl itself once this compoenent is listed in it.")]
+        public LifeControl life_control;
 
     }
 }

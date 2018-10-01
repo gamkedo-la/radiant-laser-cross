@@ -56,6 +56,6 @@ MonoBehaviour:
   timeout_secs: 120
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
-  count_left_to_spawn: 10
-  instances_per_spawn: 2
+  count_left_to_spawn: 8
+  instances_per_spawn: 1
   spawn_interval_secs: 1
