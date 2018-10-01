@@ -19,7 +19,7 @@ namespace rlc
         // Use this for initialization
         void Start() {
             last_firing_timepoint = Time.time;
-            body = GetComponentInChildren<Coloration>().gameObject;
+            body = GetComponentInChildren<ColoredBody>().gameObject;
         }
 
         // Update is called once per frame
