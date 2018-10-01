@@ -49,21 +49,56 @@ namespace rlc
         private Gun gun_south()   { return guns[(int)AxesDirections.south];  }
         private Gun gun_west()    { return guns[(int)AxesDirections.west];   }
 
+        private enum LifeState
+        {
+            none, alive, dying
+        }
+        LifeState life_state = LifeState.none;
 
         void Start()
         {
             guns = GetComponentsInChildren<Gun>();
+            life_state = LifeState.alive;
         }
 
         void Update()
         {
-            apply_commands(next_commands);
-            clear_commands();
+            // TODO: REMOVE ME
+            if (Input.GetKeyDown(KeyCode.Delete))
+                on_hit();
+
+            if (life_state == LifeState.alive)
+            {
+                apply_commands(next_commands);
+                clear_commands();
+            }
+
+            animate_todo_please_replace_me();
         }
 
         public void push_next_commands(Commands commands)
         {
             next_commands = commands;
+        }
+
+        public void on_hit()
+        {
+            Destroy(gameObject, 1.0f);
+            life_state = LifeState.dying;
+        }
+
+        private void animate_todo_please_replace_me()
+        {
+            // TODO: this is a temporary death animation, replace this by something more appropriate!
+            switch (life_state)
+            {
+                case LifeState.dying:
+                    transform.localScale = transform.localScale * 1.05f;
+                    transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
+                    break;
+                default:
+                    break;
+            }
         }
 
 
