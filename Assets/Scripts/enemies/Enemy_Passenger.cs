@@ -15,18 +15,24 @@ namespace rlc
         private float last_firing_timepoint;
         private GameObject body;
         private bool is_visible = false;
+        private LifeControl life_control;
 
         // Use this for initialization
         void Start() {
             last_firing_timepoint = Time.time;
             body = GetComponentInChildren<ColoredBody>().gameObject;
+            life_control = GetComponent<LifeControl>();
         }
 
         // Update is called once per frame
         void Update() {
-            move();
-            animate();
-            maybe_fire();
+            if (life_control.is_alive())
+            {
+
+                move();
+                animate();
+                maybe_fire();
+            }
         }
 
         private void move()

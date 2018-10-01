@@ -42,7 +42,7 @@ namespace rlc
         {
             // TODO: REMOVE ME
             if (Input.GetKeyDown(KeyCode.Delete))
-                on_hit();
+                die();
         }
 
         public bool is_alive()
@@ -58,13 +58,18 @@ namespace rlc
             --hit_points;
             if (hit_points == 0)
             {
-                life_state = LifeState.dying;
-                Destroy(gameObject, 1.0f);
+                die();
             }
             else
             {
                 // TODO: play "hit" animation here
             }
+        }
+
+        public void die()
+        {
+            life_state = LifeState.dying;
+            Destroy(gameObject, 1.0f);
         }
 
     }
