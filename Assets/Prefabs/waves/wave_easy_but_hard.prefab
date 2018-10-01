@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: wave_easy_peasy
+  m_Name: wave_easy_but_hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background_color: {r: 0, g: 0.6627451, b: 1, a: 0}
-  title: Easy Peasy
+  title: Easy But Hard
   timeout_secs: 120
   prefabs_to_spawn:
-  - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
-  count_left_to_spawn: 10
-  instances_per_spawn: 1
-  spawn_interval_secs: 1
+  - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
+  count_left_to_spawn: 200
+  instances_per_spawn: 10
+  spawn_interval_secs: 2
