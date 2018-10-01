@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 4595222058351098}
   - component: {fileID: 114776480890327406}
   - component: {fileID: 114491839098139386}
+  - component: {fileID: 114467330613455112}
   m_Layer: 0
   m_Name: laser_cross
   m_TagString: Untagged
@@ -474,7 +475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1714987366249736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.930411, y: -0.2193635, z: 5.24797}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4194526628036268}
@@ -1040,6 +1041,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114467330613455112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714987366249736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_points: 1
+  body_parts:
+  - {fileID: 114529295416526498}
 --- !u!114 &114491839098139386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1053,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed: 20
   rotation_speed: 200
+  life_control: {fileID: 114467330613455112}
 --- !u!114 &114529295416526498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1080,6 +1096,7 @@ MonoBehaviour:
     type: 2}
   emitter: {fileID: 4177259479330914}
   time_between_firing: 0.125
+  default_bullet_speed: 40
   default_firing_animation: 1
 --- !u!114 &114654841115393402
 MonoBehaviour:
@@ -1096,6 +1113,7 @@ MonoBehaviour:
     type: 2}
   emitter: {fileID: 4275646576724992}
   time_between_firing: 0.125
+  default_bullet_speed: 40
   default_firing_animation: 1
 --- !u!114 &114773769878297650
 MonoBehaviour:
@@ -1112,6 +1130,7 @@ MonoBehaviour:
     type: 2}
   emitter: {fileID: 4791034045979216}
   time_between_firing: 0.125
+  default_bullet_speed: 40
   default_firing_animation: 1
 --- !u!114 &114776480890327406
 MonoBehaviour:
@@ -1140,6 +1159,7 @@ MonoBehaviour:
     type: 2}
   emitter: {fileID: 4708338430538838}
   time_between_firing: 0.125
+  default_bullet_speed: 40
   default_firing_animation: 1
 --- !u!135 &135285249977144926
 SphereCollider:

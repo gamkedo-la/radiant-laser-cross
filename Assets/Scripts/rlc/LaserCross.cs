@@ -31,9 +31,6 @@ namespace rlc
         private const float left_side_north_begin_angle = end_west_angle;
         private const float right_side_north_end_angle = begin_east_angle;
 
-
-
-
         private Gun[] guns = new Gun[GUNS_COUNT];
         private float current_guns_angle = 0.0f;
         private GunsRotation current_guns_rotation = GunsRotation.none;
@@ -43,31 +40,23 @@ namespace rlc
 
         public float move_speed = 10.0f;
         public float rotation_speed = 90.0f;
+        public LifeControl life_control;
 
         private Gun gun_north()   { return guns[(int)AxesDirections.north];  }
         private Gun gun_east()    { return guns[(int)AxesDirections.east];   }
         private Gun gun_south()   { return guns[(int)AxesDirections.south];  }
         private Gun gun_west()    { return guns[(int)AxesDirections.west];   }
 
-        private enum LifeState
-        {
-            none, alive, dying
-        }
-        LifeState life_state = LifeState.none;
 
         void Start()
         {
             guns = GetComponentsInChildren<Gun>();
-            life_state = LifeState.alive;
         }
 
         void Update()
         {
-            // TODO: REMOVE ME
-            if (Input.GetKeyDown(KeyCode.Delete))
-                on_hit();
 
-            if (life_state == LifeState.alive)
+            if (life_control.is_alive())
             {
                 apply_commands(next_commands);
                 clear_commands();
@@ -81,23 +70,13 @@ namespace rlc
             next_commands = commands;
         }
 
-        public void on_hit()
-        {
-            Destroy(gameObject, 1.0f);
-            life_state = LifeState.dying;
-        }
-
         private void animate_todo_please_replace_me()
         {
             // TODO: this is a temporary death animation, replace this by something more appropriate!
-            switch (life_state)
+            if(!life_control.is_alive())
             {
-                case LifeState.dying:
-                    transform.localScale = transform.localScale * 1.05f;
-                    transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
-                    break;
-                default:
-                    break;
+                transform.localScale = transform.localScale * 1.05f;
+                transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
             }
         }
 
