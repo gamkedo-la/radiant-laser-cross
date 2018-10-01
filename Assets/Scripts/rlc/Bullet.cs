@@ -20,6 +20,7 @@ namespace rlc
 
         private void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
             var body_hit = collision.collider.GetComponent<ColoredBody>();
             var bullet_hit = collision.collider.GetComponent<Bullet>();
             if (body_hit != null    // hit a colored body...
