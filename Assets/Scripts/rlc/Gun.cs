@@ -12,7 +12,7 @@ namespace rlc
         public float time_between_firing = 1.0f / 32.0f;
         public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
         public bool default_firing_animation = false;
-
+        public bool is_player = false;
 
         private float last_firing_time;
 
@@ -100,6 +100,7 @@ namespace rlc
         {
             Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
             bullet.transform.forward = direction;
+            bullet.is_from_player = is_player;
             if (default_bullet_speed > 0)
                 bullet.speed = default_bullet_speed;
         }

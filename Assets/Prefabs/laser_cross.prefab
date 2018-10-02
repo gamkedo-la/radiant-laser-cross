@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color_family: 1
+  is_player: 1
   life_control: {fileID: 0}
 --- !u!114 &114579853941298850
 MonoBehaviour:
@@ -1115,6 +1116,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
+  is_player: 0
 --- !u!114 &114654841115393402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1132,6 +1134,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
+  is_player: 0
 --- !u!114 &114773769878297650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1149,6 +1152,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
+  is_player: 0
 --- !u!114 &114776480890327406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1178,6 +1182,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
+  is_player: 0
 --- !u!135 &135285249977144926
 SphereCollider:
   m_ObjectHideFlags: 1

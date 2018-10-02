@@ -11,8 +11,12 @@ namespace rlc
         [Tooltip("Color associated with this object.")]
         public ColorFamily color_family = ColorFamily.Whites;
 
+        [Tooltip("True if part of the player's body. Used to differentiate hitting the player vs hitting an ennemy")]
+        public bool is_player = false;
+
         [Tooltip("Do not fill: Will be automatically filled by LifeControl itself once this compoenent is listed in it.")]
         public LifeControl life_control;
+
 
     }
 }
