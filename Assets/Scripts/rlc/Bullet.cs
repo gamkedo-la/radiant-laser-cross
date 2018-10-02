@@ -25,13 +25,20 @@ namespace rlc
             var bullet_hit = collision.collider.GetComponent<Bullet>();
             if (body_hit != null    // hit a colored body...
             && bullet_hit == null   // ... which is not another bullet...
-            && is_from_player != body_hit.is_player // ... we are either enemy bullet hitting player or the reverse...
-            && ColorSystem.colors_matches(body_hit.color_family, my_body.color_family))
+            )
             {
                 Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
-                // ... We hit something with the right color!
-                body_hit.life_control.on_hit();
+
+                // We hit something solid, so the bullet will end anyway.
                 play_impact_animation();
+
+                if (is_from_player != body_hit.is_player // ... we are either enemy bullet hitting player or the reverse...
+                && ColorSystem.colors_matches(body_hit.color_family, my_body.color_family)
+                )
+                {
+                    // ... We hit something matching the right color!
+                    body_hit.life_control.on_hit();
+                }
             }
 
         }
