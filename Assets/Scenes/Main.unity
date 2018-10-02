@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves_difficulty_1_tutoring:
-  - {fileID: 114075109046794008, guid: 16468b7c9eb5b5a4cb7b705da59cf09e, type: 2}
+  - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   waves_difficulty_2_easy: []
   waves_difficulty_3_challenging: []
   waves_difficulty_4_hard: []
