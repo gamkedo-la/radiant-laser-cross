@@ -8,7 +8,7 @@ InputManager:
   - serializedVersion: 3
     m_Name: Horizontal
     descriptiveName: Moves the Laser Cross horizontally
-    descriptiveNegativeName: 
+    descriptiveNegativeName:
     negativeButton: a
     positiveButton: d
     altNegativeButton: '[4]'
@@ -24,7 +24,7 @@ InputManager:
   - serializedVersion: 3
     m_Name: Vertical
     descriptiveName: Moves the Laser Cross horizontally
-    descriptiveNegativeName: 
+    descriptiveNegativeName:
     negativeButton: s
     positiveButton: w
     altNegativeButton: '[5]'
@@ -40,10 +40,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Fire Up
     descriptiveName: Fires the gun currently pointing to the UP side of the screen.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: up
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: i
     gravity: 0
     dead: 0.001
@@ -56,10 +56,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Fire Right
     descriptiveName: Fires the gun currently pointing to the RIGHT side of the screen.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: right
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: l
     gravity: 0
     dead: 0.001
@@ -72,10 +72,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Fire Down
     descriptiveName: Fires the gun currently pointing to the DOWN side of the screen.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: down
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: k
     gravity: 0
     dead: 0.001
@@ -88,10 +88,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Fire Left
     descriptiveName: Fires the gun currently pointing to the LEFT side of the screen.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: left
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: j
     gravity: 0
     dead: 0.001
@@ -104,10 +104,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Rotate Clockwise
     descriptiveName: Rotates the Laser Cross clockwise, changing the gun's orientations.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: e
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: '[9]'
     gravity: 0
     dead: 0.001
@@ -121,10 +121,10 @@ InputManager:
     m_Name: Rotate Counter-Clockwise
     descriptiveName: Rotates the Laser Cross counter-clockwise, changing the gun's
       orientations.
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: q
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: '[7]'
     gravity: 0
     dead: 0.001
@@ -137,10 +137,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Validate
     descriptiveName: Validate
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: enter
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: x
     gravity: 0
     dead: 0.001
@@ -153,10 +153,10 @@ InputManager:
   - serializedVersion: 3
     m_Name: Cancel
     descriptiveName: Cancel
-    descriptiveNegativeName: 
-    negativeButton: 
+    descriptiveNegativeName:
+    negativeButton:
     positiveButton: escape
-    altNegativeButton: 
+    altNegativeButton:
     altPositiveButton: c
     gravity: 0
     dead: 0.001
@@ -165,4 +165,133 @@ InputManager:
     invert: 0
     type: 0
     axis: 10
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Horizontal
+    descriptiveName: Moves Laser Cross horizontally using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Fire Up
+    descriptiveName: Fires the gun currently pointing to the UP side of the screen,
+      with the joystick.
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 3
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Vertical
+    descriptiveName: Moves Laser Cross vertically using the joystick
+    descriptiveNegativeName:
+    negativeButton:
+    positiveButton:
+    altNegativeButton:
+    altPositiveButton:
+    gravity: 0
+    dead: 0.5
+    sensitivity: 1
+    snap: 1
+    invert: 1
+    type: 2
+    axis: 1
     joyNum: 0
