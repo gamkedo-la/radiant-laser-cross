@@ -240,5 +240,11 @@ namespace rlc
                     return 0.0f;
             }
         }
+
+        private void OnDestroy()
+        {
+            var level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
+            level_builder.game_over();
+        }
     }
 }

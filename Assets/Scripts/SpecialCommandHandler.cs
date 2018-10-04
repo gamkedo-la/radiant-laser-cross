@@ -19,5 +19,8 @@ public class SpecialCommandHandler : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Space))
             level_builder.new_game();
 
+        if (Input.GetKeyUp(KeyCode.R))
+            level_builder.game_over();
+
     }
 }
