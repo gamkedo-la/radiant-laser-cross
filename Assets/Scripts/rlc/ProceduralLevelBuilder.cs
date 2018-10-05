@@ -21,6 +21,7 @@ namespace rlc
         public List<Wave> boss_waves_difficulty_3_hard          = new List<Wave>();
 
         public UnityEngine.Object laser_cross_prefab;
+        public Color default_background_color;
 
         private bool is_running = false;
         private Wave current_wave;
@@ -56,6 +57,8 @@ namespace rlc
                 Destroy(current_wave.gameObject);
             }
 
+            Camera.main.backgroundColor = default_background_color;
+
             var laser_cross = GameObject.Find("laser_cross");
             if (laser_cross == null || !laser_cross.GetComponent<LaserCross>().life_control.is_alive())
             {
@@ -84,6 +87,8 @@ namespace rlc
 
             var picked_wave = pick_a_wave_in(waves_difficulty_1_tutoring);
             current_wave = Instantiate(picked_wave);
+
+            Camera.main.backgroundColor = picked_wave.background_color; // TODO: transition in a progressive way
         }
 
         private Wave pick_a_wave_in(IList<Wave> wave_bag)

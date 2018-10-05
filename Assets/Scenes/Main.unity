@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +347,9 @@ MonoBehaviour:
   boss_waves_difficulty_1_easy: []
   boss_waves_difficulty_2_challenging: []
   boss_waves_difficulty_3_hard: []
+  laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+    type: 2}
+  default_background_color: {r: 0.4039216, g: 0.44705886, b: 0.49803925, a: 0}
 --- !u!4 &715209917
 Transform:
   m_ObjectHideFlags: 0

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background_color: {r: 0, g: 0.6627451, b: 1, a: 0}
+  background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
   title: Easy Peasy
   timeout_secs: 120
   prefabs_to_spawn:
