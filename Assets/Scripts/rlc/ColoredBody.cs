@@ -18,5 +18,10 @@ namespace rlc
         public LifeControl life_control;
 
 
+        public void on_hit()
+        {
+            // TODO: insert here an animation specific to this body when hit
+            life_control.on_hit();
+        }
     }
 }

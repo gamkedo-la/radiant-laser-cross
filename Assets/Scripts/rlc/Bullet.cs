@@ -37,7 +37,7 @@ namespace rlc
                 )
                 {
                     // ... We hit something matching the right color!
-                    body_hit.life_control.on_hit();
+                    body_hit.on_hit();
                 }
             }
 

@@ -52,7 +52,7 @@ namespace rlc
             return life_state == LifeState.alive;
         }
 
-        public void on_hit()
+        public void on_hit() // TODO: add the position of the hit point
         {
             //Debug.Log("on_hit!");
 
