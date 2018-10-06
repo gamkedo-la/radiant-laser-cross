@@ -1071,6 +1071,8 @@ MonoBehaviour:
   hit_points: 1
   body_parts:
   - {fileID: 114529295416526498}
+  explosionPrefab: {fileID: 0}
+  hitPrefab: {fileID: 0}
 --- !u!114 &114491839098139386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1116,7 +1118,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
-  is_player: 0
+  is_player: 1
 --- !u!114 &114654841115393402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1134,7 +1136,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
-  is_player: 0
+  is_player: 1
 --- !u!114 &114773769878297650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1152,7 +1154,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
-  is_player: 0
+  is_player: 1
 --- !u!114 &114776480890327406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1182,7 +1184,7 @@ MonoBehaviour:
   time_between_firing: 0.125
   default_bullet_speed: 40
   default_firing_animation: 1
-  is_player: 0
+  is_player: 1
 --- !u!135 &135285249977144926
 SphereCollider:
   m_ObjectHideFlags: 1
