@@ -48,7 +48,7 @@ namespace rlc
 
             while (instance_count_to_spawn > 0)
             {
-                var random_wall = (AxesDirections)(Random.Range(0, System.Enum.GetValues(typeof(AxesDirections)).Length-1));
+                var random_wall = (AxesDirections)(Random.Range(0, System.Enum.GetValues(typeof(AxesDirections)).Length));
                 var orientation = -border_from_screen_center(random_wall);
                 Instantiate(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation), this.transform);
                 --instance_count_to_spawn;
@@ -88,7 +88,7 @@ namespace rlc
 
         private GameObject random_prefab()
         {
-            var random_idx = Random.Range(0, prefabs_to_spawn.Count - 1);
+            var random_idx = Random.Range(0, prefabs_to_spawn.Count);
             return prefabs_to_spawn[random_idx];
         }
 

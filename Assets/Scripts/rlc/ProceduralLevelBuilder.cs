@@ -105,7 +105,7 @@ namespace rlc
                 Debug.LogErrorFormat("No ennemies in enemy wave bag: {}", wave_bag);
                 return null;
             }
-            var random_idx = Random.Range(0, wave_bag.Count -1);
+            var random_idx = Random.Range(0, wave_bag.Count);
             var picked_wave = wave_bag[random_idx];
             return picked_wave;
         }
