@@ -17,6 +17,8 @@ namespace rlc
 
         public int hit_points = 1;
         public List<ColoredBody> body_parts = new List<ColoredBody>();
+        public GameObject explosionPrefab;
+        public GameObject hitPrefab;
 
         // Use this for initialization
         void Start()
@@ -52,17 +54,40 @@ namespace rlc
 
         public void on_hit()
         {
+            //Debug.Log("on_hit!");
+
             if (!is_alive())
                 return;
 
             --hit_points;
             if (hit_points == 0)
             {
+                //Debug.Log("on_hit: die!");
+                ExplodeFX();
                 die();
             }
             else
             {
+                HitFX();
                 // TODO: play "hit" animation here
+            }
+        }
+
+        public void ExplodeFX()
+        {
+            if (explosionPrefab) // was a prefab set in inspector?
+            {
+                GameObject explosion = Instantiate(explosionPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(explosion, 5);
+            }
+        }
+
+        public void HitFX()
+        {
+            if (hitPrefab)
+            {
+                GameObject explosion = Instantiate(hitPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(explosion, 5);
             }
         }
 
