@@ -47,10 +47,18 @@ namespace rlc
         private Gun gun_south()   { return guns[(int)AxesDirections.south];  }
         private Gun gun_west()    { return guns[(int)AxesDirections.west];   }
 
+        private ProceduralLevelBuilder level_builder;
 
         void Start()
         {
+            level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
             guns = GetComponentsInChildren<Gun>();
+
+            if (level_builder == null)
+            {
+                Debug.LogError("No level builder found");
+            }
+
         }
 
         void Update()
@@ -243,7 +251,6 @@ namespace rlc
 
         private void OnDestroy()
         {
-            var level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
             level_builder.game_over();
         }
     }
