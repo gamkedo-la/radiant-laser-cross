@@ -23,7 +23,11 @@ namespace rlc
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
 
-        private bool is_running = false;
+        public enum State
+        {
+            ready, playing_wave, game_over
+        }
+        private State state = State.ready;
         private Wave current_wave;
 
         // Use this for initialization
@@ -34,24 +38,25 @@ namespace rlc
         // Update is called once per frame
         void Update()
         {
-
+            if (state == State.game_over)
+            {
+                reset_all();
+            }
         }
 
 
         public void game_over()
         {
-            if (!is_running)
+            if (state != State.playing_wave)
                 return;
-
-            reset_all();
-
-            is_running = false;
+            state = State.game_over;
         }
 
         private void reset_all()
         {
             Debug.Log("==== RESET ALL ====");
             // TODO: make a not crude version XD
+
             if (current_wave != null)
             {
                 Destroy(current_wave.gameObject);
@@ -70,11 +75,13 @@ namespace rlc
                 laser_cross = (GameObject)GameObject.Instantiate(laser_cross_prefab, Vector3.zero, Quaternion.identity);
                 laser_cross.name = "laser_cross";
             }
+
+            state = State.ready;
         }
 
         public void new_game()
         {
-            if (is_running)
+            if (state == State.playing_wave)
                 return;
 
             if (waves_difficulty_1_tutoring.Count == 0)
@@ -83,7 +90,7 @@ namespace rlc
                 return;
             }
 
-            is_running = true;
+            state = State.playing_wave;
 
             var picked_wave = pick_a_wave_in(waves_difficulty_1_tutoring);
             current_wave = Instantiate(picked_wave);
