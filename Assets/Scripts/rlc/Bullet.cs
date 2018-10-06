@@ -9,14 +9,18 @@ namespace rlc
         public bool is_from_player = false;
         private ColoredBody my_body;
 
-        void Update()
+        void Start()
         {
-            Movement.move_forward(transform, speed);
             my_body = GetComponent<ColoredBody>();
             if (my_body == null)
             {
                 Debug.LogError("Bullet objects must have a ColoredBody component!");
             }
+        }
+
+        void Update()
+        {
+            Movement.move_forward(transform, speed);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -29,9 +33,6 @@ namespace rlc
             {
                 Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
 
-                // We hit something solid, so the bullet will end anyway.
-                play_impact_animation();
-
                 if (is_from_player != body_hit.is_player // ... we are either enemy bullet hitting player or the reverse...
                 && ColorSystem.colors_matches(body_hit.color_family, my_body.color_family)
                 )
@@ -39,6 +40,9 @@ namespace rlc
                     // ... We hit something matching the right color!
                     body_hit.on_hit();
                 }
+
+                // We hit something solid, so the bullet will end anyway.
+                play_impact_animation();
             }
 
         }
