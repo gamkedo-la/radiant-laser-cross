@@ -32,6 +32,7 @@ namespace rlc
         private const float right_side_north_end_angle = begin_east_angle;
 
         private Gun[] guns = new Gun[GUNS_COUNT];
+        private Shield[] shields = new Shield[GUNS_COUNT];
         private float current_guns_angle = 0.0f;
         private GunsRotation current_guns_rotation = GunsRotation.none;
         private AxesDirections current_guns_directions = AxesDirections.north;
@@ -42,17 +43,19 @@ namespace rlc
         public float rotation_speed = 90.0f;
         public LifeControl life_control;
 
-        private Gun gun_north()   { return guns[(int)AxesDirections.north];  }
-        private Gun gun_east()    { return guns[(int)AxesDirections.east];   }
-        private Gun gun_south()   { return guns[(int)AxesDirections.south];  }
-        private Gun gun_west()    { return guns[(int)AxesDirections.west];   }
+        // Note that these are functions because the gun on each direction will change while playing.
+        private Gun get_gun(AxesDirections direction)   { return guns[(int)direction];  }
+        private Shield get_shield(AxesDirections direction) { return shields[(int)direction]; }
+
 
         private ProceduralLevelBuilder level_builder;
 
         void Start()
         {
             level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
-            guns = GetComponentsInChildren<Gun>();
+
+            guns = GetComponentsInChildren<Gun>(true);
+            shields = GetComponentsInChildren<Shield>(true);
 
             if (level_builder == null)
             {
@@ -94,14 +97,32 @@ namespace rlc
             Vector2 translation = commands.ship_direction.normalized * move_speed * Time.deltaTime;
             transform.Translate(translation, Space.World);
 
-            if (commands.gun_trigger.fire_north)
-                gun_north().fire();
-            if (commands.gun_trigger.fire_east)
-                gun_east().fire();
-            if (commands.gun_trigger.fire_south)
-                gun_south().fire();
-            if (commands.gun_trigger.fire_west)
-                gun_west().fire();
+            foreach (var shield in shields)
+                shield.deactivate();
+
+            if (!commands.shield_mode)
+            {
+                if (commands.gun_trigger.fire_north)
+                    get_gun(AxesDirections.north).fire();
+                if (commands.gun_trigger.fire_east)
+                    get_gun(AxesDirections.east).fire();
+                if (commands.gun_trigger.fire_south)
+                    get_gun(AxesDirections.south).fire();
+                if (commands.gun_trigger.fire_west)
+                    get_gun(AxesDirections.west).fire();
+
+            }
+            else
+            {
+                if (commands.gun_trigger.fire_north)
+                    get_shield(AxesDirections.north).activate();
+                if (commands.gun_trigger.fire_east)
+                    get_shield(AxesDirections.east).activate();
+                if (commands.gun_trigger.fire_south)
+                    get_shield(AxesDirections.south).activate();
+                if (commands.gun_trigger.fire_west)
+                    get_shield(AxesDirections.west).activate();
+            }
 
             rotate_guns(commands.gun_move);
         }
@@ -165,6 +186,7 @@ namespace rlc
         private void rotate_guns_directions(int rotation_steps)
         {
            Utility.Rotate(guns, rotation_steps);
+           Utility.Rotate(shields, rotation_steps);
         }
 
         private static AxesDirections next_axis(float current_angle, GunsRotation rotation)

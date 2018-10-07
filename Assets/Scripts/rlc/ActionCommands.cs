@@ -24,9 +24,10 @@ namespace rlc
     // Command to execute to control Laser Cross for one update cycle
     public struct Commands
     {
-        public Vector2 ship_direction;               // Normalized direction to where the ship needs to go.
+        public Vector2 ship_direction;              // Normalized direction to where the ship needs to go.
         public GunsRotation gun_move;               // Gun rotation to engage.
-        public GunTriggerAction gun_trigger;         // Guns to trigger for shooting.
+        public GunTriggerAction gun_trigger;        // Guns to trigger for shooting.
+        public bool shield_mode;               // If true, the guns act as shields.
     }
 
 

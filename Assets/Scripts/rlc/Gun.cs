@@ -7,12 +7,12 @@ namespace rlc
     /* Behaviour of any kind of gun, as in "bullet emitter". */
     public class Gun : MonoBehaviour
     {
-        public Bullet bullet_prefab;            // Prefab that will be used as bullet.
-        public Transform emitter;               // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
+        public List<Bullet> bullet_prefabs;                 // Prefab that will be used as bullet.
+        public Transform emitter;                           // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
         public float time_between_firing = 1.0f / 32.0f;
         public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
         public bool default_firing_animation = false;
-        public bool is_player = false;
+        public Clan clan = Clan.enemy;
 
         private float last_firing_time;
 
@@ -98,9 +98,12 @@ namespace rlc
         // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 direction)
         {
+            int random_idx = Random.Range(0, bullet_prefabs.Count);
+            var bullet_prefab = bullet_prefabs[random_idx];
+
             Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
             bullet.transform.forward = direction;
-            bullet.is_from_player = is_player;
+            bullet.clan_who_fired = clan;
             if (default_bullet_speed > 0)
                 bullet.speed = default_bullet_speed;
         }
