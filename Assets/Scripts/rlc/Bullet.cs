@@ -87,7 +87,6 @@ namespace rlc
 
         private void end_with_impact(Collision collision)
         {
-            is_reflected = true;
             play_impact_animation();
             Destroy(gameObject);
         }
