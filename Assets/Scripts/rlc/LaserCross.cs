@@ -42,6 +42,7 @@ namespace rlc
         public float move_speed = 10.0f;
         public float rotation_speed = 90.0f;
         public LifeControl life_control;
+        public OverloadSystem overload_system;
 
         // Note that these are functions because the gun on each direction will change while playing.
         private Gun get_gun(AxesDirections direction)   { return guns[(int)direction];  }
@@ -100,31 +101,39 @@ namespace rlc
             foreach (var shield in shields)
                 shield.deactivate();
 
-            if (!commands.shield_mode)
+            // We can use shield and guns only if not overloading!
+            if (overload_system.state != OverloadSystem.State.overload)
             {
-                if (commands.gun_trigger.fire_north)
-                    get_gun(AxesDirections.north).fire();
-                if (commands.gun_trigger.fire_east)
-                    get_gun(AxesDirections.east).fire();
-                if (commands.gun_trigger.fire_south)
-                    get_gun(AxesDirections.south).fire();
-                if (commands.gun_trigger.fire_west)
-                    get_gun(AxesDirections.west).fire();
-
-            }
-            else
-            {
-                if (commands.gun_trigger.fire_north)
-                    get_shield(AxesDirections.north).activate();
-                if (commands.gun_trigger.fire_east)
-                    get_shield(AxesDirections.east).activate();
-                if (commands.gun_trigger.fire_south)
-                    get_shield(AxesDirections.south).activate();
-                if (commands.gun_trigger.fire_west)
-                    get_shield(AxesDirections.west).activate();
+                if (!commands.shield_mode)
+                {
+                    if (commands.gun_trigger.fire_north) fire_gun(AxesDirections.north);
+                    if (commands.gun_trigger.fire_east) fire_gun(AxesDirections.east);
+                    if (commands.gun_trigger.fire_south) fire_gun(AxesDirections.south);
+                    if (commands.gun_trigger.fire_west) fire_gun(AxesDirections.west);
+                }
+                else
+                {
+                    if (commands.gun_trigger.fire_north) activate_shield(AxesDirections.north);
+                    if (commands.gun_trigger.fire_east) activate_shield(AxesDirections.east);
+                    if (commands.gun_trigger.fire_south) activate_shield(AxesDirections.south);
+                    if (commands.gun_trigger.fire_west) activate_shield(AxesDirections.west);
+                }
             }
 
+            // We can always rotate for free.
             rotate_guns(commands.gun_move);
+        }
+
+        private void fire_gun(AxesDirections direction)
+        {
+            get_gun(direction).fire();
+            overload_system.add_load();
+        }
+
+        private void activate_shield(AxesDirections direction)
+        {
+            get_shield(direction).activate();
+            overload_system.add_load();
         }
 
         private void clear_commands()
@@ -276,4 +285,5 @@ namespace rlc
             level_builder.game_over();
         }
     }
+
 }
