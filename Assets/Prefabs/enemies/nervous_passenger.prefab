@@ -303,11 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
-  - {fileID: 114083177209909194, guid: c393ea3bc107bad49872183361984ff5, type: 2}
-  - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  - {fileID: 114577751230756846, guid: 8add8f5835e050947afa4036569876fc, type: 2}
   emitter: {fileID: 4961236619829468}
   time_between_firing: 0.03125
   default_bullet_speed: 0
