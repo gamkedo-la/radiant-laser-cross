@@ -439,17 +439,19 @@ MonoBehaviour:
     [R]: Reset game
 
 
-    Controls |  Gamepad         | Keyboard
+    Controls |  Gamepad            | Keyboard
 
     ---------------------------------------------
 
-    Move     | Left Joystick       | WASD or Keypad 8456
+    Move     | Left Joystick          | WASD or Keypad 8456
 
-    Rotate   | R/L Bumpers      |  Q/E or Keypad 7/9
+    Rotate   | R/L Bumpers         |  Q/E or Keypad 7/9
 
-    Shoot    | XYAB Buttons     |  Arrows or IJKL
+    Shoot    | XYAB Buttons        |  Arrows or IJKL
 
-    Shield    | Trigger + Shoot |  Ctrl + Shoot
+    Shield    | Trigger+ Shoot     |  Ctrl + Shoot
+
+    Shield    | LBumper + Shoot  |  Shift + Shoot
 
 '
 --- !u!222 &1185758637

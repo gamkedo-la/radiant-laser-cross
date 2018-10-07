@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit_points: 3
+  hit_points: 1
   body_parts:
   - {fileID: 114808737645426366}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
@@ -308,7 +308,7 @@ MonoBehaviour:
   time_between_firing: 0.03125
   default_bullet_speed: 0
   default_firing_animation: 0
-  is_player: 0
+  clan: 1
 --- !u!114 &114808737645426366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,5 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color_family: 4
-  is_player: 0
+  clan: 1
   life_control: {fileID: 0}
+  surface_effect: 0

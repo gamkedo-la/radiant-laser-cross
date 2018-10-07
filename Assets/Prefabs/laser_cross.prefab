@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 20
-  rotation_speed: 200
+  rotation_speed: 300
   life_control: {fileID: 114467330613455112}
 --- !u!114 &114495780232513662
 MonoBehaviour:
@@ -1573,7 +1573,7 @@ MonoBehaviour:
   bullet_prefabs:
   - {fileID: 114577751230756846, guid: 8add8f5835e050947afa4036569876fc, type: 2}
   emitter: {fileID: 4177259479330914}
-  time_between_firing: 0.125
+  time_between_firing: 0.1
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   bullet_prefabs:
   - {fileID: 114083177209909194, guid: c393ea3bc107bad49872183361984ff5, type: 2}
   emitter: {fileID: 4275646576724992}
-  time_between_firing: 0.125
+  time_between_firing: 0.1
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   bullet_prefabs:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   emitter: {fileID: 4791034045979216}
-  time_between_firing: 0.125
+  time_between_firing: 0.1
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   bullet_prefabs:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
   emitter: {fileID: 4708338430538838}
-  time_between_firing: 0.125
+  time_between_firing: 0.1
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
