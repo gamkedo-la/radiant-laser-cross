@@ -18,8 +18,8 @@ namespace rlc
         public enum State
         {
             stable,     // load is growing lower than restoration and we are under overload
-            heating,    // load is growing higher than restoration and we are under overload
-            overload,   // load is over overload limit
+            overloading,    // load is growing higher than restoration and we are under overload
+            recovering,   // load is over overload limit
         }
         public State state = State.stable;
 
@@ -41,21 +41,21 @@ namespace rlc
             if (new_load < 0)
             {
                 new_load = 0;
-                if (state == State.overload)
+                if (state == State.recovering)
                     state = State.stable;
             }
 
-            if (state != State.overload)
+            if (state != State.recovering)
             {
                 if (new_load > load_limit)
                 {
-                    state = State.overload;
+                    state = State.recovering;
                     new_load += overload_cost;
                 }
                 else
                 if (new_load > load)
                 {
-                    state = State.heating;
+                    state = State.overloading;
                 }
                 else
                 {
@@ -71,7 +71,7 @@ namespace rlc
 
         public void add_load()
         {
-            if (state == State.overload)
+            if (state == State.recovering)
                 return;
 
             next_update_load += 1;

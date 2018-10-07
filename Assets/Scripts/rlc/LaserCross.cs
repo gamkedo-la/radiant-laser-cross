@@ -102,7 +102,7 @@ namespace rlc
                 shield.deactivate();
 
             // We can use shield and guns only if not overloading!
-            if (overload_system.state != OverloadSystem.State.overload)
+            if (overload_system.state != OverloadSystem.State.recovering)
             {
                 if (!commands.shield_mode)
                 {

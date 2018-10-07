@@ -42,9 +42,9 @@ public class UI_Overload : MonoBehaviour {
     private void update_display()
     {
         // TODO: replace this by something graphic (a bar or something)
-        const string overload_text_format = " OVERLOAD: {0:0.00} / {1:0.00} ";
+        const string overload_text_format = " OVERLOAD: {0:0.00} / {1:0.00} {2}";
 
-        var new_text = string.Format(overload_text_format, overload_system.load, overload_system.load_limit);
+        var new_text = string.Format(overload_text_format, overload_system.load, overload_system.load_limit, overload_system.state.ToString().ToUpper());
         text_to_replace_by_some_hud_bar.text = new_text;
     }
 
