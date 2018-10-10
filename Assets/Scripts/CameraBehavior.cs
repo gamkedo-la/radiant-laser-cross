@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Test comment, practicing using Git. Will remove - MarceloCG
 public class CameraBehavior : MonoBehaviour
 {
 
