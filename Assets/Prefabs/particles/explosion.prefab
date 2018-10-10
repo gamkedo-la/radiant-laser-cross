@@ -475,7 +475,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4957,7 +4957,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 32
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9306,7 +9306,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033993391635766}
   serializedVersion: 5
-  lengthInSec: 0.5
+  lengthInSec: 1
   simulationSpeed: 1.5
   stopAction: 0
   looping: 0
@@ -9547,8 +9547,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -13788,7 +13788,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591607297106188}
   serializedVersion: 5
-  lengthInSec: 1
+  lengthInSec: 2
   simulationSpeed: 1.5
   stopAction: 0
   looping: 0
@@ -13860,7 +13860,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18544,7 +18544,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 20
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -27562,7 +27562,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -32041,7 +32041,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 80cc225000e112f4e9727df249f59bc8, type: 2}
-  - {fileID: 2100000, guid: bd235df96b41f4f4598634b1b8d70b9d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32064,7 +32064,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 8
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
