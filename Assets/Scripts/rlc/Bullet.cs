@@ -69,21 +69,12 @@ namespace rlc
 
 
             // Now for the rest of the lifetime, we just go in another direction
-            transform.forward = random_opposite_direction(collision.contacts[0].normal);
+            transform.forward = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
 
             // As soon as the bullet is reflected, it can hit anybody matching it!
             clan_who_fired = Clan.none;
         }
 
-        private static Vector3 random_opposite_direction(Vector3 initial_direction)
-        {
-            Vector3 new_direction = initial_direction.normalized;
-
-            const float reflection_angle = 45.0f;
-            new_direction = Quaternion.Euler(Random.Range(0.0f, reflection_angle), 0.0f, Random.Range(0.0f, reflection_angle)) * new_direction;
-
-            return new_direction;
-        }
 
         private void end_with_impact(Collision collision)
         {
