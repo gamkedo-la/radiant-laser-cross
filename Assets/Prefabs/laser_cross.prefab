@@ -1585,11 +1585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd8f403cc6450f4b84be83b09a78624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  load_limit: 8
+  load_limit: 10
   load: 0
   load_speed: 1
-  load_recovery_speed: 1.2
-  overload_cost: 1
+  load_recovery_speed: 1.5
+  overload_cost: -5
   state: 0
 --- !u!114 &114467330613455112
 MonoBehaviour:
