@@ -22,5 +22,8 @@ public class SpecialCommandHandler : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.R))
             level_builder.game_over();
 
+        if (Input.GetKeyUp(KeyCode.Tab))
+            level_builder.next_wave();
+
     }
 }

@@ -26,7 +26,7 @@ namespace rlc
             life_state = LifeState.alive;
             if (body_parts.Count == 0)
             {
-                Debug.LogErrorFormat("Destructible object {} have no body parts set!", this.name);
+                Debug.LogErrorFormat("Destructible object {0} have no body parts set!", this.name);
             }
 
             foreach(var body in body_parts)
@@ -42,9 +42,6 @@ namespace rlc
         // Update is called once per frame
         void Update()
         {
-            // TODO: REMOVE ME
-            if (Input.GetKeyDown(KeyCode.Delete))
-                die();
         }
 
         public bool is_alive()
