@@ -157,6 +157,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44601c7c4d9fd248b403454a5c6ba04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &113911941
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,16 +512,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ab688d49c2ab141ae29c2db2ce3af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves_difficulty_1_tutoring:
-  - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
-  - {fileID: 114075109046794008, guid: 8fe93cebf94fcd9489240d442abb2791, type: 2}
-  - {fileID: 114075109046794008, guid: 16468b7c9eb5b5a4cb7b705da59cf09e, type: 2}
-  waves_difficulty_2_easy: []
-  waves_difficulty_3_challenging: []
-  waves_difficulty_4_hard: []
-  boss_waves_difficulty_1_easy: []
-  boss_waves_difficulty_2_challenging: []
-  boss_waves_difficulty_3_hard: []
+  waves_lvl_1_easy: []
+  waves_lvl_2_challenging: []
+  waves_lvl_3_hard: []
+  waves_lvl_4_hardcore: []
+  boss_lvl_1_challenging: []
+  boss_lvl_2_hard: []
+  boss_lvl_3_hardcore: []
+  end_level: 4
+  current_level_number: 1
+  current_level_waves_selection: []
   laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
     type: 2}
   default_background_color: {r: 0.4039216, g: 0.44705886, b: 0.49803925, a: 0}

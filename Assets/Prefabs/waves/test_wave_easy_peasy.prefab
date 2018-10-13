@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: wave_easy_wait_nope_nope_nope
-  m_TagString: Untagged
+  m_Name: test_wave_easy_peasy
+  m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,16 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background_color: {r: 0.9433962, g: 0.50284797, b: 0.52844226, a: 0}
-  title: Easy..Wait... nope nope nope
+  background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
+  title: Easy Peasy
   timeout_secs: 120
   prefabs_to_spawn:
-  - {fileID: 1604797991448608, guid: 779c8b905ba124347a15ef39cc20ec00, type: 2}
-  - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}
-  - {fileID: 1604797991448608, guid: 0ef7509d5e60d29478a95ae1c93d1770, type: 2}
-  - {fileID: 1604797991448608, guid: db7113c654932f641ae413aff640c33a, type: 2}
   - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
-  - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
-  count_left_to_spawn: 200
-  instances_per_spawn: 10
-  spawn_interval_secs: 2
+  count_left_to_spawn: 10
+  instances_per_spawn: 1
+  spawn_interval_secs: 1

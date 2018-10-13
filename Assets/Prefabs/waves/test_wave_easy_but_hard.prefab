@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: wave_easy_but_hard
-  m_TagString: Untagged
+  m_Name: test_wave_easy_but_hard
+  m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
