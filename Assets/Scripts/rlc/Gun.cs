@@ -13,8 +13,10 @@ namespace rlc
         public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
         public bool default_firing_animation = false;
         public Clan clan = Clan.enemy;
+        public bool allow_firing_outside_screen = false;
 
         private float last_firing_time;
+        private Renderer this_gun_renderer;
 
         private enum ShootingState
         {
@@ -28,6 +30,7 @@ namespace rlc
         void Start()
         {
             last_firing_time = Time.time;
+            this_gun_renderer = GetComponent<Renderer>();
         }
 
         void Update()
@@ -60,6 +63,12 @@ namespace rlc
             if (state != ShootingState.idle)
             {
                 // Debug.Log("Ignoring firing command because gun is not idle", this);
+                return;
+            }
+
+            // Except if allowed, we do not accept firing until we are in screen (aka the renderer is visible)
+            if (!allow_firing_outside_screen && this_gun_renderer != null && !this_gun_renderer.isVisible)
+            {
                 return;
             }
 

@@ -47,7 +47,7 @@ namespace rlc
 
         private void maybe_fire()
         {
-            // if (is_visible) // TODO: make this work
+            //if (is_visible) // TODO: make this work
             {
                 var now = Time.time;
                 if (now - last_firing_timepoint > firing_interval)
