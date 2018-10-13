@@ -51,12 +51,16 @@ namespace rlc
 
         private ProceduralLevelBuilder level_builder;
 
+        private TrailRenderer trails;
+
         void Start()
         {
             level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
 
             guns = GetComponentsInChildren<Gun>(true);
             shields = GetComponentsInChildren<Shield>(true);
+
+            trails = GetComponent<TrailRenderer>();
 
             if (level_builder == null)
             {
@@ -84,12 +88,38 @@ namespace rlc
 
         private void animate_todo_please_replace_me()
         {
-            // TODO: this is a temporary death animation, replace this by something more appropriate!
-            if(!life_control.is_alive())
+            if (life_control.is_alive())
             {
-                transform.localScale = transform.localScale * 1.05f;
-                transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
+                if (overload_system.state == OverloadSystem.State.recovering) // TODO: replace this check by an event
+                {
+                    animate_on_recovering();
+                }
+                else
+                {
+                    animate_ready();
+                }
             }
+            else
+            {
+                animate_death();
+            }
+        }
+
+        private void animate_on_recovering() // TODO: this is a temporary animation, replace this by something more appropriate!
+        {
+            trails.enabled = false;
+        }
+
+        private void animate_ready() // TODO: this is a temporary animation, replace this by something more appropriate!
+
+        {
+            trails.enabled = true;
+        }
+
+        private void animate_death() // TODO: this is a temporary death animation, replace this by something more appropriate!
+        {
+            transform.localScale = transform.localScale * 1.05f;
+            transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
         }
 
 
