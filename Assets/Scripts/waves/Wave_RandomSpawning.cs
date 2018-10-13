@@ -50,7 +50,7 @@ namespace rlc
             {
                 var random_wall = (AxesDirections)(Random.Range(0, System.Enum.GetValues(typeof(AxesDirections)).Length));
                 var orientation = -border_from_screen_center(random_wall);
-                Instantiate(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation), this.transform);
+                spawn_enemy(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation));
                 --instance_count_to_spawn;
             }
         }
