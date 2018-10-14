@@ -32,6 +32,7 @@ namespace rlc
         public Text title_display;
         public float default_title_display_duration_secs = 5.0f;
         public float title_display_duration_secs = 3.0f;
+        private int title_display_count = 0;
 
         public enum State
         {
@@ -168,6 +169,8 @@ namespace rlc
                 yield break;
             }
 
+            int title_display_idx = ++title_display_count; // Keep track of which title display request we correspond to.
+
             Debug.LogFormat("Progress: {0}", progress_text);
             Debug.LogFormat("Title: {0}", title_text);
             title_display.text = title_text;
@@ -176,6 +179,8 @@ namespace rlc
             progress_display.enabled = true;
 
             yield return new WaitForSeconds(duration_secs);
+            if (title_display_idx != title_display_count) // No other title display was launched in between, otherwise we do nothing.
+                yield break;
 
             title_display.enabled = false;
             progress_display.enabled = false;
