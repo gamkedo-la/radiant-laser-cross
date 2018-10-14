@@ -477,7 +477,8 @@ MonoBehaviour:
   - {fileID: 114075109046794008, guid: 16468b7c9eb5b5a4cb7b705da59cf09e, type: 2}
   waves_lvl_3_hard:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
-  waves_lvl_4_hardcore: []
+  waves_lvl_4_hardcore:
+  - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   boss_lvl_1_challenging:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   boss_lvl_2_hard:
@@ -486,7 +487,6 @@ MonoBehaviour:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   end_level: 4
   current_level_number: 1
-  current_level_waves_selection: []
   laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
     type: 2}
   default_background_color: {r: 1, g: 1, b: 1, a: 0}

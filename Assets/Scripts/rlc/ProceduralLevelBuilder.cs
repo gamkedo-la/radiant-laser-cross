@@ -22,8 +22,9 @@ namespace rlc
         public List<Wave> boss_lvl_3_hardcore = new List<Wave>();
 
         public int end_level = 4;
-        public int current_level_number = 1;
-        public List<Wave> current_level_waves_selection;
+        private int current_level_number = 1;
+        private int current_wave_number = 1;
+        private List<WaveInfo> current_level_waves_selection;
 
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
@@ -32,7 +33,9 @@ namespace rlc
         public Text title_display;
         public float default_title_display_duration_secs = 5.0f;
         public float title_display_duration_secs = 3.0f;
+
         private int title_display_count = 0;
+        private int wave_start_count = 0;
 
         public enum State
         {
@@ -41,6 +44,17 @@ namespace rlc
         private State state = State.ready;
         private Wave current_wave;
         private IEnumerator<LevelStatus> level_progression;
+
+        private enum WaveCategory
+        {
+            Wave, Boss
+        }
+
+        private class WaveInfo
+        {
+            public Wave wave;
+            public WaveCategory category;
+        }
 
         // Use this for initialization
         void Start()
@@ -118,7 +132,7 @@ namespace rlc
             }
         }
 
-        private Wave pick_a_wave_in(IList<Wave> wave_bag)
+        private WaveInfo pick_a_wave_in(IList<Wave> wave_bag, WaveCategory wave_category = WaveCategory.Wave)
         {
             if (wave_bag.Count == 0)
             {
@@ -127,7 +141,10 @@ namespace rlc
             }
             var random_idx = Random.Range(0, wave_bag.Count);
             var picked_wave = wave_bag[random_idx];
-            return picked_wave;
+            WaveInfo result = new WaveInfo();
+            result.wave = picked_wave;
+            result.category = wave_category;
+            return result;
         }
 
         private void clear_wave()
@@ -138,15 +155,23 @@ namespace rlc
             }
         }
 
-        private IEnumerator start_wave(Wave wave, int level_idx, int wave_idx)
+        private IEnumerator start_wave(WaveInfo wave_info)
         {
             clear_wave();
 
             state = State.playing_wave;
-            set_theme_color(wave.background_color);
-            string progress_title = string.Format("Level {0} - Wave {1}", level_idx, wave_idx);
-            yield return display_title(progress_title, wave.title, title_display_duration_secs);
-            current_wave = Instantiate(wave);
+
+            set_theme_color(wave_info.wave.background_color);
+            string progress_title = string.Format("Level {0} {2}- Wave {1}", current_level_number, current_wave_number, wave_info.category == WaveCategory.Boss ? "- Boss " : "");
+
+            int wave_start_idx = ++wave_start_count; // Keep track of which wave we were starting.
+
+            yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);
+
+            if (wave_start_idx != wave_start_count) // If another wave was started in-betwen, do nothing.
+                yield break;
+
+            current_wave = Instantiate(wave_info.wave);
         }
 
         private void set_theme_color(Color color)
@@ -208,11 +233,11 @@ namespace rlc
                 current_level_waves_selection = build_level(current_level_number);
                 yield return LevelStatus.next_level;
 
-                int wave_idx = 0;
-                foreach (Wave wave in current_level_waves_selection)
+                current_wave_number = 0;
+                foreach (WaveInfo wave_info in current_level_waves_selection)
                 {
-                    ++wave_idx;
-                    StartCoroutine(start_wave(wave, current_level_number, wave_idx));
+                    ++current_wave_number;
+                    StartCoroutine(start_wave(wave_info));
                     yield return LevelStatus.next_wave;
                 }
             }
@@ -221,7 +246,7 @@ namespace rlc
         }
 
 
-        private List<Wave> build_level(int level_number)
+        private List<WaveInfo> build_level(int level_number)
         {
             if (level_number < 1)
             {
@@ -229,7 +254,7 @@ namespace rlc
                 return null;
             }
 
-            List<Wave> selected_waves = new List<Wave>();
+            List<WaveInfo> selected_waves = new List<WaveInfo>();
 
             switch (level_number)
             {
@@ -240,7 +265,7 @@ namespace rlc
                         selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging, WaveCategory.Boss));
                         break;
                     }
                 case 2:
@@ -251,7 +276,7 @@ namespace rlc
                         selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
                         break;
                     }
                 case 3:
@@ -263,7 +288,7 @@ namespace rlc
                         selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
                         break;
                     }
                 case 4:
@@ -275,10 +300,10 @@ namespace rlc
                         selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
                         selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_3_hardcore));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging, WaveCategory.Boss));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                        selected_waves.Add(pick_a_wave_in(boss_lvl_3_hardcore, WaveCategory.Boss));
                         break;
                     }
                 default:
