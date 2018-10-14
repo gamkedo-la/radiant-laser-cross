@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29353ec3c54121d4fa9bb44923b40e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background_color: {r: 0, g: 0, b: 0, a: 0}
+  background_color: {r: 0.62144, g: 0.990566, b: 0.94971955, a: 0}
   title: Cardinal Points
   timeout_secs: 120
 --- !u!114 &114092600220012766
@@ -1115,6 +1115,7 @@ MonoBehaviour:
   default_bullet_speed: 0
   default_firing_animation: 0
   clan: 1
+  allow_firing_outside_screen: 0
 --- !u!114 &114386300810520294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1165,6 +1166,7 @@ MonoBehaviour:
   default_bullet_speed: 0
   default_firing_animation: 0
   clan: 1
+  allow_firing_outside_screen: 0
 --- !u!114 &114728238034384140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,6 +1216,7 @@ MonoBehaviour:
   default_bullet_speed: 0
   default_firing_animation: 0
   clan: 1
+  allow_firing_outside_screen: 0
 --- !u!114 &114785935529862992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1232,6 +1235,7 @@ MonoBehaviour:
   default_bullet_speed: 0
   default_firing_animation: 0
   clan: 1
+  allow_firing_outside_screen: 0
 --- !u!114 &114821292473066780
 MonoBehaviour:
   m_ObjectHideFlags: 1
