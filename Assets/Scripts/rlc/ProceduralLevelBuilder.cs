@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace rlc
 {
@@ -9,6 +10,8 @@ namespace rlc
     */
     public class ProceduralLevelBuilder : MonoBehaviour
     {
+        const string DEFAULT_TITLE = "RADIANT LASER CROSS";
+
         public List<Wave> waves_lvl_1_easy = new List<Wave>();
         public List<Wave> waves_lvl_2_challenging = new List<Wave>();
         public List<Wave> waves_lvl_3_hard = new List<Wave>();
@@ -25,6 +28,9 @@ namespace rlc
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
 
+        public Text title_display;
+        public float title_display_duration_secs = 2.0f;
+
         public enum State
         {
             ready, playing_wave, game_over
@@ -36,9 +42,10 @@ namespace rlc
         // Use this for initialization
         void Start()
         {
+            reset_all();
         }
 
-        // Update is called once per frame
+        // Update is called once per frame--*
         void Update()
         {
             if (state == State.game_over)
@@ -80,6 +87,8 @@ namespace rlc
                 laser_cross = (GameObject)GameObject.Instantiate(laser_cross_prefab, Vector3.zero, Quaternion.identity);
                 laser_cross.name = "laser_cross";
             }
+
+            StartCoroutine(display_title(DEFAULT_TITLE));
 
             state = State.ready;
         }
@@ -126,14 +135,14 @@ namespace rlc
             }
         }
 
-        private void start_wave(Wave wave)
+        private IEnumerator start_wave(Wave wave)
         {
             clear_wave();
-            current_wave = Instantiate(wave);
-
-            set_theme_color(wave.background_color);
 
             state = State.playing_wave;
+            set_theme_color(wave.background_color);
+            yield return display_title(wave.title);
+            current_wave = Instantiate(wave);
         }
 
         private void set_theme_color(Color color)
@@ -147,6 +156,23 @@ namespace rlc
             else if (RenderSettings.skybox.HasProperty("_SkyTint"))
                 RenderSettings.skybox.SetColor("_SkyTint", color);
         }
+
+        private IEnumerator display_title(string title_text)
+        {
+            if (title_display == null)
+            {
+                Debug.LogError("No text set to display the title!");
+                yield break;
+            }
+
+            Debug.LogFormat("Title: {0}", title_text);
+            title_display.text = title_text;
+            title_display.enabled = true;
+            yield return new WaitForSeconds(title_display_duration_secs);
+            title_display.enabled = false;
+            Debug.Log("Title hidden");
+        }
+
 
         private enum LevelStatus {
             next_wave,      // We'll play the next wave
@@ -170,7 +196,7 @@ namespace rlc
 
                 foreach (Wave wave in current_level_waves_selection)
                 {
-                    start_wave(wave);
+                    StartCoroutine(start_wave(wave));
                     yield return LevelStatus.next_wave;
                 }
             }
