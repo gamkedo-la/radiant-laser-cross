@@ -65,7 +65,7 @@ namespace rlc
                 Destroy(current_wave.gameObject);
             }
 
-            Camera.main.backgroundColor = default_background_color;
+            set_theme_color(default_background_color);
 
             level_progression = null;
 
@@ -131,16 +131,21 @@ namespace rlc
             clear_wave();
             current_wave = Instantiate(wave);
 
-            // TODO: transition in a progressive way
-            Camera.main.backgroundColor = wave.background_color;
-            RenderSettings.skybox.color = wave.background_color;
-            RenderSettings.skybox.SetColor("_Color", wave.background_color);
-            if (RenderSettings.skybox.HasProperty("_Tint"))
-                RenderSettings.skybox.SetColor("_Tint", wave.background_color);
-            else if (RenderSettings.skybox.HasProperty("_SkyTint"))
-                RenderSettings.skybox.SetColor("_SkyTint", wave.background_color);
+            set_theme_color(wave.background_color);
 
             state = State.playing_wave;
+        }
+
+        private void set_theme_color(Color color)
+        {
+            // TODO: transition in a progressive way
+            Camera.main.backgroundColor = color;
+            RenderSettings.skybox.color = color;
+            RenderSettings.skybox.SetColor("_Color", color);
+            if (RenderSettings.skybox.HasProperty("_Tint"))
+                RenderSettings.skybox.SetColor("_Tint", color);
+            else if (RenderSettings.skybox.HasProperty("_SkyTint"))
+                RenderSettings.skybox.SetColor("_SkyTint", color);
         }
 
         private enum LevelStatus {
