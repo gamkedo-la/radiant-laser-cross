@@ -131,7 +131,14 @@ namespace rlc
             clear_wave();
             current_wave = Instantiate(wave);
 
-            Camera.main.backgroundColor = wave.background_color; // TODO: transition in a progressive way
+            // TODO: transition in a progressive way
+            Camera.main.backgroundColor = wave.background_color;
+            RenderSettings.skybox.color = wave.background_color;
+            RenderSettings.skybox.SetColor("_Color", wave.background_color);
+            if (RenderSettings.skybox.HasProperty("_Tint"))
+                RenderSettings.skybox.SetColor("_Tint", wave.background_color);
+            else if (RenderSettings.skybox.HasProperty("_SkyTint"))
+                RenderSettings.skybox.SetColor("_SkyTint", wave.background_color);
 
             state = State.playing_wave;
         }
