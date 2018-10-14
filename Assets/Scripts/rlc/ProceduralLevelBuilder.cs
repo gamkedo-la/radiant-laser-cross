@@ -28,8 +28,10 @@ namespace rlc
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
 
+        public Text progress_display;
         public Text title_display;
-        public float title_display_duration_secs = 2.0f;
+        public float default_title_display_duration_secs = 5.0f;
+        public float title_display_duration_secs = 3.0f;
 
         public enum State
         {
@@ -88,7 +90,7 @@ namespace rlc
                 laser_cross.name = "laser_cross";
             }
 
-            StartCoroutine(display_title(DEFAULT_TITLE));
+            StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
 
             state = State.ready;
         }
@@ -135,13 +137,14 @@ namespace rlc
             }
         }
 
-        private IEnumerator start_wave(Wave wave)
+        private IEnumerator start_wave(Wave wave, int level_idx, int wave_idx)
         {
             clear_wave();
 
             state = State.playing_wave;
             set_theme_color(wave.background_color);
-            yield return display_title(wave.title);
+            string progress_title = string.Format("Level {0} - Wave {1}", level_idx, wave_idx);
+            yield return display_title(progress_title, wave.title, title_display_duration_secs);
             current_wave = Instantiate(wave);
         }
 
@@ -157,19 +160,25 @@ namespace rlc
                 RenderSettings.skybox.SetColor("_SkyTint", color);
         }
 
-        private IEnumerator display_title(string title_text)
+        private IEnumerator display_title(string progress_text, string title_text, float duration_secs)
         {
-            if (title_display == null)
+            if (title_display == null || progress_display == null)
             {
-                Debug.LogError("No text set to display the title!");
+                Debug.LogError("Incomplete text set to display the title!");
                 yield break;
             }
 
+            Debug.LogFormat("Progress: {0}", progress_text);
             Debug.LogFormat("Title: {0}", title_text);
             title_display.text = title_text;
             title_display.enabled = true;
-            yield return new WaitForSeconds(title_display_duration_secs);
+            progress_display.text = progress_text;
+            progress_display.enabled = true;
+
+            yield return new WaitForSeconds(duration_secs);
+
             title_display.enabled = false;
+            progress_display.enabled = false;
             Debug.Log("Title hidden");
         }
 
@@ -194,9 +203,11 @@ namespace rlc
                 current_level_waves_selection = build_level(current_level_number);
                 yield return LevelStatus.next_level;
 
+                int wave_idx = 0;
                 foreach (Wave wave in current_level_waves_selection)
                 {
-                    StartCoroutine(start_wave(wave));
+                    ++wave_idx;
+                    StartCoroutine(start_wave(wave, current_level_number, wave_idx));
                     yield return LevelStatus.next_wave;
                 }
             }
