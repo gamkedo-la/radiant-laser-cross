@@ -87,5 +87,14 @@ namespace rlc
             // TODO: add impact animation here
         }
 
+        private void OnBecameInvisible()
+        {
+            // Destroy any bullet getting out of the screen.
+            // This is not only to avoid keeping them alive for nothning,
+            // it also avoids enemies not yet entering the screen to ever be hit
+            // by lost bullets.
+            Destroy(gameObject);
+        }
+
     }
 }
