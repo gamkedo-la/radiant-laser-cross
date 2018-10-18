@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -164,6 +164,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114776558642134018, guid: aa40f166291a1c24e9a61abaec7a2734,
+        type: 2}
+      propertyPath: on_destroyed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -195,6 +200,16 @@ Prefab:
     - target: {fileID: 4176961245668338, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776558642134018, guid: aa40f166291a1c24e9a61abaec7a2734,
+        type: 2}
+      propertyPath: on_destroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114776558642134018, guid: aa40f166291a1c24e9a61abaec7a2734,
+        type: 2}
+      propertyPath: on_destroyed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
@@ -520,11 +535,13 @@ MonoBehaviour:
   boss_lvl_2_hard: []
   boss_lvl_3_hardcore: []
   end_level: 4
-  current_level_number: 1
-  current_level_waves_selection: []
   laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
     type: 2}
   default_background_color: {r: 0.4039216, g: 0.44705886, b: 0.49803925, a: 0}
+  progress_display: {fileID: 0}
+  title_display: {fileID: 0}
+  default_title_display_duration_secs: 5
+  title_display_duration_secs: 3
 --- !u!4 &715209917
 Transform:
   m_ObjectHideFlags: 0
