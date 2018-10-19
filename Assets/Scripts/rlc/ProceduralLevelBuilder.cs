@@ -172,6 +172,8 @@ namespace rlc
                 yield break;
 
             current_wave = Instantiate(wave_info.wave);
+
+            current_wave.on_finished.AddListener(next_wave);
         }
 
         private void set_theme_color(Color color)

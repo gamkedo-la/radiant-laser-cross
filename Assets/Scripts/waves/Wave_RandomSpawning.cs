@@ -55,7 +55,7 @@ namespace rlc
             }
         }
 
-        private const float border_distance_from_center = 40.0f; // TODO: replace by something deduced from actual data, not a guess\
+        private const float border_distance_from_center = 35.0f; // TODO: replace by something deduced from actual data, not a guess\
         private const float half_border_distance_from_center = border_distance_from_center; // TODO: replace by something deduced from actual data, not a guess
 
         private Vector3 random_position(AxesDirections wall)

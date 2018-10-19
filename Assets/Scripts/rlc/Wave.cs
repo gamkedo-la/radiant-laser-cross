@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 namespace rlc
@@ -24,6 +25,7 @@ namespace rlc
 
         public float timeout_secs = 120.0f;
 
+        public UnityEvent on_finished;
 
         // TODO: Add audio tracks
         // TODO: Add background
@@ -39,12 +41,13 @@ namespace rlc
         }
 
         // Call this to spawn enemies procedurally.
-        public void spawn_enemy(GameObject prefab, Vector3 position, Quaternion rotation)
+        protected void spawn_enemy(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             // All enemies must be part of the wave, to be able to clear them on game reset.
             var enemy = (GameObject)Instantiate(prefab, position, rotation, this.transform);
             // All enemies must be tagged as such.
             enemy.tag = ENEMY_TAG;
+
         }
 
     }
