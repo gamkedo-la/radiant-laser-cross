@@ -41,13 +41,13 @@ namespace rlc
         }
 
         // Call this to spawn enemies procedurally.
-        protected void spawn_enemy(GameObject prefab, Vector3 position, Quaternion rotation)
+        protected GameObject spawn_enemy(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             // All enemies must be part of the wave, to be able to clear them on game reset.
             var enemy = (GameObject)Instantiate(prefab, position, rotation, this.transform);
             // All enemies must be tagged as such.
             enemy.tag = ENEMY_TAG;
-
+            return enemy;
         }
 
     }
