@@ -115,6 +115,7 @@ namespace rlc
             bullet.clan_who_fired = clan;
             if (default_bullet_speed > 0)
                 bullet.speed = default_bullet_speed;
+            bullet.gameObject.tag = Bullet.TAG;
         }
 
     }

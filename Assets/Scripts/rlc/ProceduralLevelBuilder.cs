@@ -89,6 +89,8 @@ namespace rlc
                 Destroy(current_wave.gameObject);
             }
 
+            Bullet.clear_bullets_from_game();
+
             set_theme_color(default_background_color);
 
             level_progression = null;

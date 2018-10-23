@@ -6,7 +6,7 @@ namespace rlc
     public class Bullet : MonoBehaviour
     {
         public float speed = 10.0f;
-
+        public const string TAG = "bullet";
 
         public Clan clan_who_fired = Clan.enemy;
 
@@ -26,6 +26,15 @@ namespace rlc
         void Update()
         {
             Movement.move_forward(transform, speed);
+        }
+
+        public static void clear_bullets_from_game()
+        {
+            var bullets = GameObject.FindGameObjectsWithTag(Bullet.TAG);
+            foreach (var bullet in bullets)
+            {
+                Destroy(bullet);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -64,9 +73,6 @@ namespace rlc
 
             is_reflected = true;
             play_impact_animation(); // TODO: replace by another impact?
-            const float time_to_die = 1.5f;
-            Destroy(gameObject, time_to_die);
-
 
             // Now for the rest of the lifetime, we just go in another direction
             transform.forward = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
