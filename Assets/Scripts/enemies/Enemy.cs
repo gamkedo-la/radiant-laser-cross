@@ -22,7 +22,6 @@ namespace rlc
 
         // Use this for initialization
         void Start() {
-//            Movement = new PassengerMovement();
             last_firing_timepoint = Time.time;
             body = GetComponentInChildren<ColoredBody>().gameObject;
             life_control = GetComponent<LifeControl>();
@@ -41,7 +40,6 @@ namespace rlc
 
         private void move()
         {
-            Debug.Log("Calling Move from Enemy class");
             Movement.Move(transform, speed);
         }
 
