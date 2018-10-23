@@ -1,6 +1,58 @@
 How To Create Enemies
 =====================
 
+A. What Is An Enemy For the Game?
+#################################
+
+You need to understand what an enemy is for the game to be able
+to setup new enemy types the way you want but still make it work.
+There are only a few restrictions and they are designed to allow you to go crazy with enemy design.
+
+1. An enemy is a unity object with the setup described below.
+    We use a prefab of that object to spawn the enemy or reuse it in several different enemy waves.
+    Once you finish making your enemy, put it in the "Asset/Prefab/enemies" directory for everyone to use.
+
+2. Any enemy have one ore more ColoredBody behavior attached to the different parts of it's body.
+    ColoredBody represents a body part that can be hit by bullets (from the player's guns most of the time).
+    It is associated with a color familly that you can chose in it's parameters, deciding which kinds of bullets will be effective against this body part.
+    Strategically you can think of an object with a ColoredBody as the parts of the enemy that can be hit.
+    You can also setup a ColoredBody with black or grey color familly if you want it to not be hit by any bullets, but be able to change that color familly later.
+    An object with ColoredBody is not yet destroyable, it can just be hit. To be destroyable, it needs an associated LifeControl.
+    ColoredBody requires to have a collision box attached to the same object.
+
+3. Any enemy have one or more LifeControl behavior attached to either it's root object, or for each sub-object that can be destroyed.
+    LifeControl represents hit points or life points of an enemy or of a part of an enemy. It's something that can be destroyed.
+    LifeControl let you decide how many hits are necessary to destroy that enemy or part.
+    To make it work, you have to associate it with one or more ColoredBody objects, as "body parts".
+    Every ColoredBody connected to a LifeControl will act as if they were all sharing the same "life".
+    Every bullet hit on a ColoredBody of that LifeControl will hit the LifeControl and reduce the life.
+    When life reaches 0, the object in which the LifeControl is will be destroyed.
+
+4. The simplest and smallest enemies have 1 LifeControl and 1 ColoredBody attached to the same object.
+    Bigger enemies might have several sub-objects that can be hit to destroy them. In this case, they might
+    have 1 LifeControl with several ColoredBody in sub-objects which are it's body parts.
+    Very big enemies, like bosses, or complex enemies
+
+5. The game's color-matching mechanism only take into account the color family in the ColoredBody of a bullet or an enemy's body part.
+    Therefore, you can make the enemy look whatever you like, but what is set to the ColoredBody should match the material's look.
+    We talk about color families instead of colors because you might want to have an enemy made of different kinds of blues,
+    or different kinds of reds, etc. It's still one family color for the game.
+    (NOTE: if we have time, we will setup a mechanism that will automatically deduce the color familly by default by using material names)
+
+6. Color families of ColoredBody can be changed dynamically while the game is running.
+    This allows enemies to be able to change colors.
+
+7. Enemies can have some parts emitting bullets. The Gun behavior should be attached to each sub-object that should act like a bullet emitter.
+    You don't need the Gun to be a visible object, but it have to be enabled to work.
+
+8. As soon as you need the enemy to move or behave in a more complex way than with a constant motion, you will need to script it's specific behavior.
+    This script can then control movement, guns orientation, complex animations of the different body parts, different phases etc.
+    Scripts for a kind of enemy should be
+
+
+B. Tutorial Step By Step
+########################
+
 0. Design the enemy
 -------------------
 
@@ -10,20 +62,20 @@ How To Create Enemies
  - in which kind of context is it easy to beat;
  - in which kind of context is it hard to beat;
 
-0.2. Decides the kind of appearance it will have.
+0.2. Decide the kind of appearance it will have.
 
  - Inspiration from everywhere helps.
  - Don't forget that shape inform function.
 
-0.3. Define it's look and animations.
+0.3. Decide it's kind of look and kind of animations.
 
- - Draw it.
+ - Draw it (at least schematically).
  - Decide which parts are body parts (parts that can be hit)
  - Decide colors (white means can be hit by all colors, grey or black means not hittable).
  - Note if you want some animations.
  - Decide if you need the graphics to be from Blender or another editor; OR if making something from basic shapes in Uniy is enough.
 
-0.4. Define special behavior.
+0.4. Decide special behavior.
 
  - Note the kind of movement it would make.
  - Note if you want that some parts to change colors.
@@ -39,7 +91,7 @@ That's your forge. Experiment there.
 Most of us will name the scene to our own name/pseudonym.
 
 2.A. Duplicate an ennemy and tweak it
------------------------------------
+-------------------------------------
 
 If you want to make something similar to another enemy,
 start with duplicating the prefab of that enemy.
@@ -47,33 +99,42 @@ To do that, go into Assets/Prefabs/ennemies/ and select the enemy to duplicate (
 Then just edit the parametters and look!
 
 2.B. Create an enemy from scratch
--------------------------------
+---------------------------------
 
 2.1. If you want to create an ennemy from scratch, first create the global look of the enemy by creating an object:
+
 2.2. If you want to use Unity's 3D shapes, first create an object of the shape you want for the part of the enemy that you consider to be it's core.
     Most of the time I use a cube, but any geometric shape should be ok as long as it's made of lines.
     (Cylinders can work but it's better if you can see the lines of the base circle).
-    Then for each other part of the enemy that must move with it, create a sub oject with the shape you want.
+    Then for each other part of the enemy that must move with it, create a sub oject with the shape you want for that body part.
+
 2.3. If you want to use a 3D model, drag'n'drop it in the scene so that it creates an object of it.
+    If you want to use several 3D models as different body parts, first create an empty object, then drag'n'drop the different parts in Unity
+    and setup the different parts as sub-objects of the initial empty-object.
 
 2.4. Continue creating the whole shape of the enemy (if it's made of several parts) by adding sub objects corresponding to the different parts.
      The main parts to have separate are:
      - the parts that can be hit but have separate collision boxes;
      - the parts that needs to be animated independently (for example if it's a big enemy with several canons all targeting the moving player);
 
-3. What makes an enemy
+3. Write it's behavior
 ----------------------
 
-To make the game react to your enemy object correctly, it have to be setup with the following behaviours:
+3.1. For the simplest enemies, having just constant movement (with or without curves) is the easiest way.
+    Reuse one of the scripts in "Assets/Scripts/enemies" and configure it to obtain the movement you want.
 
-3.1. Add ColoredBody behaviour to each sub-object (or maybe the object itself) that can be hit.
-    - ColoredBody represents a body that is associated to a color familly and is used to get information when checking if the body color matches a bullet color for example;
-    - ColoredBody will only collide properly if the same object also have a RigidBody. Of course usually this imply also a mesh and collider.
-    - Once set, you can configure it and in particular decide what is the associated color familly (we will try to detect it automatically later from the material but for now do it manually).
-    - One enemy can have several body parts that can be hit. Each one of them must have a ColoredBody.
-    - ColoredBody do not hold the hit points of the enemy. See the next points.
-    - Do not fill the life_control field, it will be filled automatically later. See the next points.
+3.2. For more complex movements or if you want something simple but that was not in the script directory,
+    write a behavior script that will be available in "Assets/Scripts/enemies".
+    Experiment! There is a lot of interesting one can do with enemy behaviors!
+    Keep in mind to setup most parameters as public so that it is easy to create a whole familly of enemies
+    that have similar but different behaviors!
 
-3.2. Add one LifeControl behavior to the enemy object. Usually to the root.
-    - LifeControl handles the hit points or life points of the enemy. This is what decides how many hit this enemy can take.
-    - LifeControl's
+4. Finish!
+----------
+
+Once you finished the enemy, put it in the "Assets/Prefabs/enemies" directory so that it is available to all.
+Then start making some enemy waves with that enemy! (see "How To Create An Enemy Wave" tutorial)
+
+Have Fun!
+
+
