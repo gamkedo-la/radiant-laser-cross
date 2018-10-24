@@ -39,7 +39,7 @@ namespace rlc
 
         private void OnCollisionEnter(Collision collision)
         {
-            var body_hit = collision.collider.GetComponent<ColoredBody>();
+            var body_hit = collision.collider.GetComponentInParent<ColoredBody>();
             var bullet_hit = collision.collider.GetComponent<Bullet>();
             if (body_hit != null    // hit a colored body...
             && bullet_hit == null   // ... which is not another bullet...
