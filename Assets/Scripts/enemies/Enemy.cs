@@ -17,7 +17,6 @@ namespace rlc
 
         private float last_firing_timepoint;
         private GameObject body;
-        private bool is_visible = false;
         private LifeControl life_control;
 
         // Use this for initialization
@@ -31,7 +30,6 @@ namespace rlc
         void Update() {
             if (life_control.is_alive())
             {
-
                 move();
                 animate();
                 maybe_fire();
@@ -63,18 +61,6 @@ namespace rlc
                     }
                 }
             }
-        }
-
-        private void OnBecameVisible()
-        {
-            is_visible = true;
-            last_firing_timepoint = Time.time;
-        }
-
-        private void OnBecameInvisible() // TODO: Should be done for all enemies, to detect when a wave is finished
-        {
-            is_visible = false;
-            Destroy(gameObject);
         }
 
         public IMoving Movement

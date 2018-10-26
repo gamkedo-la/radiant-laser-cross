@@ -1695,6 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life_state: 1
   hit_points: 1
   body_parts:
   - {fileID: 114529295416526498}
@@ -1763,6 +1764,7 @@ MonoBehaviour:
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
+  allow_firing_outside_screen: 0
 --- !u!114 &114654841115393402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1781,6 +1783,7 @@ MonoBehaviour:
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
+  allow_firing_outside_screen: 0
 --- !u!114 &114773769878297650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,6 +1802,7 @@ MonoBehaviour:
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
+  allow_firing_outside_screen: 0
 --- !u!114 &114776480890327406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1829,6 +1833,7 @@ MonoBehaviour:
   default_bullet_speed: 40
   default_firing_animation: 1
   clan: 2
+  allow_firing_outside_screen: 0
 --- !u!114 &114787108516346266
 MonoBehaviour:
   m_ObjectHideFlags: 1

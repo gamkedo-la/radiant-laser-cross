@@ -175,7 +175,7 @@ namespace rlc
 
             current_wave = Instantiate(wave_info.wave);
 
-            current_wave.on_finished.AddListener(next_wave);
+            current_wave.on_finished += wave => next_wave();
         }
 
         private void set_theme_color(Color color)

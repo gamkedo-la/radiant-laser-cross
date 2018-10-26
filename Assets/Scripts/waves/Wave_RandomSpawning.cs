@@ -20,6 +20,7 @@ namespace rlc
         void Start()
         {
             last_spawn_time = Time.time;
+            setting_up();
         }
 
         // Update is called once per frame
@@ -52,6 +53,11 @@ namespace rlc
                 var orientation = -border_from_screen_center(random_wall);
                 spawn_enemy(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation));
                 --instance_count_to_spawn;
+            }
+
+            if (count_left_to_spawn == 0)
+            {
+                ready();
             }
         }
 

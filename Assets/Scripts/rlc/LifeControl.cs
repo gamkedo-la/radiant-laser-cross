@@ -12,19 +12,25 @@ namespace rlc
 
         private enum LifeState
         {
-            none, alive, dying
+            alive_newborn,      // Alive but not entered screen yet.
+            alive_in_screen,    // Alive and in screen.
+            dying               // Dying (doing it's dying animation).
         }
-        private LifeState life_state = LifeState.none;
+        private LifeState life_state = LifeState.alive_newborn; // TODO: read-only public access
 
         public int hit_points = 1;
         public List<ColoredBody> body_parts = new List<ColoredBody>();
+
+        public delegate void LifeEvent(LifeControl life);
+        public LifeEvent on_destroyed;
+
+
         public GameObject explosionPrefab;
         public GameObject hitPrefab;
 
         // Use this for initialization
         void Start()
         {
-            life_state = LifeState.alive;
             if (body_parts.Count == 0)
             {
                 Debug.LogErrorFormat("Destructible object {0} have no body parts set!", this.name);
@@ -47,14 +53,24 @@ namespace rlc
 
         public bool is_alive()
         {
-            return life_state == LifeState.alive;
+            return life_state != LifeState.dying;
+        }
+
+        public bool is_alive_in_screen()
+        {
+            return life_state == LifeState.alive_in_screen;
+        }
+
+        public bool is_newborn()
+        {
+            return life_state == LifeState.alive_newborn;
         }
 
         public void on_hit() // TODO: add the position of the hit point
         {
             //Debug.Log("on_hit!");
 
-            if (!is_alive())
+            if (!is_alive_in_screen())
                 return;
 
             --hit_points;
@@ -69,6 +85,17 @@ namespace rlc
                 HitFX();
                 // TODO: play "hit" animation here
             }
+        }
+
+        public void die()
+        {
+            life_state = LifeState.dying;
+            Destroy(gameObject, 1.0f);
+        }
+
+        public void on_entered_screen()
+        {
+            life_state = LifeState.alive_in_screen;
         }
 
         public void ExplodeFX()
@@ -89,10 +116,15 @@ namespace rlc
             }
         }
 
-        public void die()
+        private void OnDestroy()
         {
-            life_state = LifeState.dying;
-            Destroy(gameObject, 1.0f);
+            notify_destroyed();
+        }
+
+        private void notify_destroyed()
+        {
+            if (on_destroyed != null)
+                on_destroyed(this);
         }
 
     }
