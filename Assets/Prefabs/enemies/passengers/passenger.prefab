@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 114060027594535396}
   - component: {fileID: 114451951588178046}
   m_Layer: 0
-  m_Name: passenger_blue
+  m_Name: passenger
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: ec73d2ed724ad3b40805f4f7eceb60a0, type: 2}
+  - {fileID: 2100000, guid: 8f648ae24f168c040abc884543bc8dd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  firing_interval: 3
+  firing_interval: 4
   animation_rotation: {x: 1, y: 1, z: 0}
 --- !u!114 &114451951588178046
 MonoBehaviour:
@@ -285,9 +285,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit_points: 1
+  life_state: 0
+  hit_points: 3
   body_parts:
   - {fileID: 114808737645426366}
+  on_destroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
@@ -304,11 +310,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
+  - {fileID: 114083177209909194, guid: c393ea3bc107bad49872183361984ff5, type: 2}
+  - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
+  - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
+  - {fileID: 114577751230756846, guid: 8add8f5835e050947afa4036569876fc, type: 2}
   emitter: {fileID: 4961236619829468}
   time_between_firing: 0.03125
   default_bullet_speed: 0
   default_firing_animation: 0
   clan: 1
+  allow_firing_outside_screen: 0
 --- !u!114 &114808737645426366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2cfe4f2c74a0d4db1f41b3341e59fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color_family: 5
+  color_family: 1
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
