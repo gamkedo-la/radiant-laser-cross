@@ -16,6 +16,7 @@ namespace rlc
             alive_in_screen,    // Alive and in screen.
             dying               // Dying (doing it's dying animation).
         }
+		[SerializeField]
         private LifeState life_state = LifeState.alive_newborn; // TODO: read-only public access
 
         public int hit_points = 1;
@@ -27,6 +28,7 @@ namespace rlc
 
         public GameObject explosionPrefab;
         public GameObject hitPrefab;
+
 
         // Use this for initialization
         void Start()
@@ -49,9 +51,22 @@ namespace rlc
         // Update is called once per frame
         void Update()
         {
+
         }
 
-        public bool is_alive()
+		void OnCollisionEnter(Collision collision) 
+		{
+			//Debug.Log("OnCollisionEnter!");
+			//Checks the ColoredBody component of anything colliding with the core, and calls on_hit()
+			ColoredBody otherBody = collision.contacts[0].otherCollider.transform.gameObject.GetComponent<ColoredBody>();
+			if (otherBody != null) {
+				if (otherBody.clan == Clan.enemy ) {
+					on_hit();
+				}
+			}
+		}
+
+		public bool is_alive()
         {
             return life_state != LifeState.dying;
         }
@@ -72,9 +87,9 @@ namespace rlc
 
             if (!is_alive_in_screen())
                 return;
-
-            --hit_points;
-            if (hit_points == 0)
+			
+			--hit_points;
+            if (hit_points <= 0)
             {
                 //Debug.Log("on_hit: die!");
                 ExplodeFX();
