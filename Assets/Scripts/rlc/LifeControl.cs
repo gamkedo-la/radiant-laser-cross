@@ -54,18 +54,6 @@ namespace rlc
 
         }
 
-        void OnCollisionEnter(Collision collision)
-        {
-            //Debug.Log("OnCollisionEnter!");
-            //Checks the ColoredBody component of anything colliding with the core, and calls on_hit()
-            ColoredBody otherBody = collision.contacts[0].otherCollider.transform.gameObject.GetComponent<ColoredBody>();
-            if (otherBody != null) {
-                if (otherBody.clan == Clan.enemy ) {
-                    on_hit();
-                }
-            }
-        }
-
         public bool is_alive()
         {
             return life_state != LifeState.dying;

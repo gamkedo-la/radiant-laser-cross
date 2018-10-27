@@ -34,5 +34,23 @@ namespace rlc
             if(life_control)
                 life_control.on_hit();
         }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            //Debug.Log("OnCollisionEnter!");
+            //Checks the ColoredBody component of anything colliding with the core, and calls on_hit()
+            if (clan == Clan.player)
+            {
+                ColoredBody otherBody = collision.collider.GetComponent<ColoredBody>();
+                if (otherBody != null)
+                {
+                    if (otherBody.clan == Clan.enemy)
+                    {
+                        on_hit();
+                    }
+                }
+            }
+        }
+
     }
 }
