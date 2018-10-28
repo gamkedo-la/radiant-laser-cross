@@ -7,16 +7,29 @@ namespace rlc
     /* Behaviour of any kind of gun, as in "bullet emitter". */
     public class Gun : MonoBehaviour
     {
-        public List<Bullet> bullet_prefabs;                 // Prefab that will be used as bullet.
-        public Transform emitter;                           // Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.
+        [Tooltip("Prefabs that will be used as bullet, randomly chosen (TODO: add a choice of how to chose them).")]
+        public List<Bullet> bullet_prefabs;
+
+        [Tooltip("Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.")]
+        public Transform emitter;                           //
+
+        [Tooltip("Time between each firing.")]
         public float time_between_firing = 1.0f / 32.0f;
+
+        [Tooltip("Bullet speed applied to all bullets when fired.")]
         public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
-        public bool default_firing_animation = false;
+
+        [Tooltip("Determine the clan of the bullets being fired.")]
         public Clan clan = Clan.enemy;
+
+        [Tooltip("Set to true if bullets fired from this gun should be able to live outside the screen.")]
         public bool allow_firing_outside_screen = false;
+
+        public bool default_firing_animation = false;
 
         private float last_firing_time;
         private Renderer this_gun_renderer;
+        private Seeker seeker;
 
         private enum ShootingState
         {
@@ -31,6 +44,7 @@ namespace rlc
         {
             last_firing_time = Time.time;
             this_gun_renderer = GetComponent<Renderer>();
+            seeker = GetComponent<Seeker>();
         }
 
         void Update()
@@ -113,9 +127,25 @@ namespace rlc
             Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
             bullet.transform.forward = direction;
             bullet.clan_who_fired = clan;
+
+            // If the gun have a target, make the bullet inherit the same target if it is homing.
+            inherit_target(bullet);
+
             if (default_bullet_speed > 0)
                 bullet.speed = default_bullet_speed;
             bullet.gameObject.tag = Bullet.TAG;
+        }
+
+        private void inherit_target(Bullet bullet)
+        {
+            if (seeker == null)
+                return;
+
+            var bullet_seeker = bullet.GetComponent<Seeker>();
+            if (bullet_seeker == null)
+                return;
+
+            bullet_seeker.target = seeker.target;
         }
 
     }
