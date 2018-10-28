@@ -350,16 +350,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4595222058351098, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
       propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 23360406080818658, guid: f9d698e1e0a8d3a41800494b3b52bcae,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845180839348362, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
@@ -399,12 +390,14 @@ MonoBehaviour:
   - {fileID: 114075109046794008, guid: 16468b7c9eb5b5a4cb7b705da59cf09e, type: 2}
   - {fileID: 114160338954076168, guid: f7dd6559333d225448705577dc84bb85, type: 2}
   - {fileID: 114160338954076168, guid: f7dd6559333d225448705577dc84bb85, type: 2}
+  - {fileID: 114888439028326258, guid: f515b8102a880204c8ae8a9ecdc6def5, type: 2}
   waves_lvl_3_hard:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   - {fileID: 114075109046794008, guid: 78bcc8dd5e04e0e42ab24a05c648609d, type: 2}
-  - {fileID: 114160338954076168, guid: f7dd6559333d225448705577dc84bb85, type: 2}
+  - {fileID: 114888439028326258, guid: f515b8102a880204c8ae8a9ecdc6def5, type: 2}
   waves_lvl_4_hardcore:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
+  - {fileID: 114888439028326258, guid: f515b8102a880204c8ae8a9ecdc6def5, type: 2}
   boss_lvl_1_challenging:
   - {fileID: 114075109046794008, guid: 52e9d2b6ab0f5674abcbc2b932efd6f6, type: 2}
   boss_lvl_2_hard:
