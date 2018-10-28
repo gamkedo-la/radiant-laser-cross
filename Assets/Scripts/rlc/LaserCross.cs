@@ -17,6 +17,8 @@ namespace rlc
      */
     public class LaserCross : MonoBehaviour
     {
+        public static LaserCross current;
+
         public const int GUNS_COUNT = 4;
         public const float MAX_GUNS_ORIENTATION_DEGREES = 360.0f;
         public const float GUNS_DEGREES_PER_DIRECTION = MAX_GUNS_ORIENTATION_DEGREES / GUNS_COUNT;
@@ -67,6 +69,7 @@ namespace rlc
                 Debug.LogError("No level builder found");
             }
 
+            current = this;
         }
 
         void Update()
@@ -312,6 +315,9 @@ namespace rlc
 
         private void OnDestroy()
         {
+            if (current == this)
+                current = null;
+
             level_builder.game_over();
         }
     }
