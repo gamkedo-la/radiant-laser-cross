@@ -28,7 +28,7 @@ namespace rlc
 
         public GameObject explosionPrefab;
         public GameObject hitPrefab;
-
+        public float start_time;
 
         // Use this for initialization
         void Start()
@@ -46,6 +46,8 @@ namespace rlc
                 }
                 body.life_control = this;
             }
+
+            start_time = Time.time;
         }
 
         // Update is called once per frame

@@ -9,6 +9,7 @@ namespace rlc
 
         public GameCamera game_camera;
         public float seconds_between_rules_update = 1.0f;
+        public float deadline_to_enter_the_screen = 20.0f;
 
         // Use this for initialization
         void Start()
@@ -61,6 +62,20 @@ namespace rlc
                         {
                             Destroy(enemy);
                             break; // No need to update everything.
+                        }
+                        else
+                        {
+                            if (life.is_newborn())
+                            {
+                                // Destroy enemies that never enter the screen after some time.
+                                var time_passed_since_creation = Time.time - life.start_time;
+                                if (time_passed_since_creation > deadline_to_enter_the_screen)
+                                {
+                                    Debug.Log("Destroying Newborn enemy that didn't enter in time in the screen.");
+                                    Destroy(enemy);
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
