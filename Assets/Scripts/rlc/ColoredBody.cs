@@ -39,9 +39,11 @@ namespace rlc
         {
             //Debug.Log("OnCollisionEnter!");
             //Checks the ColoredBody component of anything colliding with the core, and calls on_hit()
-            if (clan == Clan.player)
+            if (clan == Clan.player
+            && gameObject.tag != Bullet.TAG
+            && collision.collider.gameObject.tag != Bullet.TAG)
             {
-                ColoredBody otherBody = collision.collider.GetComponent<ColoredBody>();
+                ColoredBody otherBody = collision.collider.GetComponentInParent<ColoredBody>();
                 if (otherBody != null)
                 {
                     if (otherBody.clan == Clan.enemy)
