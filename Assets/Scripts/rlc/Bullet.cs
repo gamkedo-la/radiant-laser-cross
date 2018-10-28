@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace rlc
@@ -8,6 +8,8 @@ namespace rlc
         public float speed = 10.0f;
         public const string TAG = "bullet";
 
+        public float speed = 10.0f;
+        public float acceleration = 0.0f;
         public Clan clan_who_fired = Clan.enemy;
 
 
@@ -21,10 +23,12 @@ namespace rlc
             {
                 Debug.LogError("Bullet objects must have a ColoredBody component!");
             }
+
         }
 
         void Update()
         {
+            speed += acceleration;
             Movement.move_forward(transform, speed);
         }
 
