@@ -1,11 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace rlc
 {
     public class Bullet : MonoBehaviour
     {
-        public float speed = 10.0f;
         public const string TAG = "bullet";
 
         public float speed = 10.0f;
@@ -44,7 +43,7 @@ namespace rlc
         private void OnCollisionEnter(Collision collision)
         {
             var body_hit = collision.collider.GetComponentInParent<ColoredBody>();
-            var bullet_hit = collision.collider.GetComponent<Bullet>();
+            var bullet_hit = collision.collider.GetComponentInParent<Bullet>();
             if (body_hit != null    // hit a colored body...
             && bullet_hit == null   // ... which is not another bullet...
             )
