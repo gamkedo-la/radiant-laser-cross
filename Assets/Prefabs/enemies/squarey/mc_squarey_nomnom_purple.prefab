@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114714634127443666}
   - component: {fileID: 114770273924237654}
   m_Layer: 0
-  m_Name: mc_squarey_square_chasing_purple
+  m_Name: mc_squarey_nomnom_purple
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4095993482741722}
   - component: {fileID: 114536583498724918}
   - component: {fileID: 114714634127443666}
-  - component: {fileID: 114611423523671424}
+  - component: {fileID: 114507534888144514}
   m_Layer: 0
-  m_Name: mc_squarey_square_chasing_red
+  m_Name: mc_squarey_nomnom_blue
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d744fac245f53f04d986e6fc0a6501db, type: 2}
+  - {fileID: 2100000, guid: 669be02bcf3573646929c164954dc782, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,10 +157,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2cfe4f2c74a0d4db1f41b3341e59fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color_family: 3
+  color_family: 5
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+--- !u!114 &114507534888144514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102435931949950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cb407d3918be342a8dfe9b33ba6473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  angle_rotation_speed_degs: 90
+  max_angle_from_parent_direction: 0
+  auto_target_player: 1
 --- !u!114 &114536583498724918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,21 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation_speed: 20
---- !u!114 &114611423523671424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102435931949950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24cb407d3918be342a8dfe9b33ba6473, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  angle_rotation_speed_degs: 90
-  max_angle_from_parent_direction: 0
-  auto_target_player: 1
 --- !u!114 &114714634127443666
 MonoBehaviour:
   m_ObjectHideFlags: 1

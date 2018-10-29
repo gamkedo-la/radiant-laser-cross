@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4095993482741722}
   - component: {fileID: 114536583498724918}
   - component: {fileID: 114714634127443666}
-  - component: {fileID: 114070645313290924}
+  - component: {fileID: 114212277331779432}
   m_Layer: 0
-  m_Name: mc_squarey_square_chasing_white
+  m_Name: mc_squarey_nomnom_yellow
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8f648ae24f168c040abc884543bc8dd9, type: 2}
+  - {fileID: 2100000, guid: 7cf296051338cbd44afefa712c60dffb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +146,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114070645313290924
+--- !u!114 &114212277331779432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2cfe4f2c74a0d4db1f41b3341e59fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color_family: 1
+  color_family: 4
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
