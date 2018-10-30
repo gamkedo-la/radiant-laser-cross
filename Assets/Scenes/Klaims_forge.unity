@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1214,3 +1214,45 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2033724365}
   m_CullTransparentMesh: 0
+--- !u!1001 &2070931976
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000001357411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552748128818756, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
+  m_IsPrefabAsset: 0
