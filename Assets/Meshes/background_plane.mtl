@@ -1,0 +1,5 @@
+newmtl glowing_grid
+map_Kd glowing_grid.jpg
+Kd 1.0 1.0 1.0
+d 1.0
+

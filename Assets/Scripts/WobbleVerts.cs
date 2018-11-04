@@ -24,8 +24,10 @@ public class WobbleVerts : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             Vector3 vertex = baseHeight[i];
-            vertex.z += Mathf.Sin(Time.time * speed + baseHeight[i].x + baseHeight[i].y + baseHeight[i].z) * scale;
-            vertex.z += Mathf.PerlinNoise(baseHeight[i].x + noiseWalk, baseHeight[i].y + Mathf.Sin(Time.time * 0.1f)) * noiseStrength;
+            vertex.x += Mathf.Sin(Time.time * speed + baseHeight[i].x + baseHeight[i].y + baseHeight[i].z) * scale;
+            vertex.x += Mathf.PerlinNoise(baseHeight[i].x + noiseWalk, baseHeight[i].y + Mathf.Sin(Time.time * 0.1f)) * noiseStrength;
+            vertex.y += Mathf.Sin(Time.time * speed + baseHeight[i].x + baseHeight[i].y + baseHeight[i].z) * scale/2;
+            vertex.y += Mathf.PerlinNoise(baseHeight[i].x, baseHeight[i].y + Mathf.Sin(Time.time * 0.1f)) * noiseStrength;
             vertices[i] = vertex;
         }
 
