@@ -82,7 +82,7 @@ namespace rlc
         {
             var spawn_state = new SpawnState();
 
-            // If we have spawn points, use them. Otherwise, just use truly random positions in or on the border of the screen.
+            // If we have spawn points, use them. Otherwise, just use a direction opposite from the center so that we go through the screen..
             if (spawn_points != null
             && (spawn_points.Count > 0 || used_spawn_points.Count > 0))
             {
@@ -122,8 +122,11 @@ namespace rlc
                 }
                 else
                 {
-                    var random_direction = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0).normalized;
-                    spawn_state.rotation = Quaternion.LookRotation(random_direction, Vector3.back);
+                    float symetry_x = Random.Range(0.0f, 1.0f);
+                    float symetry_y = Random.Range(0.0f, 1.0f);
+                    var destination = new Vector3(spawn_state.position.x * symetry_x, spawn_state.position.y * symetry_y, 0);
+                    var opposite_direction = destination - spawn_state.position;
+                    spawn_state.rotation = Quaternion.LookRotation(opposite_direction, Vector3.back);
                 }
             }
 
