@@ -21,20 +21,23 @@ namespace rlc
         {
             last_spawn_time = Time.time;
             setting_up();
+
+            StartCoroutine(update_spawn());
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (count_left_to_spawn == 0)
-                return;
+        }
 
-            var now = Time.time;
-            if (now - last_spawn_time > spawn_interval_secs)
+        private IEnumerator update_spawn()
+        {
+            do
             {
-                last_spawn_time = now;
                 spawn();
+                yield return new WaitForSeconds(spawn_interval_secs);
             }
+            while (count_left_to_spawn > 0);
         }
 
         private void spawn()
