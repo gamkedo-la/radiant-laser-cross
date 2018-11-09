@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace rlc
 {
@@ -16,6 +17,7 @@ namespace rlc
     public class Wave : MonoBehaviour
     {
         public const string ENEMY_TAG = "enemy";
+        public const float ENEMY_SPAWN_WARNING_DELAY = 2.0f;
 
         public enum State
         {
@@ -46,8 +48,16 @@ namespace rlc
         // TODO: Add audio tracks
         // TODO: Add background
 
+
+        static private Material warning_material = null;
+
         void Start()
         {
+            if (warning_material == null)
+            {
+                warning_material = (Material)Resources.Load("warning_color", typeof(Material));
+            }
+
             var all_preset_enemies = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
             foreach(var enemy in all_preset_enemies)
             {
@@ -73,13 +83,64 @@ namespace rlc
             check_end_of_wave();
         }
 
+
         // Call this to spawn enemies procedurally, setting them so that we can track them.
         protected GameObject spawn_enemy(GameObject prefab, Vector3 position, Quaternion rotation)
+        {
+            // TODO: if we spawn the enemy in the screen, add a default visual warning.
+            return spawn_enemy_with_warning(prefab, position, rotation, ENEMY_SPAWN_WARNING_DELAY);
+        }
+
+
+
+        private GameObject spawn_enemy_now(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             // All enemies must be part of the wave, to be able to clear them on game reset.
             var enemy = (GameObject)Instantiate(prefab, position, rotation, this.transform);
             prepare_enemy(enemy);
             return enemy;
+        }
+
+        // Call this to spawn enemies with a visual warning, setting them immediately so that we can track them.
+        private GameObject spawn_enemy_with_warning(GameObject prefab, Vector3 position, Quaternion rotation, float delay)
+        {
+            var new_enemy = spawn_enemy_now(prefab, position, rotation);
+            StartCoroutine(start_spawn_warning(new_enemy, delay));
+            return new_enemy;
+        }
+
+        static private IEnumerator start_spawn_warning(GameObject target, float delay)
+        {
+            target.SetActive(false);
+            var warning_list = new List<GameObject>();
+            foreach (Collider collider in target.GetComponentsInChildren<Collider>())
+            {
+                warning_list.Add(spawn_warning_fx(collider));
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            foreach (var warning_object in warning_list)
+            {
+                const float fx_end_delay_after_actual_spawn = 1.0f;
+                Destroy(warning_object, fx_end_delay_after_actual_spawn);
+            }
+
+            target.SetActive(true);
+        }
+
+        static private GameObject spawn_warning_fx(Collider collider)
+        {
+            var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            box.transform.position = collider.transform.position;
+            box.transform.rotation = collider.transform.rotation;
+
+            box.transform.localScale = collider.GetComponent<Renderer>().bounds.size;
+
+            var box_renderer = box.GetComponentInChildren<Renderer>();
+            box_renderer.material = warning_material;
+
+            return box;
         }
 
         private void prepare_enemy(GameObject enemy)
@@ -92,6 +153,11 @@ namespace rlc
             enemy_life.on_destroyed += this.on_one_enemy_destroyed;
 
             ++enemies_left_count;
+
+            // Force up to the direction to the camera.
+            enemy.transform.rotation = Quaternion.LookRotation(enemy.transform.forward, Vector3.back);
+            // Force position ont the game's plan.
+            enemy.transform.position.Set(enemy.transform.position.x, enemy.transform.position.y, 0);
         }
 
         private void on_one_enemy_destroyed(LifeControl enemy_life)

@@ -57,6 +57,8 @@ MonoBehaviour:
   enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
+  spawn_points: []
+  target_player: 1
   count_left_to_spawn: 200
   instances_per_spawn: 10
   spawn_interval_secs: 2

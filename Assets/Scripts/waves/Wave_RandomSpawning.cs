@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,19 +10,34 @@ namespace rlc
         // TODO: this is just a quick demo, unfinished
 
         public List<GameObject> prefabs_to_spawn;
+        public List<Transform> spawn_points;
+
+        public bool target_player = false;
+        public bool reuse_spawn_points = false;
         public int count_left_to_spawn = 10;
         public int instances_per_spawn = 2;
         public float spawn_interval_secs = 1.0f;
+        public const float max_distance_from_center = 35.0f; // TODO: replace by something deduced from actual data, not a guess
 
-        private float last_spawn_time;
+        private List<Transform> used_spawn_points = new List<Transform>();
+
+        private struct SpawnState
+        {
+            public Vector3 position;
+            public Quaternion rotation;
+        };
 
         // Use this for initialization
         void Start()
         {
-            last_spawn_time = Time.time;
             setting_up();
-
             StartCoroutine(update_spawn());
+
+            // Make sure the spawn points are not visible.
+            foreach (var spawn_point in spawn_points)
+            {
+                spawn_point.gameObject.SetActive(false);
+            }
         }
 
         // Update is called once per frame
@@ -52,9 +67,8 @@ namespace rlc
 
             while (instance_count_to_spawn > 0)
             {
-                var random_wall = (AxesDirections)(Random.Range(0, System.Enum.GetValues(typeof(AxesDirections)).Length));
-                var orientation = -border_from_screen_center(random_wall);
-                spawn_enemy(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation, Vector3.back));
+                var spawn_transform = random_transform();
+                spawn_enemy(random_prefab(), spawn_transform.position, spawn_transform.rotation);
                 --instance_count_to_spawn;
             }
 
@@ -64,35 +78,62 @@ namespace rlc
             }
         }
 
-        private const float border_distance_from_center = 35.0f; // TODO: replace by something deduced from actual data, not a guess\
-        private const float half_border_distance_from_center = border_distance_from_center; // TODO: replace by something deduced from actual data, not a guess
-
-        private Vector3 random_position(AxesDirections wall)
+        private SpawnState random_transform()
         {
-            var wall_position = border_from_screen_center(wall);
-            var random_side_step = Random.Range(-half_border_distance_from_center, half_border_distance_from_center);
-            switch (wall)
+            var spawn_state = new SpawnState();
+
+            // If we have spawn points, use them. Otherwise, just use truly random positions in or on the border of the screen.
+            if (spawn_points != null
+            && (spawn_points.Count > 0 || used_spawn_points.Count > 0))
             {
-                case AxesDirections.north:  return wall_position + new Vector3(random_side_step, 0, 0);
-                case AxesDirections.east:   return wall_position + new Vector3(0, random_side_step, 0);
-                case AxesDirections.south:  return wall_position + new Vector3(random_side_step, 0, 0);
-                case AxesDirections.west:   return wall_position + new Vector3(0, random_side_step, 0);
-                default:
-                    return new Vector3(0, 0, 0); // Unmanaged case: make it fail (TODO)
+                if (spawn_points.Count == 0)
+                {
+                    spawn_points.AddRange(used_spawn_points);
+                    used_spawn_points.Clear();
+                }
+
+
+                var random_idx = Random.Range(0, spawn_points.Count);
+                var spawn_point = spawn_points[random_idx];
+                if (!reuse_spawn_points)
+                {
+                    used_spawn_points.Add(spawn_point);
+                    spawn_points.RemoveAt(random_idx);
+                }
+
+                spawn_state.position = spawn_point.position;
+
+                if (target_player)
+                {
+                    spawn_state.rotation = rotation_look_at_player(spawn_state.position);
+                }
+                else
+                {
+                    spawn_state.rotation = spawn_point.rotation;
+                }
             }
+            else
+            {
+                spawn_state.position = new Vector3(Random.Range(-max_distance_from_center, max_distance_from_center), Random.Range(-max_distance_from_center, max_distance_from_center), 0);
+
+                if (target_player)
+                {
+                    spawn_state.rotation = rotation_look_at_player(spawn_state.position);
+                }
+                else
+                {
+                    var random_direction = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 0).normalized;
+                    spawn_state.rotation = Quaternion.LookRotation(random_direction, Vector3.back);
+                }
+            }
+
+            return spawn_state;
         }
 
-        private Vector3 border_from_screen_center(AxesDirections border_direction)
+        private Quaternion rotation_look_at_player(Vector3 from_pos)
         {
-            switch (border_direction)
-            {
-                case AxesDirections.north:  return new Vector3(0, border_distance_from_center, 0);
-                case AxesDirections.east:   return new Vector3(border_distance_from_center, 0, 0);
-                case AxesDirections.south:  return new Vector3(0, -border_distance_from_center, 0);
-                case AxesDirections.west:   return new Vector3(-border_distance_from_center, 0, 0);
-                default:
-                    return new Vector3(0, 0, 0); // Unmanaged case: make it fail (TODO)
-            }
+            var player_direction = LaserCross.current.transform.position - from_pos;
+            return Quaternion.LookRotation(player_direction, Vector3.back);
         }
 
         private GameObject random_prefab()
