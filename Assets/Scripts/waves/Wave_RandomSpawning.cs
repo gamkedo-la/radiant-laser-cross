@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,7 +51,7 @@ namespace rlc
             {
                 var random_wall = (AxesDirections)(Random.Range(0, System.Enum.GetValues(typeof(AxesDirections)).Length));
                 var orientation = -border_from_screen_center(random_wall);
-                spawn_enemy(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation));
+                spawn_enemy(random_prefab(), random_position(random_wall), Quaternion.LookRotation(orientation, Vector3.back));
                 --instance_count_to_spawn;
             }
 
