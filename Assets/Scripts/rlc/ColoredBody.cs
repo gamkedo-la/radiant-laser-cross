@@ -32,7 +32,7 @@ namespace rlc
         {
             // TODO: insert here an animation specific to this body when hit
             if(life_control)
-                life_control.on_hit();
+                life_control.on_hit(this);
         }
 
         void OnCollisionEnter(Collision collision)

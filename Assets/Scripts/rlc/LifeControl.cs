@@ -71,7 +71,7 @@ namespace rlc
             return life_state == LifeState.alive_newborn;
         }
 
-        public void on_hit() // TODO: add the position of the hit point
+        public void on_hit(ColoredBody body_part_hit) // TODO: add the position of the hit point
         {
             //Debug.Log("on_hit!");
 
@@ -82,13 +82,12 @@ namespace rlc
             if (hit_points <= 0)
             {
                 //Debug.Log("on_hit: die!");
-                ExplodeFX();
+                launch_destruction_animation();
                 die();
             }
             else
             {
-                HitFX();
-                // TODO: play "hit" animation here
+                HitFX(body_part_hit.transform);
             }
         }
 
@@ -103,21 +102,36 @@ namespace rlc
             life_state = LifeState.alive_in_screen;
         }
 
-        public void ExplodeFX()
+        public void launch_destruction_animation()
         {
-            if (explosionPrefab) // was a prefab set in inspector?
+            foreach (var body_part in GetComponentsInChildren<ColoredBody>())
             {
-                GameObject explosion = Instantiate(explosionPrefab, gameObject.transform.position, gameObject.transform.rotation);
-                Destroy(explosion, 5);
+                ExplodeFX(body_part.transform);
             }
+            ExplodeFX(this.transform);
         }
 
-        public void HitFX()
+        public void ExplodeFX(Transform fx_transform)
         {
-            if (hitPrefab)
+            launch_fx(explosionPrefab, fx_transform.position, fx_transform.rotation, 5);
+        }
+
+        public void HitFX(Transform fx_transform)
+        {
+            launch_fx(hitPrefab, fx_transform.position, fx_transform.rotation, 5);
+        }
+
+        private void launch_fx(GameObject prefab, Vector3 position, Quaternion rotation, float max_duration)
+        {
+            if (prefab)
             {
-                GameObject explosion = Instantiate(hitPrefab, gameObject.transform.position, gameObject.transform.rotation);
-                Destroy(explosion, 5);
+                GameObject fx = Instantiate(prefab, position, rotation);
+                Destroy(fx, max_duration);
+
+                // To make sure that we always see the fx over the related object, move the fx
+                // in front of the camera.
+                const float translation_size_to_the_camera = 10;
+                fx.transform.Translate(Vector3.back * translation_size_to_the_camera, Space.World);
             }
         }
 
