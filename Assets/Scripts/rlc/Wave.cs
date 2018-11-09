@@ -32,8 +32,8 @@ namespace rlc
         [Tooltip("Title that will be displayed on the screen before starting the wave.")]
         public string title;
 
-        [Tooltip("Timeout, if reached it's game over.")]
-        public float timeout_secs = 120.0f;
+        [Tooltip("Timeout, if reached it's game over. Zero means no timeout.")]
+        public float timeout_secs = 0.0f;
 
         public delegate void WaveEvent(Wave wave);
 

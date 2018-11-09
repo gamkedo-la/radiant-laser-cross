@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.8113208, g: 0.50948644, b: 0.27171594, a: 0}
   title: Easy But Hard
-  timeout_secs: 120
+  timeout_secs: 0
+  enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
   count_left_to_spawn: 200

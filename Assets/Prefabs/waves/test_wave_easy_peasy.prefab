@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
   title: Easy Peasy
-  timeout_secs: 120
+  timeout_secs: 0
+  enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
   count_left_to_spawn: 10

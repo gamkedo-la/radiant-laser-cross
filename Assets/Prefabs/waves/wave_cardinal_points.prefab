@@ -1067,7 +1067,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.62144, g: 0.990566, b: 0.94971955, a: 0}
   title: Cardinal Points
-  timeout_secs: 120
+  timeout_secs: 0
+  enemies_left_count: 0
 --- !u!114 &114092600220012766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1113,9 +1114,9 @@ MonoBehaviour:
   emitter: {fileID: 4141548227929688}
   time_between_firing: 0.03125
   default_bullet_speed: 0
-  default_firing_animation: 0
   clan: 1
   allow_firing_outside_screen: 0
+  default_firing_animation: 0
 --- !u!114 &114386300810520294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,12 +1128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life_state: 0
   hit_points: 3
   body_parts:
   - {fileID: 114821292473066780}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
+  start_time: 0
 --- !u!114 &114627002738595342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1164,9 +1167,9 @@ MonoBehaviour:
   emitter: {fileID: 4222940405297948}
   time_between_firing: 0.03125
   default_bullet_speed: 0
-  default_firing_animation: 0
   clan: 1
   allow_firing_outside_screen: 0
+  default_firing_animation: 0
 --- !u!114 &114728238034384140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,12 +1195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life_state: 0
   hit_points: 3
   body_parts:
   - {fileID: 114118013901667886}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
+  start_time: 0
 --- !u!114 &114782642806377158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,9 +1219,9 @@ MonoBehaviour:
   emitter: {fileID: 4893996043477000}
   time_between_firing: 0.03125
   default_bullet_speed: 0
-  default_firing_animation: 0
   clan: 1
   allow_firing_outside_screen: 0
+  default_firing_animation: 0
 --- !u!114 &114785935529862992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1233,9 +1238,9 @@ MonoBehaviour:
   emitter: {fileID: 4503537298438800}
   time_between_firing: 0.03125
   default_bullet_speed: 0
-  default_firing_animation: 0
   clan: 1
   allow_firing_outside_screen: 0
+  default_firing_animation: 0
 --- !u!114 &114821292473066780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1262,12 +1267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life_state: 0
   hit_points: 3
   body_parts:
   - {fileID: 114627002738595342}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
+  start_time: 0
 --- !u!114 &114896804246814928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1279,12 +1286,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7232b349070a6ea4b94b6d372a08fc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life_state: 0
   hit_points: 3
   body_parts:
   - {fileID: 114922606880697332}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
+  start_time: 0
 --- !u!114 &114922606880697332
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.9433962, g: 0.50284797, b: 0.52844226, a: 0}
   title: Easy..Wait... nope nope nope
-  timeout_secs: 120
+  timeout_secs: 0
+  enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 779c8b905ba124347a15ef39cc20ec00, type: 2}
   - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}

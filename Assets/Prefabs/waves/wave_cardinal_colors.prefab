@@ -53,12 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.39094803, g: 0.9716981, b: 0.31626022, a: 0}
   title: Cardinal Colors
-  timeout_secs: 120
-  on_finished:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  timeout_secs: 0
+  enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 779c8b905ba124347a15ef39cc20ec00, type: 2}
   - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}
