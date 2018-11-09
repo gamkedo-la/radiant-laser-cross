@@ -133,6 +133,7 @@ namespace rlc
         {
             var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
             box.transform.position = collider.transform.position;
+            box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, 20); // Makes sure it's in the background.
             box.transform.rotation = collider.transform.rotation;
 
             box.transform.localScale = collider.GetComponent<Renderer>().bounds.size;
