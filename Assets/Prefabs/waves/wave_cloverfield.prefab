@@ -483,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background_color: {r: 0.1682983, g: 0.5849056, b: 0.21001163, a: 0}
   title: Cloverfield
-  timeout_secs: 0
+  timeout_secs: 120
   enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1188869813242726, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
@@ -497,4 +497,4 @@ MonoBehaviour:
   reuse_spawn_points: 0
   count_left_to_spawn: 4
   instances_per_spawn: 1
-  spawn_interval_secs: 8
+  spawn_interval_secs: 16
