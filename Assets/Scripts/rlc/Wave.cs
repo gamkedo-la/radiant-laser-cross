@@ -109,7 +109,7 @@ namespace rlc
             return new_enemy;
         }
 
-        static private IEnumerator start_spawn_warning(GameObject target, float delay)
+        private IEnumerator start_spawn_warning(GameObject target, float delay)
         {
             target.SetActive(false);
             var warning_list = new List<GameObject>();
@@ -129,7 +129,7 @@ namespace rlc
             target.SetActive(true);
         }
 
-        static private GameObject spawn_warning_fx(Collider collider)
+        private GameObject spawn_warning_fx(Collider collider)
         {
             var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
             box.transform.position = collider.transform.position;
@@ -141,6 +141,7 @@ namespace rlc
             var box_renderer = box.GetComponentInChildren<Renderer>();
             box_renderer.material = warning_material;
 
+            box.transform.parent = this.gameObject.transform;
             return box;
         }
 
