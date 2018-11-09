@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: b0804e9482844ce4c9758ffcfdd4e10a
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: RLC_overload_bar_sheet_v2_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -86,7 +87,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1b4cf6fc20f9f5b4d8c43d13e5b31c0a
     vertices: []
     indices: 
     edges: []
