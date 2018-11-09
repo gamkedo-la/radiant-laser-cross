@@ -53,7 +53,7 @@ namespace rlc
             var new_direction = Vector3.RotateTowards(transform.forward, target_direction, Mathf.Deg2Rad * next_angle_rotation, 0.0f);
             new_direction = limit_angle_from_parent(new_direction);
 
-            transform.rotation = Quaternion.LookRotation(new_direction);
+            transform.rotation = Quaternion.LookRotation(new_direction, Vector3.back); // Our up vector is to the camera.
         }
 
         private Vector3 limit_angle_from_parent(Vector3 wanted_direction)
