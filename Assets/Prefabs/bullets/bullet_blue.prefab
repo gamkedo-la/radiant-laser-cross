@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  acceleration: 0
   clan_who_fired: 1
 --- !u!114 &114824743697169572
 MonoBehaviour:

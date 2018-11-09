@@ -128,8 +128,9 @@ namespace rlc
 
         private void apply_commands(Commands commands)
         {
-            Vector2 translation = commands.ship_direction.normalized * move_speed * Time.deltaTime;
-            transform.Translate(translation, Space.World);
+            //Vector2 translation = commands.ship_direction.normalized * move_speed * Time.deltaTime;
+            //transform.Translate(translation, Space.World);
+            Movement.move_direction(this.transform, commands.ship_direction.normalized, move_speed);
 
             foreach (var shield in shields)
                 shield.deactivate();
