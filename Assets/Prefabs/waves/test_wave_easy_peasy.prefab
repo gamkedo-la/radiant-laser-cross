@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
+    type: 2}
   background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
   title: Easy Peasy
   timeout_secs: 0
@@ -59,6 +61,7 @@ MonoBehaviour:
   - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
   spawn_points: []
   target_player: 1
+  reuse_spawn_points: 0
   count_left_to_spawn: 10
   instances_per_spawn: 1
   spawn_interval_secs: 1

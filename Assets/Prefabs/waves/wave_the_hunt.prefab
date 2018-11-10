@@ -1054,6 +1054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29353ec3c54121d4fa9bb44923b40e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
+    type: 2}
   background_color: {r: 0.1981132, g: 0.07008722, b: 0.07008722, a: 0}
   title: The Hunt
   timeout_secs: 0

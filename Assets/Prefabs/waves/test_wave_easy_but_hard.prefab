@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
+    type: 2}
   background_color: {r: 0.8113208, g: 0.50948644, b: 0.27171594, a: 0}
   title: Easy But Hard
   timeout_secs: 0
@@ -59,6 +61,7 @@ MonoBehaviour:
   - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
   spawn_points: []
   target_player: 1
+  reuse_spawn_points: 0
   count_left_to_spawn: 200
   instances_per_spawn: 10
   spawn_interval_secs: 2

@@ -18,6 +18,8 @@ namespace rlc
     {
         public const string ENEMY_TAG = "enemy";
         public const float ENEMY_SPAWN_WARNING_DELAY = 2.0f;
+        public GameObject warning_particle_prefab; // a particle system prefab spawned in spawn_warning_fx()
+        const bool DRAW_COLLIDERS_AS_WARNINGS = false; 
 
         public enum State
         {
@@ -115,7 +117,11 @@ namespace rlc
             var warning_list = new List<GameObject>();
             foreach (Collider collider in target.GetComponentsInChildren<Collider>())
             {
-                warning_list.Add(spawn_warning_fx(collider));
+                GameObject warningobject = spawn_warning_fx(collider);
+                if (warningobject)
+                {
+                    warning_list.Add(warningobject);
+                }
             }
 
             yield return new WaitForSeconds(delay);
@@ -131,18 +137,35 @@ namespace rlc
 
         private GameObject spawn_warning_fx(Collider collider)
         {
-            var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            box.transform.position = collider.transform.position;
-            box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, 20); // Makes sure it's in the background.
-            box.transform.rotation = collider.transform.rotation;
 
-            box.transform.localScale = collider.GetComponent<Renderer>().bounds.size;
+            // also create a particle effect
+            if (warning_particle_prefab)
+            {
+                GameObject fx = Instantiate(warning_particle_prefab, collider.transform.position, collider.transform.rotation);
+            }
 
-            var box_renderer = box.GetComponentInChildren<Renderer>();
-            box_renderer.material = warning_material;
+            if (DRAW_COLLIDERS_AS_WARNINGS)
+            {
 
-            box.transform.parent = this.gameObject.transform;
-            return box;
+                var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                box.transform.position = collider.transform.position;
+                box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, 20); // Makes sure it's in the background.
+                box.transform.rotation = collider.transform.rotation;
+
+                box.transform.localScale = collider.GetComponent<Renderer>().bounds.size;
+
+                var box_renderer = box.GetComponentInChildren<Renderer>();
+                box_renderer.material = warning_material;
+
+                box.transform.parent = this.gameObject.transform;
+
+                return box;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         private void prepare_enemy(GameObject enemy)

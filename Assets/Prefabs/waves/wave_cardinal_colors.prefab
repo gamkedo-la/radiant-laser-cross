@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
+    type: 2}
   background_color: {r: 0.39094803, g: 0.9716981, b: 0.31626022, a: 0}
   title: Cardinal Colors
   timeout_secs: 0
@@ -60,6 +62,9 @@ MonoBehaviour:
   - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}
   - {fileID: 1604797991448608, guid: 0ef7509d5e60d29478a95ae1c93d1770, type: 2}
   - {fileID: 1604797991448608, guid: db7113c654932f641ae413aff640c33a, type: 2}
+  spawn_points: []
+  target_player: 0
+  reuse_spawn_points: 0
   count_left_to_spawn: 8
   instances_per_spawn: 1
   spawn_interval_secs: 3
