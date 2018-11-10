@@ -19,7 +19,7 @@ namespace rlc
         public const string ENEMY_TAG = "enemy";
         public const float ENEMY_SPAWN_WARNING_DELAY = 2.0f;
         public GameObject warning_particle_prefab; // a particle system prefab spawned in spawn_warning_fx()
-        const bool DRAW_COLLIDERS_AS_WARNINGS = false; 
+        const bool DRAW_COLLIDERS_AS_WARNINGS = true; // red boxes that match collider shapes
 
         public enum State
         {
