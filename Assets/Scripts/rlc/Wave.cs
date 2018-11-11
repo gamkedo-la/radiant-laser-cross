@@ -142,6 +142,7 @@ namespace rlc
             if (warning_particle_prefab)
             {
                 GameObject fx = Instantiate(warning_particle_prefab, collider.transform.position, collider.transform.rotation);
+                Destroy(fx, ENEMY_SPAWN_WARNING_DELAY);
             }
 
             if (DRAW_COLLIDERS_AS_WARNINGS)
