@@ -34,6 +34,8 @@ namespace rlc
         public float default_title_display_duration_secs = 5.0f;
         public float title_display_duration_secs = 3.0f;
 
+        private TimeoutSystem timeout;
+
         private int title_display_count = 0;
         private int wave_start_count = 0;
 
@@ -59,6 +61,7 @@ namespace rlc
         // Use this for initialization
         void Start()
         {
+            timeout = GetComponent<TimeoutSystem>();
             reset_all();
         }
 
@@ -84,10 +87,7 @@ namespace rlc
             Debug.Log("==== RESET ALL ====");
             // TODO: make a not crude version XD
 
-            if (current_wave != null)
-            {
-                Destroy(current_wave.gameObject);
-            }
+            clear_wave();
 
             Bullet.clear_bullets_from_game();
 
@@ -154,6 +154,7 @@ namespace rlc
             if (current_wave != null) // TODO: remove the previous wave progressively/"smoothly"
             {
                 Destroy(current_wave.gameObject);
+                timeout.stop();
             }
         }
 
@@ -168,6 +169,12 @@ namespace rlc
 
             int wave_start_idx = ++wave_start_count; // Keep track of which wave we were starting.
 
+
+            if (wave_info.wave.timeout_secs > 0)
+            {
+                timeout.prepare_timeout(wave_info.wave.timeout_secs);
+            }
+
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);
 
             if (wave_start_idx != wave_start_count) // If another wave was started in-betwen, do nothing.
@@ -176,6 +183,11 @@ namespace rlc
             current_wave = Instantiate(wave_info.wave);
 
             current_wave.on_finished += wave => next_wave();
+
+            if (current_wave.timeout_secs > 0)
+            {
+                timeout.start(current_wave.timeout_secs);
+            }
         }
 
         private void set_theme_color(Color color)
