@@ -55,6 +55,8 @@ namespace rlc
 
         private TrailRenderer trails;
 
+        private GameOverReason game_over_reason = GameOverReason.destroyed;
+
         void Start()
         {
             level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
@@ -87,6 +89,12 @@ namespace rlc
         public void push_next_commands(Commands commands)
         {
             next_commands = commands;
+        }
+
+        public void die(GameOverReason reason)
+        {
+            game_over_reason = reason;
+            life_control.die();
         }
 
         private void animate_todo_please_replace_me()
@@ -178,7 +186,7 @@ namespace rlc
         private void rotate_guns(GunsRotation rotation_from_commands)
         {
             // We want rotations to always happen in lock-steps of axis,
-            // that is, rotation can only change when guns are aligned with the axis.
+            // that is, rotation can only change/start when guns are aligned with the axis.
             // If the player maintain a rotation direction, we should seemlessly continue
             // rotating until they don't, then we stop rotation once reaching an axis orientation.
 
@@ -319,7 +327,7 @@ namespace rlc
             if (current == this)
                 current = null;
 
-            level_builder.game_over();
+            level_builder.game_over(game_over_reason);
         }
     }
 

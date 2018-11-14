@@ -27,9 +27,14 @@ namespace rlc
 
         }
 
-        public void prepare_timeout(float seconds)
+        public void show_timeout(float seconds)
         {
             display.show(seconds);
+        }
+
+        public void hide_timeout()
+        {
+            display.hide();
         }
 
         public void start(float seconds)
@@ -41,8 +46,8 @@ namespace rlc
 
         public void stop()
         {
-            display.hide();
             end_run();
+            hide_timeout();
         }
 
         private void end_run()
@@ -64,15 +69,16 @@ namespace rlc
                 var now = Time.time;
                 var time_left = timeout_time - now;
 
-                display.show(time_left);
-
                 if (time_left < 0)
                 {
                     // HERE: timeout!
+                    display.show(0.0f);
                     current_run = null;
                     on_timeout();
                     break;
                 }
+
+                display.show(time_left);
 
                 yield return new WaitForSeconds(time_between_updates);
             }

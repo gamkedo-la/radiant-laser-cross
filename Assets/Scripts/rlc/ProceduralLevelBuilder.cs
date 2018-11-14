@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 namespace rlc
 {
+
+    public enum GameOverReason
+    {
+        destroyed, timeout, hard_reset
+    }
+
     /* Build and present levels.
      * Build levels as sequences of waves to play.
     */
@@ -35,6 +41,8 @@ namespace rlc
         public float title_display_duration_secs = 3.0f;
 
         private TimeoutSystem timeout;
+        private IEnumerator timeout_gameover_display;
+        private float timeout_gameover_deplay = 3.0f;
 
         private int title_display_count = 0;
         private int wave_start_count = 0;
@@ -62,6 +70,7 @@ namespace rlc
         void Start()
         {
             timeout = GetComponent<TimeoutSystem>();
+            timeout.on_timeout = () => game_over_timeout();
             reset_all();
         }
 
@@ -75,11 +84,38 @@ namespace rlc
         }
 
 
-        public void game_over()
+        public void game_over(GameOverReason reason)
         {
             if (state != State.playing_wave)
                 return;
             state = State.game_over;
+
+            if (reason == GameOverReason.timeout)
+            {
+                if (timeout_gameover_display != null)
+                    StopCoroutine(timeout_gameover_display);
+                timeout_gameover_display = game_over_timeout_display();
+                StartCoroutine(timeout_gameover_display);
+            }
+            else
+            {
+                timeout.stop();
+            }
+        }
+
+        private void game_over_timeout()
+        {
+            if (LaserCross.current)
+            {
+                LaserCross.current.die(GameOverReason.timeout);
+            }
+        }
+
+        private IEnumerator game_over_timeout_display()
+        {
+            timeout.show_timeout(0.0f);
+            yield return new WaitForSeconds(timeout_gameover_deplay);
+            timeout.hide_timeout();
         }
 
         private void reset_all()
@@ -95,7 +131,11 @@ namespace rlc
 
             level_progression = null;
 
-            var laser_cross = GameObject.Find("laser_cross");
+            GameObject laser_cross = null;
+
+            if (LaserCross.current != null)
+                laser_cross = LaserCross.current.gameObject;
+
             if (laser_cross == null || !laser_cross.GetComponent<LaserCross>().life_control.is_alive())
             {
                 if (laser_cross != null)
@@ -154,7 +194,6 @@ namespace rlc
             if (current_wave != null) // TODO: remove the previous wave progressively/"smoothly"
             {
                 Destroy(current_wave.gameObject);
-                timeout.stop();
             }
         }
 
@@ -169,10 +208,10 @@ namespace rlc
 
             int wave_start_idx = ++wave_start_count; // Keep track of which wave we were starting.
 
-
+            timeout.stop();
             if (wave_info.wave.timeout_secs > 0)
             {
-                timeout.prepare_timeout(wave_info.wave.timeout_secs);
+                timeout.show_timeout(wave_info.wave.timeout_secs);
             }
 
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);

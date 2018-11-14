@@ -20,7 +20,7 @@ public class SpecialCommandHandler : MonoBehaviour {
             level_builder.new_game();
 
         if (Input.GetKeyUp(KeyCode.R))
-            level_builder.game_over();
+            level_builder.game_over(rlc.GameOverReason.hard_reset);
 
         if (Input.GetKeyUp(KeyCode.Tab))
             level_builder.next_wave();
