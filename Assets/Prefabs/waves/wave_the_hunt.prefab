@@ -1058,7 +1058,7 @@ MonoBehaviour:
     type: 2}
   background_color: {r: 0.1981132, g: 0.07008722, b: 0.07008722, a: 0}
   title: The Hunt
-  timeout_secs: 99
+  timeout_secs: 40
   enemies_left_count: 0
 --- !u!114 &114891256454083850
 MonoBehaviour:

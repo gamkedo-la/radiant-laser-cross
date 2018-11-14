@@ -514,7 +514,7 @@ MonoBehaviour:
     type: 2}
   background_color: {r: 0.1682983, g: 0.5849056, b: 0.21001163, a: 0}
   title: Cloverfield
-  timeout_secs: 120
+  timeout_secs: 60
   enemies_left_count: 0
   prefabs_to_spawn:
   - {fileID: 1188869813242726, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
