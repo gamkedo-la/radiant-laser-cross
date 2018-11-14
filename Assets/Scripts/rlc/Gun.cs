@@ -31,6 +31,8 @@ namespace rlc
         private Renderer this_gun_renderer;
         private Seeker seeker;
 
+        private AudioSource sound_fire;
+
         private enum ShootingState
         {
             idle
@@ -45,6 +47,7 @@ namespace rlc
             last_firing_time = Time.time;
             this_gun_renderer = GetComponent<Renderer>();
             seeker = GetComponent<Seeker>();
+            sound_fire = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -134,6 +137,8 @@ namespace rlc
             if (default_bullet_speed > 0)
                 bullet.speed = default_bullet_speed;
             bullet.gameObject.tag = Bullet.TAG;
+
+            play_sound_fire();
         }
 
         private void inherit_target(Bullet bullet)
@@ -147,6 +152,15 @@ namespace rlc
 
             bullet_seeker.target = seeker.target;
         }
+
+        private void play_sound_fire()
+        {
+            if (sound_fire)
+            {
+                sound_fire.Play();
+            }
+        }
+
 
     }
 }
