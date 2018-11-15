@@ -46,6 +46,9 @@ namespace rlc
         public LifeControl life_control;
         public OverloadSystem overload_system;
 
+        public AudioSource sound_rotation;
+        public AudioSource sound_rotation_stop;
+
         // Note that these are functions because the gun on each direction will change while playing.
         private Gun get_gun(AxesDirections direction)   { return guns[(int)direction];  }
         private Shield get_shield(AxesDirections direction) { return shields[(int)direction]; }
@@ -193,6 +196,10 @@ namespace rlc
             if (current_guns_rotation == GunsRotation.none) // If we are already in locked position, take any command, otherwise ignore commands until next lock position.
             {
                 current_guns_rotation = rotation_from_commands;
+                if (rotation_from_commands != GunsRotation.none)
+                {
+                    start_rotation_sound();
+                }
             }
 
             float rotation_factor = gun_rotation_factor(current_guns_rotation);
@@ -218,6 +225,8 @@ namespace rlc
                 {
                     // We need to stop: lock the position to align with axis.
                     next_orientation = angle(current_target_axis);
+                    stop_rotation_sound();
+                    play_rotation_stop_sound();
                 }
             }
 
@@ -238,6 +247,31 @@ namespace rlc
         {
            Utility.Rotate(guns, rotation_steps);
            Utility.Rotate(shields, rotation_steps);
+        }
+
+
+        private void start_rotation_sound()
+        {
+            if (sound_rotation)
+            {
+                sound_rotation.Play();
+            }
+        }
+
+        private void stop_rotation_sound()
+        {
+            if (sound_rotation)
+            {
+                sound_rotation.Stop();
+            }
+        }
+
+        private void play_rotation_stop_sound()
+        {
+            if (sound_rotation_stop)
+            {
+                sound_rotation_stop.Play();
+            }
         }
 
         private static AxesDirections next_axis(float current_angle, GunsRotation rotation)
@@ -321,6 +355,7 @@ namespace rlc
                     return 0.0f;
             }
         }
+
 
         private void OnDestroy()
         {
