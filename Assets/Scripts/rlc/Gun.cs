@@ -4,6 +4,19 @@ using UnityEngine;
 
 namespace rlc
 {
+    public enum GunFiringMode
+    {
+        one_shot,           // Emit one bullet per shot.
+        burst,              // Emit several bullets per shot.
+    }
+
+    public enum GunBulletSelectionMode
+    {
+        random,                 // Chose a bullet prefab randomly at each firing (one bullet type by burst).
+        top_bullet,             // Only the bullet prefab at the top will be used. Change it programatically if you want to change it.
+        rotate,                 // Use the top bullet prefab for a shot and rotate the bullet prefabs for next shot.
+    }
+
     /* Behaviour of any kind of gun, as in "bullet emitter". */
     public class Gun : MonoBehaviour
     {
@@ -11,19 +24,36 @@ namespace rlc
         public List<Bullet> bullet_prefabs;
 
         [Tooltip("Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.")]
-        public Transform emitter;                           //
+        public Transform emitter;
+
+        [Tooltip("Fireing mode: how each firing is treated.")]
+        GunFiringMode firing_mode = GunFiringMode.one_shot;
+
+        [Tooltip("Bullet Selection mode: how bullet are chosen for each firing.")]
+        GunBulletSelectionMode bullet_selection = GunBulletSelectionMode.random;
 
         [Tooltip("Time between each firing.")]
         public float time_between_firing = 1.0f / 32.0f;
 
-        [Tooltip("Bullet speed applied to all bullets when fired.")]
-        public float default_bullet_speed = 0.0f; // Speed applied to bullets, or their default speed if 0.
+        [Tooltip("Time between each shot (for example in burst mode).")]
+        public float time_between_burst_shot = 1.0f / 32.0f;
+
+        [Tooltip("How many bullets to fire at the same time when firing, spread uniformly along the spread range.")]
+        public int parallel_shots = 1;
+
+        [Tooltip("Angle around the emitter forward direction (on the game plane) used to spread bullets ")]
+        public float spread_angle_degs = 0.0f;
+
+        [Tooltip("Bullet speed applied to all bullets when fired, or their default speed if 0.")]
+        public float default_bullet_speed = 0.0f;
 
         [Tooltip("Determine the clan of the bullets being fired.")]
         public Clan clan = Clan.enemy;
 
         [Tooltip("Set to true if bullets fired from this gun should be able to live outside the screen.")]
         public bool allow_firing_outside_screen = false;
+
+
 
         public bool default_firing_animation = false;
 
@@ -115,9 +145,38 @@ namespace rlc
         // Implements how the bullets should be launched.
         private void emit_bullets_in_target_direction()
         {
-            var fire_direction = emitter.forward;
-            // TODO BEWARE: For the moment we assume that there is only one bullet - in the future change the bullet number and pattern from here.
-            emit_bullet(fire_direction);
+            var central_firing_direction = emitter.forward;
+
+            if (parallel_shots < 1)
+                parallel_shots = 1;
+
+            if (parallel_shots == 1)
+            {
+                emit_bullet(central_firing_direction);
+                return;
+            }
+
+            var half_spread_angle = spread_angle_degs / 2.0f;
+
+            var rotation_to_last_direction = Quaternion.Euler(0, 0, half_spread_angle);
+            var rotation_to_first_direction = Quaternion.Inverse(rotation_to_last_direction);
+
+            var first_shot_direction = rotation_to_first_direction * central_firing_direction;
+            var last_shot_direction = rotation_to_last_direction * central_firing_direction;
+
+            for (int shot_idx = 0; shot_idx < parallel_shots; ++shot_idx)
+            {
+                var ratio = (float)shot_idx / (float)(parallel_shots - 1);
+
+                // Note: The following didn't work but I don't know why.
+                //// Using Slerp can give weird results over 180degs spread angle, so we'll force lerp on a plane.
+                //var firing_direction_2d = Vector2.Lerp(new Vector2(first_shot_direction.x, first_shot_direction.y), new Vector2(last_shot_direction.x, last_shot_direction.y), ratio);
+                //var firing_direction = new Vector3(firing_direction_2d.x, firing_direction_2d.y);
+
+                var firing_direction = Vector3.Slerp(first_shot_direction, last_shot_direction, ratio);
+
+                emit_bullet(firing_direction);
+            }
         }
 
         // Emits one bullet.
