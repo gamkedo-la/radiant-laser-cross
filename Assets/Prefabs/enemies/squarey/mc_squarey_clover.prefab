@@ -290,13 +290,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798410542205800}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.8, y: -0.03, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4630345611847880}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!4 &4122323277248060
 Transform:
   m_ObjectHideFlags: 1
@@ -318,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1627907614998070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0.5}
   m_LocalScale: {x: 0.2156, y: 0.2156, z: 0.2156}
   m_Children:
   - {fileID: 4679377663864006}
@@ -331,14 +331,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180120202745808}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5, y: 0, z: -5}
   m_LocalScale: {x: 9.00002, y: 9.000019, z: 9.000019}
   m_Children:
   - {fileID: 4136039683647448}
   m_Father: {fileID: 4209555762304040}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4182136304547414
 Transform:
   m_ObjectHideFlags: 1
@@ -460,39 +460,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896783196316256}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.8, y: -0.03, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4182136304547414}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!4 &4679377663864006
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046965133758080}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.8, y: -0.03, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4136039683647448}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!4 &4906379864725252
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483051722466928}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.8, y: -0.03, z: 0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4122323277248060}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!23 &23214441221479312
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1122,6 +1122,9 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
   emitter: {fileID: 4679377663864006}
   time_between_firing: 0.33333334
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1141,6 +1144,9 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
   emitter: {fileID: 4053139984811838}
   time_between_firing: 0.33333334
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1225,6 +1231,9 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   emitter: {fileID: 4666978685590298}
   time_between_firing: 0.33333334
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1244,6 +1253,9 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   emitter: {fileID: 4906379864725252}
   time_between_firing: 0.33333334
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
