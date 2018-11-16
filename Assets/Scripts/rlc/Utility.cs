@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace rlc
 {
@@ -31,6 +32,20 @@ namespace rlc
                     Array.Copy(array, 0, array, 1, array.Length - 1);
                     array[0] = temp;
                 }
+            }
+        }
+
+        // BEWARE: Only handle one rotation direction.
+        public static void RotateForward<T>(this IList<T> list, int count)
+        {
+            if (list == null || list.Count < 2 || count <= 0)
+                return;
+
+            while (count != 0)
+            {
+                list.Add(list[0]);
+                list.RemoveAt(0);
+                --count;
             }
         }
     }

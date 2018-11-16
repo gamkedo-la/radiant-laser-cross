@@ -26,11 +26,15 @@ namespace rlc
         [Tooltip("Objects used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction. Each firing happen in parallel for each emitter. ")]
         public List<Transform> emitters;
 
-        [Tooltip("Fireing mode: how each firing is treated.")]
-        public GunFiringMode firing_mode = GunFiringMode.one_shot;
 
         [Tooltip("Bullet Selection mode: how bullet are chosen for each firing.")]
-        public GunBulletSelectionMode bullet_selection = GunBulletSelectionMode.random;
+        public GunBulletSelectionMode bullet_selection_mode = GunBulletSelectionMode.random;
+
+        [Tooltip("Time between each bullet prefab change if bullet selection mode allows it.")]
+        public float time_between_bullet_change = 0.0f;
+
+        [Tooltip("Fireing mode: how each firing is treated.")]
+        public GunFiringMode firing_mode = GunFiringMode.one_shot;
 
 
         [Tooltip("Time between each firing.")]
@@ -61,7 +65,11 @@ namespace rlc
 
         private float last_firing_time;
         private float last_shot_time;
+        private float last_bullet_change_time;
         private int burst_shots_count = 0;
+        private Bullet selected_bullet_prefab;
+
+
         private Renderer this_gun_renderer;
         private Seeker seeker;
 
@@ -85,7 +93,7 @@ namespace rlc
             this_gun_renderer = GetComponent<Renderer>();
             seeker = GetComponent<Seeker>();
             sound_fire = GetComponent<AudioSource>();
-
+            selected_bullet_prefab = bullet_prefabs[0];
         }
 
         void Update()
@@ -158,6 +166,8 @@ namespace rlc
 
             last_firing_time = Time.time;
 
+            select_bullet_prefab();
+
             switch (firing_mode)
             {
                 case GunFiringMode.one_shot:
@@ -223,10 +233,7 @@ namespace rlc
         // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 position, Vector3 direction)
         {
-            int random_idx = Random.Range(0, bullet_prefabs.Count);
-            var bullet_prefab = bullet_prefabs[random_idx];
-
-            Bullet bullet = (Bullet)Instantiate(bullet_prefab, position, transform.rotation);
+            Bullet bullet = (Bullet)Instantiate(selected_bullet_prefab, position, transform.rotation);
             bullet.transform.forward = direction;
             bullet.clan_who_fired = clan;
 
@@ -238,6 +245,31 @@ namespace rlc
             bullet.gameObject.tag = Bullet.TAG;
 
             play_sound_fire();
+        }
+
+        private void select_bullet_prefab()
+        {
+
+            var time_since_last_bullet_change = Time.time - last_bullet_change_time;
+            if (time_since_last_bullet_change <= time_between_bullet_change)
+                return;
+
+            last_bullet_change_time = Time.time;
+
+            switch (bullet_selection_mode)
+            {
+                case GunBulletSelectionMode.random:
+                    int random_idx = Random.Range(0, bullet_prefabs.Count);
+                    selected_bullet_prefab = bullet_prefabs[random_idx];
+                    break;
+                case GunBulletSelectionMode.top_bullet:
+                    selected_bullet_prefab = bullet_prefabs[0];
+                    break;
+                case GunBulletSelectionMode.rotate:
+                    Utility.RotateForward(bullet_prefabs, 1);
+                    selected_bullet_prefab = bullet_prefabs[0];
+                    break;
+            }
         }
 
         private void inherit_target(Bullet bullet)
