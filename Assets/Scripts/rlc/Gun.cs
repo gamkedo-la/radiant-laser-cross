@@ -27,20 +27,20 @@ namespace rlc
         public List<Transform> emitters;
 
         [Tooltip("Fireing mode: how each firing is treated.")]
-        GunFiringMode firing_mode = GunFiringMode.one_shot;
+        public GunFiringMode firing_mode = GunFiringMode.one_shot;
 
         [Tooltip("Bullet Selection mode: how bullet are chosen for each firing.")]
-        GunBulletSelectionMode bullet_selection = GunBulletSelectionMode.random;
+        public GunBulletSelectionMode bullet_selection = GunBulletSelectionMode.random;
 
 
         [Tooltip("Time between each firing.")]
         public float time_between_firing = 1.0f / 32.0f;
 
         [Tooltip("How many bullets to fire per firing in burst mode.")]
-        public int burst_shots = 3;
+        public int shots_per_burst = 3;
 
         [Tooltip("Time between each shot (for example in burst mode).")]
-        public float time_between_burst_shot = 1.0f / 32.0f;
+        public float time_between_burst_shots = 1.0f / 32.0f;
 
         [Tooltip("How many bullets to fire at the same time when firing, spread uniformly along the spread range.")]
         public int parallel_shots = 1;
@@ -60,6 +60,8 @@ namespace rlc
         public bool default_firing_animation = false;
 
         private float last_firing_time;
+        private float last_shot_time;
+        private int burst_shots_count = 0;
         private Renderer this_gun_renderer;
         private Seeker seeker;
 
@@ -70,16 +72,16 @@ namespace rlc
         {
             idle
         ,   fire
+        ,   burst
         ,   resetting
         };
 
         private ShootingState state = ShootingState.idle;
 
-        private int current_burst_shots_count = 0;
-
         void Start()
         {
             last_firing_time = Time.time;
+            last_shot_time = last_firing_time;
             this_gun_renderer = GetComponent<Renderer>();
             seeker = GetComponent<Seeker>();
             sound_fire = GetComponent<AudioSource>();
@@ -92,6 +94,22 @@ namespace rlc
             {
                 case ShootingState.fire:
                     state = ShootingState.resetting;
+                    break;
+
+                case ShootingState.burst:
+                    var time_since_last_shot = Time.time - last_shot_time;
+                    if (time_since_last_shot > time_between_burst_shots)
+                    {
+                        if (burst_shots_count < shots_per_burst)
+                        {
+                            shoot();
+                        }
+                        else
+                        {
+                            burst_shots_count = 0;
+                            state = ShootingState.resetting;
+                        }
+                    }
                     break;
 
                 case ShootingState.resetting:
@@ -129,7 +147,7 @@ namespace rlc
 
             // If some timing mechanism should be added, do it here (if it still make sense)
             start_firing_state();
-            emit_bullets_in_target_direction();
+            shoot();
         }
 
         // Called when we begin the firing state.
@@ -138,8 +156,17 @@ namespace rlc
             if(default_firing_animation)
                 transform.localScale = new Vector3(2.0f, 2.0f, 2.0f); // TEMPORARY effect
 
-            state = ShootingState.fire;
             last_firing_time = Time.time;
+
+            switch (firing_mode)
+            {
+                case GunFiringMode.one_shot:
+                    state = ShootingState.fire;
+                    break;
+                case GunFiringMode.burst:
+                    state = ShootingState.burst;
+                    break;
+            }
         }
 
         // Called when we should get back to a state ready to fire.
@@ -149,8 +176,16 @@ namespace rlc
         }
 
         // Implements how the bullets should be launched.
-        private void emit_bullets_in_target_direction()
+        private void shoot()
         {
+            last_shot_time = Time.time;
+
+            if (firing_mode == GunFiringMode.burst)
+            {
+                last_firing_time = Time.time; // The time between firing start at the end of the last firing shot.
+                ++burst_shots_count;
+            }
+
             foreach (var emitter in emitters)
             {
                 var central_firing_direction = emitter.forward;

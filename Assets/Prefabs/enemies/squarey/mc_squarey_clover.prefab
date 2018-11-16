@@ -885,7 +885,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!54 &54290586045367108
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -900,7 +900,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!54 &54368180009100478
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -915,7 +915,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!54 &54726234313114156
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -930,7 +930,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!54 &54907473352184518
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -945,7 +945,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!65 &65033697361725148
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1122,10 +1122,13 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
   emitters:
   - {fileID: 4679377663864006}
-  time_between_firing: 0.5
-  time_between_burst_shot: 0.03125
-  parallel_shots: 1
-  spread_angle_degs: 0
+  firing_mode: 1
+  bullet_selection: 0
+  time_between_firing: 1
+  shots_per_burst: 5
+  time_between_burst_shots: 0.25
+  parallel_shots: 5
+  spread_angle_degs: 100
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1145,10 +1148,13 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
   emitters:
   - {fileID: 4053139984811838}
-  time_between_firing: 0.5
-  time_between_burst_shot: 0.03125
-  parallel_shots: 1
-  spread_angle_degs: 0
+  firing_mode: 1
+  bullet_selection: 0
+  time_between_firing: 1
+  shots_per_burst: 5
+  time_between_burst_shots: 0.25
+  parallel_shots: 5
+  spread_angle_degs: 100
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1217,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510a93c259260f94a9e16190dab956d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation_speed: 15
+  rotation_speed: 10
 --- !u!114 &114746016961369544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1233,10 +1239,13 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
   emitters:
   - {fileID: 4666978685590298}
-  time_between_firing: 0.5
-  time_between_burst_shot: 0.03125
-  parallel_shots: 1
-  spread_angle_degs: 0
+  firing_mode: 1
+  bullet_selection: 0
+  time_between_firing: 1
+  shots_per_burst: 5
+  time_between_burst_shots: 0.25
+  parallel_shots: 5
+  spread_angle_degs: 100
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
@@ -1256,10 +1265,13 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
   emitters:
   - {fileID: 4906379864725252}
-  time_between_firing: 0.5
-  time_between_burst_shot: 0.03125
-  parallel_shots: 1
-  spread_angle_degs: 0
+  firing_mode: 1
+  bullet_selection: 0
+  time_between_firing: 1
+  shots_per_burst: 5
+  time_between_burst_shots: 0.25
+  parallel_shots: 5
+  spread_angle_degs: 100
   default_bullet_speed: 5
   clan: 1
   allow_firing_outside_screen: 0
