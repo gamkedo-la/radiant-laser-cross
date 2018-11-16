@@ -131,20 +131,19 @@ namespace rlc
 
             level_progression = null;
 
-            GameObject laser_cross = null;
+            const string LASER_CROSS_OBJECT_NAME = "laser_cross";
 
-            if (LaserCross.current != null)
-                laser_cross = LaserCross.current.gameObject;
+            GameObject laser_cross = GameObject.Find(LASER_CROSS_OBJECT_NAME);
 
             if (laser_cross == null || !laser_cross.GetComponent<LaserCross>().life_control.is_alive())
             {
                 if (laser_cross != null)
                 {
-                    Destroy(laser_cross.gameObject);
+                    Destroy(laser_cross);
                 }
 
                 laser_cross = (GameObject)GameObject.Instantiate(laser_cross_prefab, Vector3.zero, Quaternion.identity);
-                laser_cross.name = "laser_cross";
+                laser_cross.name = LASER_CROSS_OBJECT_NAME;
             }
 
             StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
