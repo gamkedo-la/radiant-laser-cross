@@ -695,7 +695,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1714987366249736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.17, y: -15.69, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4194526628036268}
@@ -1719,7 +1719,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b8f897adf5dd6b94fb525337a940f708, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2004,7 +2004,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b8f897adf5dd6b94fb525337a940f708, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2194,7 +2194,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b8f897adf5dd6b94fb525337a940f708, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2289,7 +2289,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b8f897adf5dd6b94fb525337a940f708, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2782,8 +2782,9 @@ MonoBehaviour:
   - {fileID: 114577751230756846, guid: 8add8f5835e050947afa4036569876fc, type: 2}
   emitters:
   - {fileID: 4177259479330914}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 0
-  bullet_selection: 0
   time_between_firing: 0.15
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
@@ -2808,8 +2809,9 @@ MonoBehaviour:
   - {fileID: 114083177209909194, guid: c393ea3bc107bad49872183361984ff5, type: 2}
   emitters:
   - {fileID: 4275646576724992}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 0
-  bullet_selection: 0
   time_between_firing: 0.15
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
@@ -2834,8 +2836,9 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   emitters:
   - {fileID: 4791034045979216}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 0
-  bullet_selection: 0
   time_between_firing: 0.15
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
@@ -2872,8 +2875,9 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
   emitters:
   - {fileID: 4708338430538838}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 0
-  bullet_selection: 0
   time_between_firing: 0.15
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
