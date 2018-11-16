@@ -1113,8 +1113,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4141548227929688}
+  emitters:
+  - {fileID: 4141548227929688}
   time_between_firing: 0.03125
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -1166,8 +1171,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4222940405297948}
+  emitters:
+  - {fileID: 4222940405297948}
   time_between_firing: 0.03125
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -1218,8 +1228,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4893996043477000}
+  emitters:
+  - {fileID: 4893996043477000}
   time_between_firing: 0.03125
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -1237,8 +1252,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4503537298438800}
+  emitters:
+  - {fileID: 4503537298438800}
   time_between_firing: 0.03125
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0

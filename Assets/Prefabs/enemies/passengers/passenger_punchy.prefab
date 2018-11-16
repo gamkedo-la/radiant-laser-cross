@@ -384,7 +384,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238228345872176}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -5, y: 5, z: 0}
+  m_LocalPosition: {x: -10.97, y: -13.76, z: 0}
   m_LocalScale: {x: 2.0303, y: 2.0303, z: 2.0303}
   m_Children:
   - {fileID: 4119439966803688}
@@ -2794,8 +2794,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
-  emitter: {fileID: 4543815787217324}
-  time_between_firing: 0.03125
+  emitters:
+  - {fileID: 4543815787217324}
+  time_between_firing: 0.5
+  time_between_burst_shot: 0.1
+  parallel_shots: 5
+  spread_angle_degs: 120
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0

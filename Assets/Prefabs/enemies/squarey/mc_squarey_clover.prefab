@@ -1119,9 +1119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
-  emitter: {fileID: 4679377663864006}
-  time_between_firing: 0.33333334
+  - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
+  emitters:
+  - {fileID: 4679377663864006}
+  time_between_firing: 0.5
   time_between_burst_shot: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
@@ -1141,9 +1142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
-  emitter: {fileID: 4053139984811838}
-  time_between_firing: 0.33333334
+  - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
+  emitters:
+  - {fileID: 4053139984811838}
+  time_between_firing: 0.5
   time_between_burst_shot: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
@@ -1228,9 +1230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
-  emitter: {fileID: 4666978685590298}
-  time_between_firing: 0.33333334
+  - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
+  emitters:
+  - {fileID: 4666978685590298}
+  time_between_firing: 0.5
   time_between_burst_shot: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
@@ -1250,9 +1253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
-  emitter: {fileID: 4906379864725252}
-  time_between_firing: 0.33333334
+  - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
+  emitters:
+  - {fileID: 4906379864725252}
+  time_between_firing: 0.5
   time_between_burst_shot: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0

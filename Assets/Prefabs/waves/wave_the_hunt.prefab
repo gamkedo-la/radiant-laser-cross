@@ -809,8 +809,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: 4af43242bc6fedb4fbe74c4d01a12263, type: 2}
-  emitter: {fileID: 4228020683709870}
+  emitters:
+  - {fileID: 4228020683709870}
   time_between_firing: 2
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -847,8 +852,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: 0427d99a89758454e9fa087f031bec47, type: 2}
-  emitter: {fileID: 4003039817942472}
+  emitters:
+  - {fileID: 4003039817942472}
   time_between_firing: 2
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -866,7 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   angle_rotation_speed_degs: 45
-  max_angle_from_parent_direction: 30
+  max_angle_from_parent_direction: 0
   auto_target_player: 1
 --- !u!114 &114322953048259996
 MonoBehaviour:
@@ -881,7 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   angle_rotation_speed_degs: 45
-  max_angle_from_parent_direction: 30
+  max_angle_from_parent_direction: 0
   auto_target_player: 1
 --- !u!114 &114473890920901958
 MonoBehaviour:
@@ -973,8 +983,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: ec19fe6faabc31f4aa91c238d3994472, type: 2}
-  emitter: {fileID: 4464441510461394}
+  emitters:
+  - {fileID: 4464441510461394}
   time_between_firing: 2
+  burst_shots: 3
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -1073,7 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   angle_rotation_speed_degs: 45
-  max_angle_from_parent_direction: 30
+  max_angle_from_parent_direction: 0
   auto_target_player: 1
 --- !u!114 &114934389306487654
 MonoBehaviour:

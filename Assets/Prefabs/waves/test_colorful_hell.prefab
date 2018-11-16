@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: test_wave_easy_wait_nope_nope_nope 1
+  m_Name: test_colorful_hell
   m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

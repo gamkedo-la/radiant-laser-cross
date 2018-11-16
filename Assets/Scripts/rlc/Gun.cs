@@ -23,8 +23,8 @@ namespace rlc
         [Tooltip("Prefabs that will be used as bullet, randomly chosen (TODO: add a choice of how to chose them).")]
         public List<Bullet> bullet_prefabs;
 
-        [Tooltip("Object used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction.")]
-        public Transform emitter;
+        [Tooltip("Objects used as a starting point for emitted bullets, it's forward orientation is used as default bullet direction. Each firing happen in parallel for each emitter. ")]
+        public List<Transform> emitters;
 
         [Tooltip("Fireing mode: how each firing is treated.")]
         GunFiringMode firing_mode = GunFiringMode.one_shot;
@@ -32,8 +32,12 @@ namespace rlc
         [Tooltip("Bullet Selection mode: how bullet are chosen for each firing.")]
         GunBulletSelectionMode bullet_selection = GunBulletSelectionMode.random;
 
+
         [Tooltip("Time between each firing.")]
         public float time_between_firing = 1.0f / 32.0f;
+
+        [Tooltip("How many bullets to fire per firing in burst mode.")]
+        public int burst_shots = 3;
 
         [Tooltip("Time between each shot (for example in burst mode).")]
         public float time_between_burst_shot = 1.0f / 32.0f;
@@ -53,8 +57,6 @@ namespace rlc
         [Tooltip("Set to true if bullets fired from this gun should be able to live outside the screen.")]
         public bool allow_firing_outside_screen = false;
 
-
-
         public bool default_firing_animation = false;
 
         private float last_firing_time;
@@ -62,6 +64,7 @@ namespace rlc
         private Seeker seeker;
 
         private AudioSource sound_fire;
+
 
         private enum ShootingState
         {
@@ -72,12 +75,15 @@ namespace rlc
 
         private ShootingState state = ShootingState.idle;
 
+        private int current_burst_shots_count = 0;
+
         void Start()
         {
             last_firing_time = Time.time;
             this_gun_renderer = GetComponent<Renderer>();
             seeker = GetComponent<Seeker>();
             sound_fire = GetComponent<AudioSource>();
+
         }
 
         void Update()
@@ -145,48 +151,47 @@ namespace rlc
         // Implements how the bullets should be launched.
         private void emit_bullets_in_target_direction()
         {
-            var central_firing_direction = emitter.forward;
-
-            if (parallel_shots < 1)
-                parallel_shots = 1;
-
-            if (parallel_shots == 1)
+            foreach (var emitter in emitters)
             {
-                emit_bullet(central_firing_direction);
-                return;
-            }
+                var central_firing_direction = emitter.forward;
 
-            var half_spread_angle = spread_angle_degs / 2.0f;
+                if (parallel_shots < 1)
+                    parallel_shots = 1;
 
-            var rotation_to_last_direction = Quaternion.Euler(0, 0, half_spread_angle);
-            var rotation_to_first_direction = Quaternion.Inverse(rotation_to_last_direction);
+                if (parallel_shots == 1)
+                {
+                    emit_bullet(emitter.position, central_firing_direction);
+                    return;
+                }
 
-            var first_shot_direction = rotation_to_first_direction * central_firing_direction;
-            var last_shot_direction = rotation_to_last_direction * central_firing_direction;
+                var half_spread_angle = spread_angle_degs / 2.0f;
 
-            for (int shot_idx = 0; shot_idx < parallel_shots; ++shot_idx)
-            {
-                var ratio = (float)shot_idx / (float)(parallel_shots - 1);
+                var rotation_to_last_direction = Quaternion.Euler(0, 0, half_spread_angle);
+                var rotation_to_first_direction = Quaternion.Inverse(rotation_to_last_direction);
 
-                // Note: The following didn't work but I don't know why.
-                //// Using Slerp can give weird results over 180degs spread angle, so we'll force lerp on a plane.
-                //var firing_direction_2d = Vector2.Lerp(new Vector2(first_shot_direction.x, first_shot_direction.y), new Vector2(last_shot_direction.x, last_shot_direction.y), ratio);
-                //var firing_direction = new Vector3(firing_direction_2d.x, firing_direction_2d.y);
+                var first_shot_direction = rotation_to_first_direction * central_firing_direction;
+                var last_shot_direction = rotation_to_last_direction * central_firing_direction;
 
-                var firing_direction = Vector3.Slerp(first_shot_direction, last_shot_direction, ratio);
+                for (int shot_angle_idx = 0; shot_angle_idx < parallel_shots; ++shot_angle_idx)
+                {
+                    var ratio = (float)shot_angle_idx / (float)(parallel_shots - 1);
 
-                emit_bullet(firing_direction);
+                    // TODO: fix this when the angle is >= 180degs
+                    var firing_direction = Vector3.Slerp(first_shot_direction, last_shot_direction, ratio);
+
+                    emit_bullet(emitter.position, firing_direction);
+                }
             }
         }
 
         // Emits one bullet.
         // Should be called by whatever is driving the bullet pattern.
-        private void emit_bullet(Vector3 direction)
+        private void emit_bullet(Vector3 position, Vector3 direction)
         {
             int random_idx = Random.Range(0, bullet_prefabs.Count);
             var bullet_prefab = bullet_prefabs[random_idx];
 
-            Bullet bullet = (Bullet)Instantiate(bullet_prefab, emitter.position, transform.rotation);
+            Bullet bullet = (Bullet)Instantiate(bullet_prefab, position, transform.rotation);
             bullet.transform.forward = direction;
             bullet.clan_who_fired = clan;
 

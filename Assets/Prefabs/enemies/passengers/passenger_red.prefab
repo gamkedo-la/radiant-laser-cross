@@ -289,14 +289,10 @@ MonoBehaviour:
   hit_points: 1
   body_parts:
   - {fileID: 114808737645426366}
-  on_destroyed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
+  start_time: 0
 --- !u!114 &114537827016486162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,12 +306,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
-  emitter: {fileID: 4961236619829468}
+  emitters:
+  - {fileID: 4961236619829468}
   time_between_firing: 0.03125
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
-  default_firing_animation: 0
   clan: 1
   allow_firing_outside_screen: 0
+  default_firing_animation: 0
 --- !u!114 &114808737645426366
 MonoBehaviour:
   m_ObjectHideFlags: 1

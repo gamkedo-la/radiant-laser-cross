@@ -305,8 +305,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: 0427d99a89758454e9fa087f031bec47, type: 2}
-  emitter: {fileID: 4828755617055326}
+  emitters:
+  - {fileID: 4828755617055326}
   time_between_firing: 2
+  time_between_burst_shot: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
