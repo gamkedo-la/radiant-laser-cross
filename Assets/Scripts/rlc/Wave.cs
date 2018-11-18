@@ -33,6 +33,9 @@ namespace rlc
         [Tooltip("Background color that will be used while this wave is running.")]
         public Color background_color;
 
+        [Tooltip("Represents the dynamic background, if not null.")]
+        public Background background;
+
         [Tooltip("Title that will be displayed on the screen before starting the wave.")]
         public string title;
 
@@ -48,7 +51,6 @@ namespace rlc
         public int enemies_left_count = 0;
 
         // TODO: Add audio tracks
-        // TODO: Add background
 
 
         static private Material warning_material = null;
