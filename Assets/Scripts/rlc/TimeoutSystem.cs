@@ -60,7 +60,7 @@ namespace rlc
 
         private IEnumerator run_timeout(float timeout)
         {
-            const float time_between_updates = 1.0f / 8.0f;
+            const float time_between_updates = 1.0f / 16.0f;
 
             float start_time = Time.time;
             float timeout_time = start_time + timeout;
