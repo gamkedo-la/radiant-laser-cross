@@ -17,7 +17,8 @@ namespace rlc
         public int count_left_to_spawn = 10;
         public int instances_per_spawn = 2;
         public float spawn_interval_secs = 1.0f;
-        public const float max_distance_from_center = 35.0f; // TODO: replace by something deduced from actual data, not a guess
+        public const float margin_from_max = 10.0f;
+        public const float max_distance_from_center = GameCamera.SIZE_PER_HALF_SIDE + margin_from_max;
 
         private List<Transform> used_spawn_points = new List<Transform>();
 

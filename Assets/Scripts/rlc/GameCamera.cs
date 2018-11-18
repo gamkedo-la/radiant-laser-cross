@@ -8,6 +8,9 @@ namespace rlc
 
     public class GameCamera : MonoBehaviour
     {
+        public const float SIZE_PER_HALF_SIDE = 40.0f;
+        public const float SIZE_PER_SIDE = SIZE_PER_HALF_SIDE * 2;
+
         public Vector2Int screen_resolution;
         public int min_square_side_size = 480;
         public int min_side_padding = 100;
@@ -19,6 +22,7 @@ namespace rlc
         void Start()
         {
             game_camera = GetComponent<Camera>();
+            game_camera.orthographicSize = SIZE_PER_HALF_SIDE;
             force_square_game_view();
         }
 
@@ -75,6 +79,10 @@ namespace rlc
             var sqare_view_rect = new Rect(pos_x, pos_y, square_side, square_side);
 
             game_camera.pixelRect = sqare_view_rect;
+            //if (game_camera.orthographicSize != SIZE_PER_HALF_SIDE)
+            //{
+            //    Debug.LogError("WRONG SIZE PER CAMERA SIDE");
+            //}
             planes = GeometryUtility.CalculateFrustumPlanes(game_camera);
         }
 
