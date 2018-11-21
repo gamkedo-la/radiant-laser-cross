@@ -59,7 +59,7 @@ namespace rlc
                     body_hit.on_hit();
 
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
-                        end_with_reflection(collision);
+                        end_with_reflection(collision, body_hit.clan);
                 }
 
                 // We hit something solid, so the bullet will end anyway.
@@ -69,7 +69,7 @@ namespace rlc
 
         }
 
-        private void end_with_reflection(Collision collision)
+        private void end_with_reflection(Collision collision, Clan clan)
         {
             if (is_reflected) // To avoid multiple reflective collisions
                 return;
@@ -81,7 +81,7 @@ namespace rlc
             transform.forward = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
 
             // As soon as the bullet is reflected, it can hit anybody matching it!
-            clan_who_fired = Clan.none;
+            clan_who_fired = clan;
         }
 
 
