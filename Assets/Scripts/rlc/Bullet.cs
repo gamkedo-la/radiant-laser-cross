@@ -60,7 +60,7 @@ namespace rlc
                     body_hit.on_hit();
 
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
-                        end_with_reflection(collision, body_hit.clan);
+                        end_with_reflection(collision, body_hit);
                 }
 
                 // We hit something solid, so the bullet will end anyway.
@@ -70,19 +70,22 @@ namespace rlc
 
         }
 
-        private void end_with_reflection(Collision collision, Clan clan)
+        private void end_with_reflection(Collision collision, ColoredBody body_hit)
         {
             if (is_reflected) // To avoid multiple reflective collisions
                 return;
 
             is_reflected = true;
             play_impact_animation(); // TODO: replace by another impact?
-
-            // Now for the rest of the lifetime, we just go in another direction
-            transform.forward = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+            
+            // Now for the rest of the lifetime, we just go in another direction\
+            var bullet_velocity = movable.Velocity;
+            var body_influence_ratio = 2f; // The body movement influences to the reflected direction
+            var impact_direction = (bullet_velocity - body_hit.Movable.Velocity*body_influence_ratio).normalized;
+            transform.forward = Vector3.Reflect(impact_direction, collision.contacts[0].normal);
 
             // As soon as the bullet is reflected, it can hit anybody matching it!
-            clan_who_fired = clan;
+            clan_who_fired = body_hit.clan;
         }
 
 
