@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4980965866517956}
   - component: {fileID: 114060027594535396}
   - component: {fileID: 114451951588178046}
+  - component: {fileID: 114664564557510032}
   m_Layer: 0
   m_Name: passenger_red
   m_TagString: enemy
@@ -308,14 +309,29 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: 2c7cbd2fe136da84d82f07a5402f2462, type: 2}
   emitters:
   - {fileID: 4961236619829468}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
   default_firing_animation: 0
+--- !u!114 &114664564557510032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604797991448608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114808737645426366
 MonoBehaviour:
   m_ObjectHideFlags: 1

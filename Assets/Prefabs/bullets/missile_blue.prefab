@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114580612996000162}
   - component: {fileID: 114676719608263124}
   - component: {fileID: 114576549709359388}
+  - component: {fileID: 114255636153886764}
   m_Layer: 0
   m_Name: missile_blue
   m_TagString: bullet
@@ -241,6 +242,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 137c8cd9a38e39a49b3b189a9ab8c3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114255636153886764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582779828697760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114576549709359388

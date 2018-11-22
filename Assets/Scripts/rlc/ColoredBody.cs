@@ -17,6 +17,7 @@ namespace rlc
         [Tooltip("Do not fill: Will be automatically setup by LifeControl itself once this compoenent is listed in it." +
             "Keep null if this object should not be linked to life of the entity")]
         public LifeControl life_control;
+        private Movable movable;
 
         public enum SurfaceEffect
         {
@@ -27,6 +28,11 @@ namespace rlc
 
         [Tooltip("Defines what toif objects colliding but not matching this object's color should stop their course.")]
         public SurfaceEffect surface_effect = SurfaceEffect.solid;
+
+        protected void Start()
+        {
+            movable = GetComponentInParent<Movable>();
+        }
 
         public void on_hit()
         {
@@ -52,6 +58,11 @@ namespace rlc
                     }
                 }
             }
+        }
+
+        public Movable Movable
+        {
+            get { return movable;  }
         }
 
     }

@@ -15,9 +15,11 @@ namespace rlc
         private float last_firing_timepoint;
         private GameObject body;
         private LifeControl life_control;
+        private Movable movable;
 
         // Use this for initialization
         void Start() {
+            movable = GetComponentInParent<Movable>();
             last_firing_timepoint = Time.time;
             body = GetComponentInChildren<ColoredBody>().gameObject;
             life_control = GetComponent<LifeControl>();
@@ -39,7 +41,7 @@ namespace rlc
 
         private void move()
         {
-            Movement.move_forward(transform, speed);
+            movable.MoveForward(speed);
         }
 
         private void animate()

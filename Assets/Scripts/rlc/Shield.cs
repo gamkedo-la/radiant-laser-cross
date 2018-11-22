@@ -17,10 +17,11 @@ namespace rlc
         private State state = State.inactive;
         private AudioSource shield_sound;
 
-        void Start()
+        new void Start()
         {
             shield_sound = GetComponent<AudioSource>();
             hide();
+            base.Start();
         }
 
         void Update()

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114580612996000162}
   - component: {fileID: 114887390114536030}
   - component: {fileID: 114676719608263124}
+  - component: {fileID: 114601845763933002}
   m_Layer: 0
   m_Name: bullet_white_big
   m_TagString: bullet
@@ -117,6 +118,17 @@ MonoBehaviour:
   speed: 15
   acceleration: 0
   clan_who_fired: 1
+--- !u!114 &114601845763933002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582779828697760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114676719608263124
 MonoBehaviour:
   m_ObjectHideFlags: 1

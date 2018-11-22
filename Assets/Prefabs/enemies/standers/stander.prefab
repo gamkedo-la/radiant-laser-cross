@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4980965866517956}
   - component: {fileID: 114060027594535396}
   - component: {fileID: 114451951588178046}
+  - component: {fileID: 114352231118298900}
   m_Layer: 0
   m_Name: stander
   m_TagString: enemy
@@ -274,6 +275,17 @@ MonoBehaviour:
   speed: 0
   firing_interval: 0.5
   animation_rotation: {x: 1, y: 1, z: 0}
+--- !u!114 &114352231118298900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604797991448608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114451951588178046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,5 +346,4 @@ MonoBehaviour:
   color_family: 1
   clan: 1
   life_control: {fileID: 0}
-  normalSource: {fileID: 0}
   surface_effect: 0

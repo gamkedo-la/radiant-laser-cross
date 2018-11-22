@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4160178421747326}
   - component: {fileID: 114910713479788470}
   - component: {fileID: 114774722655126970}
+  - component: {fileID: 114068770687185984}
   m_Layer: 0
   m_Name: passenger_punchy
   m_TagString: enemy
@@ -1851,6 +1852,17 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114068770687185984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238228345872176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114098135112193860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2796,8 +2808,12 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: d636a2dcd92d8a742a8bd54da1752ef6, type: 2}
   emitters:
   - {fileID: 4543815787217324}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.5
-  time_between_burst_shot: 0.1
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 5
   spread_angle_degs: 120
   default_bullet_speed: 0

@@ -11,12 +11,13 @@ namespace rlc
         public float acceleration = 0.0f;
         public Clan clan_who_fired = Clan.enemy;
 
-
+        private Movable movable;
         private ColoredBody my_body;
         private bool is_reflected = false;
 
         void Start()
         {
+            movable = GetComponentInParent<Movable>();
             my_body = GetComponent<ColoredBody>();
             if (my_body == null)
             {
@@ -28,7 +29,7 @@ namespace rlc
         void Update()
         {
             speed += acceleration;
-            Movement.move_forward(transform, speed);
+            movable.MoveForward(speed);
         }
 
         public static void clear_bullets_from_game()

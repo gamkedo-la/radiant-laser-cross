@@ -7,15 +7,17 @@ public class Enemy_Squarey : MonoBehaviour {
     public float speed = 5.0f;
 
     private List<rlc.Gun> guns = new List<rlc.Gun>();
+    private Movable movable;
 
     // Use this for initialization
     void Start () {
+        this.movable = GetComponentInParent<Movable>();
         guns.AddRange(GetComponentsInChildren<rlc.Gun>());
     }
 
     // Update is called once per frame
     void Update () {
-        rlc.Movement.move_forward(transform, speed);
+        movable.MoveForward(speed);
 
         foreach (var gun in guns)
         {

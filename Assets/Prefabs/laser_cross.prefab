@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 114467330613455112}
   - component: {fileID: 114364350927825478}
   - component: {fileID: 96771943497008588}
+  - component: {fileID: 114632924666837688}
   m_Layer: 0
   m_Name: laser_cross
   m_TagString: Player
@@ -2794,6 +2795,17 @@ MonoBehaviour:
   clan: 2
   allow_firing_outside_screen: 0
   default_firing_animation: 1
+--- !u!114 &114632924666837688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714987366249736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114654841115393402
 MonoBehaviour:
   m_ObjectHideFlags: 1

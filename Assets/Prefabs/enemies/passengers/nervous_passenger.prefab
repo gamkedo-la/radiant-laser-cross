@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4980965866517956}
   - component: {fileID: 114060027594535396}
   - component: {fileID: 114451951588178046}
+  - component: {fileID: 114251080702201906}
   m_Layer: 0
   m_Name: nervous_passenger
   m_TagString: enemy
@@ -274,6 +275,17 @@ MonoBehaviour:
   speed: 4
   firing_interval: 0.5
   animation_rotation: {x: 0.7, y: 1.3, z: 0}
+--- !u!114 &114251080702201906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604797991448608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114451951588178046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,8 +320,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
   emitters:
   - {fileID: 4961236619829468}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0

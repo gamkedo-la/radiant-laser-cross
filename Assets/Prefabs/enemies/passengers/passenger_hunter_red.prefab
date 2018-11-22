@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114099650225733178}
   - component: {fileID: 114715990624069092}
   - component: {fileID: 114371192509069372}
+  - component: {fileID: 114889934087041460}
   m_Layer: 0
   m_Name: passenger_hunter_red
   m_TagString: enemy
@@ -340,6 +341,17 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+--- !u!114 &114889934087041460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720223406285298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114931603358281038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,8 +367,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: 4af43242bc6fedb4fbe74c4d01a12263, type: 2}
   emitters:
   - {fileID: 4605359991658384}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 2
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0

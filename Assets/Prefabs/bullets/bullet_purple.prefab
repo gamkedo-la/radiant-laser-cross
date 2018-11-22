@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114083177209909194}
   - component: {fileID: 114426552180638844}
   - component: {fileID: 114559098831001058}
+  - component: {fileID: 114333231314125604}
   m_Layer: 0
   m_Name: bullet_purple
   m_TagString: bullet
@@ -117,6 +118,17 @@ MonoBehaviour:
   speed: 15
   acceleration: 0
   clan_who_fired: 1
+--- !u!114 &114333231314125604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1971083608408576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114426552180638844
 MonoBehaviour:
   m_ObjectHideFlags: 1

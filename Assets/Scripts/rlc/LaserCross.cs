@@ -52,6 +52,7 @@ namespace rlc
         // Note that these are functions because the gun on each direction will change while playing.
         private Gun get_gun(AxesDirections direction)   { return guns[(int)direction];  }
         private Shield get_shield(AxesDirections direction) { return shields[(int)direction]; }
+        private Movable movable;
 
 
         private ProceduralLevelBuilder level_builder;
@@ -62,6 +63,7 @@ namespace rlc
 
         void Start()
         {
+            movable = GetComponentInParent<Movable>();
             level_builder = GameObject.Find("GameSystem").GetComponent<ProceduralLevelBuilder>();
 
             guns = GetComponentsInChildren<Gun>(true);
@@ -139,9 +141,7 @@ namespace rlc
 
         private void apply_commands(Commands commands)
         {
-            //Vector2 translation = commands.ship_direction.normalized * move_speed * Time.deltaTime;
-            //transform.Translate(translation, Space.World);
-            Movement.move_direction(this.transform, commands.ship_direction.normalized, move_speed);
+            movable.MoveTowards(commands.ship_direction.normalized, move_speed);
 
             foreach (var shield in shields)
                 shield.deactivate();

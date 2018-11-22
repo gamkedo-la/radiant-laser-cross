@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114841822264295148}
   - component: {fileID: 114317073515181818}
   - component: {fileID: 114102660324375888}
+  - component: {fileID: 114907701154114010}
   m_Layer: 0
   m_Name: passenger_hunter_white
   m_TagString: enemy
@@ -307,8 +308,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: 0427d99a89758454e9fa087f031bec47, type: 2}
   emitters:
   - {fileID: 4828755617055326}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 2
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -363,3 +368,14 @@ MonoBehaviour:
   speed: 5
   firing_interval: 2
   animation_rotation: {x: 1, y: 1, z: 0}
+--- !u!114 &114907701154114010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090601219196562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

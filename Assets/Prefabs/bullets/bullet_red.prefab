@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114055607927757878}
   - component: {fileID: 114961952841596102}
   - component: {fileID: 114235843597099058}
+  - component: {fileID: 114779582386305326}
   m_Layer: 0
   m_Name: bullet_red
   m_TagString: bullet
@@ -132,6 +133,17 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+--- !u!114 &114779582386305326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274498952898572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114961952841596102
 MonoBehaviour:
   m_ObjectHideFlags: 1
