@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Movable : MonoBehaviour {
     private Vector3 velocity;
+    private Vector3 lastMove = Vector3.zero;
 
     public void MoveTowards(Vector2 direction2d, float speed)
     {
@@ -26,7 +27,8 @@ public class Movable : MonoBehaviour {
     public void MoveForward(float speed)
     {
         this.velocity = Forward * speed;
-        transform.Translate(transform.forward * (speed * Time.deltaTime), Space.World);
+        lastMove = this.velocity * Time.deltaTime;
+        transform.Translate(lastMove, Space.World);
     }
 
     public Transform Transform
@@ -38,8 +40,14 @@ public class Movable : MonoBehaviour {
     {
         get { return transform.forward; }
     }
+
     public Vector3 Velocity
     {
         get { return velocity; }
+    }
+    
+    public Vector3 LastMove
+    {
+        get { return lastMove; }
     }
 }

@@ -26,7 +26,7 @@ namespace rlc
 
         }
 
-        void Update()
+        void FixedUpdate()
         {
             speed += acceleration;
             movable.MoveForward(speed);
@@ -49,16 +49,17 @@ namespace rlc
             && bullet_hit == null   // ... which is not another bullet...
             )
             {
-                Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
+                // Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
 
                 bool colors_matches = ColorSystem.colors_matches(body_hit.color_family, my_body.color_family);
                 bool hitting_the_enemy = clan_who_fired != body_hit.clan; // ... we are either enemy bullet hitting player or the reverse...
 
-                if (hitting_the_enemy && colors_matches)
-                {
-                    // ... We hit an enemy matching the right color!
-                    body_hit.on_hit();
-
+                if(colors_matches) {
+                    if (hitting_the_enemy)
+                    {
+                        // ... We hit an enemy matching the right color!
+                        body_hit.on_hit();
+                    }
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
                         end_with_reflection(collision, body_hit);
                 }
@@ -72,20 +73,25 @@ namespace rlc
 
         private void end_with_reflection(Collision collision, ColoredBody body_hit)
         {
-            if (is_reflected) // To avoid multiple reflective collisions
-                return;
-
-            is_reflected = true;
-            play_impact_animation(); // TODO: replace by another impact?
-            
-            // Now for the rest of the lifetime, we just go in another direction\
             var bullet_velocity = movable.Velocity;
-            var body_influence_ratio = 2f; // The body movement influences to the reflected direction
-            var impact_direction = (bullet_velocity - body_hit.Movable.Velocity*body_influence_ratio).normalized;
-            transform.forward = Vector3.Reflect(impact_direction, collision.contacts[0].normal);
+            var body_velocity = body_hit.Movable.Velocity;
+            if (!is_reflected)
+            { // To avoid multiple reflective collisions
+                is_reflected = true;
+                play_impact_animation(); // TODO: replace by another impact?
 
-            // As soon as the bullet is reflected, it can hit anybody matching it!
-            clan_who_fired = body_hit.clan;
+                // Now for the rest of the lifetime, we just go in another direction\
+                var body_influence_ratio = 2f; // The body movement influences to the reflected direction
+                var impact_direction = (bullet_velocity - body_velocity * body_influence_ratio).normalized;
+                transform.forward = Vector3.Reflect(impact_direction, collision.contacts[0].normal);
+
+                // As soon as the bullet is reflected, it can hit anybody matching it!
+                clan_who_fired = body_hit.clan;
+            }
+
+            // Push the bullet againt the shield
+            var min_bullet_push = 1f; // Minimum distance the bullet will be pushed (to be safer from glitches)
+            transform.Translate(transform.forward * Mathf.Max(min_bullet_push, -collision.contacts[0].separation + body_hit.Movable.LastMove.magnitude + movable.LastMove.magnitude), Space.World);
         }
 
 
