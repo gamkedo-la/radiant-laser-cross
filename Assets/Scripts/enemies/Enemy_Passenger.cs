@@ -30,12 +30,19 @@ namespace rlc
         void Update() {
             if (life_control.is_alive())
             {
-                move();
                 animate();
             }
             if (life_control.is_alive_in_screen())
             {
                 maybe_fire();
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (life_control.is_alive())
+            {
+                move();
             }
         }
 

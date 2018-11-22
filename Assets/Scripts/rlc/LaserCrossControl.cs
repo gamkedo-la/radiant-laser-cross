@@ -65,6 +65,7 @@ namespace rlc
             if (shield_mode > 0)
                 commands.shield_mode = true;
 
+            commands.ready = true;
             return commands;
         }
 

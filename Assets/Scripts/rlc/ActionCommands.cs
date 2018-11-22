@@ -27,7 +27,8 @@ namespace rlc
         public Vector2 ship_direction;              // Normalized direction to where the ship needs to go.
         public GunsRotation gun_move;               // Gun rotation to engage.
         public GunTriggerAction gun_trigger;        // Guns to trigger for shooting.
-        public bool shield_mode;               // If true, the guns act as shields.
+        public bool shield_mode;                    // If true, the guns act as shields.
+        public bool ready;                          // If true, the commands are ready to be consumed
     }
 
 

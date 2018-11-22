@@ -79,10 +79,10 @@ namespace rlc
             current = this;
         }
 
-        void Update()
+        void FixedUpdate()
         {
 
-            if (life_control.is_alive())
+            if (life_control.is_alive() && next_commands.ready)
             {
                 apply_commands(next_commands);
                 clear_commands();

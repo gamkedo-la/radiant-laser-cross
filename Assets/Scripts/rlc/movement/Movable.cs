@@ -27,7 +27,7 @@ public class Movable : MonoBehaviour {
     public void MoveForward(float speed)
     {
         this.velocity = Forward * speed;
-        lastMove = this.velocity * Time.deltaTime;
+        lastMove = this.velocity * Time.fixedDeltaTime;
         transform.Translate(lastMove, Space.World);
     }
 

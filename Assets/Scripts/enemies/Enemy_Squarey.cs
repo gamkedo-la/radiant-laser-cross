@@ -17,11 +17,14 @@ public class Enemy_Squarey : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        movable.MoveForward(speed);
-
         foreach (var gun in guns)
         {
             gun.fire();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        movable.MoveForward(speed);
     }
 }
