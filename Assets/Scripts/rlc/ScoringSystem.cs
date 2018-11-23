@@ -41,6 +41,8 @@ public class ScoringSystem : MonoBehaviour {
 
     private void UpdateDisplay()
     {
+        UI_ScoringMultiplier.DisplayMultiplier(ScoreMultiplier);
+        UI_ScoringMultiplier.DisplaySequenceCount(ScoreMultiplierCount);
         Debug.LogFormat("Sequence: {0}; Multiplier: {1}; Count: {2}", shot_sequence, ScoreMultiplier, ScoreMultiplierCount);
     }
 
