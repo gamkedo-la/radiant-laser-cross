@@ -14,6 +14,7 @@ namespace rlc
         private Movable movable;
         private ColoredBody my_body;
         private bool is_reflected = false;
+        private bool has_hit_body = false;
 
         void Start()
         {
@@ -53,11 +54,13 @@ namespace rlc
 
                 bool colors_matches = ColorSystem.colors_matches(body_hit.color_family, my_body.color_family);
                 bool hitting_the_enemy = clan_who_fired != body_hit.clan; // ... we are either enemy bullet hitting player or the reverse...
-
+                bool on_hit_invoked = false;
                 if(colors_matches) {
                     if (hitting_the_enemy)
                     {
                         // ... We hit an enemy matching the right color!
+                        BulletEvents.InvokeOnHit(this, body_hit);
+                        on_hit_invoked = true;
                         body_hit.on_hit();
                     }
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
@@ -67,6 +70,12 @@ namespace rlc
                 // We hit something solid, so the bullet will end anyway.
                 if (body_hit.surface_effect == ColoredBody.SurfaceEffect.solid)
                     end_with_impact(collision);
+
+                if(!on_hit_invoked)
+                {
+                    BulletEvents.InvokeOnAbsorved(this, body_hit);
+                }
+                has_hit_body = true;
             }
 
         }
@@ -112,6 +121,7 @@ namespace rlc
             // This is not only to avoid keeping them alive for nothning,
             // it also avoids enemies not yet entering the screen to ever be hit
             // by lost bullets.
+            if(!has_hit_body) BulletEvents.InvokeOnMiss(this);
             Destroy(gameObject);
         }
 
