@@ -235,7 +235,7 @@ namespace rlc
         {
             Bullet bullet = (Bullet)Instantiate(selected_bullet_prefab, position, transform.rotation);
             bullet.transform.forward = direction;
-            bullet.clan_who_fired = clan;
+            bullet.ClanWhoFired = clan;
 
             // If the gun have a target, make the bullet inherit the same target if it is homing.
             inherit_target(bullet);

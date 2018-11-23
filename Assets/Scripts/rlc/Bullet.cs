@@ -9,7 +9,12 @@ namespace rlc
 
         public float speed = 10.0f;
         public float acceleration = 0.0f;
-        public Clan clan_who_fired = Clan.enemy;
+
+        // Clan who fired the bullet (imutable once set)
+        private Clan clan_who_fired;
+
+        // Clan who own the bullet (it can change if the opposite clan reflects it)
+        public Clan clan_who_owns = Clan.enemy;
 
         private Movable movable;
         private ColoredBody my_body;
@@ -33,6 +38,7 @@ namespace rlc
             movable.MoveForward(speed);
         }
 
+
         public static void clear_bullets_from_game()
         {
             var bullets = GameObject.FindGameObjectsWithTag(Bullet.TAG);
@@ -40,6 +46,10 @@ namespace rlc
             {
                 Destroy(bullet);
             }
+        }
+        public bool is_player_responsability()
+        {
+            return this.ClanWhoFired == Clan.player && this.clan_who_owns == Clan.player;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -53,7 +63,7 @@ namespace rlc
                 // Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
 
                 bool colors_matches = ColorSystem.colors_matches(body_hit.color_family, my_body.color_family);
-                bool hitting_the_enemy = clan_who_fired != body_hit.clan; // ... we are either enemy bullet hitting player or the reverse...
+                bool hitting_the_enemy = clan_who_owns != body_hit.clan; // ... we are either enemy bullet hitting player or the reverse...
                 bool on_hit_invoked = false;
                 if(colors_matches) {
                     if (hitting_the_enemy)
@@ -95,7 +105,7 @@ namespace rlc
                 transform.forward = Vector3.Reflect(impact_direction, collision.contacts[0].normal);
 
                 // As soon as the bullet is reflected, it can hit anybody matching it!
-                clan_who_fired = body_hit.clan;
+                clan_who_owns = body_hit.clan;
             }
 
             // Push the bullet againt the shield
@@ -125,5 +135,12 @@ namespace rlc
             Destroy(gameObject);
         }
 
+        public Clan ClanWhoFired {
+            get { return this.clan_who_fired; }
+            set {
+                this.clan_who_fired = value;
+                this.clan_who_owns = value;
+            }
+        }
     }
 }
