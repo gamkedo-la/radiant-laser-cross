@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114536583498724918}
   - component: {fileID: 114714634127443666}
   - component: {fileID: 114212277331779432}
+  - component: {fileID: 114468533092086278}
   m_Layer: 0
   m_Name: mc_squarey_nomnom_yellow
   m_TagString: enemy
@@ -176,6 +177,17 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+--- !u!114 &114468533092086278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102435931949950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114536583498724918
 MonoBehaviour:
   m_ObjectHideFlags: 1

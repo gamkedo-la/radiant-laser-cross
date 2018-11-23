@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4095993482741722}
   - component: {fileID: 114536583498724918}
   - component: {fileID: 114714634127443666}
+  - component: {fileID: 114289310438046178}
   m_Layer: 0
   m_Name: mc_squarey_square_yellow
   m_TagString: enemy
@@ -145,6 +146,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114289310438046178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102435931949950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114390480866323418
 MonoBehaviour:
   m_ObjectHideFlags: 1

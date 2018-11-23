@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4658318065838680}
   - component: {fileID: 114696618366653176}
   - component: {fileID: 114708467413373380}
+  - component: {fileID: 114058884231678760}
   m_Layer: 0
   m_Name: mc_squarey_wavey_white
   m_TagString: enemy
@@ -609,6 +610,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114058884231678760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822634011087906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114108580537294620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,8 +634,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4046118832958176}
+  emitters: []
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.25
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 3
   clan: 1
   allow_firing_outside_screen: 0
@@ -641,8 +660,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4140528211534206}
+  emitters: []
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.25
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 3
   clan: 1
   allow_firing_outside_screen: 0
@@ -660,8 +686,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4150520987809298}
+  emitters: []
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.25
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 3
   clan: 1
   allow_firing_outside_screen: 0
@@ -691,8 +724,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_prefabs:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
-  emitter: {fileID: 4905960173622288}
+  emitters: []
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.25
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
+  parallel_shots: 1
+  spread_angle_degs: 0
   default_bullet_speed: 3
   clan: 1
   allow_firing_outside_screen: 0

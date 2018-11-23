@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4552748128818756}
   - component: {fileID: 114236266800165742}
   - component: {fileID: 114824869913683410}
+  - component: {fileID: 114536323711843470}
   m_Layer: 0
   m_Name: mc_squarey_clover
   m_TagString: enemy
@@ -1122,8 +1123,9 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
   emitters:
   - {fileID: 4679377663864006}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 1
-  bullet_selection: 0
   time_between_firing: 1
   shots_per_burst: 5
   time_between_burst_shots: 0.25
@@ -1148,8 +1150,9 @@ MonoBehaviour:
   - {fileID: 114621276903840054, guid: 0d108ff9048e00f478a0544b951f8be8, type: 2}
   emitters:
   - {fileID: 4053139984811838}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 1
-  bullet_selection: 0
   time_between_firing: 1
   shots_per_burst: 5
   time_between_burst_shots: 0.25
@@ -1224,6 +1227,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation_speed: 10
+--- !u!114 &114536323711843470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188869813242726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114746016961369544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1239,8 +1253,9 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
   emitters:
   - {fileID: 4666978685590298}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 1
-  bullet_selection: 0
   time_between_firing: 1
   shots_per_burst: 5
   time_between_burst_shots: 0.25
@@ -1265,8 +1280,9 @@ MonoBehaviour:
   - {fileID: 114055607927757878, guid: d3f7528919a1f6e4bb511bf0d77aae66, type: 2}
   emitters:
   - {fileID: 4906379864725252}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
   firing_mode: 1
-  bullet_selection: 0
   time_between_firing: 1
   shots_per_burst: 5
   time_between_burst_shots: 0.25
