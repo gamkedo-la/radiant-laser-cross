@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 114934389306487654}
   - component: {fileID: 114097082731225290}
   - component: {fileID: 114851620674822836}
+  - component: {fileID: 114960359357383638}
   m_Layer: 0
   m_Name: passenger_hunter_white
   m_TagString: enemy
@@ -201,6 +202,7 @@ GameObject:
   - component: {fileID: 114473890920901958}
   - component: {fileID: 114514376709585318}
   - component: {fileID: 114612582590222586}
+  - component: {fileID: 114090776377961128}
   m_Layer: 0
   m_Name: passenger_hunter_red
   m_TagString: enemy
@@ -239,6 +241,7 @@ GameObject:
   - component: {fileID: 114621109869796768}
   - component: {fileID: 114746736271454118}
   - component: {fileID: 114840335610129472}
+  - component: {fileID: 114175795220683528}
   m_Layer: 0
   m_Name: passenger_hunter_blue
   m_TagString: enemy
@@ -811,15 +814,30 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: 4af43242bc6fedb4fbe74c4d01a12263, type: 2}
   emitters:
   - {fileID: 4228020683709870}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 2
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
   default_firing_animation: 0
+--- !u!114 &114090776377961128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807007821020890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114097082731225290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -854,15 +872,30 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: 0427d99a89758454e9fa087f031bec47, type: 2}
   emitters:
   - {fileID: 4003039817942472}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 2
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
   default_firing_animation: 0
+--- !u!114 &114175795220683528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949499393191822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114307140293306368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,9 +1018,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: ec19fe6faabc31f4aa91c238d3994472, type: 2}
   emitters:
   - {fileID: 4464441510461394}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 2
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -1072,6 +1108,7 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.1981132, g: 0.07008722, b: 0.07008722, a: 0}
+  background: {fileID: 0}
   title: The Hunt
   timeout_secs: 40
   enemies_left_count: 0
@@ -1104,6 +1141,18 @@ MonoBehaviour:
   speed: 5
   firing_interval: 2
   animation_rotation: {x: 1, y: 1, z: 0}
+--- !u!114 &114960359357383638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711472487212880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114988484061619856
 MonoBehaviour:
   m_ObjectHideFlags: 1

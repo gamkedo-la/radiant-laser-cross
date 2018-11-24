@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4019687297530988}
   - component: {fileID: 114934243525764068}
   - component: {fileID: 114776558642134018}
+  - component: {fileID: 114256923574404142}
   m_Layer: 0
   m_Name: passenger_north
   m_TagString: enemy
@@ -111,6 +112,7 @@ GameObject:
   - component: {fileID: 4399699232574836}
   - component: {fileID: 114092600220012766}
   - component: {fileID: 114896804246814928}
+  - component: {fileID: 114513992957366442}
   m_Layer: 0
   m_Name: passenger_east
   m_TagString: enemy
@@ -159,6 +161,7 @@ GameObject:
   - component: {fileID: 4287259640657684}
   - component: {fileID: 114728238034384140}
   - component: {fileID: 114386300810520294}
+  - component: {fileID: 114410216849070222}
   m_Layer: 0
   m_Name: passenger_south
   m_TagString: enemy
@@ -284,6 +287,7 @@ GameObject:
   - component: {fileID: 4211596540313688}
   - component: {fileID: 114063269056016468}
   - component: {fileID: 114890685277828732}
+  - component: {fileID: 114841238156941014}
   m_Layer: 0
   m_Name: passenger_west
   m_TagString: enemy
@@ -1068,6 +1072,7 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.62144, g: 0.990566, b: 0.94971955, a: 0}
+  background: {fileID: 0}
   title: Cardinal Points
   timeout_secs: 0
   enemies_left_count: 0
@@ -1100,6 +1105,18 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+--- !u!114 &114256923574404142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1035233350295574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114341674851933726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1115,9 +1132,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
   emitters:
   - {fileID: 4141548227929688}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -1143,6 +1163,30 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+--- !u!114 &114410216849070222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1395694235767272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114513992957366442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351039078689924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114627002738595342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,9 +1217,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
   emitters:
   - {fileID: 4222940405297948}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -1230,9 +1277,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
   emitters:
   - {fileID: 4893996043477000}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -1254,9 +1304,12 @@ MonoBehaviour:
   - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
   emitters:
   - {fileID: 4503537298438800}
+  bullet_selection_mode: 0
+  time_between_bullet_change: 0
+  firing_mode: 0
   time_between_firing: 0.03125
-  burst_shots: 3
-  time_between_burst_shot: 0.03125
+  shots_per_burst: 3
+  time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
   default_bullet_speed: 0
@@ -1278,6 +1331,18 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+--- !u!114 &114841238156941014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857948188002692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114890685277828732
 MonoBehaviour:
   m_ObjectHideFlags: 1
