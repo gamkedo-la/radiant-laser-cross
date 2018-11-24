@@ -110,7 +110,12 @@ namespace rlc
 
             // Push the bullet againt the shield
             var min_bullet_push = 1f; // Minimum distance the bullet will be pushed (to be safer from glitches)
-            transform.Translate(transform.forward * Mathf.Max(min_bullet_push, -collision.contacts[0].separation + body_hit.Movable.LastMove.magnitude + movable.LastMove.magnitude), Space.World);
+            var translation = transform.forward * Mathf.Max(min_bullet_push, -collision.contacts[0].separation + body_hit.Movable.LastMove.magnitude + movable.LastMove.magnitude);
+            if (Mathf.Abs(translation.z) >= 0.1f)
+            {
+                Debug.LogError("WRONG Z REFLECTION");
+            }
+            transform.Translate(translation, Space.World);
         }
 
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movable : MonoBehaviour {
-    private Vector3 velocity;
+    public Vector3 velocity;
     private Vector3 lastMove = Vector3.zero;
 
     public void MoveTowards(Vector2 direction2d, float speed)
@@ -15,6 +15,11 @@ public class Movable : MonoBehaviour {
 
     public void MoveTowards(Vector3 direction, float speed)
     {
+        if (Mathf.Abs(direction.z) > 0.1f)
+        {
+            Debug.LogError("Wrong Z");
+        }
+
         if (direction == Vector3.zero)
         {
             this.velocity = Vector3.zero;
@@ -45,7 +50,7 @@ public class Movable : MonoBehaviour {
     {
         get { return velocity; }
     }
-    
+
     public Vector3 LastMove
     {
         get { return lastMove; }

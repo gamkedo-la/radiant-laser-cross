@@ -74,7 +74,7 @@ namespace rlc
         private Seeker seeker;
 
         private AudioSource sound_fire;
-
+        private bool fire_triggered;
 
         private enum ShootingState
         {
@@ -98,6 +98,11 @@ namespace rlc
 
         void Update()
         {
+            if (fire_triggered)
+            {
+                start_fire();
+            }
+
             switch (state)
             {
                 case ShootingState.fire:
@@ -139,6 +144,12 @@ namespace rlc
         // Bullets will only go if the firing timing is right.
         public void fire()
         {
+            fire_triggered = true;
+        }
+
+        private void start_fire()
+        {
+            fire_triggered = false;
             if (state != ShootingState.idle)
             {
                 // Debug.Log("Ignoring firing command because gun is not idle", this);
@@ -233,6 +244,11 @@ namespace rlc
         // Should be called by whatever is driving the bullet pattern.
         private void emit_bullet(Vector3 position, Vector3 direction)
         {
+            if (Mathf.Abs(direction.z) > 0.1f)
+            {
+                Debug.LogError("Wrong Z");
+            }
+
             Bullet bullet = (Bullet)Instantiate(selected_bullet_prefab, position, transform.rotation);
             bullet.transform.forward = direction;
             bullet.ClanWhoFired = clan;
