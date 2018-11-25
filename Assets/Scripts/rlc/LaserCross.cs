@@ -178,7 +178,7 @@ namespace rlc
         private void activate_shield(AxesDirections direction)
         {
             get_shield(direction).activate();
-            overload_system.add_load();
+            //overload_system.add_load();
         }
 
         private void clear_commands()
