@@ -12,11 +12,13 @@ namespace rlc
         public Vector3 offset;
         public Vector3 velocity;
         public Vector3 acceleration;
+        public float rotation = 0.0f;
         public float max_acceleration = 2.0f;
         public float max_speed = 2.0f;
 
         public float random_max_acceleration = 2.0f;
         public float random_max_speed = 2.0f;
+        public float random_max_rotation = 0.0f;
         public float random_changes_every_secs = 10.0f;
 
         public bool change_movement_randomly = false;
@@ -30,6 +32,7 @@ namespace rlc
         private float half_side_size = 0;
         private float double_side_size = 0;
         private float tile_adjust_offset = 0;
+        private float grid_diagonal = 0;
         private float tile_limit = 0;
         private float offset_limit = 0;
 
@@ -62,6 +65,8 @@ namespace rlc
             var random_acceleration_x = Random.Range(-random_max_acceleration, random_max_acceleration);
             var random_acceleration_y = Random.Range(-random_max_acceleration, random_max_acceleration);
             acceleration = new Vector3(random_acceleration_x, random_acceleration_y, 0.0f);
+
+            rotation = Random.Range(-random_max_rotation, random_max_rotation);
         }
 
         private IEnumerator update_random_changes(float interval_secs)
@@ -114,8 +119,14 @@ namespace rlc
 
             offset += velocity;
             offset = warp_around_limit(offset, double_side_size, double_side_size);
+
+            transform.Rotate(Vector3.forward, rotation * Time.deltaTime, Space.World);
         }
 
+        private static float diagonal_of_square(float side_length)
+        {
+            return Mathf.Sqrt(Mathf.Pow(side_length, 2.0f) + Mathf.Pow(side_length, 2.0f));
+        }
 
         private void create_tile_grid()
         {
@@ -126,7 +137,8 @@ namespace rlc
             side_size = tiles_per_side * tile_size;
             half_side_size = side_size / 2.0f;
             double_side_size = side_size * 2.0f;
-            tile_limit = half_side_size + half_tile_size;
+            grid_diagonal = diagonal_of_square(side_size);
+            tile_limit = (grid_diagonal / 2) - (diagonal_of_square(tile_size) / 2);
             tile_adjust_offset = half_side_size - half_tile_size;
 
             int required_tiles_count = tiles_per_side * tiles_per_side;
@@ -192,7 +204,7 @@ namespace rlc
             for (int tile_idx = 0; tile_idx < tiles.Length; ++tile_idx)
             {
                 var new_pos = tile_position(tile_idx);
-                tiles[tile_idx].transform.position = new_pos;
+                tiles[tile_idx].transform.localPosition = new_pos;
             }
         }
 

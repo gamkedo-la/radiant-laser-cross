@@ -62,4 +62,4 @@ MonoBehaviour:
   random_max_acceleration: 2
   random_max_speed: 2
   random_changes_every_secs: 10
-  change_movement_randomly: 0
+  change_movement_randomly: 1
