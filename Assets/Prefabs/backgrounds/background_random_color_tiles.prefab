@@ -51,17 +51,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb982b1c11041489573d56d5f36377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initial_entry_speed: -1000
+  entry_acceleration: -1
+  entry_max_speed: 100
+  initial_exit_speed: 1000
+  exit_acceleration: 2
+  exit_max_speed: 100
+  max_z_speed: 100
+  z_speed: 0
+  z_acceleration: 0
+  target_z: 0
   tile_prefab: {fileID: 1729054125894068, guid: ac6ac2343dbe9284f919787945fa287a,
     type: 2}
   overlap: {x: 0, y: 0}
   offset: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  acceleration: {x: 0, y: -0.05, z: 0}
+  acceleration: {x: 0, y: -0.1, z: 0}
   rotation: 0
   max_acceleration: 1
-  max_speed: 1
+  max_speed: 5
   random_max_acceleration: 1
-  random_max_speed: 1
-  random_max_rotation: 2
+  random_max_speed: 2
+  random_max_rotation: 0
   random_changes_every_secs: 10
   change_movement_randomly: 1

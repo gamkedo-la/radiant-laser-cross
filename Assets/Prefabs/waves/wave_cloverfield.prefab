@@ -513,6 +513,8 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.1682983, g: 0.5849056, b: 0.21001163, a: 0}
+  background: {fileID: 114175068292097232, guid: cb02cd9d148518f48b4f728a6b635f81,
+    type: 2}
   title: Cloverfield
   timeout_secs: 60
   enemies_left_count: 0

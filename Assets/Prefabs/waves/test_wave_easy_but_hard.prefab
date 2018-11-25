@@ -54,6 +54,8 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.8113208, g: 0.50948644, b: 0.27171594, a: 0}
+  background: {fileID: 114175068292097232, guid: 8e00bbb339848824c9814889d308e422,
+    type: 2}
   title: Easy But Hard
   timeout_secs: 0
   enemies_left_count: 0

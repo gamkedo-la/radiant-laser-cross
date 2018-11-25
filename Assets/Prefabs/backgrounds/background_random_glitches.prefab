@@ -51,6 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb982b1c11041489573d56d5f36377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initial_entry_speed: -1000
+  entry_acceleration: -1
+  entry_max_speed: 100
+  initial_exit_speed: 1000
+  exit_acceleration: 2
+  exit_max_speed: 100
+  max_z_speed: 100
+  z_speed: 0
+  z_acceleration: 0
+  target_z: 0
   tile_prefab: {fileID: 1729054125894068, guid: c7de4f7eca76ad64496a49a03cc76646,
     type: 2}
   overlap: {x: 0, y: 0}

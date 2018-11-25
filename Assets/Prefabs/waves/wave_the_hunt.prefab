@@ -1108,7 +1108,8 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.1981132, g: 0.07008722, b: 0.07008722, a: 0}
-  background: {fileID: 0}
+  background: {fileID: 114208839167837970, guid: 58d35abe86f6c9443899db51a70f9cd4,
+    type: 2}
   title: The Hunt
   timeout_secs: 40
   enemies_left_count: 0
