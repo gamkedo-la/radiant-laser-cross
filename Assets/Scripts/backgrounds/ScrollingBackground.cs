@@ -12,7 +12,15 @@ namespace rlc
         public Vector3 offset;
         public Vector3 velocity;
         public Vector3 acceleration;
-        public float max_speed = 100.0f;
+        public float max_acceleration = 2.0f;
+        public float max_speed = 2.0f;
+
+        public float random_max_acceleration = 2.0f;
+        public float random_max_speed = 2.0f;
+        public float random_changes_every_secs = 10.0f;
+
+        public bool change_movement_randomly = false;
+        private IEnumerator current_random_coroutine;
 
         private GameObject[] tiles;
         private float tile_size;
@@ -37,12 +45,57 @@ namespace rlc
 
         void Update()
         {
+            if (change_movement_randomly)
+                start_random_changes(random_changes_every_secs);
+            else
+                stop_random_changes();
+
             move();
             update_tiles_positions();
         }
 
+        private void change_randomly()
+        {
+            max_acceleration = Random.value * random_max_acceleration;
+            max_speed = Random.value * random_max_speed;
+
+            var random_acceleration_x = Random.Range(-random_max_acceleration, random_max_acceleration);
+            var random_acceleration_y = Random.Range(-random_max_acceleration, random_max_acceleration);
+            acceleration = new Vector3(random_acceleration_x, random_acceleration_y, 0.0f);
+        }
+
+        private IEnumerator update_random_changes(float interval_secs)
+        {
+            while (true)
+            {
+                change_randomly();
+                yield return new WaitForSeconds(interval_secs);
+            }
+        }
+
+        private void start_random_changes(float interval_secs)
+        {
+            if (current_random_coroutine != null)
+                return;
+
+            current_random_coroutine = update_random_changes(interval_secs);
+            StartCoroutine(current_random_coroutine);
+        }
+
+        private void stop_random_changes()
+        {
+            if (current_random_coroutine != null)
+            {
+                StopCoroutine(current_random_coroutine);
+                current_random_coroutine = null;
+            }
+        }
+
+
         private void move()
         {
+            acceleration = Vector3.ClampMagnitude(acceleration, max_acceleration);
+
             var local_acceleration = acceleration * Time.deltaTime;
             var next_velocity = velocity + local_acceleration;
             if (next_velocity.magnitude > max_speed)
@@ -53,10 +106,8 @@ namespace rlc
                     var steering = Vector3.ClampMagnitude(local_acceleration * speed_difference, max_speed);
                     next_velocity = velocity - steering;
                 }
-                else
-                {
-                    next_velocity = Vector3.ClampMagnitude(next_velocity, max_speed);
-                }
+
+                next_velocity = Vector3.ClampMagnitude(next_velocity, max_speed);
             }
             velocity = next_velocity;
 
