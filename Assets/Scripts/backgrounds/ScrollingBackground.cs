@@ -145,7 +145,8 @@ namespace rlc
             half_side_size = side_size / 2.0f;
             double_side_size = side_size * 2.0f;
             grid_diagonal = diagonal_of_square(side_size);
-            tile_limit = (grid_diagonal / 2) - (diagonal_of_square(tile_size) / 2);
+            //tile_limit = (grid_diagonal / 2) - (diagonal_of_square(tile_size) / 2); // TODO: reactivate when rotation is not buggy anymore
+            tile_limit = half_side_size + half_tile_size;
             tile_adjust_offset = half_side_size - half_tile_size;
 
             int required_tiles_count = tiles_per_side * tiles_per_side;
