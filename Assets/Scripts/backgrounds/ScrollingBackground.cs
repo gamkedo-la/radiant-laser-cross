@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace rlc
@@ -99,13 +99,19 @@ namespace rlc
 
         private void move()
         {
+            // Apply rotation first
+            var keep_position = transform.position;
+            transform.Rotate(Vector3.forward, rotation * Time.deltaTime, Space.World);
+            transform.position = keep_position; // Make sure the rotation doesn't change the referential's position in the world.
+
+
             acceleration = Vector3.ClampMagnitude(acceleration, max_acceleration);
 
             var local_acceleration = acceleration * Time.deltaTime;
             var next_velocity = velocity + local_acceleration;
             if (next_velocity.magnitude > max_speed)
             { // When the max speed changed to a lower speed than currently, we try to adjust by steering.
-                var speed_difference = next_velocity.magnitude - max_speed;
+                var speed_difference = Mathf.Abs(next_velocity.magnitude - max_speed);
                 if (speed_difference > 0.2f)
                 {
                     var steering = Vector3.ClampMagnitude(local_acceleration * speed_difference, max_speed);
@@ -116,11 +122,8 @@ namespace rlc
             }
             velocity = next_velocity;
 
-
             offset += velocity;
             offset = warp_around_limit(offset, double_side_size, double_side_size);
-
-            transform.Rotate(Vector3.forward, rotation * Time.deltaTime, Space.World);
         }
 
         private static float diagonal_of_square(float side_length)
@@ -163,12 +166,29 @@ namespace rlc
 
         private float warp_around_limit(float pos, float limit, float adjustment)
         {
-            while (Mathf.Abs(pos) > limit)
+            const int max_warp_count = 10;
+            int warp_count = 0;
+
+            while(Mathf.Abs(pos) > limit)
             {
                 float sign = Mathf.Sign(pos);
                 float reversed_sign = -sign;
+
                 float correction = reversed_sign * adjustment;
                 pos += correction;
+
+                if (adjustment > limit * 2) // Avoids infinite loop when big tiles are moved away
+                    break;
+
+                ++warp_count;
+                if (warp_count == max_warp_count) // This is to help debugging infinite loop
+                {
+                    Debug.LogErrorFormat("BACKGROUND WARP COUNT > {0}", max_warp_count);
+                }
+                if (warp_count > max_warp_count * 2) // This is to avoid the infinite loop
+                {
+                    break;
+                }
             }
             return pos;
         }
