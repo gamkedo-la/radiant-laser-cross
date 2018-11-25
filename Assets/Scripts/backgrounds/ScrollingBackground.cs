@@ -43,8 +43,23 @@ namespace rlc
 
         private void move()
         {
-            velocity += acceleration * Time.deltaTime;
-            velocity = Vector3.ClampMagnitude(velocity, max_speed);
+            var local_acceleration = acceleration * Time.deltaTime;
+            var next_velocity = velocity + local_acceleration;
+            if (next_velocity.magnitude > max_speed)
+            { // When the max speed changed to a lower speed than currently, we try to adjust by steering.
+                var speed_difference = next_velocity.magnitude - max_speed;
+                if (speed_difference > 0.2f)
+                {
+                    var steering = Vector3.ClampMagnitude(local_acceleration * speed_difference, max_speed);
+                    next_velocity = velocity - steering;
+                }
+                else
+                {
+                    next_velocity = Vector3.ClampMagnitude(next_velocity, max_speed);
+                }
+            }
+            velocity = next_velocity;
+
 
             offset += velocity;
             offset = warp_around_limit(offset, double_side_size, double_side_size);
