@@ -34,6 +34,7 @@ namespace rlc
 
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
+        public Background default_background_prefab;
 
         public Text progress_display;
         public Text title_display;
@@ -54,6 +55,7 @@ namespace rlc
         private State state = State.ready;
         private Wave current_wave;
         private IEnumerator<LevelStatus> level_progression;
+        private Background current_background;
 
         private enum WaveCategory
         {
@@ -72,6 +74,7 @@ namespace rlc
             timeout = GetComponent<TimeoutSystem>();
             timeout.on_timeout = () => game_over_timeout();
             reset_all();
+
         }
 
         // Update is called once per frame--*
@@ -128,6 +131,7 @@ namespace rlc
             Bullet.clear_bullets_from_game();
 
             set_theme_color(default_background_color);
+            launch_background(default_background_prefab);
 
             level_progression = null;
 
@@ -203,6 +207,7 @@ namespace rlc
             state = State.playing_wave;
 
             set_theme_color(wave_info.wave.background_color);
+            launch_background(wave_info.wave.background);
             string progress_title = string.Format("Level {0} {2}- Wave {1}", current_level_number, current_wave_number, wave_info.category == WaveCategory.Boss ? "- Boss " : "");
 
             int wave_start_idx = ++wave_start_count; // Keep track of which wave we were starting.
@@ -238,7 +243,26 @@ namespace rlc
                 RenderSettings.skybox.SetColor("_Tint", color);
             else if (RenderSettings.skybox.HasProperty("_SkyTint"))
                 RenderSettings.skybox.SetColor("_SkyTint", color);
+            // TODO: set the fog color, with the transition
         }
+
+        private void launch_background(Background background_prefab)
+        {
+            if (current_background)
+            {
+                current_background.on_wave_end();
+                current_background = null;
+            }
+
+            if (background_prefab == null)
+                return;
+
+            var background = GameObject.Instantiate<Background>(background_prefab, Vector3.zero, Quaternion.identity);
+            background.on_wave_begin();
+
+            current_background = background;
+        }
+
 
         private IEnumerator display_title(string progress_text, string title_text, float duration_secs)
         {

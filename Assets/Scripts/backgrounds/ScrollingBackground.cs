@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace rlc
@@ -37,8 +37,10 @@ namespace rlc
         private float offset_limit = 0;
 
 
-        void Start()
+        new void Start()
         {
+            base.Start();
+
             if (tile_prefab == null)
                 Debug.LogError("Missing tile prefab!");
 
@@ -46,8 +48,10 @@ namespace rlc
             create_tile_grid();
         }
 
-        void Update()
+        new void Update()
         {
+            base.Update();
+
             if (change_movement_randomly)
                 start_random_changes(random_changes_every_secs);
             else
@@ -211,7 +215,7 @@ namespace rlc
             x -= tile_adjust_offset;
             y += tile_adjust_offset;
 
-            var pos = new Vector3(x, y, BACKGROUND_Z);
+            var pos = new Vector3(x, y, 0.0f);
             pos += offset;
 
             pos = warp_around_limit(pos, tile_limit, side_size);
