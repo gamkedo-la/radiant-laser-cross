@@ -43,7 +43,7 @@ public class Background : MonoBehaviour
         z_speed = new_z_speed;
         transform.Translate(0.0f, 0.0f, z_speed, Space.World);
 
-        if (transform.position.z > BACK_BACKGROUND_Z + 10.0f)
+        if (transform.position.z > BACK_BACKGROUND_Z + 2.0f) // Destroy the background if farther than the back
         {
             Debug.LogFormat("Destroying Background {0} : Exit background space (max = {1})", gameObject.name, BACK_BACKGROUND_Z);
             Destroy(gameObject);
@@ -64,10 +64,12 @@ public class Background : MonoBehaviour
     public void on_wave_end()
     {
         Debug.LogFormat("END BACKGROUND {0}", gameObject.name);
-        target_z = BACK_BACKGROUND_Z;
+        target_z = BACK_BACKGROUND_Z + 10.0f; // We want to go farther than the background
         z_speed = initial_exit_speed;
         max_z_speed = exit_max_speed;
         z_acceleration = exit_acceleration;
+
+        Destroy(gameObject, 5.0f); // This is just to be sure we don't overload the game
     }
 
 }
