@@ -35,6 +35,7 @@ namespace rlc
         public UnityEngine.Object laser_cross_prefab;
         public Color default_background_color;
         public Background default_background_prefab;
+        public float color_change_speed = 0.5f;
 
         public Text progress_display;
         public Text title_display;
@@ -56,6 +57,7 @@ namespace rlc
         private Wave current_wave;
         private IEnumerator<LevelStatus> level_progression;
         private Background current_background;
+        private IEnumerator theme_color_progression;
 
         private enum WaveCategory
         {
@@ -235,15 +237,38 @@ namespace rlc
 
         private void set_theme_color(Color color)
         {
-            // TODO: transition in a progressive way
-            Camera.main.backgroundColor = color;
-            RenderSettings.skybox.color = color;
-            RenderSettings.skybox.SetColor("_Color", color);
-            if (RenderSettings.skybox.HasProperty("_Tint"))
-                RenderSettings.skybox.SetColor("_Tint", color);
-            else if (RenderSettings.skybox.HasProperty("_SkyTint"))
-                RenderSettings.skybox.SetColor("_SkyTint", color);
-            // TODO: set the fog color, with the transition
+            if (theme_color_progression != null)
+            {
+                StopCoroutine(theme_color_progression);
+                theme_color_progression = null;
+            }
+
+            theme_color_progression = update_theme_color(color);
+            StartCoroutine(theme_color_progression);
+        }
+
+        private IEnumerator update_theme_color(Color color)
+        {
+            var initial_color = Camera.main.backgroundColor;
+            float progression = 0.0f;
+            do
+            {
+                progression += color_change_speed * Time.deltaTime;
+                var new_color = Color.Lerp(initial_color, color, progression);
+
+                Camera.main.backgroundColor = new_color;
+                RenderSettings.skybox.color = new_color;
+                RenderSettings.skybox.SetColor("_Color", new_color);
+                if (RenderSettings.skybox.HasProperty("_Tint"))
+                    RenderSettings.skybox.SetColor("_Tint", new_color);
+                else if (RenderSettings.skybox.HasProperty("_SkyTint"))
+                    RenderSettings.skybox.SetColor("_SkyTint", new_color);
+
+                RenderSettings.fogColor = new_color;
+
+                yield return new WaitForEndOfFrame();
+            }
+            while (progression < 1);
         }
 
         private void launch_background(Background background_prefab)
