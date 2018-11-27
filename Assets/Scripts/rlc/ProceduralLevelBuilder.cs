@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace rlc
 {
 
     public enum GameOverReason
     {
-        destroyed, timeout, hard_reset
+        destroyed, timeout, hard_reset, exit
     }
 
     /* Build and present levels.
@@ -51,7 +52,7 @@ namespace rlc
 
         public enum State
         {
-            ready, playing_wave, game_over
+            ready, playing_wave, game_over, exiting
         }
         private State state = State.ready;
         private Wave current_wave;
@@ -91,6 +92,9 @@ namespace rlc
 
         public void game_over(GameOverReason reason)
         {
+            if (state == State.exiting)
+                return;
+
             if (state != State.playing_wave)
                 return;
             state = State.game_over;
@@ -106,6 +110,41 @@ namespace rlc
             {
                 timeout.stop();
             }
+        }
+
+        public void exit() // This is a special exit, only run when we want to get back to the main men
+        {
+            if (state == State.exiting)
+                return;
+            state = State.exiting;
+
+            timeout.stop();
+
+            display_game_title();
+
+            if (LaserCross.current)
+            {
+                LaserCross.current.die(GameOverReason.exit);
+            }
+
+            var all_enemies = GameObject.FindGameObjectsWithTag(Wave.ENEMY_TAG);
+            foreach (var enemy in all_enemies)
+            {
+                var life_controls = enemy.GetComponentsInChildren<LifeControl>();
+                foreach (var life_control in life_controls)
+                {
+                    life_control.die();
+                }
+            }
+
+            StartCoroutine(wait_then_exit());
+        }
+
+        private IEnumerator wait_then_exit()
+        {
+            yield return new WaitForSeconds(1.0f);
+            clear_wave();
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
 
         private void game_over_timeout()
@@ -152,13 +191,16 @@ namespace rlc
                 laser_cross.name = LASER_CROSS_OBJECT_NAME;
             }
 
-            StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
+            display_game_title();
 
             state = State.ready;
         }
 
         public void new_game()
         {
+            if (state == State.exiting)
+                return;
+
             if (state == State.playing_wave)
                 return;
 
@@ -168,6 +210,9 @@ namespace rlc
 
         public void next_wave() // TODO: call this automatically when a wave is finished
         {
+            if (state == State.exiting)
+                return;
+
             if (level_progression == null)
                 return;
 
@@ -288,6 +333,10 @@ namespace rlc
             current_background = background;
         }
 
+        private void display_game_title()
+        {
+            StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
+        }
 
         private IEnumerator display_title(string progress_text, string title_text, float duration_secs)
         {

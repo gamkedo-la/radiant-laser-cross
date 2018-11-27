@@ -82,7 +82,6 @@ namespace rlc
             if (hit_points <= 0)
             {
                 //Debug.Log("on_hit: die!");
-                launch_destruction_animation();
                 die();
             }
             else
@@ -95,6 +94,7 @@ namespace rlc
         {
             life_state = LifeState.dying;
             Destroy(gameObject, 1.0f);
+            launch_destruction_animation();
         }
 
         public void on_entered_screen()
