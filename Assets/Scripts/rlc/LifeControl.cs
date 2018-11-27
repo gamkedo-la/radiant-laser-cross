@@ -20,6 +20,7 @@ namespace rlc
         private LifeState life_state = LifeState.alive_newborn; // TODO: read-only public access
 
         public int hit_points = 1;
+        private int total_hit_points;
         public List<ColoredBody> body_parts = new List<ColoredBody>();
 
         public delegate void LifeEvent(LifeControl life);
@@ -34,6 +35,7 @@ namespace rlc
         // Use this for initialization
         void Start()
         {
+            total_hit_points = hit_points;
             if (body_parts.Count == 0)
             {
                 Debug.LogErrorFormat("Destructible object {0} have no body parts set!", this.name);
@@ -155,6 +157,11 @@ namespace rlc
         public float ScreenTime
         {
             get { return screen_enter_time < 0f ? 0f : Time.time - screen_enter_time; }
+        }
+
+        public int TotalHitPoints
+        {
+            get { return total_hit_points; }
         }
     }
 }
