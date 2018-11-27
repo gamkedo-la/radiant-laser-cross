@@ -142,9 +142,9 @@ namespace rlc
 
         private void notify_destroyed()
         {
+            if(this.gameObject.CompareTag(Wave.ENEMY_TAG)) EnemyEvents.InvokeOnKilled(this);
             if (on_destroyed != null)
                 on_destroyed(this);
         }
-
     }
 }

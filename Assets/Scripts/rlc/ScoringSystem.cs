@@ -12,6 +12,7 @@ public class ScoringSystem : MonoBehaviour {
         BulletEvents.OnHit += OnBulletHit;
         BulletEvents.OnAbsorved += OnBulletAbsorved;
         BulletEvents.OnMiss += OnBulletMiss;
+        EnemyEvents.OnKilled += OnEnemyKilled;
     }
 
     public int ScoreMultiplier {
@@ -71,5 +72,10 @@ public class ScoringSystem : MonoBehaviour {
             shot_sequence = 0;
             UpdateDisplay();
         }
+    }
+
+    private void OnEnemyKilled(LifeControl life)
+    {
+        Debug.Log("Enemy killed");
     }
 }
