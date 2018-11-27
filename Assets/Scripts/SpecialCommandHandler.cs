@@ -14,7 +14,9 @@ public class SpecialCommandHandler : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyUp(KeyCode.Escape))
-            Application.Quit();
+        {
+            level_builder.exit();
+        }
 
         if (Input.GetKeyUp(KeyCode.Space))
             level_builder.new_game();
