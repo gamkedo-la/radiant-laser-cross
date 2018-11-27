@@ -15,8 +15,8 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.09411766, g: 0.1254902, b: 0.16862746, a: 1}
-  m_FogMode: 2
+  m_FogColor: {r: 0.0748932, g: 0.17444167, b: 0.31132078, a: 1}
+  m_FogMode: 3
   m_FogDensity: 0.0015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
@@ -500,7 +500,7 @@ MonoBehaviour:
   laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
     type: 2}
   default_background_color: {r: 1, g: 1, b: 1, a: 0}
-  default_background_prefab: {fileID: 114535442248397148, guid: ded6d85a8756b854fbdbf0e326438b3f,
+  default_background_prefab: {fileID: 114076868200881952, guid: b97f1bb5e904ecc48b5c6ace2103097a,
     type: 2}
   color_change_speed: 0.5
   progress_display: {fileID: 1243707723}
@@ -1417,7 +1417,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1934762668}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -200}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 49178120}
@@ -1453,7 +1453,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.4033019, g: 0.44570392, b: 0.5, a: 0}
+  m_BackGroundColor: {r: 0.1295835, g: 0.2053969, b: 0.3018868, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1464,9 +1464,9 @@ Camera:
     y: 0
     width: 0.6
     height: 1
-  near clip plane: 1
+  near clip plane: 50
   far clip plane: 10000
-  field of view: 25
+  field of view: 48
   orthographic: 0
   orthographic size: 40
   m_Depth: 1

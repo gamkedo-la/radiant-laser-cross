@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb982b1c11041489573d56d5f36377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perspective_enabled: 0
   initial_entry_speed: -1000
   entry_acceleration: -1
   entry_max_speed: 100
@@ -63,6 +64,7 @@ MonoBehaviour:
   target_z: 0
   tile_prefab: {fileID: 1975996599025808, guid: 326e160c8d28e1c43bd8ace9c57b575d,
     type: 2}
+  min_tiles_per_side: 5
   overlap: {x: 0, y: 0}
   offset: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: -0.5, z: 0}

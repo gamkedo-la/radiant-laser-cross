@@ -4,11 +4,11 @@ using System.Collections;
 // Handle generic behaviour of dynamic backgrounds
 public class Background : MonoBehaviour
 {
-    public const float FRONT_BACKGROUND_Z = 20.0f;
+    public const float FRONT_BACKGROUND_Z = 50.0f;
     public const float BACK_BACKGROUND_Z = 10000.0f;
 
 
-
+    public bool  perspective_enabled = false;
     public float initial_entry_speed = -1000.0f;
     public float entry_acceleration = -1.0f;
     public float entry_max_speed = 100.0f;
@@ -24,7 +24,7 @@ public class Background : MonoBehaviour
 
     protected void Start()
     {
-        on_wave_begin();
+        // on_wave_begin(); // Only do the wave_begin when we are run by the ProceduralLevelBuilder
     }
 
     protected void Update()
