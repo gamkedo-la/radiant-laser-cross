@@ -29,6 +29,7 @@ namespace rlc
         public GameObject explosionPrefab;
         public GameObject hitPrefab;
         public float start_time;
+        public float screen_enter_time = -100f;
 
         // Use this for initialization
         void Start()
@@ -100,6 +101,10 @@ namespace rlc
         public void on_entered_screen()
         {
             life_state = LifeState.alive_in_screen;
+            if (screen_enter_time < 0f)
+            {
+                screen_enter_time = Time.time;
+            }
         }
 
         public void launch_destruction_animation()
@@ -145,6 +150,11 @@ namespace rlc
             if(this.gameObject.CompareTag(Wave.ENEMY_TAG)) EnemyEvents.InvokeOnKilled(this);
             if (on_destroyed != null)
                 on_destroyed(this);
+        }
+
+        public float ScreenTime
+        {
+            get { return screen_enter_time < 0f ? 0f : Time.time - screen_enter_time; }
         }
     }
 }

@@ -76,6 +76,6 @@ public class ScoringSystem : MonoBehaviour {
 
     private void OnEnemyKilled(LifeControl life)
     {
-        Debug.Log("Enemy killed");
+        Debug.Log("Enemy killed " + life.ScreenTime);
     }
 }
