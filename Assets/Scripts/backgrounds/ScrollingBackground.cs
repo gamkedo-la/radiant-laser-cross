@@ -7,6 +7,7 @@ namespace rlc
     public class ScrollingBackground : Background
     {
         public GameObject tile_prefab;
+        public int min_tiles_per_side = 3;
 
         public Vector2 overlap;
         public Vector3 offset;
@@ -105,7 +106,7 @@ namespace rlc
         {
             // Apply rotation first
             var keep_position = transform.position;
-            transform.Rotate(Vector3.forward, rotation * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.forward, rotation * Time.deltaTime, Space.Self);
             transform.position = keep_position; // Make sure the rotation doesn't change the referential's position in the world.
 
 
@@ -141,6 +142,7 @@ namespace rlc
             tile_size = calculate_size(tile_prefab);
             half_tile_size = tile_size / 2.0f;
             tiles_per_side = Mathf.CeilToInt((GameCamera.SIZE_PER_SIDE) / tile_size) + 2;
+            tiles_per_side = Mathf.Max(min_tiles_per_side, tiles_per_side);
             side_size = tiles_per_side * tile_size;
             half_side_size = side_size / 2.0f;
             double_side_size = side_size * 2.0f;
