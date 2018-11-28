@@ -28,10 +28,10 @@ public class ScoringSystem : MonoBehaviour {
         public static TimeBonusStruct[] BONUSES = {
             new TimeBonusStruct(name: "Crazy Fast", timelimit: 5f, points_amount: 100),
             new TimeBonusStruct(name: "Very Fast", timelimit: 10f, points_amount: 50),
-            new TimeBonusStruct(name: "Fast", timelimit: 20f, points_amount: 10),
+            new TimeBonusStruct(name: "Fast", timelimit: 15f, points_amount: 20),
         };
 
-        public static TimeBonusStruct NOBONUS = new TimeBonusStruct(name: "No Bonus", timelimit: 0f, points_amount: 0);
+        public static TimeBonusStruct NOBONUS = new TimeBonusStruct(name: "", timelimit: 0f, points_amount: 0);
 
         public static TimeBonusStruct GetBonusForTime(float time)
         {
@@ -115,7 +115,10 @@ public class ScoringSystem : MonoBehaviour {
     {
         var timeBonus = TimeBonus.GetBonusForTime(life.ScreenTime);
         var lifeScore = life.TotalHitPoints;
-        var total_points = (timeBonus.points_amount + lifeScore) * ScoreMultiplier;
+        var kill_points = timeBonus.points_amount + lifeScore;
+        var total_points = kill_points * ScoreMultiplier;
+        var screenPoint = Camera.main.WorldToScreenPoint(life.gameObject.transform.position);
+        UI_Scoring.DisplayEnemyPoint(screenPoint, kill_points, timeBonus.name);
         score += total_points;
         UpdateDisplay();
     }

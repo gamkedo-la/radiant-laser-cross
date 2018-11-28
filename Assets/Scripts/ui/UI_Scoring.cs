@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UI_Scoring : MonoBehaviour {
     public Text score_text;
+    public GameObject kill_points_prefab;
     private const int SCORE_MAX_DIGITS = 8;
 
     private static UI_Scoring current;
@@ -24,5 +25,12 @@ public class UI_Scoring : MonoBehaviour {
 
         builder.Append(score_str);
         current.score_text.text = builder.ToString();
+    }
+
+    public static void DisplayEnemyPoint(Vector3 screenPosition, int points, string bonusText)
+    {
+        var killPointsObj = GameObject.Instantiate(current.kill_points_prefab, current.transform.parent.parent);
+        var killPoints = killPointsObj.GetComponent<UI_ScoringKillPoints>();
+        killPoints.DisplayKill(screenPosition, points, bonusText);
     }
 }

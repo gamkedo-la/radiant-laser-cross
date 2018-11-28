@@ -702,6 +702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score_text: {fileID: 1198106275}
+  kill_points_prefab: {fileID: 1946693616431992, guid: ac212f137ae382d459e2f26c8d245c3f,
+    type: 2}
 --- !u!1 &715209915
 GameObject:
   m_ObjectHideFlags: 0
