@@ -137,7 +137,7 @@ namespace rlc
 
                 // To make sure that we always see the fx over the related object, move the fx
                 // in front of the camera.
-                const float translation_size_to_the_camera = 10;
+                const float translation_size_to_the_camera = 1;
                 fx.transform.Translate(Vector3.back * translation_size_to_the_camera, Space.World);
             }
         }
