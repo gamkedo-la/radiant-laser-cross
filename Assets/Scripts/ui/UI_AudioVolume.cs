@@ -18,12 +18,14 @@ public class UI_AudioVolume : MonoBehaviour
     void Update()
     {
         const float volume_change = 0.1f;
-        if (Input.GetKeyDown(KeyCode.PageUp))
+        if (Input.GetKeyDown(KeyCode.PageUp) ||
+            (Input.GetAxis("DPAD_VERT") > 0.5)) // DPAD up
         {
             change_volume(+volume_change);
 
         }
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        if (Input.GetKeyDown(KeyCode.PageDown) ||
+            (Input.GetAxis("DPAD_VERT") < -0.5)) // DPAD down
         {
             change_volume(-volume_change);
         }
