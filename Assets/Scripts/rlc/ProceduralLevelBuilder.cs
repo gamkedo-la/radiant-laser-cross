@@ -19,6 +19,8 @@ namespace rlc
     {
         const string DEFAULT_TITLE = "RADIANT LASER CROSS";
 
+        public MusicTrack default_music_tracks;
+
         public List<Wave> waves_lvl_1_easy = new List<Wave>();
         public List<Wave> waves_lvl_2_challenging = new List<Wave>();
         public List<Wave> waves_lvl_3_hard = new List<Wave>();
@@ -165,7 +167,6 @@ namespace rlc
         private void reset_all()
         {
             Debug.Log("==== RESET ALL ====");
-            // TODO: make a not crude version XD
 
             clear_wave();
 
@@ -192,6 +193,11 @@ namespace rlc
             }
 
             display_game_title();
+
+            if (default_music_tracks)
+            {
+                MusicEventManager.Instance.Transition(default_music_tracks);
+            }
 
             state = State.ready;
         }
@@ -263,6 +269,11 @@ namespace rlc
             if (wave_info.wave.timeout_secs > 0)
             {
                 timeout.show_timeout(wave_info.wave.timeout_secs);
+            }
+
+            if (wave_info.wave.music_tracks)
+            {
+                MusicEventManager.Instance.Transition(wave_info.wave.music_tracks);
             }
 
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);

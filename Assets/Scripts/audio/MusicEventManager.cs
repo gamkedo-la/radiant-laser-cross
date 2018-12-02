@@ -67,6 +67,8 @@ namespace rlc
 
         public void Transition(MusicTrack newTrack)
         {
+            maxLayers = newTrack.max_parallel_tracks;
+            minLayers = newTrack.min_parallel_tracks;
             if (currentTrack != null)
             {
                 StartCoroutine(TransitionTimer(newTrack));

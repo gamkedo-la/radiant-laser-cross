@@ -50,7 +50,8 @@ namespace rlc
         [Tooltip("Count of enemies left before this wave finishes.")]
         public int enemies_left_count = 0;
 
-        // TODO: Add audio tracks
+        [Tooltip("Music tracks that will be used to compose music when this wave is playing.")]
+        public MusicTrack music_tracks;
 
 
         static private Material warning_material = null;

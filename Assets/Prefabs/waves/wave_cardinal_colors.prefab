@@ -59,6 +59,7 @@ MonoBehaviour:
   title: Cardinal Colors
   timeout_secs: 0
   enemies_left_count: 0
+  music_tracks: {fileID: 11400000, guid: 28b068830077b734fac672e924c0bf0b, type: 2}
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 779c8b905ba124347a15ef39cc20ec00, type: 2}
   - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}
