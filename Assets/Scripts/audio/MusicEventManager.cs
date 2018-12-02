@@ -34,7 +34,7 @@ namespace rlc
         [SerializeField]
         private MusicTrack currentTrack;
         private List<AudioSource> currentSources = new List<AudioSource>();
-        private int currentListLenght = 0;
+        private int currentListLength = 0;
 
         void Awake()
         {
@@ -86,7 +86,7 @@ namespace rlc
 
             if (runningLayers >= currentTrack.musicStems.Length)
             {
-                runningLayers = currentListLenght;
+                runningLayers = currentListLength;
             }
 
             if (TracksRunning() < runningLayers)
@@ -112,8 +112,8 @@ namespace rlc
         private void StartTrack()
         {
             currentSources.Clear();
-            currentListLenght = currentTrack.musicStems.Length - 1;
-            for (int i = 0; i <= currentListLenght; i++)
+            currentListLength = currentTrack.musicStems.Length;
+            for (int i = 0; i < currentListLength; ++i)
             {
                 AudioSource freshMusicSource = Instantiate(audioSourcePrefab).GetComponent<AudioSource>();
                 freshMusicSource.gameObject.transform.parent = gameObject.transform;
@@ -138,14 +138,14 @@ namespace rlc
 
         private int FindUnusedNumber()
         {
-            int unusedNumber = Random.Range(0, currentListLenght);
+            int unusedNumber = Random.Range(0, currentListLength);
 
             bool check = true;
-            int exitCondition = currentListLenght;
+            int exitCondition = currentListLength;
             while (check)
             {
                 check = false;
-                for (int i = 0; i <= currentListLenght; i++)
+                for (int i = 0; i < currentListLength; ++i)
                 {
                     if (currentSources[i].volume > 0f)
                     {
@@ -155,7 +155,7 @@ namespace rlc
                     }
                 }
 
-                if (unusedNumber > currentListLenght)
+                if (unusedNumber > currentListLength)
                 {
                     unusedNumber = 0;
                     check = true;
@@ -172,14 +172,14 @@ namespace rlc
 
         private int FindUsedNumber()
         {
-            int usedNumber = Random.Range(0, currentListLenght);
+            int usedNumber = Random.Range(0, currentListLength);
 
             bool check = true;
-            int exitCondition = currentListLenght;
+            int exitCondition = currentListLength;
             while (check)
             {
                 check = false;
-                for (int i = 0; i <= currentListLenght; i++)
+                for (int i = 0; i < currentListLength; ++i)
                 {
                     if (currentSources[i].volume < 1f)
                     {
@@ -189,7 +189,7 @@ namespace rlc
                     }
                 }
 
-                if (usedNumber > currentListLenght)
+                if (usedNumber > currentListLength)
                 {
                     usedNumber = 0;
                     check = true;
@@ -212,7 +212,7 @@ namespace rlc
         private int TracksRunning()
         {
             int running = 0;
-            for (int i = 0; i <= currentListLenght; i++)
+            for (int i = 0; i < currentListLength; ++i)
             {
                 if (currentSources[i].volume == 1f)
                 {
@@ -331,7 +331,7 @@ namespace rlc
                 yield return null;
             }
 
-            for (int i = 0; i <= currentListLenght; i++)
+            for (int i = 0; i < currentListLength; ++i)
             {
                 StartCoroutine(FadeOutAndStop(currentSources[i], transitionFadeTimeInSeconds));
                 currentSources[i].gameObject.name = "MusicTrack (Old)";
