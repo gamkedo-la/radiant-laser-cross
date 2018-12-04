@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &114451951588178046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,6 +306,7 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
 --- !u!114 &114537827016486162
 MonoBehaviour:
   m_ObjectHideFlags: 1

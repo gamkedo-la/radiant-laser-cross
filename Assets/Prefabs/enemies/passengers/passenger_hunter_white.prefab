@@ -332,13 +332,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
-  hit_points: 20
+  hit_points: 1
   body_parts:
   - {fileID: 114488710056622866}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
 --- !u!114 &114488710056622866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,3 +380,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
