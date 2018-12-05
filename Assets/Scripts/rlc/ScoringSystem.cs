@@ -117,7 +117,7 @@ public class ScoringSystem : MonoBehaviour {
         var lifeScore = life.TotalHitPoints;
         var kill_points = timeBonus.points_amount + lifeScore;
         var total_points = kill_points * ScoreMultiplier;
-        var screenPoint = Camera.main.WorldToScreenPoint(life.gameObject.transform.position);
+        var screenPoint = life.gameObject.transform.position;
         UI_Scoring.DisplayEnemyPoint(screenPoint, kill_points, timeBonus.name);
         score += total_points;
         UpdateDisplay();

@@ -17,8 +17,8 @@ public class UI_ScoringKillPoints : MonoBehaviour {
     public void Update()
     {
         time_past += Time.deltaTime;
-        var pos = this.rect.position;
-        this.rect.position = new Vector3(pos.x, pos.y + Time.deltaTime*5f, pos.z);
+        var pos = this.rect.anchoredPosition3D;
+        this.rect.anchoredPosition3D = new Vector3(pos.x, pos.y + Time.deltaTime*1f, pos.z);
         if(time_past >= 1f)
         {
             Destroy(this.gameObject);
@@ -27,7 +27,7 @@ public class UI_ScoringKillPoints : MonoBehaviour {
 
     public void DisplayKill(Vector3 position, int points, string bonusText)
     {
-        this.transform.position = position - new Vector3(this.rect.rect.width/2f, 0f, 0f);
+        this.rect.anchoredPosition3D = position;
         if (bonusText.Length == 0)
         {
             time_bonus_text.text = "";

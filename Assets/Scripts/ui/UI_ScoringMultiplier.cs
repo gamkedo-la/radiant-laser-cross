@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class UI_ScoringMultiplier : MonoBehaviour {
     public Text multiplier_text;
-    public Text sequence_count_text;
+    public GameObject sequence_count_wrapper;
+    public Image[] sequence_images = { null, null, null, null, null };
 
     private static UI_ScoringMultiplier current;
 
 	void Start () {
         current = this;
+        sequence_images = sequence_count_wrapper.GetComponentsInChildren<Image>();
 	}
 
     public static void DisplayMultiplier(int multiplier)
@@ -21,10 +23,10 @@ public class UI_ScoringMultiplier : MonoBehaviour {
 
     public static void DisplaySequenceCount(int number)
     {
-        var builder = new StringBuilder();
-        for(int i = 0; i < number; i++)
-            builder.Append(".");
-        Debug.Log(builder.ToString());
-        current.sequence_count_text.text = builder.ToString();
+        for (int i = 0; i < number; i++)
+            current.sequence_images[i].color = Color.cyan;
+
+        for (int i = number; i < 5; i++)
+            current.sequence_images[i].color = Color.white;
     }
 }

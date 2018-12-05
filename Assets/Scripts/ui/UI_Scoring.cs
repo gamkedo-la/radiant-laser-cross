@@ -18,6 +18,7 @@ public class UI_Scoring : MonoBehaviour {
 
     public static void DisplaySequenceCount(int score)
     {
+        if (current == null) return;
         var score_str = score.ToString();
         var builder = new StringBuilder();
         for (int i = score_str.Length; i < SCORE_MAX_DIGITS; i++)
@@ -29,7 +30,9 @@ public class UI_Scoring : MonoBehaviour {
 
     public static void DisplayEnemyPoint(Vector3 screenPosition, int points, string bonusText)
     {
-        var killPointsObj = GameObject.Instantiate(current.kill_points_prefab, current.transform.parent.parent);
+        if (current == null) return;
+        var ui = current.transform.parent.parent;
+        var killPointsObj = GameObject.Instantiate(current.kill_points_prefab, ui);
         var killPoints = killPointsObj.GetComponent<UI_ScoringKillPoints>();
         killPoints.DisplayKill(screenPosition, points, bonusText);
     }
