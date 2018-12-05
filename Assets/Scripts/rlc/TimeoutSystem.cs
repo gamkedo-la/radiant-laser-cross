@@ -39,6 +39,7 @@ namespace rlc
 
         public void start(float seconds)
         {
+            display.MaxTime = seconds;
             end_run();
             current_run = run_timeout(seconds);
             StartCoroutine(current_run);
