@@ -8,6 +8,7 @@ public class UI_ScoringKillPoints : MonoBehaviour {
     public Text points_text;
     private RectTransform rect;
     private float time_past = 0;
+    private const float ANIMATION_SPEED = 15f;
 
     public void Awake()
     {
@@ -18,7 +19,7 @@ public class UI_ScoringKillPoints : MonoBehaviour {
     {
         time_past += Time.deltaTime;
         var pos = this.rect.anchoredPosition3D;
-        this.rect.anchoredPosition3D = new Vector3(pos.x, pos.y + Time.deltaTime*1f, pos.z);
+        this.rect.anchoredPosition3D = new Vector3(pos.x, pos.y + Time.deltaTime*ANIMATION_SPEED, pos.z);
         if(time_past >= 1f)
         {
             Destroy(this.gameObject);
