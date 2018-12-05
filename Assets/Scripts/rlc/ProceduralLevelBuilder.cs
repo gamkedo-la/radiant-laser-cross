@@ -45,6 +45,8 @@ namespace rlc
         public float default_title_display_duration_secs = 5.0f;
         public float title_display_duration_secs = 3.0f;
 
+        public Text instruction_text;
+
         private TimeoutSystem timeout;
         private IEnumerator timeout_gameover_display;
         private float timeout_gameover_deplay = 3.0f;
@@ -194,6 +196,11 @@ namespace rlc
 
             display_game_title();
 
+            if (instruction_text)
+            {
+                instruction_text.enabled = true;
+            }
+
             if (default_music_tracks)
             {
                 MusicEventManager.Instance.Transition(default_music_tracks);
@@ -209,6 +216,11 @@ namespace rlc
 
             if (state == State.playing_wave)
                 return;
+
+            if (instruction_text)
+            {
+                instruction_text.enabled = false;
+            }
 
             level_progression = make_level_progression();
             next_wave();
