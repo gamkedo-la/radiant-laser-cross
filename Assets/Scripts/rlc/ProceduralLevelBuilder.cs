@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -19,16 +19,16 @@ namespace rlc
     {
         const string DEFAULT_TITLE = "RADIANT LASER CROSS";
 
-        public MusicTrack default_music_tracks;
 
-        public List<Wave> waves_lvl_1_easy = new List<Wave>();
-        public List<Wave> waves_lvl_2_challenging = new List<Wave>();
-        public List<Wave> waves_lvl_3_hard = new List<Wave>();
-        public List<Wave> waves_lvl_4_hardcore = new List<Wave>();
+        public List<Wave> level_1_waves_1 = new List<Wave>();
+        public List<Wave> level_1_waves_2 = new List<Wave>();
+        public List<Wave> level_1_waves_3 = new List<Wave>();
+        public List<Wave> level_1_waves_4 = new List<Wave>();
+        public List<Wave> level_1_waves_5 = new List<Wave>();
+        public List<Wave> level_1_waves_6 = new List<Wave>();
+        public List<Wave> level_1_boss    = new List<Wave>();
 
-        public List<Wave> boss_lvl_1_challenging = new List<Wave>();
-        public List<Wave> boss_lvl_2_hard = new List<Wave>();
-        public List<Wave> boss_lvl_3_hardcore = new List<Wave>();
+
 
         public int end_level = 4;
         private int current_level_number = 1;
@@ -244,9 +244,9 @@ namespace rlc
 
         private WaveInfo pick_a_wave_in(IList<Wave> wave_bag, WaveCategory wave_category = WaveCategory.Wave)
         {
-            if (wave_bag.Count == 0)
+            if (wave_bag == null || wave_bag.Count == 0)
             {
-                Debug.LogErrorFormat("No ennemies in enemy wave bag: {0}", wave_bag);
+                Debug.LogWarningFormat("No ennemies in enemy wave bag: {0}", wave_bag);
                 return null;
             }
             var random_idx = Random.Range(0, wave_bag.Count);
@@ -259,7 +259,7 @@ namespace rlc
 
         private void clear_wave()
         {
-            if (current_wave != null) // TODO: remove the previous wave progressively/"smoothly"
+            if (current_wave != null)
             {
                 Destroy(current_wave.gameObject);
             }
@@ -407,6 +407,9 @@ namespace rlc
             for (current_level_number = 1; current_level_number <= end_level; ++current_level_number)
             {
                 current_level_waves_selection = build_level(current_level_number);
+                if (current_level_waves_selection == null)
+                    break;
+
                 yield return LevelStatus.next_level;
 
                 current_wave_number = 0;
@@ -422,6 +425,14 @@ namespace rlc
         }
 
 
+        private static void store_if_any<T>(IList<T> result_list, T x)
+        {
+            if (x != null)
+            {
+                result_list.Add(x);
+            }
+        }
+
         private List<WaveInfo> build_level(int level_number)
         {
             if (level_number < 1)
@@ -436,52 +447,53 @@ namespace rlc
             {
                 case 1:
                     {
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging, WaveCategory.Boss));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_1));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_2));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_3));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_4));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_5));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_waves_6));
+                        store_if_any(selected_waves, pick_a_wave_in(level_1_boss, WaveCategory.Boss));
                         break;
                     }
-                case 2:
-                    {
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
-                        break;
-                    }
-                case 3:
-                    {
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
-                        break;
-                    }
-                case 4:
-                    {
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
-                        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging, WaveCategory.Boss));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
-                        selected_waves.Add(pick_a_wave_in(boss_lvl_3_hardcore, WaveCategory.Boss));
-                        break;
-                    }
+                //case 2:
+                //    {
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                //        break;
+                //    }
+                //case 3:
+                //    {
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                //        break;
+                //    }
+                //case 4:
+                //    {
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_2_challenging));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_3_hard));
+                //        selected_waves.Add(pick_a_wave_in(waves_lvl_1_easy));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_1_challenging, WaveCategory.Boss));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_2_hard, WaveCategory.Boss));
+                //        selected_waves.Add(pick_a_wave_in(boss_lvl_3_hardcore, WaveCategory.Boss));
+                //        break;
+                //    }
                 default:
                     {
                         // TODO: for an "infinite mode", just put some kind of algorithm here.
