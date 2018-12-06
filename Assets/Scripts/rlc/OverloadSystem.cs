@@ -66,6 +66,7 @@ namespace rlc
             load = new_load;
 
             next_update_load = 0;
+            OverloadEvents.InvokeOnLoadChange(load);
         }
 
 

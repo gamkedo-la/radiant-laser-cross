@@ -12,18 +12,17 @@ public class UI_OverloadBar : MonoBehaviour {
     private float disturbance_delay = 0f;
     private const float MAX_VELOCITY = 96f; // 32% per second
     private const float MIN_VELOCITY = 32f; // 8% per second
-    private const float MAX_DISTURBANCE_DECREASE = 24f;
-    private const float MIN_DISTURBANCE_DECREASE = 8f;
-    private const float MAX_RANDOM_RANGE_DISTURBANCE_DECREASE = 66f;
-    private const float MIN_RANDOM_RANGE_DISTURBANCE_DECREASE = 12f;
+    private const float MAX_DISTURBANCE_INCREASE = 24f;
+    private const float MIN_DISTURBANCE_INCREASE = 8f;
+    private const float MAX_RANDOM_RANGE_DISTURBANCE_INCREASE = 66f;
+    private const float MIN_RANDOM_RANGE_DISTURBANCE_INCREASE = 12f;
     private const float MAX_DISTURBANCE_RATE = 1f; // each 3 seconds
     private const float MIN_DISTURBANCE_RATE = 0.3f; // each second
     private const float MIN_DIFF_TO_DISTURBANCE = 15f;
-
-
+    
     void Start () {
-        level = 100;
-        disturbance = 100;
+        level = 0;
+        disturbance = 0;
         cells = GetComponentsInChildren<UI_OverloadBarCell>();
 	}
 	
@@ -39,10 +38,18 @@ public class UI_OverloadBar : MonoBehaviour {
         update_cells();
     }
 
+    public void change_color(UI_OverloadBarColor foreground, UI_OverloadBarColor background)
+    {
+        actual_level = 0f;
+        update_cells();
+        foreground_color = foreground;
+        background_color = background;
+    }
+
     private void apply_disturbance()
     {
-        var disturbance_decrease = DisturbanceDecrease - RandomRangeDisturbanceDecrease * Random.Range(0f, 1f);
-        actual_level = Mathf.Max(0f, actual_level - disturbance_decrease);
+        var disturbance_increase = DisturbanceIncrease - RandomRangeDisturbanceIncrease * Random.Range(0f, 1f);
+        actual_level = Mathf.Min(100f, actual_level + disturbance_increase);
     }
 
     private void step_level()
@@ -59,10 +66,10 @@ public class UI_OverloadBar : MonoBehaviour {
 
     private void update_cells()
     {
-        var cell_level = Mathf.RoundToInt(actual_level * ((cells.Length - 1) / 100f));
-        for(var i = 0; i < cells.Length; i++)
+        var cell_level = Mathf.RoundToInt(actual_level * (cells.Length / 100f));
+        for(var i = 1; i <= cells.Length; i++)
         {
-            var cell = cells[i];
+            var cell = cells[i-1];
             if (i <= cell_level)
             {
                 cell.light_on(foreground_color);
@@ -84,13 +91,13 @@ public class UI_OverloadBar : MonoBehaviour {
         get { return MAX_DISTURBANCE_RATE - (MAX_DISTURBANCE_RATE - MIN_DISTURBANCE_RATE) * (disturbance / 100f); }
     }
 
-    private float DisturbanceDecrease
+    private float DisturbanceIncrease
     {
-        get { return MIN_DISTURBANCE_DECREASE + (MAX_DISTURBANCE_DECREASE - MIN_DISTURBANCE_DECREASE) * (disturbance / 100f); }
+        get { return MIN_DISTURBANCE_INCREASE + (MAX_DISTURBANCE_INCREASE - MIN_DISTURBANCE_INCREASE) * (disturbance / 100f); }
     }
 
-    private float RandomRangeDisturbanceDecrease
+    private float RandomRangeDisturbanceIncrease
     {
-        get { return MIN_RANDOM_RANGE_DISTURBANCE_DECREASE - (MAX_RANDOM_RANGE_DISTURBANCE_DECREASE - MIN_RANDOM_RANGE_DISTURBANCE_DECREASE) * (disturbance / 100f); }
+        get { return MIN_RANDOM_RANGE_DISTURBANCE_INCREASE - (MAX_RANDOM_RANGE_DISTURBANCE_INCREASE - MIN_RANDOM_RANGE_DISTURBANCE_INCREASE) * (disturbance / 100f); }
     }
 }

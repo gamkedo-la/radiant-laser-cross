@@ -2626,7 +2626,7 @@ GameObject:
   - component: {fileID: 602603359}
   - component: {fileID: 602603358}
   m_Layer: 0
-  m_Name: multiplier-label
+  m_Name: overload-label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6711,6 +6711,7 @@ GameObject:
   - component: {fileID: 1941798875}
   - component: {fileID: 1941798877}
   - component: {fileID: 1941798876}
+  - component: {fileID: 1941798878}
   m_Layer: 0
   m_Name: overload
   m_TagString: Untagged
@@ -6771,6 +6772,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1941798874}
   m_CullTransparentMesh: 0
+--- !u!114 &1941798878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941798874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d0d981ba60f324fa39eaeb2069dfb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  section_colors:
+  - {fileID: 11400000, guid: fa8699517a9b30f49bae47cf7ea871d8, type: 2}
+  - {fileID: 11400000, guid: 716bf59337b78b6409da022c2ab4ff23, type: 2}
+  - {fileID: 11400000, guid: 8be1a88393a3aed4da2b1fce9dd3fce4, type: 2}
+  - {fileID: 11400000, guid: cd0114ef8651e3d4683afe0225b14c0e, type: 2}
+  - {fileID: 11400000, guid: 5ec45b8d28caa5e46b2c661edc5dd4d7, type: 2}
+  - {fileID: 11400000, guid: 82d5b48021168024eb6ed3dfbe28dc7e, type: 2}
 --- !u!1 &2022249669
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97d7aea53dbc1b2408f9d77a26df5e1f, type: 3}
-  m_Name: Green
+  m_Name: Light Orange
   m_EditorClassIdentifier: 
-  weak: {r: 0.72156864, g: 1, b: 0.7019608, a: 1}
-  medium: {r: 0.48235294, g: 1, b: 0.4745098, a: 1}
-  strong: {r: 0.28627452, g: 0.9607843, b: 0.30980393, a: 1}
+  weak: {r: 1, g: 0.8515202, b: 0.7019608, a: 1}
+  medium: {r: 1, g: 0.7927281, b: 0.47450984, a: 1}
+  strong: {r: 0.9607843, g: 0.72298473, b: 0.28627452, a: 1}
