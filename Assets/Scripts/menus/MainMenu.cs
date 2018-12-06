@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
 
     public void start_new_game()
     {
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainWithNewUI", LoadSceneMode.Single);
     }
 
 }

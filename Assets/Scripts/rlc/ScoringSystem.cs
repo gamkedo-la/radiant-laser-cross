@@ -24,7 +24,7 @@ public class ScoringSystem : MonoBehaviour {
                 this.points_amount = points_amount;
             }
         }
-        
+
         public static TimeBonusStruct[] BONUSES = {
             new TimeBonusStruct(name: "Crazy Fast", timelimit: 5f, points_amount: 100),
             new TimeBonusStruct(name: "Very Fast", timelimit: 10f, points_amount: 50),
