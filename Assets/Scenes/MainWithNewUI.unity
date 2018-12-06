@@ -1609,6 +1609,10 @@ MonoBehaviour:
   default_background_prefab: {fileID: 114076868200881952, guid: b97f1bb5e904ecc48b5c6ace2103097a,
     type: 2}
   color_change_speed: 0.5
+  default_music_tracks: {fileID: 0}
+  game_complete_splosions_prefabs:
+  - {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+  - {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   progress_display: {fileID: 1243707723}
   title_display: {fileID: 951607204}
   default_title_display_duration_secs: 5
@@ -3477,7 +3481,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
       propertyPath: m_Name
-      value: start-explosion
+      value: start_explosion_on_purpose
       objectReference: {fileID: 0}
     - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
       propertyPath: m_IsActive

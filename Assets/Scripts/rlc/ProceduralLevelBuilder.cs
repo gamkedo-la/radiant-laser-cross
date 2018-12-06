@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -39,6 +39,9 @@ namespace rlc
         public Color default_background_color;
         public Background default_background_prefab;
         public float color_change_speed = 0.5f;
+        public MusicTrack default_music_tracks;
+
+        public List<GameObject> game_complete_splosions_prefabs;
 
         public Text progress_display;
         public Text title_display;
@@ -235,11 +238,55 @@ namespace rlc
                 return;
 
             level_progression.MoveNext();
-            if (level_progression.Current == LevelStatus.next_level)
+
+            switch (level_progression.Current)
             {
-                // TODO: Do something to clarify that we changed level
-                level_progression.MoveNext();
+                case LevelStatus.next_level:
+                {
+                    level_progression.MoveNext();
+                    break;
+                }
+                case LevelStatus.finished:
+                {
+                    on_game_complete();
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+
             }
+
+        }
+
+        private void on_game_complete()
+        {
+            StartCoroutine(celebrate_then_go_to_game_complete_screen());
+        }
+
+        private IEnumerator celebrate_then_go_to_game_complete_screen()
+        {
+            clear_wave();
+            launch_background(default_background_prefab);
+
+            const int random_splosions_batch_count = 42;
+            const int random_splosions_per_batch = 3;
+
+            for (int batch_idx = 0; batch_idx < random_splosions_batch_count; ++batch_idx)
+            {
+                for (int splosion_idx = 0; splosion_idx < random_splosions_per_batch; ++splosion_idx)
+                {
+                    var random_pos = Wave_RandomSpawning.random_position_in_screen();
+                    var random_splosion_prefab = game_complete_splosions_prefabs[Random.Range(0, game_complete_splosions_prefabs.Count)];
+                    Instantiate(random_splosion_prefab, random_pos, Quaternion.identity);
+                }
+
+                yield return new WaitForSeconds(1.0f / 8.0f);
+            }
+
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("GameCompleteScreen", LoadSceneMode.Single);
         }
 
         private WaveInfo pick_a_wave_in(IList<Wave> wave_bag, WaveCategory wave_category = WaveCategory.Wave)

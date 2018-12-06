@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -77,6 +77,11 @@ namespace rlc
             {
                 ready();
             }
+        }
+
+        public static Vector3 random_position_in_screen()
+        {
+            return new Vector3(Random.Range(-max_distance_from_center, max_distance_from_center), Random.Range(-max_distance_from_center, max_distance_from_center), 0);
         }
 
         private SpawnState random_transform()
