@@ -3447,6 +3447,61 @@ MonoBehaviour:
   variationFadeTimeInSeconds: 0.25
   transitionFadeTimeInSeconds: 0.5
   currentTrack: {fileID: 0}
+--- !u!1001 &1866796817
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006562878477630, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 82783968080067498, guid: 8715c21d906956a44acaf183e55cc610,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.204
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_Name
+      value: start-explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1934762668
 GameObject:
   m_ObjectHideFlags: 0
