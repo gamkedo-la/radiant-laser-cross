@@ -48,6 +48,7 @@ namespace rlc
 
         public AudioSource sound_rotation;
         public AudioSource sound_rotation_stop;
+        public AudioSource sound_destroyed;
 
         // Note that these are functions because the gun on each direction will change while playing.
         private Gun get_gun(AxesDirections direction)   { return guns[(int)direction];  }
@@ -136,6 +137,11 @@ namespace rlc
         {
             transform.localScale = transform.localScale * 1.05f;
             transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
+
+            if (sound_destroyed && !sound_destroyed.isPlaying)
+            {
+                sound_destroyed.Play();
+            }
         }
 
 
