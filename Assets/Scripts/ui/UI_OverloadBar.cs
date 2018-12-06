@@ -29,7 +29,7 @@ public class UI_OverloadBar : MonoBehaviour {
 	void Update ()
     {
         disturbance_delay += Time.deltaTime;
-        if (disturbance_delay >= DisturbanceRate && Mathf.Abs(level - actual_level) <= MIN_DIFF_TO_DISTURBANCE)
+        if (level >= 0.01f && disturbance_delay >= DisturbanceRate && Mathf.Abs(level - actual_level) <= MIN_DIFF_TO_DISTURBANCE)
         {
             apply_disturbance();
             disturbance_delay = 0f;
