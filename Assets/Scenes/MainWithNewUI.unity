@@ -1557,7 +1557,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4595222058351098, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
@@ -1593,8 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ab688d49c2ab141ae29c2db2ce3af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  default_music_tracks: {fileID: 11400000, guid: c63a402979756b6489853a003e0dc712,
-    type: 2}
+  default_music_tracks: {fileID: 0}
   waves_lvl_1_easy:
   - {fileID: 114075109046794008, guid: 8fe93cebf94fcd9489240d442abb2791, type: 2}
   - {fileID: 114086415066881564, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
@@ -1687,7 +1686,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 715209915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0123669fc42bd494bafa69bdae650b90, type: 3}
   m_Name: 
@@ -3447,7 +3446,7 @@ MonoBehaviour:
   variationFrequencyInSeconds: 20
   variationFadeTimeInSeconds: 0.25
   transitionFadeTimeInSeconds: 0.5
-  currentTrack: {fileID: 11400000, guid: c63a402979756b6489853a003e0dc712, type: 2}
+  currentTrack: {fileID: 0}
 --- !u!1 &1934762668
 GameObject:
   m_ObjectHideFlags: 0
