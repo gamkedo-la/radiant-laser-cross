@@ -5,6 +5,8 @@ using UnityEngine;
 public class UI_OverloadBar : MonoBehaviour {
     public int level;
     public int disturbance;
+    public UI_OverloadBarColor foreground_color;
+    public UI_OverloadBarColor background_color;
     private UI_OverloadBarCell[] cells;
     private float actual_level = 0f;
     private float disturbance_delay = 0f;
@@ -57,14 +59,17 @@ public class UI_OverloadBar : MonoBehaviour {
 
     private void update_cells()
     {
-        var cell_level = Mathf.RoundToInt(actual_level * (cells.Length / 100f));
-        for (var i = cell_level + 1; i <= cells.Length; i++)
+        var cell_level = Mathf.RoundToInt(actual_level * ((cells.Length - 1) / 100f));
+        for(var i = 0; i < cells.Length; i++)
         {
-            cells[i-1].hide();
-        }
-        for (var i = 1; i <= cell_level; i++)
-        {
-            cells[i-1].show();
+            var cell = cells[i];
+            if (i <= cell_level)
+            {
+                cell.light_on(foreground_color);
+            } else
+            {
+                cell.light_out(background_color);
+            }
         }
     }
 

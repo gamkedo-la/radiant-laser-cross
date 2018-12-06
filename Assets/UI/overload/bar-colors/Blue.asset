@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d7aea53dbc1b2408f9d77a26df5e1f, type: 3}
+  m_Name: Blue
+  m_EditorClassIdentifier: 
+  weak: {r: 0.7019608, g: 0.9254902, b: 1, a: 1}
+  medium: {r: 0.4745098, g: 0.8509804, b: 1, a: 1}
+  strong: {r: 0.28627452, g: 0.70980394, b: 0.9607843, a: 1}
