@@ -2354,7 +2354,7 @@ RectTransform:
   m_GameObject: {fileID: 552256799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1687336412}
   m_Father: {fileID: 494894500}
@@ -2362,7 +2362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552256801
@@ -4292,7 +4292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -150, y: 265.7}
+  m_AnchoredPosition: {x: -334.7, y: 265.7}
   m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1185758636
@@ -5360,7 +5360,7 @@ RectTransform:
   m_GameObject: {fileID: 1687336411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.95, z: 1}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_Children:
   - {fileID: 1094508580}
   - {fileID: 1501531802}
@@ -5371,7 +5371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25, y: -54.9}
+  m_AnchoredPosition: {x: 12.5, y: -54.9}
   m_SizeDelta: {x: 10, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687336413
@@ -5879,18 +5879,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 82783968080067498, guid: 8715c21d906956a44acaf183e55cc610,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.204
-      objectReference: {fileID: 0}
     - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
       propertyPath: m_Name
       value: start_explosion_on_purpose
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8715c21d906956a44acaf183e55cc610, type: 2}
@@ -6061,7 +6052,7 @@ Camera:
   field of view: 48
   orthographic: 0
   orthographic size: 40
-  m_Depth: 2
+  m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
