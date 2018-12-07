@@ -6,8 +6,9 @@ public class UI_NewOverload : MonoBehaviour {
     private UI_OverloadBar bar;
     private UI_OverloadLamps lamps;
     public UI_OverloadBarColor[] section_colors;
+    public UI_OverloadRings rings;
     private float last_level = 0f;
-    private int last_section = 0;
+    private int last_section = 99;
     private int MAX_SECTIONS;
     private float MAX_RELATIVE_LEVEL;
     public static Color REST_COLOR = new Color(0xE4, 0xFF, 0xFF);
@@ -17,6 +18,7 @@ public class UI_NewOverload : MonoBehaviour {
         MAX_RELATIVE_LEVEL = 100f / MAX_SECTIONS;
         bar = GetComponentInChildren<UI_OverloadBar>();
         lamps = GetComponentInChildren<UI_OverloadLamps>();
+        rings = GetComponentInChildren<UI_OverloadRings>();
         OverloadEvents.OnLoadChange += set_overload;
 	}
 
@@ -29,6 +31,10 @@ public class UI_NewOverload : MonoBehaviour {
         if (last_section != level_section)
         {
             bar.change_color(section_colors[level_section * 2], section_colors[level_section * 2 + 1]);
+            rings.colors = new UI_OverloadBarColor[]
+            {
+                section_colors[level_section * 2], section_colors[level_section * 2 + 1]
+            };
         }
         last_section = level_section;
         var is_increasing = level > last_level;
@@ -37,6 +43,7 @@ public class UI_NewOverload : MonoBehaviour {
         bar.disturbance = Mathf.RoundToInt(50f * (ui_level / 100f) + (is_increasing ? 50f : 0f));
         bar.level = Mathf.RoundToInt(ui_level);
         lamps.set_intensity(relative_level / MAX_RELATIVE_LEVEL);
+        rings.disturbance = 0.7f * (level/100f) + (is_increasing ? 0.3f : 0f);
 
         if (load <= 0.01f)
         {
