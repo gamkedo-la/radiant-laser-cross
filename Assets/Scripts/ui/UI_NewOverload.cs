@@ -6,7 +6,7 @@ public class UI_NewOverload : MonoBehaviour {
     private UI_OverloadBar bar;
     private UI_OverloadLamps lamps;
     public UI_OverloadBarColor[] section_colors;
-    public UI_OverloadRings rings;
+    private UI_OverloadRings rings;
     private float last_level = 0f;
     private int last_section = 99;
     private int MAX_SECTIONS;
