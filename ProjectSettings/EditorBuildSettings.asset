@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainWithNewUI.unity
     guid: 3184e59d861ec5b4fac34af2f05717c9
+  - enabled: 1
+    path: Assets/Scenes/GameCompleteScreen.unity
+    guid: 95989569095751545b98064b2b0c4d97
   m_configObjects: {}
