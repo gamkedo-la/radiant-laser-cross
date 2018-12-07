@@ -54,6 +54,8 @@ namespace rlc
         private IEnumerator timeout_gameover_display;
         private float timeout_gameover_deplay = 3.0f;
 
+        private ScoringSystem scoring;
+
         private int title_display_count = 0;
         private int wave_start_count = 0;
 
@@ -82,6 +84,7 @@ namespace rlc
         void Start()
         {
             timeout = GetComponent<TimeoutSystem>();
+            scoring = GetComponent<ScoringSystem>();
             timeout.on_timeout = () => game_over_timeout();
             reset_all();
 
@@ -224,6 +227,9 @@ namespace rlc
             {
                 instruction_text.enabled = false;
             }
+
+            scoring.reset();
+            UI_Scoring.Display(true);
 
             level_progression = make_level_progression();
             next_wave();

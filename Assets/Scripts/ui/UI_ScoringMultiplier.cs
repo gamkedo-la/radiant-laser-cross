@@ -11,14 +11,23 @@ public class UI_ScoringMultiplier : MonoBehaviour {
 
     private static UI_ScoringMultiplier current;
 
-	void Start () {
+    void Start () {
         current = this;
         sequence_images = sequence_count_wrapper.GetComponentsInChildren<Image>();
-	}
+        DisplayMultiplier(1);
+    }
 
     public static void DisplayMultiplier(int multiplier)
     {
         current.multiplier_text.text = multiplier.ToString() + "x";
+        if (multiplier > 1)
+        {
+            current.multiplier_text.enabled = true;
+        }
+        else
+        {
+            current.multiplier_text.enabled = false;
+        }
     }
 
     public static void DisplaySequenceCount(int number)
