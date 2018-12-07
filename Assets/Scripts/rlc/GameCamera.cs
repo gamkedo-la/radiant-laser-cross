@@ -8,7 +8,7 @@ namespace rlc
 
     public class GameCamera : MonoBehaviour
     {
-        public const float SIZE_PER_HALF_SIDE = 40.0f;
+        public const float SIZE_PER_HALF_SIDE = 41.0f;
         public const float SIZE_PER_SIDE = SIZE_PER_HALF_SIDE * 2;
 
         public Vector2Int screen_resolution;

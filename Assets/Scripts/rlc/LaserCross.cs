@@ -149,6 +149,11 @@ namespace rlc
         {
             movable.MoveTowards(commands.ship_direction.normalized, move_speed);
 
+            // Don't get out of the screen
+            float pos_x = Mathf.Clamp(transform.position.x, -GameCamera.SIZE_PER_HALF_SIDE, GameCamera.SIZE_PER_HALF_SIDE);
+            float pos_y = Mathf.Clamp(transform.position.y, -GameCamera.SIZE_PER_HALF_SIDE, GameCamera.SIZE_PER_HALF_SIDE);
+            transform.position = new Vector3(pos_x, pos_y, 0.0f);
+
             foreach (var shield in shields)
                 shield.deactivate();
 
