@@ -75,13 +75,12 @@ public class UI_OverloadBarCell : MonoBehaviour {
     private void show()
     {
         IsLighten = true;
-        this.gameObject.SetActive(true);
     }
 
     private void hide()
     {
         current_color = null;
         IsLighten = false;
-        this.gameObject.SetActive(false);
+        image.color = new Color(1f, 1f, 1f, 0f);
     }
 }
