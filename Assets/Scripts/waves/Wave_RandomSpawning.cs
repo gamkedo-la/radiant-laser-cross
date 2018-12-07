@@ -7,7 +7,12 @@ namespace rlc
     // Spawns enemies at random screen border positions
     public class Wave_RandomSpawning : Wave
     {
-        // TODO: this is just a quick demo, unfinished
+        public enum Mode
+        {
+            random, sequential
+        }
+
+        public Mode mode = Mode.random;
 
         public List<GameObject> prefabs_to_spawn;
         public List<Transform> spawn_points;
@@ -18,7 +23,7 @@ namespace rlc
         public int instances_per_spawn = 2;
         public float spawn_interval_secs = 1.0f;
         public const float margin_from_max = 10.0f;
-        public const float max_distance_from_center = GameCamera.SIZE_PER_HALF_SIDE + margin_from_max;
+        public const float max_distance_from_center = GameCamera.SIZE_PER_HALF_SIDE - margin_from_max;
 
         private List<Transform> used_spawn_points = new List<Transform>();
 
@@ -77,6 +82,50 @@ namespace rlc
             {
                 ready();
             }
+        }
+
+        public static Vector3 random_position_in_screen()
+        {
+            return new Vector3(Random.Range(-max_distance_from_center, max_distance_from_center), Random.Range(-max_distance_from_center, max_distance_from_center), 0);
+        }
+
+        private SpawnState next_spawn_state()
+        {
+            switch (mode)
+            {
+                case Mode.random: return random_transform();
+                case Mode.sequential: return sequential_transform();
+                default:
+                    Debug.LogError("Invalid Mode in Randomly Spawning Wave!");
+                    return random_transform();
+            }
+
+        }
+
+        private SpawnState sequential_transform()
+        {
+            if (spawn_points == null || spawn_points.Count == 0)
+            {
+                Debug.LogError("No spawn points set in Sequential mode!");
+                return random_transform();
+            }
+
+            var next_spawn_point = spawn_points[0];
+            Utility.RotateForward(spawn_points, 1); // Make sure the next spawn point we pick will be the following one.
+
+            var spawn_state = new SpawnState();
+            spawn_state.position = next_spawn_point.position;
+
+            if (target_player)
+            {
+                spawn_state.rotation = rotation_look_at_player(spawn_state.position);
+            }
+            else
+            {
+                spawn_state.rotation = next_spawn_point.rotation;
+            }
+
+            return spawn_state;
         }
 
         private SpawnState random_transform()

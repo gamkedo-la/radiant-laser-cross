@@ -15,6 +15,15 @@ public class UI_Scoring : MonoBehaviour {
     void Start()
     {
         current = this;
+        UI_Scoring.Display(false); // Turn it off only at the beginning, then keep it that way after started.
+    }
+
+    public static void Display(bool must_display)
+    {
+        if (current == null)
+            return;
+
+        current.gameObject.SetActive(must_display);
     }
 
     public static void DisplaySequenceCount(int score)

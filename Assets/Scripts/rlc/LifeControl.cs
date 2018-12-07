@@ -93,11 +93,14 @@ namespace rlc
             }
         }
 
-        public void die()
+        public void die() // Called only if the enemy is supposed to be destroyed by being killed, not when it's destroyed for other reasons.
         {
             life_state = LifeState.dying;
             Destroy(gameObject, 1.0f);
             launch_destruction_animation();
+
+            if (this.gameObject.CompareTag(Wave.ENEMY_TAG))
+                EnemyEvents.InvokeOnKilled(this);
         }
 
         public void on_entered_screen()
@@ -149,7 +152,6 @@ namespace rlc
 
         private void notify_destroyed()
         {
-            if(this.gameObject.CompareTag(Wave.ENEMY_TAG)) EnemyEvents.InvokeOnKilled(this);
             if (on_destroyed != null)
                 on_destroyed(this);
         }

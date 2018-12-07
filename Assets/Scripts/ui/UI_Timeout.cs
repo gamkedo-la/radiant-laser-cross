@@ -32,14 +32,12 @@ public class UI_Timeout : MonoBehaviour
     public void show(float seconds)
     {
         update_display(seconds);
-        time_text.enabled = true;
-        bar.enabled = true;
+        gameObject.SetActive(true);
     }
 
     public void hide()
     {
-        time_text.enabled = false;
-        bar.enabled = false;
+        gameObject.SetActive(false);
     }
 
     private void update_display(float seconds_left)
@@ -47,7 +45,7 @@ public class UI_Timeout : MonoBehaviour
         const string test_format = "{0:0.00}";
         var new_text = string.Format(test_format, seconds_left);
         // TODO: if seconds_left is low, make it red or something
-        
+
         time_text.text = new_text;
         update_fore_bar(seconds_left);
     }
