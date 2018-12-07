@@ -68,6 +68,6 @@ MonoBehaviour:
   spawn_points: []
   target_player: 0
   reuse_spawn_points: 0
-  count_left_to_spawn: 8
-  instances_per_spawn: 1
+  count_left_to_spawn: 16
+  instances_per_spawn: 2
   spawn_interval_secs: 3
