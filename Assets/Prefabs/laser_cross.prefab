@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129a042102a44d44481bfd756a26052f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed: 20
+  move_speed: 23
   rotation_speed: 300
   life_control: {fileID: 114467330613455112}
   overload_system: {fileID: 114364350927825478}
