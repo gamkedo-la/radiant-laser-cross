@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine.UI;
 
 public class UI_Scoring : MonoBehaviour {
-    public Text score_text;
+    public UI_FancyText score_text;
     public GameObject kill_points_prefab;
     public Transform kill_points_ui;
     private const int SCORE_MAX_DIGITS = 8;

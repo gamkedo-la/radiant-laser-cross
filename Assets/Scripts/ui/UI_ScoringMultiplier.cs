@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_ScoringMultiplier : MonoBehaviour {
-    public Text multiplier_text;
+    public UI_FancyText multiplier_text;
     public GameObject sequence_count_wrapper;
     public UI_MultiplierPoint[] sequence_images;
 
