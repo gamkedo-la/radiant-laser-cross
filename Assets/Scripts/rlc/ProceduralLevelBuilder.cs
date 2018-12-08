@@ -274,6 +274,7 @@ namespace rlc
         private IEnumerator celebrate_then_go_to_game_complete_screen()
         {
             clear_wave();
+            timeout.stop();
             launch_background(default_background_prefab);
 
             const int random_splosions_batch_count = 42;
