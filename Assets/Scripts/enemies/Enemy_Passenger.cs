@@ -11,6 +11,7 @@ namespace rlc
         public float speed = 4.0f;
         public float firing_interval = 3.0f;
         public Vector3 animation_rotation = new Vector3(1.0f, 1.0f, 0.0f);
+        bool fire_asap = true;
 
         private float last_firing_timepoint;
         private GameObject body;
@@ -20,7 +21,10 @@ namespace rlc
         // Use this for initialization
         void Start() {
             movable = GetComponentInParent<Movable>();
-            last_firing_timepoint = Time.time;
+            if (fire_asap)
+                last_firing_timepoint = 0;
+            else
+                last_firing_timepoint = Time.time;
             body = GetComponentInChildren<ColoredBody>().gameObject;
             life_control = GetComponent<LifeControl>();
 
