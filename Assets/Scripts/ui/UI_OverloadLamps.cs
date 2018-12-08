@@ -55,10 +55,7 @@ public class UI_OverloadLamps : MonoBehaviour {
     public void block(float animation_percent)
     {
         this.is_blocked = true;
-        var red = UI_NewOverload.BLOCK_COLOR.r - (UI_NewOverload.BLOCK_COLOR.r - UI_NewOverload.REST_COLOR.r) * animation_percent;
-        var green = UI_NewOverload.BLOCK_COLOR.g - (UI_NewOverload.BLOCK_COLOR.g - UI_NewOverload.REST_COLOR.g) * animation_percent;
-        var blue = UI_NewOverload.BLOCK_COLOR.b - (UI_NewOverload.BLOCK_COLOR.b - UI_NewOverload.REST_COLOR.b) * animation_percent;
-        this.force_color = new Color(red, green, blue);
+        this.force_color = ColorUtils.transition(UI_NewOverload.BLOCK_COLOR, UI_NewOverload.REST_COLOR, animation_percent);
     }
 
     public void unblock()

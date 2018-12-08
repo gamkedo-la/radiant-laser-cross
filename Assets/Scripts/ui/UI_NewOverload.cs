@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_NewOverload : MonoBehaviour {
     private UI_OverloadBar bar;
     private UI_OverloadLamps lamps;
     public UI_OverloadBarColor[] section_colors;
+    public Image head_image;
     private UI_OverloadRings rings;
     private float last_level = 0f;
     private int last_section = 99;
@@ -63,11 +65,15 @@ public class UI_NewOverload : MonoBehaviour {
     {
         bar.block(time_percent);
         lamps.block(time_percent);
+        rings.block(time_percent);
+        head_image.color = ColorUtils.transition(BLOCK_COLOR, Color.white, time_percent);
     }
 
     public void on_overload_unblock()
     {
         bar.unblock();
         lamps.unblock();
+        rings.unblock();
+        head_image.color = Color.white;
     }
 }

@@ -29,6 +29,22 @@ public class UI_OverloadRings : MonoBehaviour {
         }
 	}
 
+    public void block(float animation_percent)
+    {
+        foreach(var ring in rings)
+        {
+            ring.block(animation_percent);
+        }
+    }
+
+    public void unblock()
+    {
+        foreach (var ring in rings)
+        {
+            ring.unblock();
+        }
+    }
+
     public float Timeout
     {
         get { return MAX_TIMEOUT - (MAX_TIMEOUT - MIN_TIMEOUT) * disturbance; }
