@@ -11,7 +11,8 @@ public class UI_NewOverload : MonoBehaviour {
     private int last_section = 99;
     private int MAX_SECTIONS;
     private float MAX_RELATIVE_LEVEL;
-    public static Color REST_COLOR = new Color(0xE4, 0xFF, 0xFF);
+    public static Color REST_COLOR = new Color(0xE4/255f, 0xFF/255f, 0xFF/255f);
+    public static Color BLOCK_COLOR = new Color(0x24/255f, 0x24/255f, 0x24/255f);
 
     void Start () {
         MAX_SECTIONS = section_colors.Length / 2;
@@ -61,10 +62,12 @@ public class UI_NewOverload : MonoBehaviour {
     public void on_overload_block(float time_percent)
     {
         bar.block(time_percent);
+        lamps.block(time_percent);
     }
 
     public void on_overload_unblock()
     {
         bar.unblock();
+        lamps.unblock();
     }
 }
