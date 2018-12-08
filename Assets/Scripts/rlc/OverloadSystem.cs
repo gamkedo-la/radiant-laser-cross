@@ -42,9 +42,12 @@ namespace rlc
             {
                 new_load = 0;
                 if (state == State.recovering)
+                {
                     state = State.stable;
+                    OverloadEvents.InvokeOnUnblock();
+                }
             }
-
+            
             if (state != State.recovering)
             {
                 if (new_load > load_limit)
@@ -67,6 +70,14 @@ namespace rlc
 
             next_update_load = 0;
             OverloadEvents.InvokeOnLoadChange(load);
+
+            if (state == State.recovering)
+            {
+                var recover_percent = 1f - load / (load_limit + overload_cost);
+                recover_percent = Mathf.Max(0f, recover_percent);
+                recover_percent = Mathf.Min(1f, recover_percent);
+                OverloadEvents.InvokeOnBlock(recover_percent);
+            }
         }
 
 

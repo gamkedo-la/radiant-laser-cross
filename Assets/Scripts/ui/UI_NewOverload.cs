@@ -20,7 +20,9 @@ public class UI_NewOverload : MonoBehaviour {
         lamps = GetComponentInChildren<UI_OverloadLamps>();
         rings = GetComponentInChildren<UI_OverloadRings>();
         OverloadEvents.OnLoadChange += set_overload;
-	}
+        OverloadEvents.OnBlock += on_overload_block;
+        OverloadEvents.OnUnblock += on_overload_unblock;
+    }
 
     public UI_OverloadBar Bar { get { return bar; } }
 
@@ -54,5 +56,15 @@ public class UI_NewOverload : MonoBehaviour {
         }
 
         last_level = level;
+    }
+
+    public void on_overload_block(float time_percent)
+    {
+        bar.block(time_percent);
+    }
+
+    public void on_overload_unblock()
+    {
+        bar.unblock();
     }
 }

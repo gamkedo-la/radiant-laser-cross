@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_OverloadBar : MonoBehaviour {
     public int level;
     public int disturbance;
     public UI_OverloadBarColor foreground_color;
     public UI_OverloadBarColor background_color;
+    public Image block_overlay_image;
     private UI_OverloadBarCell[] cells;
     private float actual_level = 0f;
     private float disturbance_delay = 0f;
@@ -19,11 +21,15 @@ public class UI_OverloadBar : MonoBehaviour {
     private const float MAX_DISTURBANCE_RATE = 1f; // each 3 seconds
     private const float MIN_DISTURBANCE_RATE = 0.3f; // each second
     private const float MIN_DIFF_TO_DISTURBANCE = 15f;
-    
+    private const float MAX_BLOCK_OVERLAY_ALPHA = 220f/255f;
+    private const float MIN_BLOCK_OVERLAY_ALPHA = 100f/255f;
+
+
     void Start () {
         level = 0;
         disturbance = 0;
         cells = GetComponentsInChildren<UI_OverloadBarCell>();
+        unblock();
 	}
 	
 	void Update ()
@@ -44,6 +50,19 @@ public class UI_OverloadBar : MonoBehaviour {
         update_cells();
         foreground_color = foreground;
         background_color = background;
+    }
+
+    public void block(float animation_progress)
+    {
+        block_overlay_image.gameObject.SetActive(true);
+        var c = block_overlay_image.color;
+        var alpha = MIN_BLOCK_OVERLAY_ALPHA + (MAX_BLOCK_OVERLAY_ALPHA - MIN_BLOCK_OVERLAY_ALPHA) * (1f - animation_progress);
+        block_overlay_image.color = new Color(c.r, c.g, c.b, alpha);
+    }
+
+    public void unblock()
+    {
+        block_overlay_image.gameObject.SetActive(false);
     }
 
     private void apply_disturbance()
