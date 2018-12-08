@@ -516,9 +516,10 @@ MonoBehaviour:
   background: {fileID: 114175068292097232, guid: cb02cd9d148518f48b4f728a6b635f81,
     type: 2}
   title: Cloverfield
-  timeout_secs: 60
+  timeout_secs: 100
   enemies_left_count: 0
   music_tracks: {fileID: 0}
+  mode: 0
   prefabs_to_spawn:
   - {fileID: 1188869813242726, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
   spawn_points:
