@@ -12,11 +12,13 @@ public class UI_MultiplierPoint : MonoBehaviour {
 
     public void fill()
     {
+        if (fill_image == null) return;
         fill_image.SetActive(true);
     }
 
     public void empty()
     {
+        if (fill_image == null) return;
         fill_image.SetActive(false);
     }
 }

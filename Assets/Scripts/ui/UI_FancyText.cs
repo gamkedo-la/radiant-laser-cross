@@ -15,7 +15,10 @@ public class UI_FancyText : MonoBehaviour {
     public string text {
         set
         {
+            if (back == null) return;
             back.text = value;
+
+            if (front == null) return;
             front.text = value;
         }
     }
