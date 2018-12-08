@@ -11,6 +11,8 @@ namespace rlc
         public const float BPM = 135;
 
         public static MusicEventManager Instance;
+
+
         [SerializeField]
         public GameObject audioSourcePrefab;
 
@@ -21,6 +23,7 @@ namespace rlc
         [SerializeField]
         public int runningLayers = 2;
 
+        public AudioSource sound_bullet_ineffective;
 
         [SerializeField]
         private float variationFrequencyInSeconds = 20f;
@@ -78,6 +81,11 @@ namespace rlc
                 currentTrack = newTrack;
                 StartTrack();
             }
+        }
+
+        public void play_bullet_ineffective_sound()
+        {
+            sound_bullet_ineffective.Play();
         }
 
         private void Variation()

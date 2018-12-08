@@ -84,6 +84,7 @@ namespace rlc
                 if(!on_hit_invoked)
                 {
                     BulletEvents.InvokeOnAbsorved(this, body_hit);
+                    MusicEventManager.Instance.play_bullet_ineffective_sound();
                 }
                 has_hit_body = true;
             }
