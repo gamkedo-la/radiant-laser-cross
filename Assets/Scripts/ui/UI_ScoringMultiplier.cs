@@ -19,14 +19,14 @@ public class UI_ScoringMultiplier : MonoBehaviour {
 
     public static void DisplayMultiplier(int multiplier)
     {
-        current.multiplier_text.text = multiplier.ToString() + "x";
+        current.multiplier_text.text = "x" + multiplier.ToString();
         if (multiplier > 1)
         {
-            current.multiplier_text.enabled = true;
+            current.multiplier_text.gameObject.SetActive(true);
         }
         else
         {
-            current.multiplier_text.enabled = false;
+            current.multiplier_text.gameObject.SetActive(false);
         }
     }
 
