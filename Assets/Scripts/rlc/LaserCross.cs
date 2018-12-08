@@ -41,6 +41,9 @@ namespace rlc
 
         private Commands next_commands;
 
+        public float firing_load_cost = 1.0f;
+        public float shielding_load_cost = 1.0f;
+
         public float move_speed = 10.0f;
         public float rotation_speed = 90.0f;
         public LifeControl life_control;
@@ -183,13 +186,13 @@ namespace rlc
         private void fire_gun(AxesDirections direction)
         {
             get_gun(direction).fire();
-            overload_system.add_load();
+            overload_system.add_load(firing_load_cost);
         }
 
         private void activate_shield(AxesDirections direction)
         {
             get_shield(direction).activate();
-            //overload_system.add_load();
+            overload_system.add_load(shielding_load_cost);
         }
 
         private void clear_commands()

@@ -47,7 +47,7 @@ namespace rlc
                     OverloadEvents.InvokeOnUnblock();
                 }
             }
-            
+
             if (state != State.recovering)
             {
                 if (new_load > load_limit)
@@ -80,13 +80,12 @@ namespace rlc
             }
         }
 
-
-        public void add_load()
+        public void add_load(float load)
         {
             if (state == State.recovering)
                 return;
 
-            next_update_load += 1;
+            next_update_load += load;
         }
 
 
