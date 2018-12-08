@@ -2817,7 +2817,7 @@ MonoBehaviour:
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
   parallel_shots: 4
-  spread_angle_degs: 80
+  spread_angle_degs: 20
   default_bullet_speed: 0
   clan: 1
   allow_firing_outside_screen: 0
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   angle_rotation_speed_degs: 90
-  max_angle_from_parent_direction: 0
+  max_angle_from_parent_direction: 45
   auto_target_player: 1
 --- !u!114 &114774722655126970
 MonoBehaviour:

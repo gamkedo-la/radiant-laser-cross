@@ -877,6 +877,6 @@ MonoBehaviour:
   - {fileID: 4724916818568526}
   target_player: 0
   reuse_spawn_points: 0
-  count_left_to_spawn: 36
+  count_left_to_spawn: 27
   instances_per_spawn: 9
   spawn_interval_secs: 4

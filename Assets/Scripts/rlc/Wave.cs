@@ -60,7 +60,7 @@ namespace rlc
         {
             if (warning_material == null)
             {
-                warning_material = (Material)Resources.Load("warning_color", typeof(Material));
+                warning_material = (Material)Resources.Load("Assets/Materials/warning_color.mat", typeof(Material));
             }
 
             var all_preset_enemies = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
@@ -144,7 +144,7 @@ namespace rlc
             // also create a particle effect
             if (warning_particle_prefab)
             {
-                GameObject fx = Instantiate(warning_particle_prefab, collider.transform.position, collider.transform.rotation);
+                GameObject fx = Instantiate(warning_particle_prefab, collider.transform.position, collider.transform.rotation, this.transform);
                 Destroy(fx, ENEMY_SPAWN_WARNING_DELAY);
             }
 
