@@ -21,12 +21,11 @@ public class UI_ScoringMultiplier : MonoBehaviour {
     {
         if (multiplier > 1)
         {
-            current.multiplier_text.gameObject.SetActive(true);
             current.multiplier_text.text = "x" + multiplier.ToString();
         }
         else
         {
-            current.multiplier_text.gameObject.SetActive(false);
+            current.multiplier_text.text = "";
         }
     }
 
