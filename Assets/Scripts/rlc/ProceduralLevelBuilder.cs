@@ -65,9 +65,11 @@ namespace rlc
         }
         private State state = State.ready;
         private Wave current_wave;
+        private IEnumerator start_wave_coroutine;
         private IEnumerator<LevelStatus> level_progression;
         private Background current_background;
         private IEnumerator theme_color_progression;
+
 
         private enum WaveCategory
         {
@@ -177,6 +179,12 @@ namespace rlc
             Debug.Log("==== RESET ALL ====");
 
             clear_wave();
+
+            if (start_wave_coroutine != null)
+            {
+                StopCoroutine(start_wave_coroutine);
+                start_wave_coroutine = null;
+            }
 
             Bullet.clear_bullets_from_game();
 
@@ -317,6 +325,7 @@ namespace rlc
             if (current_wave != null)
             {
                 Destroy(current_wave.gameObject);
+                current_wave = null;
             }
         }
 
@@ -473,7 +482,8 @@ namespace rlc
                 foreach (WaveInfo wave_info in current_level_waves_selection)
                 {
                     ++current_wave_number;
-                    StartCoroutine(start_wave(wave_info));
+                    start_wave_coroutine = start_wave(wave_info);
+                    StartCoroutine(start_wave_coroutine);
                     yield return LevelStatus.next_wave;
                 }
             }
