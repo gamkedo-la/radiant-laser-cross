@@ -25,6 +25,7 @@ namespace rlc
 
         public AudioSource sound_bullet_ineffective;
         public AudioSource sound_enemy_firing_bullet;
+        public AudioSource sound_title;
 
         [SerializeField]
         private float variationFrequencyInSeconds = 20f;
@@ -93,6 +94,14 @@ namespace rlc
         {
             sound_enemy_firing_bullet.Play();
         }
+
+
+        public void play_title_sound()
+        {
+            sound_title.pitch = Random.Range(0.95f, 1.05f);
+            sound_title.Play();
+        }
+
 
         private void Variation()
         {

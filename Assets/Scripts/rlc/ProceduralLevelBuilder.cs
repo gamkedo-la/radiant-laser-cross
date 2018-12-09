@@ -415,6 +415,8 @@ namespace rlc
         private void display_game_title()
         {
             StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
+
+            MusicEventManager.Instance.play_title_sound();
         }
 
         private IEnumerator display_title(string progress_text, string title_text, float duration_secs)
