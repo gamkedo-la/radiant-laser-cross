@@ -306,6 +306,10 @@ namespace rlc
             {
                 sound_fire.Play();
             }
+            else
+            {
+                MusicEventManager.Instance.play_enemy_firing_bullet_sound();
+            }
         }
 
 

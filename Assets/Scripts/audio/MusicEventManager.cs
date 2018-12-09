@@ -24,6 +24,7 @@ namespace rlc
         public int runningLayers = 2;
 
         public AudioSource sound_bullet_ineffective;
+        public AudioSource sound_enemy_firing_bullet;
 
         [SerializeField]
         private float variationFrequencyInSeconds = 20f;
@@ -86,6 +87,11 @@ namespace rlc
         public void play_bullet_ineffective_sound()
         {
             sound_bullet_ineffective.Play();
+        }
+
+        public void play_enemy_firing_bullet_sound()
+        {
+            sound_enemy_firing_bullet.Play();
         }
 
         private void Variation()
