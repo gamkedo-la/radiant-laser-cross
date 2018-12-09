@@ -25,6 +25,7 @@ namespace rlc
 
         public AudioSource sound_bullet_ineffective;
         public AudioSource sound_enemy_firing_bullet;
+        public AudioSource sound_spawn;
         public AudioSource sound_title;
 
         [SerializeField]
@@ -102,8 +103,13 @@ namespace rlc
             sound_title.Play();
         }
 
+        public void play_spawn_sound()
+        {
+            sound_spawn.Play();
+        }
 
-        private void Variation()
+
+            private void Variation()
         {
             nextVariationTime = Time.time + variationFrequencyInSeconds + SecondsToNextBeat() - variationFadeTimeInSeconds;
             int bringIn = FindUnusedNumber();

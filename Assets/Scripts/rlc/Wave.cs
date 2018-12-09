@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
@@ -117,6 +117,9 @@ namespace rlc
         private IEnumerator start_spawn_warning(GameObject target, float delay)
         {
             target.SetActive(false);
+
+            MusicEventManager.Instance.play_spawn_sound();
+
             var warning_list = new List<GameObject>();
             foreach (Collider collider in target.GetComponentsInChildren<Collider>())
             {
