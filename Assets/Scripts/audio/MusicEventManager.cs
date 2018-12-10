@@ -56,11 +56,7 @@ namespace rlc
 
         void Start()
         {
-            if (currentTrack != null)
-            {
-                StartTrack();
-            }
-
+            // Do nothing until asked.
         }
 
         void Update()
@@ -109,7 +105,7 @@ namespace rlc
         }
 
 
-            private void Variation()
+        private void Variation()
         {
             nextVariationTime = Time.time + variationFrequencyInSeconds + SecondsToNextBeat() - variationFadeTimeInSeconds;
             int bringIn = FindUnusedNumber();
