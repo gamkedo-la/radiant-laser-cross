@@ -347,11 +347,10 @@ namespace rlc
                 timeout.show_timeout(wave_info.wave.timeout_secs);
             }
 
-            // Temporarilly deactivated
-            //if (wave_info.wave.music_tracks)
-            //{
-            //    MusicEventManager.Instance.Transition(wave_info.wave.music_tracks);
-            //}
+            if (wave_info.wave.music_tracks)
+            {
+                MusicEventManager.Instance.Transition(wave_info.wave.music_tracks);
+            }
 
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);
 
