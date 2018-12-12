@@ -1076,9 +1076,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 42163579e1f9b6344b94a07ada78ff19, type: 3}
+  m_audioClip: {fileID: 8300000, guid: addc28cca51613944bd842195ed36065, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6975,6 +6975,7 @@ MonoBehaviour:
   sound_enemy_firing_bullet: {fileID: 1735497156}
   sound_spawn: {fileID: 29905363}
   sound_title: {fileID: 1214712640}
+  play_music_on_start: 0
   variationFrequencyInSeconds: 20
   variationFadeTimeInSeconds: 0.25
   transitionFadeTimeInSeconds: 0.5
