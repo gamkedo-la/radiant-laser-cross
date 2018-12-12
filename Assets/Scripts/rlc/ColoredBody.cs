@@ -46,7 +46,13 @@ namespace rlc
         public void play_reflected_collision_sound()
         {
             if (sound_on_reflection)
-                sound_on_reflection.Play();
+            {
+                // We need to hear the different hits from potential different audio sources, but we don't want to have one per bullet all the time,
+                // so instead we duplicate the one being the actual reflection sound and just play that.
+                var new_sound = Instantiate<AudioSource>(sound_on_reflection);
+                new_sound.Play();
+                Destroy(new_sound.gameObject, 0.5f);
+            }
         }
 
         void OnCollisionEnter(Collision collision)

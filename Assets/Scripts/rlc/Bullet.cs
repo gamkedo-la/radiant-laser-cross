@@ -76,6 +76,7 @@ namespace rlc
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
                     {
                         body_hit.play_reflected_collision_sound();
+                        my_body.play_reflected_collision_sound();
                         end_with_reflection(collision, body_hit);
                     }
                 }
