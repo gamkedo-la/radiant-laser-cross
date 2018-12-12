@@ -74,7 +74,10 @@ namespace rlc
                         body_hit.on_hit();
                     }
                     if (body_hit.surface_effect == ColoredBody.SurfaceEffect.reflective)
+                    {
+                        body_hit.play_reflected_collision_sound();
                         end_with_reflection(collision, body_hit);
+                    }
                 }
 
                 // We hit something solid, so the bullet will end anyway.

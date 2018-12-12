@@ -29,6 +29,8 @@ namespace rlc
         [Tooltip("Defines what toif objects colliding but not matching this object's color should stop their course.")]
         public SurfaceEffect surface_effect = SurfaceEffect.solid;
 
+        public AudioSource sound_on_reflection;
+
         protected void Start()
         {
             movable = GetComponentInParent<Movable>();
@@ -39,6 +41,12 @@ namespace rlc
             // TODO: insert here an animation specific to this body when hit
             if(life_control)
                 life_control.on_hit(this);
+        }
+
+        public void play_reflected_collision_sound()
+        {
+            if (sound_on_reflection)
+                sound_on_reflection.Play();
         }
 
         void OnCollisionEnter(Collision collision)
