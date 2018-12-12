@@ -843,6 +843,7 @@ MonoBehaviour:
   sound_enemy_firing_bullet: {fileID: 0}
   sound_spawn: {fileID: 0}
   sound_title: {fileID: 0}
+  play_music_on_start: 1
   variationFrequencyInSeconds: 32
   variationFadeTimeInSeconds: 5
   transitionFadeTimeInSeconds: 5

@@ -28,6 +28,8 @@ namespace rlc
         public AudioSource sound_spawn;
         public AudioSource sound_title;
 
+        public bool play_music_on_start = false;
+
         [SerializeField]
         private float variationFrequencyInSeconds = 20f;
         private float nextVariationTime = 0f;
@@ -56,12 +58,16 @@ namespace rlc
 
         void Start()
         {
-            // Do nothing until asked.
+            // Do nothing until asked
+            if (play_music_on_start && currentTrack)
+            {
+                StartTrack();
+            }
         }
 
         void Update()
         {
-            if (Time.time > nextVariationTime && currentTrack != null)
+            if (currentTrack && Time.time > nextVariationTime && currentTrack != null)
             {
                 Variation();
             }
