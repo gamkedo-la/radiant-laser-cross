@@ -13,12 +13,19 @@ public class MainMenu : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
-            Application.Quit();
+            Application.Quit(); // FIXME: might cause problems in web builds
     }
 
     public void start_new_game()
     {
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
+
+
+    public void display_credits()
+    {
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+    }
+
 
 }
