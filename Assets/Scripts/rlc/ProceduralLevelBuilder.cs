@@ -43,8 +43,8 @@ namespace rlc
 
         public List<GameObject> game_complete_splosions_prefabs;
 
-        public Text progress_display;
-        public Text title_display;
+        public UI_FancyText progress_display;
+        public UI_FancyText title_display;
         public float default_title_display_duration_secs = 5.0f;
         public float title_display_duration_secs = 3.0f;
 
