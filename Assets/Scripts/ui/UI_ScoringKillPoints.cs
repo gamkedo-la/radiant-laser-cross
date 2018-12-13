@@ -19,8 +19,8 @@ public class UI_ScoringKillPoints : MonoBehaviour {
     {
         time_past += Time.deltaTime;
         var pos = this.rect.anchoredPosition3D;
-        this.rect.anchoredPosition3D = new Vector3(pos.x, pos.y + Time.deltaTime*ANIMATION_SPEED, pos.z);
-        if(time_past >= 1f)
+        this.rect.anchoredPosition3D = new Vector3(pos.x, pos.y + Time.deltaTime * ANIMATION_SPEED, pos.z);
+        if (time_past >= 1f)
         {
             Destroy(this.gameObject);
         }

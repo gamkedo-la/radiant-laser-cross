@@ -9,6 +9,7 @@ public class UI_Scoring : MonoBehaviour {
     public GameObject kill_points_prefab;
     public Transform kill_points_ui;
     private const int SCORE_MAX_DIGITS = 8;
+    private const float WORLD_Z = -20f; // Not sure why is this value, but the kill points appear on the right position with this
 
     private static UI_Scoring current;
 
@@ -44,7 +45,7 @@ public class UI_Scoring : MonoBehaviour {
         var ui = current.kill_points_ui; // current.transform.parent.parent;
         var killPointsObj = GameObject.Instantiate(current.kill_points_prefab, ui);
         var killPoints = killPointsObj.GetComponent<UI_ScoringKillPoints>();
-        var screenPoint = Camera.main.WorldToScreenPoint(worldPoint);
+        var screenPoint = Camera.main.WorldToScreenPoint(new Vector3(worldPoint.x, worldPoint.y, WORLD_Z));
         killPoints.DisplayKill(screenPoint, points, bonusText);
     }
 }
