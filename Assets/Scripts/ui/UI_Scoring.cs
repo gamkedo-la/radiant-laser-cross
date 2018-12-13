@@ -8,7 +8,7 @@ public class UI_Scoring : MonoBehaviour {
     public UI_FancyText score_text;
     public GameObject kill_points_prefab;
     public Transform kill_points_ui;
-    private const int SCORE_MAX_DIGITS = 8;
+    public const int SCORE_MAX_DIGITS = 8;
     private const float WORLD_Z = -20f; // Not sure why is this value, but the kill points appear on the right position with this
 
     private static UI_Scoring current;
@@ -27,16 +27,22 @@ public class UI_Scoring : MonoBehaviour {
         current.gameObject.SetActive(must_display);
     }
 
-    public static void DisplaySequenceCount(int score)
+    public static string FormatScore(int score)
     {
-        if (current == null) return;
         var score_str = score.ToString();
         var builder = new StringBuilder();
         for (int i = score_str.Length; i < SCORE_MAX_DIGITS; i++)
             builder.Append("0");
 
         builder.Append(score_str);
-        current.score_text.text = builder.ToString();
+        return builder.ToString();
+
+    }
+
+    public static void DisplaySequenceCount(int score)
+    {
+        if (current == null) return;
+        current.score_text.text = FormatScore(score);
     }
 
     public static void DisplayEnemyPoint(Vector3 worldPoint, int points, string bonusText)
