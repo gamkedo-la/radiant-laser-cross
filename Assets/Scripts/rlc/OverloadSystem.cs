@@ -15,6 +15,9 @@ namespace rlc
         public float load_recovery_speed = 1.0f;
         public float overload_cost = 5.0f;
 
+        public AudioSource overload_sound;
+        public AudioSource recovery_sound;
+
         public enum State
         {
             stable,     // load is growing lower than restoration and we are under overload
@@ -45,6 +48,7 @@ namespace rlc
                 {
                     state = State.stable;
                     OverloadEvents.InvokeOnUnblock();
+                    play_recovery_sound();
                 }
             }
 
@@ -54,6 +58,7 @@ namespace rlc
                 {
                     state = State.recovering;
                     new_load += overload_cost;
+                    play_overload_sound();
                 }
                 else
                 if (new_load > load)
@@ -88,6 +93,22 @@ namespace rlc
             next_update_load += load;
         }
 
+
+        private void play_overload_sound()
+        {
+            if (overload_sound)
+            {
+                overload_sound.Play();
+            }
+        }
+
+        private void play_recovery_sound()
+        {
+            if (recovery_sound)
+            {
+                recovery_sound.Play();
+            }
+        }
 
 
     }
