@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 public class UI_Timeout : MonoBehaviour
 {
-    public UI_FancyText time_text; // TODO: replace by graphics
+    public UI_FancyText time_text;
     public Image bar;
     private RectTransform bar_rect;
     private float bar_max_height = 0f;
     private float bar_initial_y = 0f;
 
-    public float MaxTime { get; set; }
+    public float MaxTime = 1.0f;
 
 
     // Use this for initialization
