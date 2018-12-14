@@ -4,54 +4,103 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_FancyText : MonoBehaviour {
+    public float dissipateOffset = 0f;
+    public float dissipateDuration = 0f;
+    public static float DISSIPATE_DURATION = 0.2f;
     private Text front;
     private Text back;
-    private float dissipateOffset = 0f;
     private bool isEnabled = true;
-    private float dissipateDuration = 0f;
-    private static float DISSIPATE_DURATION = 0.2f;
 
-    void Start ()
-    {
-        CaptureComponents();
-    }
+    private Vector3 initial_front_pos;
+    private Vector3 initial_back_pos;
 
-    private void Update()
+    public enum State
     {
-        if (isEnabled)
-        {
-            back.gameObject.SetActive(true);
-            front.gameObject.SetActive(true);
-        } else
-        {
-            if (dissipateDuration <= 0f)
-            {
-                back.gameObject.SetActive(false);
-                front.gameObject.SetActive(false);
-            } else
-            {
-                DissipateOffset += Time.deltaTime * 15f;
-                alpha = dissipateDuration / DISSIPATE_DURATION;
-                dissipateDuration -= Time.deltaTime;
-            }
-        }
+        deactivated, active, dissipating
     }
+    public State state = State.active;
 
     private void CaptureComponents()
     {
         back = GetComponent<Text>();
+        initial_back_pos = back.rectTransform.position;
+
         front = transform.GetChild(0).GetComponentInChildren<Text>();
+        initial_front_pos = front.rectTransform.position;
     }
 
-    public bool enabled
+    void Start ()
+    {
+        CaptureComponents();
+        activate();
+    }
+
+    private void Update()
+    {
+        if (state == State.dissipating)
+        {
+            dissipate();
+        }
+    }
+
+    private void activate()
+    {
+        if (state != State.active)
+        {
+            state = State.active;
+            alpha = 1.0f;
+            back.gameObject.SetActive(true);
+            front.gameObject.SetActive(true);
+
+            back.rectTransform.position = initial_back_pos;
+            front.rectTransform.position = initial_front_pos;
+        }
+    }
+
+    private void deactivate()
+    {
+        if (state != State.deactivated)
+        {
+            state = State.deactivated;
+            back.gameObject.SetActive(false);
+            front.gameObject.SetActive(false);
+
+        }
+    }
+
+    private void dissipate()
+    {
+        if (state != State.dissipating)
+        {
+            state = State.dissipating;
+            dissipateDuration = DISSIPATE_DURATION;
+            DissipateOffset = 0;
+        }
+
+        DissipateOffset += Time.deltaTime * 15f;
+        alpha = dissipateDuration / DISSIPATE_DURATION;
+        dissipateDuration -= Time.deltaTime;
+
+        if (dissipateDuration <= 0f)
+        {
+            deactivate();
+        }
+    }
+
+
+    public new bool enabled
     {
         get { return isEnabled; }
         set
         {
             isEnabled = value;
-            if (isEnabled == false)
+            if (isEnabled)
             {
-                dissipateDuration = DISSIPATE_DURATION;
+                activate();
+            }
+            else
+            {
+                dissipate();
             }
         }
     }
