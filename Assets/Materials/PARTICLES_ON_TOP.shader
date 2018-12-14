@@ -1,4 +1,4 @@
-﻿Shader "Unlit/PARTICLES_ON_TOP"
+﻿Shader "Particles/PARTICLES_ON_TOP"
 {
 	Properties{
 		_TintColor("Tint Color", Color) = (0.5,0.5,0.5,0.5)
