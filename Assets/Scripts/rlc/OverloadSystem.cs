@@ -74,7 +74,6 @@ namespace rlc
             load = new_load;
 
             next_update_load = 0;
-            OverloadEvents.InvokeOnLoadChange(load);
 
             if (state == State.recovering)
             {
@@ -82,6 +81,11 @@ namespace rlc
                 recover_percent = Mathf.Max(0f, recover_percent);
                 recover_percent = Mathf.Min(1f, recover_percent);
                 OverloadEvents.InvokeOnBlock(recover_percent);
+                OverloadEvents.InvokeOnLoadChange(0);
+            }
+            else
+            {
+                OverloadEvents.InvokeOnLoadChange(load);
             }
         }
 

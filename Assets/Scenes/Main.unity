@@ -4294,6 +4294,23 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 928002372}
   m_CullTransparentMesh: 0
+--- !u!1 &932988228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
+    type: 2}
+  m_PrefabInternal: {fileID: 1866796817}
+--- !u!114 &932988229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932988228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fd1283e9ca67047aa9459f0f3f1dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime_secs: 10
 --- !u!1 &947137401
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,7 +7094,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
