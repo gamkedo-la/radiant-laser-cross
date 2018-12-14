@@ -352,6 +352,8 @@ namespace rlc
                 MusicEventManager.Instance.Transition(wave_info.wave.music_tracks);
             }
 
+            MusicEventManager.Instance.play_new_wave_sound();
+
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);
 
             if (wave_start_idx != wave_start_count) // If another wave was started in-betwen, do nothing.

@@ -27,6 +27,7 @@ namespace rlc
         public AudioSource sound_enemy_firing_bullet;
         public AudioSource sound_spawn;
         public AudioSource sound_title;
+        public AudioSource sound_new_wave;
 
         public bool play_music_on_start = false;
 
@@ -108,6 +109,11 @@ namespace rlc
         public void play_spawn_sound()
         {
             sound_spawn.Play();
+        }
+
+        public void play_new_wave_sound()
+        {
+            sound_new_wave.Play();
         }
 
 
