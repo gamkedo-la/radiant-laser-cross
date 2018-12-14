@@ -5,13 +5,15 @@ using UnityEngine;
 // Used to help identify different objects when working with a lot of them generated.
 public class RandomlyColored : MonoBehaviour {
 
+    public bool allow_transparent = true;
+
     void Start () {
 
         foreach (var renderer in GetComponentsInChildren<Renderer>())
         {
             foreach (var material in renderer.materials)
             {
-                material.color = random_color(true);
+                material.color = random_color(allow_transparent);
             }
         }
     }
