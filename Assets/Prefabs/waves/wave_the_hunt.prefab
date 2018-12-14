@@ -857,6 +857,7 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
 --- !u!114 &114165487289952630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -959,6 +960,7 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
 --- !u!114 &114612582590222586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,6 +1005,7 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+  sound_on_reflection: {fileID: 0}
 --- !u!114 &114745723598539884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1049,6 +1052,7 @@ MonoBehaviour:
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
 --- !u!114 &114768655641325790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,6 +1068,7 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+  sound_on_reflection: {fileID: 0}
 --- !u!114 &114840335610129472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1108,11 +1113,12 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.1981132, g: 0.07008722, b: 0.07008722, a: 0}
-  background: {fileID: 114208839167837970, guid: 58d35abe86f6c9443899db51a70f9cd4,
+  background: {fileID: 114692614075744476, guid: 788aa240e3e00424fa29e9f806396c76,
     type: 2}
   title: The Hunt
   timeout_secs: 40
   enemies_left_count: 0
+  music_tracks: {fileID: 0}
 --- !u!114 &114891256454083850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,3 +1175,4 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+  sound_on_reflection: {fileID: 0}

@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb982b1c11041489573d56d5f36377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy_when_farther_than_background: 0
   perspective_enabled: 1
   initial_entry_speed: -1000
   entry_acceleration: -1
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004f3bf7cb70bc3419d81b54b0f89eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroy_when_farther_than_background: 1
   perspective_enabled: 1
   initial_entry_speed: -1000
   entry_acceleration: -1

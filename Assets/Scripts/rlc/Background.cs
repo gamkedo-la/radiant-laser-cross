@@ -7,7 +7,7 @@ public class Background : MonoBehaviour
     public const float FRONT_BACKGROUND_Z = 50.0f;
     public const float BACK_BACKGROUND_Z = 10000.0f;
 
-
+    public bool destroy_when_farther_than_background = true;
     public bool  perspective_enabled = false;
     public float initial_entry_speed = -1000.0f;
     public float entry_acceleration = -1.0f;
@@ -43,7 +43,8 @@ public class Background : MonoBehaviour
         z_speed = new_z_speed;
         transform.Translate(0.0f, 0.0f, z_speed, Space.World);
 
-        if (transform.position.z > BACK_BACKGROUND_Z + 2.0f) // Destroy the background if farther than the back
+        if (destroy_when_farther_than_background
+        &&  transform.position.z > BACK_BACKGROUND_Z + 2.0f) // Destroy the background if farther than the back
         {
             Debug.LogFormat("Destroying Background {0} : Exit background space (max = {1})", gameObject.name, BACK_BACKGROUND_Z);
             Destroy(gameObject);
