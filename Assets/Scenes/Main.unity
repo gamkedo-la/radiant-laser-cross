@@ -3163,6 +3163,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 82278748133802580, guid: f9d698e1e0a8d3a41800494b3b52bcae,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9d698e1e0a8d3a41800494b3b52bcae, type: 2}
   m_IsPrefabAsset: 0
@@ -6854,6 +6859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_text: {fileID: 599584794}
   bar: {fileID: 828016394}
+  MaxTime: 1
 --- !u!114 &1687336414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7091,9 +7097,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5a6eb2e428e37e04c97d93bdec610489, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
