@@ -240,7 +240,7 @@ namespace rlc
 
             // hardcoded size for the wobby 3d grid mesh, since its extants change AFTER init
             // due to the woibble script moving its verteces around
-            if (obj.name == "3D Grid") return 40f; // should be 50 if unperturbed?
+            if (obj.name == "3D Grid") return 50f; // should be 50 if unperturbed?
 
             float size = 0.0f;
             var renderers = obj.GetComponentsInChildren<Renderer>();
