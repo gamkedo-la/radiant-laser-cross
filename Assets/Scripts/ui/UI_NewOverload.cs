@@ -8,6 +8,7 @@ public class UI_NewOverload : MonoBehaviour {
     private UI_OverloadLamps lamps;
     public UI_OverloadBarColor[] section_colors;
     public Image head_image;
+    public Image white_overlay;
     private UI_OverloadRings rings;
     private float last_level = 0f;
     private int last_section = 99;
@@ -63,10 +64,28 @@ public class UI_NewOverload : MonoBehaviour {
 
     public void on_overload_block(float time_percent)
     {
-        bar.block(time_percent);
-        lamps.block(time_percent);
-        rings.block(time_percent);
-        head_image.color = ColorUtils.transition(BLOCK_COLOR, Color.white, time_percent);
+        var white_up_percent = 0.05f;
+        var white_down_percent = 0.03f;
+        var white_percent = white_up_percent + white_down_percent;
+        var max_white_alpha = 0.4f;
+        if (time_percent <= white_up_percent)
+        {
+            var c = white_overlay.color;
+            white_overlay.color = new Color(c.r, c.g, c.b, (time_percent / white_up_percent) * max_white_alpha);
+        }
+        else if (time_percent <= white_percent)
+        {
+            var c = white_overlay.color;
+            white_overlay.color = new Color(c.r, c.g, c.b, ((white_percent - time_percent) / white_down_percent) * max_white_alpha);
+        } else
+        {
+            var c = white_overlay.color;
+            white_overlay.color = new Color(c.r, c.g, c.b, 0f);
+            bar.block(time_percent);
+            lamps.block(time_percent);
+            rings.block(time_percent);
+            head_image.color = ColorUtils.transition(BLOCK_COLOR, Color.white, time_percent);
+        }
     }
 
     public void on_overload_unblock()
