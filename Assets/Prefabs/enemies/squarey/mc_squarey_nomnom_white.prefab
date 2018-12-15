@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  angle_rotation_speed_degs: 90
+  angle_rotation_speed_degs: 120
   max_angle_from_parent_direction: 0
   auto_target_player: 1
 --- !u!114 &114390480866323418
@@ -177,6 +177,7 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+  sound_on_reflection: {fileID: 0}
 --- !u!114 &114536583498724918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,13 +190,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
-  hit_points: 20
+  hit_points: 6
   body_parts:
   - {fileID: 114390480866323418}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
+  diying_duration: 0.5
 --- !u!114 &114579086579772502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238758147ed6b8f48bd55239bdec403f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 8
 --- !u!114 &114832523189600226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,3 +234,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
