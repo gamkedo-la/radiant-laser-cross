@@ -5,6 +5,10 @@ using UnityEngine;
 public class TwistyTwisting : MonoBehaviour {
 
     public float time_between_rotation_changes = 0f;
+    public bool randomize_time_between_rotations = false;
+    public float min_time_between_rotation_changes = 0f;
+    public float max_time_between_rotation_changes = 0f;
+
     public Vector3 min_rotation = new Vector3(1f, 1f, 1f);
     public Vector3 max_rotation = new Vector3(1000f, 1000f, 1000f);
 
@@ -24,6 +28,10 @@ public class TwistyTwisting : MonoBehaviour {
         if (now >= next_rotation_change_time)
         {
             current_rotation = random_rotation();
+
+            if (randomize_time_between_rotations)
+                time_between_rotation_changes = Random.Range(min_time_between_rotation_changes, max_time_between_rotation_changes);
+
             next_rotation_change_time = now + time_between_rotation_changes;
         }
 
