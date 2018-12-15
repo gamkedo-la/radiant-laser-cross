@@ -53,16 +53,8 @@ namespace rlc
         [Tooltip("Music tracks that will be used to compose music when this wave is playing.")]
         public MusicTrack music_tracks;
 
-
-        static private Material warning_material = null;
-
         void Start()
         {
-            if (warning_material == null)
-            {
-                warning_material = (Material)Resources.Load("Assets/Materials/warning_color.mat", typeof(Material));
-            }
-
             var all_preset_enemies = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
             foreach(var enemy in all_preset_enemies)
             {
@@ -163,15 +155,12 @@ namespace rlc
             if (DRAW_COLLIDERS_AS_WARNINGS)
             {
                 const float COLLIDER_Z_POSITION = 1.0f;
-                var box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                var box = Instantiate(GeneralAssets.instance.spawning_box, this.transform);
                 box.transform.position = collider.transform.position;
                 box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y, COLLIDER_Z_POSITION);
                 box.transform.rotation = collider.transform.rotation;
 
                 box.transform.localScale = collider.GetComponent<Renderer>().bounds.size;
-
-                var box_renderer = box.GetComponentInChildren<Renderer>();
-                box_renderer.material = warning_material;
 
                 box.transform.parent = this.gameObject.transform;
 
