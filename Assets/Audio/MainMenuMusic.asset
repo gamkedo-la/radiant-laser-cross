@@ -16,3 +16,4 @@ MonoBehaviour:
   musicStems:
   - {fileID: 8300000, guid: 32748253fec8b6548bd93647a7d56b05, type: 3}
   - {fileID: 8300000, guid: 7e6516cd65ed64a4880afaf0a8405097, type: 3}
+  - {fileID: 8300000, guid: 199fa5e6f0045fb4bbd2a5dc72777195, type: 3}
