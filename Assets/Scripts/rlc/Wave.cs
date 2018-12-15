@@ -135,7 +135,7 @@ namespace rlc
 
             foreach (var warning_object in warning_list)
             {
-                const float fx_end_delay_after_actual_spawn = 1.0f;
+                const float fx_end_delay_after_actual_spawn = 0.33f;
                 Destroy(warning_object, fx_end_delay_after_actual_spawn);
             }
 
