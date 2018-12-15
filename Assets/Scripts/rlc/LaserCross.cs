@@ -48,6 +48,7 @@ namespace rlc
         public float rotation_speed = 90.0f;
         public LifeControl life_control;
         public OverloadSystem overload_system;
+        public GameObject overload_effect;
 
         public AudioSource sound_rotation;
         public AudioSource sound_rotation_stop;
@@ -79,6 +80,10 @@ namespace rlc
             {
                 Debug.LogError("No level builder found");
             }
+
+            OverloadEvents.OnBlock += (x) => { overload_effect.SetActive(true); };
+            OverloadEvents.OnUnblock += () => { overload_effect.SetActive(false); };
+            overload_effect.SetActive(false);
 
             current = this;
         }
