@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: test_wave_easy_wait_nope_nope_nope
+  m_Name: wave_easy_wait_nope_nope_nope
   m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3185,6 +3185,8 @@ MonoBehaviour:
   timeout_secs: 0
   enemies_left_count: 0
   music_tracks: {fileID: 0}
+  spawn_mode: 0
+  selection_mode: 0
   prefabs_to_spawn:
   - {fileID: 1604797991448608, guid: 779c8b905ba124347a15ef39cc20ec00, type: 2}
   - {fileID: 1604797991448608, guid: 9c211c37240ef1749b6e05a77c6c0f3c, type: 2}
@@ -3232,5 +3234,6 @@ MonoBehaviour:
   target_player: 0
   reuse_spawn_points: 0
   count_left_to_spawn: 200
+  instances_per_prefab: 1
   instances_per_spawn: 10
   spawn_interval_secs: 2

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: test_wave_easy_but_hard
+  m_Name: wave_easy_peasy
   m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,17 +53,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
-  background_color: {r: 0.8113208, g: 0.50948644, b: 0.27171594, a: 0}
-  background: {fileID: 114175068292097232, guid: 8e00bbb339848824c9814889d308e422,
+  background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
+  background: {fileID: 114382619399145354, guid: 326e160c8d28e1c43bd8ace9c57b575d,
     type: 2}
-  title: Easy But Hard
+  title: Easy Peasy
   timeout_secs: 0
   enemies_left_count: 0
+  music_tracks: {fileID: 0}
+  spawn_mode: 0
+  selection_mode: 0
   prefabs_to_spawn:
-  - {fileID: 1604797991448608, guid: c0d36014dc5354b44926415e31e00bb2, type: 2}
+  - {fileID: 1604797991448608, guid: 587d5b995d43e324fba5e31093706f8b, type: 2}
   spawn_points: []
   target_player: 1
   reuse_spawn_points: 0
-  count_left_to_spawn: 200
-  instances_per_spawn: 10
-  spawn_interval_secs: 2
+  count_left_to_spawn: 10
+  instances_per_prefab: 1
+  instances_per_spawn: 1
+  spawn_interval_secs: 1
