@@ -293,7 +293,7 @@ namespace rlc
             {
                 for (int splosion_idx = 0; splosion_idx < random_splosions_per_batch; ++splosion_idx)
                 {
-                    var random_pos = Wave_RandomSpawning.random_position_in_screen();
+                    var random_pos = Wave_Spawning.random_position_in_screen();
                     var random_splosion_prefab = game_complete_splosions_prefabs[Random.Range(0, game_complete_splosions_prefabs.Count)];
                     Instantiate(random_splosion_prefab, random_pos, Quaternion.identity);
                 }

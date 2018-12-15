@@ -5,14 +5,15 @@ using UnityEngine;
 namespace rlc
 {
     // Spawns enemies at random screen border positions
-    public class Wave_RandomSpawning : Wave
+    public class Wave_Spawning : Wave
     {
         public enum Mode
         {
             random, sequential
         }
 
-        public Mode mode = Mode.random;
+        public Mode spawn_mode = Mode.random;
+        public Mode selection_mode = Mode.random;
 
         public List<GameObject> prefabs_to_spawn;
         public List<Transform> spawn_points;
@@ -73,8 +74,9 @@ namespace rlc
 
             while (instance_count_to_spawn > 0)
             {
-                var spawn_transform = random_transform();
-                spawn_enemy(random_prefab(), spawn_transform.position, spawn_transform.rotation);
+                var spawn_transform = next_spawn_state();
+                var selected_prefab = select_prefab();
+                spawn_enemy(selected_prefab, spawn_transform.position, spawn_transform.rotation);
                 --instance_count_to_spawn;
             }
 
@@ -91,12 +93,12 @@ namespace rlc
 
         private SpawnState next_spawn_state()
         {
-            switch (mode)
+            switch (spawn_mode)
             {
                 case Mode.random: return random_transform();
                 case Mode.sequential: return sequential_transform();
                 default:
-                    Debug.LogError("Invalid Mode in Randomly Spawning Wave!");
+                    Debug.LogError("Invalid Spawn Mode in Randomly Spawning Wave!");
                     return random_transform();
             }
 
@@ -193,6 +195,25 @@ namespace rlc
         {
             var random_idx = Random.Range(0, prefabs_to_spawn.Count);
             return prefabs_to_spawn[random_idx];
+        }
+
+        private GameObject next_prefab()
+        {
+            var selected_prefab = prefabs_to_spawn[0];
+            Utility.RotateForward(prefabs_to_spawn, 1);
+            return selected_prefab;
+        }
+
+        private GameObject select_prefab()
+        {
+            switch (selection_mode)
+            {
+                case Mode.random: return random_prefab();
+                case Mode.sequential: return next_prefab();
+                default:
+                    Debug.LogError("Invalid Selection Mode in Randomly Spawning Wave!");
+                    return random_prefab();
+            }
         }
 
     }

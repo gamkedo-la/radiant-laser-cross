@@ -862,7 +862,8 @@ MonoBehaviour:
   timeout_secs: 0
   enemies_left_count: 0
   music_tracks: {fileID: 0}
-  mode: 1
+  spawn_mode: 1
+  selection_mode: 0
   prefabs_to_spawn:
   - {fileID: 1238228345872176, guid: d23c837bb09f08840b92c1857eb5dacb, type: 2}
   spawn_points:
