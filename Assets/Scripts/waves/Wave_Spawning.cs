@@ -27,6 +27,7 @@ namespace rlc
         public const float max_distance_from_center = GameCamera.SIZE_PER_HALF_SIDE - margin_from_max;
 
         private List<Transform> used_spawn_points = new List<Transform>();
+        private bool started = false;
 
         private struct SpawnState
         {
@@ -38,7 +39,6 @@ namespace rlc
         void Start()
         {
             setting_up();
-            StartCoroutine(update_spawn());
 
             // Make sure the spawn points are not visible.
             foreach (var spawn_point in spawn_points)
@@ -50,6 +50,11 @@ namespace rlc
         // Update is called once per frame
         void Update()
         {
+            if (!started)
+            {
+                started = true;
+                StartCoroutine(update_spawn());
+            }
         }
 
         private IEnumerator update_spawn()
