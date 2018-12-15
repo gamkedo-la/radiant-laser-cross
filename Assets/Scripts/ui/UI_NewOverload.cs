@@ -45,7 +45,8 @@ public class UI_NewOverload : MonoBehaviour {
         last_section = level_section;
         var is_increasing = level > last_level;
         var relative_level = level % MAX_RELATIVE_LEVEL;
-        var ui_level = 60f * (level_section / (MAX_SECTIONS - 1f)) + 40f * (relative_level / MAX_RELATIVE_LEVEL);
+        //var ui_level = 60f * (level_section / (MAX_SECTIONS - 1f)) + 40f * (relative_level / MAX_RELATIVE_LEVEL);
+        var ui_level = level;
         bar.disturbance = Mathf.RoundToInt(50f * (ui_level / 100f) + (is_increasing ? 50f : 0f));
         bar.level = Mathf.RoundToInt(ui_level);
         lamps.set_intensity(relative_level / MAX_RELATIVE_LEVEL);

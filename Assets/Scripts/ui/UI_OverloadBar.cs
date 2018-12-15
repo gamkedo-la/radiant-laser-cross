@@ -14,13 +14,13 @@ public class UI_OverloadBar : MonoBehaviour {
     private float disturbance_delay = 0f;
     private const float MAX_VELOCITY = 96f; // 32% per second
     private const float MIN_VELOCITY = 32f; // 8% per second
-    private const float MAX_DISTURBANCE_INCREASE = 24f;
-    private const float MIN_DISTURBANCE_INCREASE = 8f;
-    private const float MAX_RANDOM_RANGE_DISTURBANCE_INCREASE = 66f;
-    private const float MIN_RANDOM_RANGE_DISTURBANCE_INCREASE = 12f;
+    private const float MAX_DISTURBANCE_INCREASE = 0f;
+    private const float MIN_DISTURBANCE_INCREASE = 0f;
+    private const float MAX_RANDOM_RANGE_DISTURBANCE_INCREASE = 0f;
+    private const float MIN_RANDOM_RANGE_DISTURBANCE_INCREASE = 0f;
     private const float MAX_DISTURBANCE_RATE = 1f; // each 3 seconds
     private const float MIN_DISTURBANCE_RATE = 0.3f; // each second
-    private const float MIN_DIFF_TO_DISTURBANCE = 15f;
+    private const float MIN_DIFF_TO_DISTURBANCE = 300f;
     private const float MAX_BLOCK_OVERLAY_ALPHA = 220f/255f;
     private const float MIN_BLOCK_OVERLAY_ALPHA = 100f/255f;
 
