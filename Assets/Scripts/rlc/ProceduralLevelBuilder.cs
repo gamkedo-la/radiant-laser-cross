@@ -109,6 +109,7 @@ namespace rlc
 
             if (state != State.playing_wave)
                 return;
+
             state = State.game_over;
 
             if (reason == GameOverReason.timeout)
@@ -128,6 +129,7 @@ namespace rlc
         {
             if (state == State.exiting)
                 return;
+
             state = State.exiting;
 
             timeout.stop();
@@ -225,10 +227,7 @@ namespace rlc
 
         public void new_game()
         {
-            if (state == State.exiting)
-                return;
-
-            if (state == State.playing_wave)
+            if (state != State.ready)
                 return;
 
             if (instruction_text)
@@ -245,7 +244,7 @@ namespace rlc
 
         public void next_wave()
         {
-            if (state == State.exiting)
+            if (state != State.ready && state != State.playing_wave)
                 return;
 
             if (level_progression == null)
