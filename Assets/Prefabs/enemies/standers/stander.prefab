@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114060027594535396}
   - component: {fileID: 114451951588178046}
   - component: {fileID: 114352231118298900}
+  - component: {fileID: 114438714446400248}
   m_Layer: 0
   m_Name: stander
   m_TagString: enemy
@@ -130,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604797991448608}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -17.08, y: -0.95, z: 0}
   m_LocalScale: {x: 2.0303, y: 2.0303, z: 2.0303}
   m_Children:
   - {fileID: 4322144421803744}
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  firing_interval: 0.5
+  firing_interval: 0
   animation_rotation: {x: 1, y: 1, z: 0}
 --- !u!114 &114352231118298900
 MonoBehaviour:
@@ -286,6 +287,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16734da87d8efa4c811d770232223d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114438714446400248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604797991448608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cb407d3918be342a8dfe9b33ba6473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  angle_rotation_speed_degs: 180
+  max_angle_from_parent_direction: 0
+  auto_target_player: 1
 --- !u!114 &114451951588178046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,13 +315,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
-  hit_points: 10000
+  hit_points: 1
   body_parts:
   - {fileID: 114808737645426366}
   explosionPrefab: {fileID: 1484042347565518, guid: 8715c21d906956a44acaf183e55cc610,
     type: 2}
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
+  screen_enter_time: -100
+  diying_duration: 0.5
 --- !u!114 &114537827016486162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,18 +336,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefabs:
-  - {fileID: 114580612996000162, guid: b0fa669fc3b6520449183d4c7e8f2d21, type: 2}
+  - {fileID: 114580612996000162, guid: 5906aebc7aec23441acdc0867d1b39b6, type: 2}
   emitters:
   - {fileID: 4961236619829468}
   bullet_selection_mode: 0
   time_between_bullet_change: 0
   firing_mode: 0
-  time_between_firing: 0.03125
+  time_between_firing: 0.05
   shots_per_burst: 3
   time_between_burst_shots: 0.03125
   parallel_shots: 1
   spread_angle_degs: 0
-  default_bullet_speed: 0
+  default_bullet_speed: 50
   clan: 1
   allow_firing_outside_screen: 0
   default_firing_animation: 0
@@ -347,3 +366,4 @@ MonoBehaviour:
   clan: 1
   life_control: {fileID: 0}
   surface_effect: 0
+  sound_on_reflection: {fileID: 0}
