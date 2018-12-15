@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace rlc
 {
-    /* Passenger: slowly pass-by while firing (at slow pace, mostly).
-     * */
     public class Enemy : MonoBehaviour {
 
         public float speed = 4.0f;
