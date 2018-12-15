@@ -68,5 +68,6 @@ MonoBehaviour:
   target_player: 1
   reuse_spawn_points: 0
   count_left_to_spawn: 10
+  instances_per_prefab: 1
   instances_per_spawn: 10
   spawn_interval_secs: 0

@@ -519,7 +519,8 @@ MonoBehaviour:
   timeout_secs: 100
   enemies_left_count: 0
   music_tracks: {fileID: 0}
-  mode: 0
+  spawn_mode: 0
+  selection_mode: 0
   prefabs_to_spawn:
   - {fileID: 1188869813242726, guid: 9309c94168b67cb48a2010b39fc014b1, type: 2}
   spawn_points:
@@ -531,5 +532,6 @@ MonoBehaviour:
   target_player: 0
   reuse_spawn_points: 0
   count_left_to_spawn: 4
+  instances_per_prefab: 1
   instances_per_spawn: 1
   spawn_interval_secs: 16
