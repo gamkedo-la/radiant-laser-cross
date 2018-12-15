@@ -385,6 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137c8cd9a38e39a49b3b189a9ab8c3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time_between_rotation_changes: 1
+  min_rotation: {x: 1, y: 1, z: 1}
+  max_rotation: {x: 1000, y: 1000, z: 1000}
 --- !u!114 &114371192509069372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,6 +454,7 @@ MonoBehaviour:
   hitPrefab: {fileID: 1478034366044494, guid: 3dd5b54458a2387459ed4012d7192c0d, type: 2}
   start_time: 0
   screen_enter_time: -100
+  diying_duration: 0.5
 --- !u!114 &114889934087041460
 MonoBehaviour:
   m_ObjectHideFlags: 1
