@@ -275,7 +275,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8dd18ea91c75d0841ad8fcaf9fba4b5f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
@@ -386,6 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time_between_rotation_changes: 1
+  randomize_time_between_rotations: 0
+  min_time_between_rotation_changes: 0
+  max_time_between_rotation_changes: 0
   min_rotation: {x: 1, y: 1, z: 1}
   max_rotation: {x: 1000, y: 1000, z: 1000}
 --- !u!114 &114371192509069372
@@ -446,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 10
   body_parts:
   - {fileID: 114622225141141386}
