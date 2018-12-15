@@ -30,7 +30,7 @@ namespace rlc
         // Use this for initialization
         void Start()
         {
-
+            OverloadEvents.InvokeOnUnblock();
         }
 
         // Update is called once per frame
