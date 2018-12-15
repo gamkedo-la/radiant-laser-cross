@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114579086579772502}
   - component: {fileID: 54367821048461270}
   - component: {fileID: 114390480866323418}
+  - component: {fileID: 114702449846003628}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -223,6 +224,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation_speed: 20
+--- !u!114 &114702449846003628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647709454880412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137c8cd9a38e39a49b3b189a9ab8c3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_between_rotation_changes: 2.5
+  randomize_time_between_rotations: 1
+  min_time_between_rotation_changes: 2.5
+  max_time_between_rotation_changes: 8
+  min_rotation: {x: 10, y: 10, z: 10}
+  max_rotation: {x: 90, y: 90, z: 90}
 --- !u!114 &114714634127443666
 MonoBehaviour:
   m_ObjectHideFlags: 1
