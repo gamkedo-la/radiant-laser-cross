@@ -243,7 +243,7 @@ namespace rlc
             next_wave();
         }
 
-        public void next_wave() // TODO: call this automatically when a wave is finished
+        public void next_wave()
         {
             if (state == State.exiting)
                 return;
@@ -324,6 +324,7 @@ namespace rlc
         {
             if (current_wave != null)
             {
+                current_wave.finish();
                 Destroy(current_wave.gameObject);
                 current_wave = null;
             }

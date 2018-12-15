@@ -75,6 +75,15 @@ namespace rlc
 
         }
 
+        public void finish()
+        {
+            if (state != State.Finished)
+            {
+                state = State.Finished;
+                notify_finished();
+            }
+        }
+
         // Make this wave in the SettingUp state, preventing it to finish even if there is no enemies left.
         protected void setting_up()
         {
@@ -208,8 +217,7 @@ namespace rlc
         {
             if (state == State.Ready && enemies_left_count == 0)
             {
-                state = State.Finished;
-                notify_finished();
+                finish();
             }
         }
 
