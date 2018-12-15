@@ -1077,6 +1077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 0}
+  back: {fileID: 0}
   state: 1
 --- !u!114 &203473661
 MonoBehaviour:
@@ -3255,6 +3257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 0}
+  back: {fileID: 0}
   state: 1
 --- !u!1 &606425156
 GameObject:
@@ -3701,19 +3705,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level_1_waves_1:
-  - {fileID: 114160338954076168, guid: f7dd6559333d225448705577dc84bb85, type: 2}
   - {fileID: 114086415066881564, guid: aa40f166291a1c24e9a61abaec7a2734, type: 2}
+  - {fileID: 114545619574774958, guid: 27c9d6231f646694b91ab9fa821cec31, type: 2}
   level_1_waves_2:
+  - {fileID: 114545619574774958, guid: d1fc67fdbfa6a2a46aa9a0a90d6e6f98, type: 2}
   - {fileID: 114160338954076168, guid: f7dd6559333d225448705577dc84bb85, type: 2}
-  - {fileID: 114075109046794008, guid: 78bcc8dd5e04e0e42ab24a05c648609d, type: 2}
   level_1_waves_3:
-  - {fileID: 114767703069282356, guid: f515b8102a880204c8ae8a9ecdc6def5, type: 2}
-  - {fileID: 114946343864345132, guid: 8558f81d13f6b7643b1589347f047642, type: 2}
+  - {fileID: 114545619574774958, guid: 6bde623b8ee50be4597ff6ffb22b0a52, type: 2}
+  - {fileID: 114562226401695188, guid: 46555415bd6d72c46807dc5d401a29b3, type: 2}
   level_1_waves_4:
+  - {fileID: 114946343864345132, guid: 8558f81d13f6b7643b1589347f047642, type: 2}
+  - {fileID: 114767703069282356, guid: f515b8102a880204c8ae8a9ecdc6def5, type: 2}
+  level_1_waves_5:
+  - {fileID: 114261710232256964, guid: cdf6b88e4ab2e564da8220166de51614, type: 2}
+  level_1_boss:
   - {fileID: 114376501720622074, guid: cc5f45692a28b0644a28e3214c7be01b, type: 2}
-  level_1_waves_5: []
-  level_1_waves_6: []
-  level_1_boss: []
+  level_2_waves_1: []
+  level_2_waves_2: []
+  level_2_waves_3: []
+  level_2_waves_4: []
+  level_2_waves_5: []
+  level_2_boss: []
   end_level: 4
   laser_cross_prefab: {fileID: 1714987366249736, guid: f9d698e1e0a8d3a41800494b3b52bcae,
     type: 2}
@@ -4913,6 +4925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 640192298}
+  back: {fileID: 951607204}
   state: 1
 --- !u!1 &998801967
 GameObject:
@@ -5167,6 +5181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 0}
+  back: {fileID: 0}
   state: 1
 --- !u!1 &1039717327
 GameObject:
@@ -6152,6 +6168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 853908596}
+  back: {fileID: 1243707723}
   state: 1
 --- !u!1 &1270786083
 GameObject:
@@ -6243,6 +6261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissipateOffset: 0
   dissipateDuration: 0
+  front: {fileID: 0}
+  back: {fileID: 0}
   state: 1
 --- !u!1 &1300467904
 GameObject:
