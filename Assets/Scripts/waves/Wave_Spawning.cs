@@ -21,6 +21,7 @@ namespace rlc
         public bool target_player = false;
         public bool reuse_spawn_points = false;
         public int count_left_to_spawn = 10;
+        public int instances_per_prefab = 1;
         public int instances_per_spawn = 2;
         public float spawn_interval_secs = 1.0f;
         public const float margin_from_max = 10.0f;
@@ -77,12 +78,23 @@ namespace rlc
 
             count_left_to_spawn -= instance_count_to_spawn;
 
+            int count_instances_with_selected_prefab = 0;
+            GameObject selected_prefab = select_prefab();
+
             while (instance_count_to_spawn > 0)
             {
+                if (count_instances_with_selected_prefab >= instances_per_prefab)
+                {
+                    // Time to change prefab.
+                    selected_prefab = select_prefab();
+                    count_instances_with_selected_prefab = 0;
+                } // Otherwise, keep the same prefab than the previous one.
+
                 var spawn_transform = next_spawn_state();
-                var selected_prefab = select_prefab();
+
                 spawn_enemy(selected_prefab, spawn_transform.position, spawn_transform.rotation);
                 --instance_count_to_spawn;
+                ++count_instances_with_selected_prefab;
             }
 
             if (count_left_to_spawn == 0)
