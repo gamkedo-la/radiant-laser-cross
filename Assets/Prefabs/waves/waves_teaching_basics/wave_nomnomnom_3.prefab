@@ -54,7 +54,7 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.6483624, g: 0.869396, b: 0.8867924, a: 0}
-  background: {fileID: 114692614075744476, guid: fa891a233c5de4941addbe70d39770e0,
+  background: {fileID: 114692614075744476, guid: ae5297f7ebf810842aa5d5092d8c8a6f,
     type: 2}
   title: NomNomNom!!!!
   timeout_secs: 0
