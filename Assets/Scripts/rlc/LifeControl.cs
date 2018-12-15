@@ -19,6 +19,7 @@ namespace rlc
         [SerializeField]
         private LifeState life_state = LifeState.alive_newborn; // TODO: read-only public access
 
+        public int score_points_on_destroyed = 100;
         public int hit_points = 1;
         private int total_hit_points;
         public List<ColoredBody> body_parts = new List<ColoredBody>();
