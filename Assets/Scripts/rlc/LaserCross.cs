@@ -81,8 +81,6 @@ namespace rlc
                 Debug.LogError("No level builder found");
             }
 
-            OverloadEvents.OnBlock += (x) => { overload_effect.SetActive(true); };
-            OverloadEvents.OnUnblock += () => { overload_effect.SetActive(false); };
             overload_effect.SetActive(false);
 
             current = this;
@@ -133,16 +131,25 @@ namespace rlc
         private void animate_on_recovering() // TODO: this is a temporary animation, replace this by something more appropriate!
         {
             trails.enabled = false;
+            if (!overload_effect.activeSelf)
+            {
+                overload_effect.SetActive(true);
+            }
         }
 
         private void animate_ready() // TODO: this is a temporary animation, replace this by something more appropriate!
-
         {
             trails.enabled = true;
+            if (overload_effect.activeSelf)
+            {
+                overload_effect.SetActive(false);
+            }
         }
 
         private void animate_death() // TODO: this is a temporary death animation, replace this by something more appropriate!
         {
+            overload_effect.SetActive(true);
+
             transform.localScale = transform.localScale * 1.05f;
             transform.rotation = transform.rotation * Quaternion.Euler(151.75f * Time.deltaTime, 900.0f * Time.deltaTime, 733.33f * Time.deltaTime);
 
