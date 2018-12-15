@@ -3656,6 +3656,7 @@ MonoBehaviour:
   hitPrefab: {fileID: 0}
   start_time: 0
   screen_enter_time: -100
+  diying_duration: 1
 --- !u!114 &114491839098139386
 MonoBehaviour:
   m_ObjectHideFlags: 1
