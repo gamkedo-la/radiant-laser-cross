@@ -32,7 +32,7 @@ public class UI_NewOverload : MonoBehaviour {
 
     public void set_overload(float load)
     {
-        var level = load * 10;
+        var level = load * 100;
         int level_section = Mathf.FloorToInt(level / MAX_RELATIVE_LEVEL);
         if (last_section != level_section)
         {

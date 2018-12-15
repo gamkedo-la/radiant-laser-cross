@@ -85,7 +85,7 @@ namespace rlc
             }
             else
             {
-                OverloadEvents.InvokeOnLoadChange(load);
+                OverloadEvents.InvokeOnLoadChange(Mathf.Min(1f, load/load_limit));
             }
         }
 
