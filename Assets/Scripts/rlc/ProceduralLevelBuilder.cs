@@ -344,7 +344,6 @@ namespace rlc
 
             set_theme_color(wave_info.wave.background_color);
             launch_background(wave_info.wave.background);
-            string progress_title = string.Format("Level {0} {2}- Wave {1}", current_level_number, current_wave_number, wave_info.category == WaveCategory.Boss ? "- Boss " : "");
 
             int wave_start_idx = ++wave_start_count; // Keep track of which wave we were starting.
 
@@ -361,6 +360,7 @@ namespace rlc
 
             MusicEventManager.Instance.play_new_wave_sound();
 
+            string progress_title = string.Format("Level {0} {2}- Wave {1}", current_level_number, current_wave_number, wave_info.category == WaveCategory.Boss ? "- BOSS " : "");
             yield return display_title(progress_title, wave_info.wave.title, title_display_duration_secs);
 
             if (wave_start_idx != wave_start_count) // If another wave was started in-betwen, do nothing.
@@ -432,7 +432,6 @@ namespace rlc
         private void display_game_title()
         {
             StartCoroutine(display_title("", DEFAULT_TITLE, default_title_display_duration_secs));
-
             MusicEventManager.Instance.play_title_sound();
         }
 
@@ -484,6 +483,10 @@ namespace rlc
                 if (current_level_waves_selection == null)
                     break;
 
+                if (current_level_number > 1)
+                {
+                    MusicEventManager.Instance.play_title_sound();
+                }
                 yield return LevelStatus.next_level;
 
                 current_wave_number = 0;
