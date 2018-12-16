@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -68,7 +68,7 @@ namespace rlc
 
         public enum State
         {
-            ready, playing_wave, game_over, exiting
+            ready, playing_wave, level_transition, game_over, exiting
         }
         private State state = State.ready;
         private Wave current_wave;
@@ -308,15 +308,20 @@ namespace rlc
         {
             if (current_level_number > 1)
             {
+                state = State.level_transition;
+
+                clear_wave();
                 Bullet.clear_bullets_from_game();
                 MusicEventManager.Instance.play_title_sound();
                 string complete_text = string.Format("LEVEL {0} - COMPLETE!", current_level_number - 1);
 
                 yield return splosions(16, 1);
                 yield return display_title("", complete_text, 3);
+
+                state = State.playing_wave;
             }
 
-            level_progression.MoveNext();
+            next_wave();
         }
 
         private void on_game_complete()
