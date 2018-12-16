@@ -283,6 +283,7 @@ namespace rlc
         {
             if (current_level_number > 1)
             {
+                Bullet.clear_bullets_from_game();
                 MusicEventManager.Instance.play_title_sound();
                 string complete_text = string.Format("LEVEL {0} - COMPLETE!", current_level_number - 1);
 
