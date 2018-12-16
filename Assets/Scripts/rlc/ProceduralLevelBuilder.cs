@@ -262,7 +262,7 @@ namespace rlc
             {
                 case LevelStatus.next_level:
                 {
-                    level_progression.MoveNext();
+                    StartCoroutine(on_level_complete());
                     break;
                 }
                 case LevelStatus.finished:
@@ -279,21 +279,27 @@ namespace rlc
 
         }
 
+        private IEnumerator on_level_complete()
+        {
+            if (current_level_number > 1)
+            {
+                MusicEventManager.Instance.play_title_sound();
+                string complete_text = string.Format("LEVEL {0} - COMPLETE!", current_level_number - 1);
+
+                yield return splosions(16, 1);
+                yield return display_title("", complete_text, 3);
+            }
+
+            level_progression.MoveNext();
+        }
+
         private void on_game_complete()
         {
             StartCoroutine(celebrate_then_go_to_game_complete_screen());
         }
 
-        private IEnumerator celebrate_then_go_to_game_complete_screen()
+        private IEnumerator splosions(int random_splosions_batch_count, int random_splosions_per_batch)
         {
-            clear_wave();
-            Bullet.clear_bullets_from_game();
-            timeout.stop();
-            launch_background(default_background_prefab);
-
-            const int random_splosions_batch_count = 42;
-            const int random_splosions_per_batch = 3;
-
             for (int batch_idx = 0; batch_idx < random_splosions_batch_count; ++batch_idx)
             {
                 for (int splosion_idx = 0; splosion_idx < random_splosions_per_batch; ++splosion_idx)
@@ -305,6 +311,16 @@ namespace rlc
 
                 yield return new WaitForSeconds(1.0f / 8.0f);
             }
+        }
+
+        private IEnumerator celebrate_then_go_to_game_complete_screen()
+        {
+            clear_wave();
+            Bullet.clear_bullets_from_game();
+            timeout.stop();
+            launch_background(default_background_prefab);
+
+            yield return splosions(42, 3);
 
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("GameCompleteScreen", LoadSceneMode.Single);
@@ -483,10 +499,6 @@ namespace rlc
                 if (current_level_waves_selection == null)
                     break;
 
-                if (current_level_number > 1)
-                {
-                    MusicEventManager.Instance.play_title_sound();
-                }
                 yield return LevelStatus.next_level;
 
                 current_wave_number = 0;
