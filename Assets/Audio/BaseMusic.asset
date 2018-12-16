@@ -14,7 +14,7 @@ MonoBehaviour:
   max_parallel_tracks: 1
   min_parallel_tracks: 1
   musicStems:
-  - {fileID: 8300000, guid: 10a51bca3ce230c469349decf8e6a7f6, type: 3}
+  - {fileID: 8300000, guid: b8b06e3ef49ee4e2c876513acde5a1fe, type: 3}
   - {fileID: 8300000, guid: 3ff037b69c118f641a6a267d40fc23c4, type: 3}
   - {fileID: 8300000, guid: b30338b272fac1b4cb4e90290fba8024, type: 3}
-  - {fileID: 8300000, guid: fdca04e8359b85e489772f7b9fd9d736, type: 3}
+  - {fileID: 8300000, guid: f4ce472039cd94c2d9498d77cc07d676, type: 3}
