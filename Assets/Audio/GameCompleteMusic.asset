@@ -9,10 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc46c0a9affa62e44b78ca6087e46c61, type: 3}
-  m_Name: MainMenuMusic
+  m_Name: GameCompleteMusic
   m_EditorClassIdentifier: 
   max_parallel_tracks: 1
   min_parallel_tracks: 1
   musicStems:
-  - {fileID: 8300000, guid: 32748253fec8b6548bd93647a7d56b05, type: 3}
-  - {fileID: 8300000, guid: 7e6516cd65ed64a4880afaf0a8405097, type: 3}
+  - {fileID: 8300000, guid: 199fa5e6f0045fb4bbd2a5dc72777195, type: 3}
