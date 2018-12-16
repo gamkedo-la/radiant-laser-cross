@@ -59,7 +59,7 @@ MonoBehaviour:
   title: The Right Shield
   timeout_secs: 0
   enemies_left_count: 0
-  music_tracks: {fileID: 0}
+  music_tracks: {fileID: 11400000, guid: 673a2b282b04154428a89a77acd3502b, type: 2}
   spawn_mode: 0
   selection_mode: 0
   prefabs_to_spawn:

@@ -59,7 +59,7 @@ MonoBehaviour:
   title: NomNomNom...
   timeout_secs: 0
   enemies_left_count: 0
-  music_tracks: {fileID: 0}
+  music_tracks: {fileID: 11400000, guid: 28b068830077b734fac672e924c0bf0b, type: 2}
   spawn_mode: 0
   selection_mode: 0
   prefabs_to_spawn:

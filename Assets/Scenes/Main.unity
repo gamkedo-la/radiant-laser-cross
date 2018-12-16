@@ -7922,7 +7922,7 @@ MonoBehaviour:
   sound_title: {fileID: 1214712640}
   sound_new_wave: {fileID: 877248715}
   play_music_on_start: 0
-  variationFrequencyInSeconds: 20
+  variationFrequencyInSeconds: 10
   variationFadeTimeInSeconds: 0.25
   transitionFadeTimeInSeconds: 0.5
   currentTrack: {fileID: 0}

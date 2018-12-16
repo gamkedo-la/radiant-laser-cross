@@ -4098,6 +4098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114175420836214216}
@@ -4183,7 +4184,7 @@ MonoBehaviour:
   title: Cardinal Points
   timeout_secs: 0
   enemies_left_count: 0
-  music_tracks: {fileID: 0}
+  music_tracks: {fileID: 11400000, guid: 28b068830077b734fac672e924c0bf0b, type: 2}
 --- !u!114 &114087761919785788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4326,6 +4327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114061452662147864}
@@ -4464,6 +4466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114150048929533972}
@@ -4511,6 +4514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114209348098553218}
@@ -4548,6 +4552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114272437252733140}
@@ -4569,6 +4574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114388609382949592}
@@ -4590,6 +4596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114227827872542758}
@@ -4664,6 +4671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114016271946434492}
@@ -4711,6 +4719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114821292473066780}
@@ -5219,6 +5228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114118013901667886}
@@ -5348,6 +5358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114607320733927774}
@@ -5369,6 +5380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114140879009732388}
@@ -5390,6 +5402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114403087580445372}
@@ -5411,6 +5424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114627002738595342}
@@ -5432,6 +5446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114922606880697332}
@@ -5507,6 +5522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 0
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114201448936994554}

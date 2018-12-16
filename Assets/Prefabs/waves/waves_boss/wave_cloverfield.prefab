@@ -518,7 +518,7 @@ MonoBehaviour:
   title: Cloverfield
   timeout_secs: 100
   enemies_left_count: 0
-  music_tracks: {fileID: 0}
+  music_tracks: {fileID: 11400000, guid: e1d380a96da321b4ea712248c3f5fa52, type: 2}
   spawn_mode: 0
   selection_mode: 0
   prefabs_to_spawn:

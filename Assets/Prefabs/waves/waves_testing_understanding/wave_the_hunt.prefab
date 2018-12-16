@@ -145,7 +145,7 @@ MonoBehaviour:
   title: The Hunt
   timeout_secs: 100
   enemies_left_count: 0
-  music_tracks: {fileID: 0}
+  music_tracks: {fileID: 11400000, guid: 28b068830077b734fac672e924c0bf0b, type: 2}
   spawn_mode: 1
   selection_mode: 1
   prefabs_to_spawn:

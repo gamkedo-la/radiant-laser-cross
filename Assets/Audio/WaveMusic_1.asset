@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc46c0a9affa62e44b78ca6087e46c61, type: 3}
+  m_Name: WaveMusic_1
+  m_EditorClassIdentifier: 
+  max_parallel_tracks: 3
+  min_parallel_tracks: 2
+  musicStems:
+  - {fileID: 8300000, guid: f4ce472039cd94c2d9498d77cc07d676, type: 3}
+  - {fileID: 8300000, guid: 2e374c9e8cbac4d90b56815005493297, type: 3}
+  - {fileID: 8300000, guid: b62395c4ecc884591bd0e845a4cdb727, type: 3}
+  - {fileID: 8300000, guid: 3ff037b69c118f641a6a267d40fc23c4, type: 3}
+  - {fileID: 8300000, guid: b30338b272fac1b4cb4e90290fba8024, type: 3}
+  - {fileID: 8300000, guid: cd13ebf16ae17334b957a9810ddc087e, type: 3}
+  - {fileID: 8300000, guid: b8b06e3ef49ee4e2c876513acde5a1fe, type: 3}
+  - {fileID: 8300000, guid: 230653a36e4c03e429f920e681aafc73, type: 3}
+  - {fileID: 8300000, guid: 648345cfe43fa4b14811160e0ea78af4, type: 3}
