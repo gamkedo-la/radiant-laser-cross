@@ -56,7 +56,7 @@ MonoBehaviour:
   background_color: {r: 0.5931783, g: 0.40650585, b: 0.5943396, a: 0}
   background: {fileID: 114382619399145354, guid: 326e160c8d28e1c43bd8ace9c57b575d,
     type: 2}
-  title: Easy Peasy
+  title: Avoidance
   timeout_secs: 0
   enemies_left_count: 0
   music_tracks: {fileID: 0}

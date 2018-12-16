@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 4959449303801132}
   - component: {fileID: 114075109046794008}
   m_Layer: 0
-  m_Name: wave_easy_wait_nope_nope_nope
+  m_Name: wave_the_grid
   m_TagString: wave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3181,7 +3181,7 @@ MonoBehaviour:
   background_color: {r: 0.9433962, g: 0.50284797, b: 0.52844226, a: 0}
   background: {fileID: 114175068292097232, guid: cb02cd9d148518f48b4f728a6b635f81,
     type: 2}
-  title: Easy..Wait... nope nope nope
+  title: The Grid
   timeout_secs: 0
   enemies_left_count: 0
   music_tracks: {fileID: 0}

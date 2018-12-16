@@ -54,8 +54,9 @@ MonoBehaviour:
   warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
     type: 2}
   background_color: {r: 0.9433962, g: 0.73035574, b: 0.10234961, a: 0}
-  background: {fileID: 0}
-  title: Colorful Hell
+  background: {fileID: 114506371968726392, guid: 26b159c70a5f51d42bf797f23aa04521,
+    type: 2}
+  title: Colorful
   timeout_secs: 0
   enemies_left_count: 0
   music_tracks: {fileID: 0}
