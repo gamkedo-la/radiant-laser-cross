@@ -31,10 +31,15 @@ public class SpecialCommandHandler : MonoBehaviour {
             level_builder.exit();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space)
+        if (Input.GetKeyDown(KeyCode.Space)
         ||  Input.GetKeyDown("joystick 1 button 7")) // gamepad start button
         {
-            level_builder.new_game();
+            level_builder.new_game_or_pause();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            level_builder.toggle_pause();
         }
 
         if (Input.GetKeyUp(KeyCode.R) ||
@@ -48,9 +53,9 @@ public class SpecialCommandHandler : MonoBehaviour {
         }
 
         if (Input.GetKeyUp(KeyCode.Tab)
-        ||  Input.GetAxis("DPAD_HORIZ") == 1) // DPAD right
+        //||  Input.GetAxis("DPAD_HORIZ") == 1 // DPAD right
+        )
         {
-
             if (time_since_last_wave_change >= time_between_wave_change)
             {
                 last_wave_change_time = Time.time;

@@ -6,25 +6,32 @@ using UnityEngine;
 public class pauseGUI : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+
     void Start()
     {
         pausePanel.SetActive(false);
     }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+    }
+
+    // Returns true if we are paused, false if we are not paused.
+    public bool toggle_pause()
+    {
+        Debug.Log("Pause Toggled!");
+        if (!pausePanel.activeInHierarchy)
         {
-            Debug.Log("Pause Toggled!");
-            if (!pausePanel.activeInHierarchy)
-            {
-                PauseGame();
-            }
-            else if (pausePanel.activeInHierarchy)
-            {
-                ContinueGame();
-            }
+            PauseGame();
+            return true;
+        }
+        else
+        {
+            ResumeGame();
+            return false;
         }
     }
+
     private void PauseGame()
     {
         Debug.Log("PAUSING GAME!");
@@ -32,7 +39,8 @@ public class pauseGUI : MonoBehaviour
         pausePanel.SetActive(true);
         //Disable scripts that still work while timescale is set to 0
     }
-    private void ContinueGame()
+
+    private void ResumeGame()
     {
         Debug.Log("UNPAUSING GAME!");
         Time.timeScale = 1;

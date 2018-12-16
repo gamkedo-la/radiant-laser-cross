@@ -55,6 +55,7 @@ namespace rlc
         public float title_display_duration_secs = 3.0f;
 
         public Text instruction_text;
+        public pauseGUI pause_ui;
 
         private TimeoutSystem timeout;
         private IEnumerator timeout_gameover_display;
@@ -220,7 +221,7 @@ namespace rlc
 
             if (instruction_text)
             {
-                instruction_text.enabled = true;
+                instruction_text.gameObject.SetActive(true);
             }
 
             if (default_music_tracks)
@@ -231,6 +232,30 @@ namespace rlc
             state = State.ready;
         }
 
+        public void new_game_or_pause()
+        {
+            switch(state)
+            {
+                case State.ready:
+                    new_game();
+                    return;
+                case State.playing_wave:
+                    toggle_pause();
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        public void toggle_pause()
+        {
+            bool is_paused = pause_ui.toggle_pause();
+            instruction_text.gameObject.SetActive(is_paused);
+
+            title_display.text = DEFAULT_TITLE;
+            title_display.enabled = is_paused;
+        }
+
         public void new_game()
         {
             if (state != State.ready)
@@ -238,7 +263,7 @@ namespace rlc
 
             if (instruction_text)
             {
-                instruction_text.enabled = false;
+                instruction_text.gameObject.SetActive(false);
             }
 
             scoring.reset();
@@ -477,7 +502,6 @@ namespace rlc
             progress_display.enabled = false;
             Debug.Log("Title hidden");
         }
-
 
         private enum LevelStatus {
             next_wave,      // We'll play the next wave
