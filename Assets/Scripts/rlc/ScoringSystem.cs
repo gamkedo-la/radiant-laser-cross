@@ -126,12 +126,12 @@ namespace rlc
 
         private void OnEnemyKilled(LifeControl life)
         {
-            var timeBonus = TimeBonus.GetBonusForTime(life.ScreenTime);
-            var lifeScore = life.TotalHitPoints;
-            var kill_points = timeBonus.points_amount + lifeScore;
+            var time_bonus = TimeBonus.GetBonusForTime(life.ScreenTime);
+            var enemy_score = life.score_points_on_destroyed <= 0 ? life.TotalHitPoints : life.score_points_on_destroyed;
+            var kill_points = time_bonus.points_amount + enemy_score;
             var total_points = kill_points * ScoreMultiplier;
             var screenPoint = life.gameObject.transform.position;
-            UI_Scoring.DisplayEnemyPoint(screenPoint, kill_points, timeBonus.name);
+            UI_Scoring.DisplayEnemyPoint(screenPoint, enemy_score, time_bonus.name);
             score += total_points;
             UpdateDisplay();
         }
