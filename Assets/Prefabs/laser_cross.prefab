@@ -2638,7 +2638,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9134184fbc496c34a8fa5bfa4a6ca262, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3649,6 +3649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life_state: 1
+  score_points_on_destroyed: 100
   hit_points: 1
   body_parts:
   - {fileID: 114529295416526498}
@@ -3869,6 +3870,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137c8cd9a38e39a49b3b189a9ab8c3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time_between_rotation_changes: 0
+  randomize_time_between_rotations: 0
+  min_time_between_rotation_changes: 0
+  max_time_between_rotation_changes: 0
+  min_rotation: {x: 1, y: 1, z: 1}
+  max_rotation: {x: 1000, y: 1000, z: 1000}
 --- !u!135 &135215796989359428
 SphereCollider:
   m_ObjectHideFlags: 1
