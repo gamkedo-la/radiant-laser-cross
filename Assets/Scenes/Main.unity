@@ -1759,8 +1759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 150}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchoredPosition: {x: -159.6, y: 150}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &324244460
 MonoBehaviour:
@@ -5739,8 +5739,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -200, y: 267}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: -234.7, y: 279.71}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1185758636
 MonoBehaviour:
@@ -5774,7 +5774,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '[SPACE/START]: PAUSE/RESUME
+  m_Text: 'For best experience, use a Game Controller (XBox/PS)
+
+
+    [SPACE/START]: PAUSE/RESUME
 
 
     Controls |  Gamepad            | Keyboard
@@ -5792,16 +5795,15 @@ MonoBehaviour:
     Shield    | LBumper + Shoot  |  Shift + Shoot
 
 
-    [R/DPAD-LEFT]: RESET GAME
+    [R/DPAD-LEFT]: RESET GAME      [PAGE_UP/DPAD-UP]: VOLUME UP
 
-    [TAB]: SKIP WAVE/LEVEL
+    [TAB]: SKIP WAVE/LEVEL               [PAGE_DOWN/DPAD-DOWN]: VOLUME DOWN
+
 
     [ESCAPE]: EXIT GAME
 
 
-    [PAGE_UP/DPAD-UP]: VOLUME UP
 
-    [PAGE_DOWN/DPAD-DOWN]: VOLUME DOWN
 
 '
 --- !u!222 &1185758637
