@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1113650262223890}
+  m_IsPrefabAsset: 1
+--- !u!1 &1113650262223890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4717200610604226}
+  - component: {fileID: 114261710232256964}
+  m_Layer: 0
+  m_Name: wave_shield_up_random_color
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4717200610604226
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113650262223890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114261710232256964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113650262223890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac15b4021e62e547a750535e868e2c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warning_particle_prefab: {fileID: 1309731683881264, guid: e839ad373fbaa284cb8190e8f4f7483d,
+    type: 2}
+  background_color: {r: 0.15307939, g: 0.4523258, b: 0.754717, a: 0}
+  background: {fileID: 114692614075744476, guid: fa891a233c5de4941addbe70d39770e0,
+    type: 2}
+  title: The Right Shield
+  timeout_secs: 0
+  enemies_left_count: 0
+  music_tracks: {fileID: 0}
+  spawn_mode: 0
+  selection_mode: 0
+  prefabs_to_spawn:
+  - {fileID: 1238703214277796, guid: d399f03ab10e5084086d0a0719f119eb, type: 2}
+  - {fileID: 1940969663195344, guid: 481752eb4da47a442a1d1b774e929123, type: 2}
+  - {fileID: 1742207506318132, guid: 452f1963f3f09034081c8a122f5df8b6, type: 2}
+  - {fileID: 1993971226784974, guid: e9486b6d63ca98541badd4b7e2190f82, type: 2}
+  spawn_points: []
+  target_player: 0
+  reuse_spawn_points: 0
+  count_left_to_spawn: 5
+  instances_per_prefab: 100
+  instances_per_spawn: 10
+  spawn_interval_secs: 0

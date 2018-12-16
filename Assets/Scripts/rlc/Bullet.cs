@@ -16,6 +16,8 @@ namespace rlc
         // Clan who own the bullet (it can change if the opposite clan reflects it)
         public Clan clan_who_owns = Clan.enemy;
 
+        public bool allow_collision_with_other_bullets = false;
+
         private Movable movable;
         private ColoredBody my_body;
         private bool is_reflected = false;
@@ -57,7 +59,7 @@ namespace rlc
             var body_hit = collision.collider.GetComponentInParent<ColoredBody>();
             var bullet_hit = collision.collider.GetComponentInParent<Bullet>();
             if (body_hit != null    // hit a colored body...
-            && bullet_hit == null   // ... which is not another bullet...
+            && (bullet_hit == null || allow_collision_with_other_bullets) // ... which is not another bullet, or is allowed to be hit...
             )
             {
                 // Debug.Log("OnCollisionEnter" + name + " and " + collision.gameObject.name);
