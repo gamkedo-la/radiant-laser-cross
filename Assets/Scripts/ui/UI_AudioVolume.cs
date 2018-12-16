@@ -42,7 +42,9 @@ public class UI_AudioVolume : MonoBehaviour
         if (time_since_last_volume_change >= wait_time_before_next_volume_change)
         {
             last_volume_change = now;
-            AudioListener.volume += change_value;
+            var new_volume = AudioListener.volume + change_value;
+            new_volume = Mathf.Clamp(new_volume, 0.0f, 1.0f);
+            AudioListener.volume = new_volume;
             update_display(AudioListener.volume);
         }
     }
