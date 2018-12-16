@@ -1586,15 +1586,17 @@ MonoBehaviour:
     overload feature, bullets, enemy AI, bosses, scrolling background, boundary checking,
     help text\n\nhugolnx: Scoring system, bullet shield functionality, UI overload
     bar implementation, timer bar, overload effects, HUD font, bug fixing\n\nShaun
-    Lindsley: In-game sounds for damage, destruction, teleport, shield, menus, turning,
-    and deflection\n\nChrister \"McFunkypants\" Kaitila: 3D and wobble grid backgrounds,
-    logo, main menu, spawn warning effects, new ship design, glitch explosions, trail
-    effect\n\nStebs: In-game music\n\nChris Markle: Menu music, player shot sound\n\nJaime
-    Rivas: Overload UI bar initial design, converted project to support shadergraph\n\nMichael
-    \"Misha\" Fewkes: Music system scripting, color body collision code\n\nMarcelo
-    Gon\xE7alves: Early movement system prototyping\n\nStarlightSkyes: Intro voice\n\nChris
-    DeLeon: Prototype shot debugging, compiled credits\n\nGame made in Gamkedo Club
-    - join us at gamkedo.com"
+    Lindsley: Menu music, in-game sounds (damage, destruction, teleport, shield, menus,
+    turning, overload, recovery, shooting, rotation, deflection, and new wave starting)\n\nChrister
+    \"McFunkypants\" Kaitila: 3D and wobble grid backgrounds, logo, main menu, spawn
+    warning effects, new ship design, glitch explosions, trail effect, end screen,
+    pause screen improvements, assorted particles and particle cleanup\n\nStebs: In-game
+    music\n\nChris Markle: Menu music, player shot sound\n\nJaime Rivas: Overload
+    UI bar initial design, converted project to support shadergraph\n\nMichael \"Misha\"
+    Fewkes: Music system scripting, color body collision code\n\nMarcelo Gon\xE7alves:
+    Early movement system prototyping\n\nStarlightSkyes: Intro voice\n\nChris DeLeon:
+    Prototype shot debugging, compiled credits\n\nGame made in Gamkedo Club - join
+    us at gamkedo.com"
 --- !u!222 &1318181739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2396,11 +2398,11 @@ RectTransform:
   m_Father: {fileID: 32666525}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -330, y: 72.00001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &2132714963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2424,7 +2426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2438,7 +2440,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 52
-    m_Alignment: 4
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
