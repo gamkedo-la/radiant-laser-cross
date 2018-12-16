@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
 
     public List<Button> all_buttons;
 
+    private bool allow_keys = true;
+
 
     // Use this for initialization
     void Start()
@@ -23,9 +25,20 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (allow_keys)
         {
-            StartCoroutine(run_exit());
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                allow_keys = false;
+                StartCoroutine(run_exit());
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space)
+            || Input.GetKeyDown("joystick 1 button 7")) // gamepad start button
+            {
+                allow_keys = false;
+                start_new_game();
+            }
         }
     }
 
@@ -48,7 +61,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    private const float seconds_to_next_screen = 1.0f;
+    private const float seconds_to_next_screen = 0.66f;
 
     private IEnumerator run_exit()
     {
