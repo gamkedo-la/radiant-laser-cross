@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -326,17 +326,21 @@ namespace rlc
 
         private IEnumerator splosions(int random_splosions_batch_count, int random_splosions_per_batch)
         {
+            const float time_between_batch = 1.0f / 8.0f;
+
             for (int batch_idx = 0; batch_idx < random_splosions_batch_count; ++batch_idx)
             {
                 for (int splosion_idx = 0; splosion_idx < random_splosions_per_batch; ++splosion_idx)
                 {
                     var random_pos = Wave_Spawning.random_position_in_screen();
                     var random_splosion_prefab = game_complete_splosions_prefabs[Random.Range(0, game_complete_splosions_prefabs.Count)];
-                    Instantiate(random_splosion_prefab, random_pos, Quaternion.identity);
+                    var splosion = Instantiate(random_splosion_prefab, random_pos, Quaternion.identity);
+                    Destroy(splosion, 3.0f);
                 }
 
-                yield return new WaitForSeconds(1.0f / 8.0f);
+                yield return new WaitForSeconds(time_between_batch);
             }
+            yield return new WaitForSeconds(time_between_batch);
         }
 
         private IEnumerator celebrate_then_go_to_game_complete_screen()
