@@ -2454,6 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawning_box: {fileID: 1497890567616772, guid: bce1312b1b0f77647826fd982d9562d9,
     type: 2}
+  bullet: {fileID: 1582779828697760, guid: 5906aebc7aec23441acdc0867d1b39b6, type: 2}
 --- !u!1 &481670854
 GameObject:
   m_ObjectHideFlags: 0

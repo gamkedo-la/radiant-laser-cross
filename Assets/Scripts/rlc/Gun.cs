@@ -86,6 +86,9 @@ namespace rlc
 
         private ShootingState state = ShootingState.idle;
 
+
+        GeneralAssets assets;
+
         void Start()
         {
             last_firing_time = Time.time;
@@ -94,6 +97,8 @@ namespace rlc
             seeker = GetComponent<Seeker>();
             sound_fire = GetComponent<AudioSource>();
             selected_bullet_prefab = bullet_prefabs[0];
+
+            assets = GameObject.FindObjectOfType<GeneralAssets>();
         }
 
         void Update()
@@ -249,7 +254,7 @@ namespace rlc
                 Debug.LogError("Wrong Z");
             }
 
-            Bullet bullet = (Bullet)Instantiate(selected_bullet_prefab, position, transform.rotation);
+            Bullet bullet = assets.make_bullet(position, transform.rotation).GetComponent<Bullet>(); //(Bullet)Instantiate(selected_bullet_prefab, position, transform.rotation);
             bullet.transform.forward = direction;
             bullet.ClanWhoFired = clan;
 
